@@ -6,16 +6,7 @@
   - Newer versions of Anaconda breaks this package. This will be remedied in later releases.
   - If you're using a non-Windows machine go to Anaconda's [download page](https://www.continuum.io/downloads) and pick up the 4.1.1 package
   - Download or clone this repository
-  
-### Intalling with Conda
-  
-  - `cd` into this repository and execute `conda env create`.  This will read the `environment.yml` file and install (using conda) all dependencies in a self-contained environment.
-  - `source activate pysat` to activate said environment.
-  
-# Demo
-
-  - Execute the `jupyter notebook` that will open a new browser tab with the Jupyter homepage.
-  - Launch (click) the `Kaguya_Spectral_Profiler.ipynb` notebook.
+  - Download the PYSAT library from here [github.com/USGS-Astrogeology/PySAT](https://github.com/USGS-Astrogeology/PySAT)
 
 # PYSAT UI
 ![PYSAT splash](./src/res/splash.png)  
