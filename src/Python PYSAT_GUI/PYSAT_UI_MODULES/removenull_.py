@@ -21,18 +21,18 @@ except AttributeError:
 
 
 class removenull_:
-    def __init__(self, pysat_fun, verticalLayout_8):
+    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
         self.pysat_fun = pysat_fun
+        self.arg_list = arg_list
+        self.kw_list = kw_list
+        self.ui_id=None
         self.verticalLayout_8 = verticalLayout_8
         self.main()
 
     def main(self):
-        self.pysat_fun.set_fun_list(self.pysat_fun.removenull)  # add this function to the pysat list to be run
-        self.pysat_fun.set_arg_list([])
-        self.pysat_fun.set_kw_list({})
-        self.pysat_fun.set_greyed_modules({})
+        self.ui_id = self.pysat_fun.set_list(None, None, None, None, self.ui_id)
         self.removenull_ui()  # initiate the UI
-        self.pysat_fun.set_greyed_modules(self.removenull, True)
+        self.pysat_fun.set_greyed_modules(self.removenull)
 
     def get_removenull_parameters(self):
 
@@ -40,10 +40,19 @@ class removenull_:
         colname = self.colname_choices.currentText()
         colname = (self.vars_level0[self.vars_level1.index(colname)], colname)
 
+        ui_list = "do_removenull"
+        fun_list = "do_removenull"
         args = [datakey, colname]
         kws = {}
-        self.pysat_fun.set_arg_list(args, replacelast=True)
-        self.pysat_fun.set_kw_list(kws, replacelast=True)
+        self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, args, kws, self.ui_id)
+
+    def set_removenull_parameters(self):
+        if self.arg_list is not None:
+            datakey = self.arg_list[0]
+            colname = self.arg_list[1]
+
+
+        pass
 
     def removenull_ui(self):
         self.removenull = QtGui.QGroupBox()
@@ -75,6 +84,7 @@ class removenull_:
         self.removenull_choosedata_hlayout.addWidget(self.removenull_choosedata)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.removenull_choosedata_hlayout.addItem(spacerItem)
+
 
         self.removenull_vlayout.addLayout(self.removenull_choosedata_hlayout)
         self.removenull_widget = QtGui.QWidget(self.removenull)

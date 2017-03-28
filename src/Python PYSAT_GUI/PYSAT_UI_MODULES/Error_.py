@@ -1,6 +1,7 @@
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtGui import QDialog
 
+
 # When a window is opened
 # |----------------------|
 # |               - || x |
@@ -20,9 +21,19 @@ from PyQt4.QtGui import QDialog
 
 class error_print(QDialog):
     def __init__(self, message):
+        """
+        Outputs an error to the user in a separate window
+
+        Usage
+
+        :param message: error_print("Error message here")
+        """
         super().__init__()
         self.message = message
-        self.error_print(self.message)
+        try:
+            self.error_print(self.message)
+        except:
+            print(self.message)
 
     def error_print(self, message):
         print(message)

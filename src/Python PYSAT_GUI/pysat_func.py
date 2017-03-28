@@ -2,6 +2,7 @@ from pysat.spectral.spectral_data import spectral_data
 from pysat.regression import regression
 from pysat.regression import cv
 from pysat.plotting.plots import make_plot, pca_ica_plot
+from pysat.regression import sm
 import pandas as pd
 from PYSAT_UI_MODULES.Error_ import error_print
 from PYSAT_UI_MODULES.del_layout_ import *
@@ -9,62 +10,176 @@ from PyQt4.QtCore import QThread
 from PyQt4 import QtCore
 import numpy as np
 
+
+class Module:
+    nodeCount = 0
+
+    def __init__(self, ui_list, fun_list, arg_list, kw_list):
+        self.ui_list = ui_list
+        self.fun_list = fun_list
+        self.arg_list = arg_list
+        self.kw_list = kw_list
+        self.next = None
+        self.UI_ID = Module.nodeCount
+        Module.nodeCount += 1
+
+    def setData(self, ui_list, fun_list, arg_list, kw_list):
+        self.ui_list = ui_list
+        self.fun_list = fun_list
+        self.arg_list = arg_list
+        self.kw_list = kw_list
+
+    def getID(self):
+        return self.UI_ID
+
+    def getData(self):
+        list = []
+        list.append(self.getID())
+        list.append(self.ui_list)
+        list.append(self.fun_list)
+        list.append(self.arg_list)
+        list.append(self.kw_list)
+        return list
+
+    def setNext(self, next):
+        self.next = next
+
+    def getNext(self):
+        return self.next
+
+class listOfModules:
+    def __init__(self):
+        self.head = None
+        self.curr_count = 0
+
+    def __len__(self):
+        current = self.head
+        count = 0
+        while current is not None:
+            count += 1
+            current = current.getNext()
+        return count
+
+    def push(self, ui_list, fun_list, arg_list, kw_list, UI_ID=None):
+        if not self.amend(ui_list, fun_list, arg_list, kw_list, UI_ID): # if the UI_ID that we are playing with exists, amend it, otherwise make something new
+            if len(self) == 0:
+                # Create a new head
+                temp = Module(ui_list, fun_list, arg_list, kw_list)     # self.head = None; temp = 0x085817F0
+                temp.setNext(self.head)                                 # temp = 0x085817F0; temp.next = None
+                self.head = temp                                        # self.head = 0x085817F0; self.head.next = None; temp = 0x085817F0; temp.next = None
+                return temp.getID()
+            else:
+                # Append new data into .next
+                temp = Module(ui_list, fun_list, arg_list, kw_list)     # self.head = 0x085817F0; temp = 0x00568330
+                current = self.head                                     # current = 0x085817F0; current.next = None; self.head = 0x085817F0; temp = 0x00568330
+                while current.getNext() != None:                        #
+                    current = current.getNext()                         #
+                current.setNext(temp)                                   # current = 0x085817F0; current.next = 0x00568330;
+                return temp.getID()
+        return UI_ID
+
+    def amend(self, ui_list, fun_list, arg_list, kw_list, UI_ID=None):
+        current = self.head
+        found = False
+        while current is not None and not found and UI_ID is not None:
+            if current.getID() == UI_ID:
+                found = True
+                current.setData(ui_list, fun_list, arg_list, kw_list)
+            else:
+                current = current.getNext()
+        return found
+
+    def pop(self):
+        current = self.head
+        self.head = self.head.getNext()
+        return current.getData()
+
+    def del_module(self):
+        current = self.head
+        if len(self) == 1:
+            self.head = None
+            return 1
+        while current.getNext().getNext() is not None:
+            current = current.getNext()
+        current.setNext(None)
+        return 1
+
+    def pull(self):
+        i = 0
+        current = self.head
+        while i < self.curr_count and current.getNext() is not None:
+            current = current.getNext()
+            i += 1
+        self.curr_count += 1
+        return current.getData()
+
+    def isEmpty(self):
+        return self.head == None
+
+    def remove(self, UI_ID):
+        current = self.head
+        previous = None
+        found = False
+        while not found:
+            if current.getID() == UI_ID:
+                found = True
+            else:
+                previous = current
+                current = current.getNext()
+        if previous == None:
+            self.head = current.getNext()
+        else:
+            previous.setNext(current.getNext())
+
+    def display(self):
+        current = self.head
+        while current is not None:
+            for items in current.getData():
+                print(items)
+            current = current.getNext()
+
 class pysat_func(QThread):
     taskFinished = QtCore.pyqtSignal()
 
     def __init__(self):
         QThread.__init__(self)
-        self.leftOff = 0
         self.data = {}  # initialize with an empty dict to hold data frames
         self.datakeys = []
         self.models = {}
         self.modelkeys = []
         self.model_xvars = {}
+        self.model_yvars = {}
+        self.dim_reds={}
+        self.dim_red_keys=[]
         self.figs = {}
-        self.fun_list = []
-        self.arg_list = []
-        self.kw_list = []
+        self._list = listOfModules()
         self.greyed_modules = []
-
+        self.outpath='./'
     """
     Getter and setter functions below
     """
 
-    def set_fun_list(self, fun, replacelast=False):
-        if replacelast:
-            self.fun_list[-1] = fun
-        else:
-            self.fun_list.append(fun)
+    def set_list(self, ui, fun, arg, kw, ui_id=None):
+        """
+        pushing new information as well as returning the UI_ID
+        we'll need the UI_ID in order to maintain order and bookkeeping
+        :param ui:
+        :param fun:
+        :param arg:
+        :param kw:
+        :param ui_id:
+        :return:
+        """
+        return self._list.push(ui, fun, arg, kw, ui_id)
 
-    def set_arg_list(self, args, replacelast=False):
-        if replacelast:
-            self.arg_list[-1] = args
-        else:
-            self.arg_list.append(args)
+    def get_list(self):
+        return self._list
 
-    def set_kw_list(self, kws, replacelast=False):
-        if replacelast:
-            self.kw_list[-1] = kws
-        else:
-            self.kw_list.append(kws)
+    def display_list(self):
+        return self._list.display
 
-    def set_greyed_modules(self, modules, replacelast=False):
-        if replacelast:
-            self.greyed_modules[-1] = modules
-        else:
-            self.greyed_modules.append(modules)
-
-    def getDataKeys(self):
-        return self.datakeys
-
-    def getModelKeys(self):
-        return self.modelkeys
-
-    def getData(self):
-        return self.data
-
-    def getModels(self):
-        return self.models
+    def set_greyed_modules(self, modules):
+        self.greyed_modules.append(modules)
 
     """
     Work functions below
@@ -86,10 +201,19 @@ class pysat_func(QThread):
         except Exception as e:
             error_print('Problem reading data: {}'.format(e))
 
+    def do_write_data(self, filename,datakey):
+        try:
+            self.data[datakey].to_csv(filename)
+        except:
+            try:
+                self.data[datakey].df.to_csv(self.outpath+'/'+filename)
+            except:
+                self.data[datakey].df.to_csv(filename)
+
     def removenull(self,datakey,colname):
         try:
             print(self.data[datakey].df.shape)
-            self.data[datakey]=spectral_data(self.data[datakey].df.ix[-self.data[datakey].df[colname].isnull()])
+            self.data[datakey] = spectral_data(self.data[datakey].df.ix[-self.data[datakey].df[colname].isnull()])
             print(self.data[datakey].df.shape)
 
         except Exception as e:
@@ -106,6 +230,13 @@ class pysat_func(QThread):
         print(self.data[datakey_ref].df.columns.levels[0])
         try:
             self.data[datakey_to_interp].interp(self.data[datakey_ref].df['wvl'].columns)
+        except Exception as e:
+            error_print(e)
+
+    def do_dim_red(self,datakey,method,params,method_kws={},col='wvl',load_fit=None,dim_red_key=None):
+        try:
+            self.dim_reds[dim_red_key]=self.data[datakey].dim_red(col, method, params, method_kws, load_fit=load_fit)
+            self.dim_red_keys.append(dim_red_key)
         except Exception as e:
             error_print(e)
 
@@ -152,28 +283,30 @@ class pysat_func(QThread):
     def do_regression_train(self, datakey, xvars, yvars, yrange, method, params, ransacparams, modelkey=None):
         try:
             if modelkey is None:
-                modelkey = method+'-'+str(yvars)+' ('+str(yrange[0])+'-'+str(yrange([1])+') ')
-            self.models[modelkey] = regression.regression([method], [yrange], [params], i=0, ransacparams=[ransacparams])
+                modelkey = method + '-' + str(yvars) + ' (' + str(yrange[0]) + '-' + str(yrange([1]) + ') ')
+            self.models[modelkey] = regression.regression([method], [yrange], [params], i=0,
+                                                          ransacparams=[ransacparams])
             self.modelkeys.append(modelkey)
 
             x = self.data[datakey].df[xvars]
             y = self.data[datakey].df[yvars]
-            x=np.array(x)
-            y=np.array(y)
+            x = np.array(x)
+            y = np.array(y)
             ymask = np.squeeze((y > yrange[0]) & (y < yrange[1]))
-            y=y[ymask]
-            x=x[ymask,:]
+            y = y[ymask]
+            x = x[ymask, :]
             self.models[modelkey].fit(x, y)
             self.model_xvars[modelkey] = xvars
-
+            self.model_yvars[modelkey] = yvars
+            print('foo')
         except Exception as e:
             error_print(e)
 
-    def do_cv_train(self, datakey, xvars, yvars, method, params):
+    def do_cv_train(self, datakey, xvars, yvars, yrange, method, params):
 
         try:
             cv_obj=cv.cv(params)
-            self.data[datakey].df,self.cv_results=cv_obj.do_cv(self.data[datakey].df,xcols=xvars,ycol=yvars)
+            self.data[datakey].df,self.cv_results=cv_obj.do_cv(self.data[datakey].df,xcols=xvars,ycol=yvars,yrange=yrange,method=method)
             self.data['CV Results']=self.cv_results
 
         except Exception as e:
@@ -187,8 +320,42 @@ class pysat_func(QThread):
         except Exception as e:
             error_print(e)
 
-    def do_submodel_predict(self):
-        pass
+    def do_submodel_predict(self, datakey, submodel_names, modelranges, trueval_data):
+        # Check if reference data name has been provided
+        # if so, get reference data values
+        if trueval_data is not None:
+            truevals = self.data[trueval_data].df[self.model_yvars[submodel_names[0]]]
+            x_ref = []
+        else:
+            truevals = None
+
+        # step through the submodel names and get the actual models and the x data
+        x = []
+        submodels = []
+        for i in submodel_names:
+            x.append(self.data[datakey].df[self.model_xvars[i]])
+            submodels.append(self.models[i])
+            if trueval_data is not None:
+                x_ref.append(self.data[trueval_data].df[self.model_xvars[i]])
+
+        # create the submodel object
+        sm_obj = sm.sm(modelranges, submodels)
+
+        # optimize blending if reference data is provided (otherwise, modelranges will be used as blending ranges)
+        if truevals is not None:
+            ref_predictions = sm_obj.predict(x_ref)
+            ref_predictions_blended = sm_obj.do_blend(ref_predictions, truevals=truevals)
+
+        # get predictions for each submodel separately
+        predictions = sm_obj.predict(x)
+
+        # blend the predictions together
+        predictions_blended = sm_obj.do_blend(predictions)
+
+        # save the individual and blended predictions
+        for i, j in enumerate(predictions):
+            self.data[datakey].df[submodel_names[i] + '-Predict'] = j
+        self.data[datakey].df['Blended-Predict (' + str(sm_obj.blendranges) + ')'] = predictions_blended
 
     def do_plot(self, datakey,
                 xvar, yvar,
@@ -206,8 +373,8 @@ class pysat_func(QThread):
             x = self.data[datakey].df[xvar]
             y = self.data[datakey].df[yvar]
         except:
-            x=self.data[datakey][xvar]
-            y=self.data[datakey][yvar]
+            x = self.data[datakey][xvar]
+            y = self.data[datakey][yvar]
         try:
             loadfig = self.figs[figname]
         except:
@@ -220,7 +387,7 @@ class pysat_func(QThread):
                                              ytitle=ytitle, title=title,
                                              lbl=lbl, one_to_one=one_to_one, dpi=dpi, color=color,
                                              annot_mask=annot_mask, cmap=cmap,
-                                             colortitle=colortitle, loadfig=loadfig)
+                                             colortitle=colortitle, loadfig=loadfig,marker=marker,linestyle=linestyle)
         except Exception as e:
             error_print(e)
             # dealing with the a possibly missing outpath
@@ -229,9 +396,9 @@ class pysat_func(QThread):
                                            ytitle=ytitle, title=title,
                                            lbl=lbl, one_to_one=one_to_one, dpi=dpi, color=color,
                                            annot_mask=annot_mask, cmap=cmap,
-                                           colortitle=colortitle, loadfig=loadfig)
+                                           colortitle=colortitle, loadfig=loadfig,marker=marker,linestyle=linestyle)
 
-    def do_pca_ica_plot(self, datakey,
+    def do_plot_dim_red(self, datakey,
                         x_component,
                         y_component,
                         figfile,
@@ -246,18 +413,24 @@ class pysat_func(QThread):
         self.wait()
 
     def del_layout(self):
-        del_qwidget_(self.greyed_modules[-1])
-        if len(self.greyed_modules) > 0:
+        # Deleting a whole lotta lists... >_<
+        try:
+            del_qwidget_(self.greyed_modules[-1])
             del self.greyed_modules[-1]
+            self._list.del_module()
+        except:
+            error_print("Cannot delete")
 
     def run(self):
         # TODO this function will take all the enumerated functions and parameters and run them
         try:
-            for i in range(self.leftOff, len(self.fun_list)):
-                print(self.fun_list[i])
-                self.fun_list[i](*self.arg_list[i], **self.kw_list[i])
-                self.greyed_modules[i].setDisabled(True)
-                self.leftOff = i + 1
-                self.taskFinished.emit()
-        except:
+            for i in range(len(self.greyed_modules)):
+                r_list = self._list.pull()
+                print(r_list)
+                getattr(self, r_list[2])(*r_list[3], **r_list[4])
+                self.greyed_modules[0].setDisabled(True)
+                del self.greyed_modules[0]
+            self.taskFinished.emit()
+        except Exception as e:
+            error_print(e)
             self.taskFinished.emit()

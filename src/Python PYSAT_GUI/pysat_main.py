@@ -7,17 +7,21 @@ from pysat_ui import *
 class Main(QMainWindow):
     def __init__(self, parent=None):
         QMainWindow.__init__(self, parent)
+        self.org_name = "USGS"
+        self.app_name = "PYSAT"
         self.runningFunctions(self)
 
     def runningFunctions(self, MainWindow):
         pysat = pysat_ui()
-        pysat.mainframe(MainWindow)  # Set up the mainwindow. This is the backbone of the UI it IS REQUIRED
+        pysat.main_window(MainWindow)  # Set up the mainwindow. This is the backbone of the UI it IS REQUIRED
         pysat.menu_item_shortcuts()  # The shortcuts for making things happen in the UI
         pysat.menu_item_functions(MainWindow)  # These are the various functions that make the UI work
+        self.ui = pysat.scrollAreaWidgetContents_2
 
         #### These are the triggers for exit and new
         pysat.actionExit.triggered.connect(lambda: self.exit())  # Exit out of the current workflow
         pysat.actionCreate_New_Workflow.triggered.connect(lambda: self.new())  # Create a new window. It will be blank
+        # pysat.actionSave_Current_Workflow.triggered.connect(lambda: self.write_settings())
 
     def new(self):
         # TODO create a new window to work in. The old window does not disappear

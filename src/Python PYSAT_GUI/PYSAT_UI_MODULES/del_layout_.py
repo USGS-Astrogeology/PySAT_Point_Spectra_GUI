@@ -12,3 +12,4 @@ def del_layout_(QLayout):
 
 def del_qwidget_(QWidget):
     QWidget.close()
+    QWidget.deleteLater()

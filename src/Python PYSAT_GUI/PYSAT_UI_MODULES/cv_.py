@@ -10,6 +10,8 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
@@ -18,15 +20,14 @@ except AttributeError:
 
 
 class cv_:
-    def __init__(self, pysat_fun, verticalLayout_8):
+    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
         self.pysat_fun = pysat_fun
+        self.ui_id = None
         self.verticalLayout_8 = verticalLayout_8
         self.main()
 
     def main(self):
-        self.pysat_fun.set_fun_list(self.pysat_fun.do_cv_train)
-        self.pysat_fun.set_arg_list([])
-        self.pysat_fun.set_kw_list({})
+        self.ui_id = self.pysat_fun.set_list(None, None, None, None, self.ui_id)
         self.cv_ui()
         self.cv_choosealg.currentIndexChanged.connect(lambda: self.make_reg_widget(self.cv_choosealg.currentText()))
          
@@ -37,6 +38,7 @@ class cv_:
         datakey=self.cv_choosedata.currentText()
         xvars=[str(x.text()) for x in self.cv_train_choosex.selectedItems()]
         yvars=[('comp',str(y.text())) for y in self.cv_train_choosey.selectedItems()]
+        yrange = [self.yvarmin_spin.value(), self.yvarmax_spin.value()]
         params={}
         kws={}        
         try:
@@ -64,12 +66,12 @@ class cv_:
         except:
             pass
 
-        
-        args=[datakey,xvars,yvars,method,params]
-        self.pysat_fun.set_arg_list(args,replacelast=True)
-        self.pysat_fun.set_kw_list(kws,replacelast=True)
-        
-        
+        args=[datakey,xvars,yvars,yrange,method,params]
+
+        ui_list='do_cv'
+        fun_list='do_cv'
+        self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, args, kws, self.ui_id)
+
     def make_reg_widget(self, alg):
         print(alg)
         try:
@@ -179,23 +181,54 @@ class cv_:
         # choose variables
         self.cv_choosevars_hlayout = QtGui.QHBoxLayout()
         self.cv_choosevars_hlayout.setObjectName(_fromUtf8("cv_choosevars_hlayout"))
+        self.cv_choosexvars_vlayout = QtGui.QVBoxLayout()
+        self.cv_chooseyvars_vlayout = QtGui.QVBoxLayout()
+        self.cv_choosevars_hlayout.addLayout(self.cv_choosexvars_vlayout)
+        self.cv_choosevars_hlayout.addLayout(self.cv_chooseyvars_vlayout)
+
+        #choose x variables
         self.cv_train_choosex_label = QtGui.QLabel(self.cv_train)
         self.cv_train_choosex_label.setObjectName(_fromUtf8("cv_train_choosex_label"))
-        self.cv_choosevars_hlayout.addWidget(self.cv_train_choosex_label)
-
+        self.cv_train_choosex_label.setText('X variable:')
+        self.cv_choosexvars_vlayout.addWidget(self.cv_train_choosex_label)
         xvarchoices = self.pysat_fun.data[self.cv_choosedata.currentText()].df.columns.levels[0].values
+        xvarchoices = [i for i in xvarchoices if not 'Unnamed' in i]  # remove unnamed columns from choices
         self.cv_train_choosex = make_listwidget(xvarchoices)
         self.cv_train_choosex.setObjectName(_fromUtf8("cv_train_choosex"))
-        self.cv_choosevars_hlayout.addWidget(self.cv_train_choosex)
+        self.cv_choosexvars_vlayout.addWidget(self.cv_train_choosex)
+
+        #choose y variables
         self.cv_train_choosey_label = QtGui.QLabel(self.cv_train)
         self.cv_train_choosey_label.setObjectName(_fromUtf8("cv_train_choosey_label"))
-        self.cv_choosevars_hlayout.addWidget(self.cv_train_choosey_label)
-        try:
-            yvarchoices = self.pysat_fun.data[self.cv_choosedata.currentText()].df['comp'].columns.values
-        except:
-            yvarchoices=['No valid options']
+        self.cv_train_choosey_label.setText('Y variable:')
+        self.cv_chooseyvars_vlayout.addWidget(self.cv_train_choosey_label)
+        yvarchoices = self.pysat_fun.data[self.cv_choosedata.currentText()].df['comp'].columns.values
+        yvarchoices = [i for i in yvarchoices if not 'Unnamed' in i]  # remove unnamed columns from choices
         self.cv_train_choosey = make_listwidget(yvarchoices)
-        self.cv_choosevars_hlayout.addWidget(self.cv_train_choosey)
+        self.cv_chooseyvars_vlayout.addWidget(self.cv_train_choosey)
+
+        #set limits
+        self.cv_yvarlimits_hlayout = QtGui.QHBoxLayout()
+        self.yvarmin_label = QtGui.QLabel(self.cv_train)
+        self.yvarmin_label.setText('Min:')
+        self.cv_yvarlimits_hlayout.addWidget(self.yvarmin_label)
+        self.yvarmin_spin = QtGui.QDoubleSpinBox()
+        self.yvarmin_spin.setMaximum(99999)
+        self.yvarmin_spin.setMinimum(0)
+        self.cv_yvarlimits_hlayout.addWidget(self.yvarmin_label)
+        self.cv_yvarlimits_hlayout.addWidget(self.yvarmin_spin)
+
+        self.yvarmax_label = QtGui.QLabel(self.cv_train)
+        self.yvarmax_label.setText('Max:')
+        self.cv_yvarlimits_hlayout.addWidget(self.yvarmax_label)
+        self.yvarmax_spin = QtGui.QDoubleSpinBox()
+        self.yvarmax_spin.setMaximum(99999)
+        self.yvarmax_spin.setMinimum(0)
+        self.yvarmax_spin.setValue(100)
+        self.cv_yvarlimits_hlayout.addWidget(self.yvarmax_label)
+        self.cv_yvarlimits_hlayout.addWidget(self.yvarmax_spin)
+        self.cv_chooseyvars_vlayout.addLayout(self.cv_yvarlimits_hlayout)
+
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.cv_choosevars_hlayout.addItem(spacerItem1)
         self.cv_vlayout.addLayout(self.cv_choosevars_hlayout)
@@ -219,6 +252,7 @@ class cv_:
         self.cv_choosealg.setIconSize(QtCore.QSize(50, 20))
         self.cv_choosealg.setObjectName(_fromUtf8("cv_choosealg"))
         self.cv_choosealg_hlayout.addWidget(self.cv_choosealg)
+        # TODO add logic that knows when args and kwargs are added.
         cv_choosealg_spacer = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding,
                                                         QtGui.QSizePolicy.Minimum)
         self.cv_choosealg_hlayout.addItem(cv_choosealg_spacer)
@@ -239,9 +273,10 @@ class cv_:
         try:
             choices = self.pysat_fun.data[self.cv_choosedata.currentText()].df[['comp']].columns.values
         except:
-            choices=['No valid options']
-        for i in choices:        
+            choices = ['No valid options']
+        for i in choices:
             obj.addItem(i[1])
+
 
 def make_combobox(choices):
     combo = QtGui.QComboBox()
@@ -251,6 +286,7 @@ def make_combobox(choices):
         combo.setItemText(i, _translate('', choice, None))
 
     return combo
+
 
 def make_listwidget(choices):
     listwidget = QtGui.QListWidget()

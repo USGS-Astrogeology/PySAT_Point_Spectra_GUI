@@ -20,20 +20,21 @@ except AttributeError:
 
 
 class strat_folds_:
-    def __init__(self, pysat_fun, verticalLayout_8):
+    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
         self.pysat_fun = pysat_fun
+        self.arg_list = arg_list
+        self.kw_list = kw_list
         self.verticalLayout_8 = verticalLayout_8
+        self.ui_id = None
         self.main()
 
     def main(self):
         # TODO add function param call here
-
-        self.pysat_fun.set_fun_list(self.pysat_fun.do_strat_folds)
-        self.pysat_fun.set_arg_list([])
-        self.pysat_fun.set_kw_list({})
-        self.pysat_fun.set_greyed_modules({})
+        self.ui_id = self.pysat_fun.set_list(None, None, None, None, self.ui_id)
         self.stratified_folds_ui()
-        self.pysat_fun.set_greyed_modules(self.strat_folds, True)
+        self.set_strat_fold_params()
+        self.get_strat_fold_params()
+        self.pysat_fun.set_greyed_modules(self.strat_folds)
 
         # TODO add try and except here
 
@@ -54,8 +55,9 @@ class strat_folds_:
         colname = ('comp', self.strat_folds_choose_var.currentText())
         args = [datakey, nfolds, testfold, colname]
         kws = {}
-        self.pysat_fun.set_arg_list(args, replacelast=True)
-        self.pysat_fun.set_kw_list(kws, replacelast=True)
+        ui_list = "do_strat_folds"
+        fun_list = "do_strat_folds"
+        self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, args, kws, self.ui_id)
 
     def stratified_folds_ui(self):
         self.strat_folds = QtGui.QGroupBox()
@@ -119,6 +121,18 @@ class strat_folds_:
         self.choose_test_fold.currentIndexChanged.connect(lambda: self.get_strat_fold_params())
         self.nfolds_spin.valueChanged.connect(lambda: self.get_strat_fold_params())
         self.strat_folds_choose_data.currentIndexChanged.connect(lambda: self.get_strat_fold_params())
+
+    def set_strat_fold_params(self):
+        # self.strat_folds_choose_data.setItemText()
+        if self.arg_list is not None:
+            datakey = self.arg_list[0]
+            nfolds = self.arg_list[1]
+            testfold = self.arg_list[2]
+            colname = self.arg_list[3][1]
+            self.strat_folds_choose_data.setCurrentIndex(self.strat_folds_choose_data.findText(datakey))
+            self.strat_folds_choose_var.setCurrentIndex(self.strat_folds_choose_var.findText(colname))
+            self.nfolds_spin.setValue(nfolds)
+            self.choose_test_fold.setCurrentIndex(self.choose_test_fold.findText(str(testfold)))
 
     def strat_fold_change_vars(self):
         self.strat_folds_choose_var.clear()

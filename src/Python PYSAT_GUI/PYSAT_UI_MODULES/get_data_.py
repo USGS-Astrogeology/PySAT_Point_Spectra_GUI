@@ -18,108 +18,134 @@ except AttributeError:
 
 
 class get_data_u_:
-    def __init__(self, pysat_fun, verticalLayout_8):
+    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
         self.pysat_fun = pysat_fun
         self.verticalLayout_8 = verticalLayout_8
+        self.arg_list = arg_list
+        self.kw_list = kw_list
+        self.ui_id = None
         self.main()
 
     def main(self):
-        self.pysat_fun.set_fun_list(self.pysat_fun.get_data)  # add this function to the pysat list to be run
+        self.ui_id = self.pysat_fun.set_list(None, None, None, None, self.ui_id)
         self.get_data_ui()  # initiate the UI
-        self.pysat_fun.set_greyed_modules(self.get_data_u)
+        self.pysat_fun.set_greyed_modules(self.get_data)
         try:
-            self.get_data_u_button.clicked.connect(
-                lambda: self.on_getDataButton_clicked(self.get_data_u_line_edit, "unknown"))  # when a button is clicked call the on_getDataButton_clicked function
+            self.get_data_button.clicked.connect(lambda: self.on_getDataButton_clicked(self.get_data_line_edit,
+                                                                                       "unknown"))  # when a button is clicked call the on_getDataButton_clicked function
         except:
             pass
 
     def get_data_ui(self):
-        self.get_data_u = QtGui.QGroupBox()
+        self.get_data = QtGui.QGroupBox()
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.get_data_u.setFont(font)
-        self.get_data_u.setObjectName(_fromUtf8("get_data_u"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.get_data_u)
+        self.get_data.setFont(font)
+        self.get_data.setObjectName(_fromUtf8("get_data"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.get_data)
         self.horizontalLayout.setMargin(11)
         self.horizontalLayout.setSpacing(6)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.get_data_u_label = QtGui.QLabel(self.get_data_u)
-        self.get_data_u_label.setObjectName(_fromUtf8("get_data_u_label"))
-        self.horizontalLayout.addWidget(self.get_data_u_label)
-        self.get_data_u_line_edit = QtGui.QLineEdit(self.get_data_u)
-        self.get_data_u_line_edit.setReadOnly(True)
-        self.get_data_u_line_edit.setObjectName(_fromUtf8("get_data_u_line_edit"))
-        self.horizontalLayout.addWidget(self.get_data_u_line_edit)
-        self.get_data_u_button = QtGui.QToolButton(self.get_data_u)
-        self.get_data_u_button.setObjectName(_fromUtf8("get_data_u_button"))
-        self.horizontalLayout.addWidget(self.get_data_u_button)
-        self.verticalLayout_8.addWidget(self.get_data_u)
+        self.get_data_label = QtGui.QLabel(self.get_data)
+        self.get_data_label.setObjectName(_fromUtf8("get_data_label"))
+        self.horizontalLayout.addWidget(self.get_data_label)
+        self.get_data_line_edit = QtGui.QLineEdit(self.get_data)
+        self.get_data_line_edit.setReadOnly(True)
+        self.get_data_line_edit.setObjectName(_fromUtf8("get_data_line_edit"))
+        self.horizontalLayout.addWidget(self.get_data_line_edit)
+        self.get_data_button = QtGui.QToolButton(self.get_data)
+        self.get_data_button.setObjectName(_fromUtf8("get_data_button"))
+        self.horizontalLayout.addWidget(self.get_data_button)
+        self.verticalLayout_8.addWidget(self.get_data)
 
-        self.get_data_u.setTitle(_translate("MainWindow", "Load Unknown Data", None))
-        self.get_data_u_label.setText(_translate("MainWindow", "File Name", None))
-        self.get_data_u_line_edit.setText(_translate("MainWindow", "*.csv", None))
-        self.get_data_u_button.setText(_translate("MainWindow", "...", None))
+        self.get_data.setTitle(_translate("MainWindow", "Load Unknown Data", None))
+        self.get_data_label.setText(_translate("MainWindow", "File Name", None))
+        self.get_data_button.setText(_translate("MainWindow", "...", None))
+        self.set_data_parameters()
+
+    def set_data_parameters(self):
+        if self.arg_list is None:
+            self.get_data_line_edit.setText(_translate("MainWindow", "*.csv", None))
+        else:
+            # the 0'th element has the name of the file that we want to work with.
+            self.get_data_line_edit.setText(self.arg_list[0])
+            self.push_parameters(self.arg_list, self.kw_list)
+
+    def push_parameters(self, arg_list, kw_list):
+        ui_list = "get_known_data"
+        fun_list = "get_data"
+        self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, arg_list, kw_list, self.ui_id)
 
     def on_getDataButton_clicked(self, lineEdit, key):
         filename = QtGui.QFileDialog.getOpenFileName(None, "Open " + key + " Data File", '.', "(*.csv)")
         lineEdit.setText(filename)
         if lineEdit.text() == "":
             lineEdit.setText("*.csv")
-        
-        self.pysat_fun.set_arg_list([filename, key])
-        self.pysat_fun.set_kw_list({})
-        return True
+        self.push_parameters([filename, key], {})
 
 
 class get_data_k_:
-    def __init__(self, pysat_fun, verticalLayout_8):
+    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
         self.pysat_fun = pysat_fun
         self.verticalLayout_8 = verticalLayout_8
+        self.arg_list = arg_list
+        self.kw_list = kw_list
+        self.ui_id = None
         self.main()
 
     def main(self):
-        self.pysat_fun.set_fun_list(self.pysat_fun.get_data)  # add this function to the pysat list to be run
+        self.ui_id = self.pysat_fun.set_list(None, None, None, None, self.ui_id)
         self.get_data_ui()  # initiate the UI
-        self.pysat_fun.set_greyed_modules(self.get_data_k)
+        self.pysat_fun.set_greyed_modules(self.get_data)
         try:
-            self.get_data_k_button.clicked.connect(
-                lambda: self.on_getDataButton_clicked(self.get_data_k_line_edit, "known"))  # when a button is clicked call the on_getDataButton_clicked function
+            self.get_data_button.clicked.connect(lambda: self.on_getDataButton_clicked(self.get_data_line_edit,
+                                                                                       "known"))  # when a button is clicked call the on_getDataButton_clicked function
         except:
             pass
 
     def get_data_ui(self):
-        self.get_data_k = QtGui.QGroupBox()
+        self.get_data = QtGui.QGroupBox()
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.get_data_k.setFont(font)
-        self.get_data_k.setObjectName(_fromUtf8("get_data_k"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.get_data_k)
+        self.get_data.setFont(font)
+        self.get_data.setObjectName(_fromUtf8("get_data"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.get_data)
         self.horizontalLayout.setMargin(11)
         self.horizontalLayout.setSpacing(6)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.get_data_k_label = QtGui.QLabel(self.get_data_k)
-        self.get_data_k_label.setObjectName(_fromUtf8("get_data_k_label"))
-        self.horizontalLayout.addWidget(self.get_data_k_label)
-        self.get_data_k_line_edit = QtGui.QLineEdit(self.get_data_k)
-        self.get_data_k_line_edit.setReadOnly(True)
-        self.get_data_k_line_edit.setObjectName(_fromUtf8("get_data_k_line_edit"))
-        self.horizontalLayout.addWidget(self.get_data_k_line_edit)
-        self.get_data_k_button = QtGui.QToolButton(self.get_data_k)
-        self.get_data_k_button.setObjectName(_fromUtf8("get_data_k_button"))
-        self.horizontalLayout.addWidget(self.get_data_k_button)
-        self.verticalLayout_8.addWidget(self.get_data_k)
+        self.get_data_label = QtGui.QLabel(self.get_data)
+        self.get_data_label.setObjectName(_fromUtf8("get_data_label"))
+        self.horizontalLayout.addWidget(self.get_data_label)
+        self.get_data_line_edit = QtGui.QLineEdit(self.get_data)
+        self.get_data_line_edit.setReadOnly(True)
+        self.get_data_line_edit.setObjectName(_fromUtf8("get_data_line_edit"))
+        self.horizontalLayout.addWidget(self.get_data_line_edit)
+        self.get_data_button = QtGui.QToolButton(self.get_data)
+        self.get_data_button.setObjectName(_fromUtf8("get_data_button"))
+        self.horizontalLayout.addWidget(self.get_data_button)
+        self.verticalLayout_8.addWidget(self.get_data)
 
-        self.get_data_k.setTitle(_translate("MainWindow", "Load Known Data", None))
-        self.get_data_k_label.setText(_translate("MainWindow", "File Name", None))
-        self.get_data_k_line_edit.setText(_translate("MainWindow", "*.csv", None))
-        self.get_data_k_button.setText(_translate("MainWindow", "...", None))
+        self.get_data.setTitle(_translate("MainWindow", "Load Known Data", None))
+        self.get_data_label.setText(_translate("MainWindow", "File Name", None))
+        self.get_data_button.setText(_translate("MainWindow", "...", None))
+        self.set_data_parameters()
+
+    def set_data_parameters(self):
+        if self.arg_list is None:
+            self.get_data_line_edit.setText(_translate("MainWindow", "*.csv", None))
+        else:
+            # the 0'th element has the name of the file that we want to work with.
+            self.get_data_line_edit.setText(self.arg_list[0])
+            self.push_parameters(self.arg_list, self.kw_list)
+
+    def push_parameters(self, arg_list, kw_list):
+        ui_list = "get_known_data"
+        fun_list = "get_data"
+        self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, arg_list, kw_list, self.ui_id)
 
     def on_getDataButton_clicked(self, lineEdit, key):
         filename = QtGui.QFileDialog.getOpenFileName(None, "Open " + key + " Data File", '.', "(*.csv)")
         lineEdit.setText(filename)
         if lineEdit.text() == "":
             lineEdit.setText("*.csv")
-        
-        self.pysat_fun.set_arg_list([filename, key])
-        self.pysat_fun.set_kw_list({})
-        return True
+        self.push_parameters([filename, key], {})
