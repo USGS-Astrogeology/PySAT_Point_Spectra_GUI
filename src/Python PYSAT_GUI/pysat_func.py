@@ -3,6 +3,7 @@ from pysat.regression import regression
 from pysat.regression import cv
 from pysat.plotting.plots import make_plot, pca_ica_plot
 from pysat.regression import sm
+from pysat.fileio import io_ccs
 import pandas as pd
 from PYSAT_UI_MODULES.Error_ import error_print
 from PYSAT_UI_MODULES.del_layout_ import *
@@ -188,7 +189,7 @@ class pysat_func(QThread):
     def set_file_outpath(self, outpath):
         try:
             self.outpath = outpath
-            print("Output path folder has been set")
+            print("Output path folder has been set to "+outpath)
         except Exception as e:
             error_print(e)
 
@@ -209,6 +210,10 @@ class pysat_func(QThread):
                 self.data[datakey].df.to_csv(self.outpath+'/'+filename)
             except:
                 self.data[datakey].df.to_csv(filename)
+
+    def do_read_ccam(self,searchdir,searchstring,to_csv=None,lookupfile=None,ave=True):
+        io_ccs.ccs_batch(searchdir,searchstring=searchstring,to_csv=self.outpath+'\\'+to_csv,lookupfile=lookupfile,ave=ave)
+        self.get_data(self.outpath+'\\'+to_csv,'ChemCam')
 
     def removenull(self,datakey,colname):
         try:

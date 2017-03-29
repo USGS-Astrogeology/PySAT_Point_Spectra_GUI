@@ -21,9 +21,9 @@ except AttributeError:
 
 
 class plot_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.pysat_fun = pysat_fun
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.ui_id = None
         self.main()
 
@@ -293,7 +293,7 @@ class plot_:
         self.alpha_spin.setObjectName(_fromUtf8("alpha_spin"))
         self.scatter_chooseline_flayout.setWidget(3, QtGui.QFormLayout.FieldRole, self.alpha_spin)
         self.verticalLayout.addLayout(self.scatter_chooseline_flayout)
-        self.verticalLayout_8.addWidget(self.plot)
+        self.module_layout.addWidget(self.plot)
 
         self.plot.setTitle(_translate("MainWindow", "Scatter Plot", None))
         self.scatter_choosedata_label.setText(_translate("MainWindow", "Choose data: ", None))

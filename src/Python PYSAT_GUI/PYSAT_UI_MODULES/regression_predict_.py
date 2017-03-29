@@ -19,10 +19,10 @@ except AttributeError:
 
 
 class regression_predict_:
-    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
+    def __init__(self, pysat_fun, module_layout,arg_list,kw_list):
         self.pysat_fun = pysat_fun
         self.ui_id = None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -95,7 +95,7 @@ class regression_predict_:
         self.regression_predict_choosemodel_hlayout.addItem(spacerItem1)
         self.regression_predict_vlayout.addLayout(self.regression_predict_choosemodel_hlayout)
 
-        self.verticalLayout_8.addWidget(self.regression_predict)
+        self.module_layout.addWidget(self.regression_predict)
         self.regression_predict.raise_()
         self.regression_predict.setTitle(_translate("regression_predict", "Regression - Predict", None))
         self.regression_predict_choosedata_label.setText(_translate("regression", "Choose data: ", None))

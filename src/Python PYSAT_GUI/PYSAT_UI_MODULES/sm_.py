@@ -20,14 +20,14 @@ except AttributeError:
 
 
 class sm_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.submodel_gui_info = []
         self.new_submodel_index = 1
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
 
         self.main()
 
@@ -214,7 +214,7 @@ class sm_:
         self.predictdata_vlayout.addItem(spacerItem6)
         self.verticalLayout.addLayout(self.predictdata_vlayout)
 
-        self.verticalLayout_8.addWidget(self.submodel_predict)
+        self.module_layout.addWidget(self.submodel_predict)
 
         # put submodel objects in a list
         self.submodel_gui_info = [[self.choose_low_model, [-9999, self.low_model_max]],

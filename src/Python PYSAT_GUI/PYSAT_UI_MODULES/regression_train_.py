@@ -20,12 +20,12 @@ except AttributeError:
 
 
 class regression_train_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.pysat_fun = pysat_fun
         self.ui_id = None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -479,7 +479,7 @@ class regression_train_:
         self.regression_choosealg_hlayout.addItem(regression_choosealg_spacer)
         self.regression_vlayout.addLayout(self.regression_choosealg_hlayout)
 
-        self.verticalLayout_8.addWidget(self.regression_train)
+        self.module_layout.addWidget(self.regression_train)
         self.regression_train.raise_()
         self.regression_train.setTitle(_translate("regression_train", "Regression - Train", None))
 

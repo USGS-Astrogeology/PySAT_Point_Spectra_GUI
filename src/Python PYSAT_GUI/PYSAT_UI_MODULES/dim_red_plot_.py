@@ -20,12 +20,12 @@ except AttributeError:
 
 
 class dim_red_plot_:
-    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
+    def __init__(self, pysat_fun, module_layout,arg_list,kw_list):
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -135,7 +135,7 @@ class dim_red_plot_:
         self.dim_red_plot_vlayout.addWidget(self.file_text)
 
 
-        self.verticalLayout_8.addWidget(self.dim_red_plot)
+        self.module_layout.addWidget(self.dim_red_plot)
         self.dim_red_plot.raise_()
         self.dim_red_plot.setTitle(_translate("MainWindow", "Dimensionality Reduction", None))
 

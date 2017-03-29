@@ -18,9 +18,9 @@ except AttributeError:
 
 
 class get_data_u_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.pysat_fun = pysat_fun
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
@@ -56,7 +56,7 @@ class get_data_u_:
         self.get_data_button = QtGui.QToolButton(self.get_data)
         self.get_data_button.setObjectName(_fromUtf8("get_data_button"))
         self.horizontalLayout.addWidget(self.get_data_button)
-        self.verticalLayout_8.addWidget(self.get_data)
+        self.module_layout.addWidget(self.get_data)
 
         self.get_data.setTitle(_translate("MainWindow", "Load Unknown Data", None))
         self.get_data_label.setText(_translate("MainWindow", "File Name", None))
@@ -85,9 +85,9 @@ class get_data_u_:
 
 
 class get_data_k_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.pysat_fun = pysat_fun
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
@@ -123,7 +123,7 @@ class get_data_k_:
         self.get_data_button = QtGui.QToolButton(self.get_data)
         self.get_data_button.setObjectName(_fromUtf8("get_data_button"))
         self.horizontalLayout.addWidget(self.get_data_button)
-        self.verticalLayout_8.addWidget(self.get_data)
+        self.module_layout.addWidget(self.get_data)
 
         self.get_data.setTitle(_translate("MainWindow", "Load Known Data", None))
         self.get_data_label.setText(_translate("MainWindow", "File Name", None))

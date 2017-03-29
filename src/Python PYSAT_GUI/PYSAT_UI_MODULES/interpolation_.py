@@ -14,9 +14,9 @@ except AttributeError:
 
 
 class interpolation_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.pysat_fun = pysat_fun
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
@@ -72,7 +72,7 @@ class interpolation_:
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.choosedata_layout_2.addItem(spacerItem1)
         self.verticalLayout.addLayout(self.choosedata_layout_2)
-        self.verticalLayout_8.addWidget(self.Interpolation)
+        self.module_layout.addWidget(self.Interpolation)
 
         self.Interpolation.setTitle(_translate("MainWindow", "Interpolation", None))
         self.interpolation_choosedata_label.setText(_translate("MainWindow", "Choose data to interpolate: ", None))

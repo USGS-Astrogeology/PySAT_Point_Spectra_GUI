@@ -20,19 +20,16 @@ except AttributeError:
 
 
 class write_data_:
-    def __init__(self, pysat_fun, verticalLayout_8):
+    def __init__(self, pysat_fun, module_layout):
         self.pysat_fun = pysat_fun
-        self.verticalLayout_8 = verticalLayout_8
+        self.ui_id = None
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
-        # TODO add function param call here
-        
         self.ui_id = self.pysat_fun.set_list(None, None, None, None, self.ui_id)
-        # self.pysat_fun.set_fun_list(self.pysat_fun.do_write_data)
         self.write_data_ui()
         self.pysat_fun.set_greyed_modules(self.write_data)
-
 
     def get_write_params(self):
         datakey=self.write_data_choose_data.currentText()
@@ -40,9 +37,10 @@ class write_data_:
 
         args=[filename,datakey]
         kws={}
-        self.pysat_fun.set_arg_list(args,replacelast=True)
-        self.pysat_fun.set_kw_list(kws,replacelast=True)
-        
+        ui_list = 'do_write_data'
+        fun_list = 'do_write_data'
+        self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, args, kws, self.ui_id)
+
     def write_data_ui(self):
         self.write_data = QtGui.QGroupBox()
         font = QtGui.QFont()
@@ -69,7 +67,7 @@ class write_data_:
         self.write_data_file.setText('output.csv')
         self.write_data_vlayout.addWidget(self.write_data_file)
 
-        self.verticalLayout_8.addWidget(self.write_data)
+        self.module_layout.addWidget(self.write_data)
         self.write_data.raise_()
         self.write_data.setTitle(_translate("MainWindow", "Write to CSV", None))
 

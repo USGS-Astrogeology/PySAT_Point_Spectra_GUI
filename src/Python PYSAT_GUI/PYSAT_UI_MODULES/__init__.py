@@ -22,3 +22,4 @@ from PYSAT_UI_MODULES.sm_ import *
 from PYSAT_UI_MODULES.write_data_ import *
 from PYSAT_UI_MODULES.dim_reduction_ import *
 from PYSAT_UI_MODULES.dim_red_plot_ import *
+from PYSAT_UI_MODULES.read_ccam_ import *

@@ -10,12 +10,12 @@ except AttributeError:
 
 
 class file_outpath_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.ui_id = None
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -47,7 +47,7 @@ class file_outpath_:
         self.file_out_path_button = QtGui.QToolButton(self.file_out_path)
         self.file_out_path_button.setObjectName("file_out_path_button")
         self.horizontalLayout.addWidget(self.file_out_path_button)
-        self.verticalLayout_8.addWidget(self.file_out_path)
+        self.module_layout.addWidget(self.file_out_path)
 
         self.file_out_path.setTitle(_translate("MainWindow", "Ouput Folder", None))
         self.file_out_path_label.setText(_translate("MainWindow", "Folder Name", None))

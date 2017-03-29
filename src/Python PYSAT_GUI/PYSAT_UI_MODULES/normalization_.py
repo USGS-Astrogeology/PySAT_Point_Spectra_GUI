@@ -48,10 +48,10 @@ except AttributeError:
 # it's position is data[1], max_lineEdit, and it's value is 1000
 
 class normalization_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.box_list = []
         self.pysat_fun = pysat_fun
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
@@ -111,7 +111,7 @@ class normalization_:
         self.del_button.setObjectName(_fromUtf8("add_ranges_button_2"))
         self.min_max_horizontalLayout.addWidget(self.del_button)
         self.verticalLayout.addLayout(self.min_max_horizontalLayout)
-        self.verticalLayout_8.addWidget(self.normalization)
+        self.module_layout.addWidget(self.normalization)
 
         self.normalization.setTitle(_translate("MainWindow", "Normalization", None))
         self.normalization_choosedata_label.setText(_translate("MainWindow", "Choose data: ", None))

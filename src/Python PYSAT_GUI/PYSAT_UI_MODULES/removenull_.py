@@ -21,12 +21,12 @@ except AttributeError:
 
 
 class removenull_:
-    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
+    def __init__(self, pysat_fun, module_layout,arg_list,kw_list):
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id=None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -44,6 +44,8 @@ class removenull_:
         fun_list = "do_removenull"
         args = [datakey, colname]
         kws = {}
+        ui_list='do_removenull'
+        fun_list='removenull'
         self.ui_id = self.pysat_fun.set_list(ui_list, fun_list, args, kws, self.ui_id)
 
     def set_removenull_parameters(self):
@@ -122,7 +124,7 @@ class removenull_:
         self.removenull_vlayout.addWidget(self.removenull_widget)
         self.verticalLayout.addLayout(self.removenull_vlayout)
 
-        self.verticalLayout_8.addWidget(self.removenull)
+        self.module_layout.addWidget(self.removenull)
 
         self.removenull.setTitle(_translate("MainWindow", "Remove Null", None))
         self.removenull_choosedata_label.setText(_translate("MainWindow", "Choose data: ", None))

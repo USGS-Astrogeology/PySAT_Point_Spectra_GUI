@@ -20,11 +20,11 @@ except AttributeError:
 
 
 class strat_folds_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.ui_id = None
         self.main()
 
@@ -110,7 +110,7 @@ class strat_folds_:
         # self.create_folds.setText(_translate("strat_folds", "Create Folds", None))
         #        self.strat_folds_hlayout.addWidget(self.create_folds)
         self.strat_folds_vlayout.addLayout(self.strat_folds_hlayout)
-        self.verticalLayout_8.addWidget(self.strat_folds)
+        self.module_layout.addWidget(self.strat_folds)
         self.strat_folds.raise_()
         self.strat_folds.setTitle(_translate("MainWindow", "Stratified Folds", None))
         self.nfolds_label.setText(_translate("strat_folds", "N folds", None))

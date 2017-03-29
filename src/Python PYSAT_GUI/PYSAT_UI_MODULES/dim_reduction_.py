@@ -20,12 +20,12 @@ except AttributeError:
 
 
 class dim_reduction_:
-    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
+    def __init__(self, pysat_fun, module_layout,arg_list,kw_list):
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
         self.ui_id = None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -151,7 +151,7 @@ class dim_reduction_:
         self.dim_reduction_vlayout.addWidget(self.dim_red_choosealg)
 
 
-        self.verticalLayout_8.addWidget(self.dim_reduction)
+        self.module_layout.addWidget(self.dim_reduction)
         self.dim_reduction.raise_()
         self.dim_reduction.setTitle(_translate("MainWindow", "Dimensionality Reduction", None))
         self.dim_reduction_choose_data_label.setText(_translate("dim_reduction", "Choose data:", None))

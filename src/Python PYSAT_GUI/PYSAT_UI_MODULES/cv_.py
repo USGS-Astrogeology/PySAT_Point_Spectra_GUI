@@ -20,10 +20,10 @@ except AttributeError:
 
 
 class cv_:
-    def __init__(self, pysat_fun, verticalLayout_8,arg_list,kw_list):
+    def __init__(self, pysat_fun, module_layout,arg_list,kw_list):
         self.pysat_fun = pysat_fun
         self.ui_id = None
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.main()
 
     def main(self):
@@ -258,7 +258,7 @@ class cv_:
         self.cv_choosealg_hlayout.addItem(cv_choosealg_spacer)
         self.cv_vlayout.addLayout(self.cv_choosealg_hlayout)
 
-        self.verticalLayout_8.addWidget(self.cv_train)
+        self.module_layout.addWidget(self.cv_train)
         self.cv_train.raise_()
         self.cv_train.setTitle(_translate("cv_train", "Cross Validation / Training", None))
         

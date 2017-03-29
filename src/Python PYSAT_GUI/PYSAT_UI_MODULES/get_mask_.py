@@ -19,11 +19,11 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class get_mask_:
-    def __init__(self, pysat_fun, verticalLayout_8, arg_list, kw_list):
+    def __init__(self, pysat_fun, module_layout, arg_list, kw_list):
         self.pysat_fun = pysat_fun
         self.arg_list = arg_list
         self.kw_list = kw_list
-        self.verticalLayout_8 = verticalLayout_8
+        self.module_layout = module_layout
         self.ui_id = None
         self.main()
 
@@ -72,7 +72,7 @@ class get_mask_:
         self.get_mask_button = QtGui.QToolButton(self.get_mask)
         self.get_mask_button.setObjectName(_fromUtf8("get_mask_button"))
         self.horizontalLayout.addWidget(self.get_mask_button)
-        self.verticalLayout_8.addWidget(self.get_mask)
+        self.module_layout.addWidget(self.get_mask)
 
         self.get_mask.setTitle(_translate("MainWindow", "Mask Data", None))
         self.choosedata_label.setText(_translate("MainWindow", "Choose data: ", None))
