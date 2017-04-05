@@ -1,5 +1,5 @@
-from PYSAT_UI_MODULES import make_combobox, make_listwidget
-from PYSAT_UI_MODULES.Error_ import error_print
+from ui_modules import make_combobox, make_listwidget
+from ui_modules.Error_ import error_print
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -124,6 +124,7 @@ class regression_train_:
         params = self.arg_list[5]
         ransacparams = self.arg_list[6]
         self.regression_choosedata.currentIndex(self.regression_choosedata.findText(str(datakey)))
+
 
     def make_ransac_widget(self, isChecked):
         if not isChecked:

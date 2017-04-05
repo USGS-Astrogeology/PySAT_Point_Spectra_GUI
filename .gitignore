@@ -84,3 +84,6 @@ src/Python PYSAT_GUI/plot.png
 !"src/res/splash.png"
 *.png
 *.wrf
+
+# Pysat
+pysat/
