@@ -1,3 +1,4 @@
+import traceback
 from PyQt5 import QtGui, QtCore, QtWidgets
 
 from Qtickle import Qtickle
@@ -69,6 +70,7 @@ class regression_train_:
                 params = {'fit_intercept': self.omp.fitInterceptCheckBox.isChecked(),
                           'n_nonzero_coefs': self.omp.numOfNonZeroCoeffsSpinBox.value(),
                           'CV': self.omp.optimizeWCrossValidationCheckBox.isChecked()}
+                self.omp.numOfNonZeroCoeffsSpinBox.setDisabled(params['CV'])
                 modelkey = modelkey + str(params)
                 print(params)
 
@@ -80,6 +82,7 @@ class regression_train_:
                           'positive': self.lasso.forcePositiveCoefficientsCheckBox.isChecked(),
                           'selection': 'random',
                           'CV': self.lasso.optimizeWCrossValidaitonCheckBox.isChecked()}
+                self.lasso.alphaDoubleSpinBox.setDisabled(params['CV'])
                 print(params)
 
             if method == 'Elastic Net':
@@ -106,6 +109,8 @@ class regression_train_:
                           'selection': self.elastic_net.selectionLineEdit.text(),
                           'random_state': r_state,
                           'CV': self.elastic_net.crossValidateCheckBox.isChecked()}
+                self.elastic_net.alphaDoubleSpinBox.setDisabled(params['CV'])
+                self.elastic_net.l1RatioDoubleSpinBox.setDisabled(params['CV'])
                 print(params)
 
             if method == 'Ridge':
@@ -128,8 +133,8 @@ class regression_train_:
                           'normalize': self.ridge.normalizeCheckBox.isChecked(),
                           'solver': self.ridge.solverComboBox.itemText(index),
                           'tol': self.ridge.toleranceDoubleSpinBox.value(),
-                          'random_state': r_state,
-                          'CV': self.ridge.crossValidateCheckBox.isChecked()}
+                          'random_state': r_state}
+
                 print(params)
 
             if method == 'Bayesian Ridge':
@@ -172,6 +177,8 @@ class regression_train_:
                           'eps': self.lars.epsDoubleSpinBox.value(),
                           'fit_path': self.lars.fitPathCheckBox.isChecked(),
                           'CV': self.lars.crossValidateCheckBox.isChecked()}
+                self.lars.numOfNonzeroCoeffsSpinBox.setDisabled(params['CV'])
+                self.lars.fitPathCheckBox.setDisabled(params['CV'])
                 print(params)
 
             if method == 'Lasso LARS':

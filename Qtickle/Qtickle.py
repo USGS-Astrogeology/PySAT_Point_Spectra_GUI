@@ -1,8 +1,9 @@
-from PyQt5 import QtCore
-
 import inspect
-from PyQt5.QtWidgets import *
+import traceback
 from distutils.util import strtobool
+
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import *
 
 
 class Qtickle(object):
@@ -184,9 +185,8 @@ class Qtickle(object):
                 if isinstance(obj, QComboBox):
                     obj.currentIndexChanged.connect(lambda: functionCall())
 
-                # if isinstance(obj, QListWidget): This needs to be added at somepoint
-                #     obj.
+                    # if isinstance(obj, QListWidget): This needs to be added at somepoint
+                    #     obj.
 
         except Exception as e:
             print(e)
-

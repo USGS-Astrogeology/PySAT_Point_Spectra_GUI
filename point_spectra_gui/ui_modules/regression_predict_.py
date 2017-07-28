@@ -1,3 +1,5 @@
+import traceback
+
 from PyQt5 import QtGui, QtWidgets
 
 from Qtickle import Qtickle
@@ -52,7 +54,7 @@ class regression_predict_:
                 self.regression_predict_choosemodel.setItemText(0, modelkey)
                 pass
             except Exception as e:
-                error_print(e)
+                print(e)
 
     def regression_ui(self):
         self.regression_predict = QtWidgets.QGroupBox()

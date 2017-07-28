@@ -1,3 +1,5 @@
+import traceback
+
 from PyQt5 import QtGui, QtCore, QtWidgets
 
 from Qtickle import Qtickle
@@ -95,7 +97,7 @@ class cv_:
                 self.cv_choosealg.setCurrentIndex(self.cv_choosealg.findText(str(method)))
                 self.make_reg_widget(self.cv_choosealg.currentText(), params=params)
             except Exception as e:
-                error_print(e)
+                print(e)
 
     def make_reg_widget(self, alg, params=None):
         print(alg)

@@ -421,12 +421,15 @@ class frontEndProc(object):
     # This function should no longer be necessary once we have error handling with restoration working smoothly
 
     def restore_first(self):
-        self.r_list = self.restore_list.pop()
-        getattr(frontEndProc, self.r_list[1])(self, self.r_list[3], self.r_list[4], self.r_list[5])
-        while not self.restore_list.isEmpty():
+        try:
             self.r_list = self.restore_list.pop()
-            print(self.r_list)
             getattr(frontEndProc, self.r_list[1])(self, self.r_list[3], self.r_list[4], self.r_list[5])
+            while not self.restore_list.isEmpty():
+                self.r_list = self.restore_list.pop()
+                print(self.r_list)
+                getattr(frontEndProc, self.r_list[1])(self, self.r_list[3], self.r_list[4], self.r_list[5])
+        except Exception as e:
+            print(e)
 
     ################# Progress bar toolset below
 

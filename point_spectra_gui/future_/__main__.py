@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtWidgets
-from PythonUI import *
+
+from point_spectra_gui.future_ import regression_train, mainwindow
 
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()

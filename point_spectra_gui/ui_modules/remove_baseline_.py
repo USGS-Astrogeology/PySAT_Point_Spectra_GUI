@@ -1,3 +1,4 @@
+import traceback
 import inspect
 
 from PyQt5 import QtGui, QtCore, QtWidgets
@@ -120,7 +121,7 @@ class remove_baseline_:
                 self.make_baseline_widget(self.baseline_choosealg.currentText(), params=params)
                 self.get_baseline_parameters()
             except Exception as e:
-                error_print(e)
+                print(e)
 
     def make_baseline_widget(self, alg, params=None):
         print(alg)
