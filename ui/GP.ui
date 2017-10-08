@@ -13,20 +13,96 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="formGroupBox">
+     <property name="title">
+      <string>Gaussian Process</string>
+     </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
       </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="chooseDimensionalityReductionMethodLabel">
+      <item row="2" column="0">
+       <widget class="QLabel" name="regrLabel">
         <property name="text">
-         <string>Choose dimensionality reduction method:</string>
+         <string>Regression Types</string>
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="regrComboBox"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="corrLabel">
+        <property name="text">
+         <string>Correlation Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="corrComboBox"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="storageModeLabel">
+        <property name="text">
+         <string>Storage Mode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="storageModeComboBox"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="verboseLabel">
+        <property name="text">
+         <string>Verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="theta0Label">
+        <property name="text">
+         <string>Theta 0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="optimizerLabel">
+        <property name="text">
+         <string>Optimizer Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QComboBox" name="optimizerComboBox"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="randomStartLabel">
+        <property name="text">
+         <string>Random Start</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QSpinBox" name="randomStartSpinBox"/>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="normalizeLabel">
+        <property name="text">
+         <string>Normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QCheckBox" name="normalizeCheckBox"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QDoubleSpinBox" name="theta0DoubleSpinBox"/>
+      </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="chooseDimensionalityReductionMethodComboBox">
+       <widget class="QComboBox" name="reductionMethodComboBox">
         <item>
          <property name="text">
           <string>PCA</string>
@@ -39,83 +115,22 @@
         </item>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="numOfComponentsLabel">
+      <item row="0" column="0">
+       <widget class="QLabel" name="reductionMethodLabel">
         <property name="text">
-         <string># of components</string>
+         <string>Choose dimensionality reduction method:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="numOfComponenetsLabel">
+        <property name="text">
+         <string>Number of Components</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QSpinBox" name="numOfComponentsSpinBox"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="numOfRandomStartsLabel">
-        <property name="text">
-         <string># of random starts</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QSpinBox" name="numOfRandomStartsSpinBox">
-        <property name="maximum">
-         <number>999999999</number>
-        </property>
-        <property name="value">
-         <number>1</number>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="startingThetaLabel">
-        <property name="text">
-         <string>Starting Theta</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QDoubleSpinBox" name="startingThetaDoubleSpinBox">
-        <property name="maximum">
-         <double>999999999.000000000000000</double>
-        </property>
-        <property name="value">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="lowerBoundOnThetaLabel">
-        <property name="text">
-         <string>Lower bound on Theta</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QDoubleSpinBox" name="lowerBoundOnThetaDoubleSpinBox">
-        <property name="singleStep">
-         <double>0.010000000000000</double>
-        </property>
-        <property name="value">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="upperBoundOnThetaLabel">
-        <property name="text">
-         <string>Upper bound on theta</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QDoubleSpinBox" name="upperBoundOnThetaDoubleSpinBox">
-        <property name="maximum">
-         <double>9999.000000000000000</double>
-        </property>
-        <property name="value">
-         <double>100.000000000000000</double>
-        </property>
-       </widget>
+       <widget class="QSpinBox" name="numOfComponenetsSpinBox"/>
       </item>
      </layout>
     </widget>

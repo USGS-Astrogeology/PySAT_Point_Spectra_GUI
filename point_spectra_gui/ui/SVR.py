@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\nfinch\Desktop\GitHub\PySAT_Point_Spectra_GUI\ui\SVR.ui'
-#
-# Created by: PyQt5 UI code generator 5.6
-#
-# WARNING! All changes made in this file will be lost!
+# Automatically generated - don't edit.
+# Use `python setup.py build_ui` to update it.
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -114,27 +111,27 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.cLabel.setText(_translate("Form", "C"))
-        self.epsilonLabel.setText(_translate("Form", "Epsilon"))
-        self.kernelLabel.setText(_translate("Form", "Kernel"))
-        self.kernelComboBox.setItemText(0, _translate("Form", "rbf"))
-        self.kernelComboBox.setItemText(1, _translate("Form", "poly"))
-        self.kernelComboBox.setItemText(2, _translate("Form", "sigmoid"))
-        self.kernelComboBox.setItemText(3, _translate("Form", "linear"))
-        self.kernelComboBox.setItemText(4, _translate("Form", "precomputed"))
-        self.degreeLabel.setText(_translate("Form", "Degree"))
-        self.gammaLabel.setText(_translate("Form", "Gamma"))
-        self.gammaComboBox.setItemText(0, _translate("Form", "auto"))
-        self.gammaComboBox.setItemText(1, _translate("Form", "rbf"))
-        self.gammaComboBox.setItemText(2, _translate("Form", "poly"))
-        self.gammaComboBox.setItemText(3, _translate("Form", "sigmoid"))
-        self.coeff0Label.setText(_translate("Form", "Coeff 0"))
-        self.shrinkingLabel.setText(_translate("Form", "Shrinking"))
-        self.toleranceLabel.setText(_translate("Form", "Tolerance"))
-        self.cacheSizeLabel.setText(_translate("Form", "Cache Size"))
-        self.verboseLabel.setText(_translate("Form", "Verbose"))
-        self.maxIterationsLabel.setText(_translate("Form", "Max Iterations"))
+        Form.setWindowTitle(("Form"))
+        self.cLabel.setText(("C"))
+        self.epsilonLabel.setText(("Epsilon"))
+        self.kernelLabel.setText(("Kernel"))
+        self.kernelComboBox.setItemText(0, ("rbf"))
+        self.kernelComboBox.setItemText(1, ("poly"))
+        self.kernelComboBox.setItemText(2, ("sigmoid"))
+        self.kernelComboBox.setItemText(3, ("linear"))
+        self.kernelComboBox.setItemText(4, ("precomputed"))
+        self.degreeLabel.setText(("Degree"))
+        self.gammaLabel.setText(("Gamma"))
+        self.gammaComboBox.setItemText(0, ("auto"))
+        self.gammaComboBox.setItemText(1, ("rbf"))
+        self.gammaComboBox.setItemText(2, ("poly"))
+        self.gammaComboBox.setItemText(3, ("sigmoid"))
+        self.coeff0Label.setText(("Coeff 0"))
+        self.shrinkingLabel.setText(("Shrinking"))
+        self.toleranceLabel.setText(("Tolerance"))
+        self.cacheSizeLabel.setText(("Cache Size"))
+        self.verboseLabel.setText(("Verbose"))
+        self.maxIterationsLabel.setText(("Max Iterations"))
 
 
 if __name__ == "__main__":

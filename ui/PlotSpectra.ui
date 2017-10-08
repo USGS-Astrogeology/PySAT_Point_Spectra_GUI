@@ -46,9 +46,6 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1" colspan="2">
-       <widget class="QListView" name="xVariableListView"/>
-      </item>
       <item row="4" column="0">
        <widget class="QLabel" name="chooseColumnLabel">
         <property name="text">
@@ -62,9 +59,6 @@
          <string>Choose Rows:</string>
         </property>
        </widget>
-      </item>
-      <item row="5" column="1" colspan="2">
-       <widget class="QListView" name="chooseRowsListView"/>
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="colorLabel">
@@ -102,7 +96,11 @@
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QLineEdit" name="plotFilenameLineEdit"/>
+       <widget class="QLineEdit" name="plotFilenameLineEdit">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="11" column="2">
        <widget class="QPushButton" name="pushButton">
@@ -142,7 +140,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="minSpinBox"/>
+         <widget class="QDoubleSpinBox" name="minDoubleSpinBox"/>
         </item>
         <item>
          <widget class="QLabel" name="maxLabel">
@@ -152,7 +150,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="maxSpinBox"/>
+         <widget class="QDoubleSpinBox" name="maxDoubleSpinBox"/>
         </item>
        </layout>
       </item>
@@ -171,11 +169,33 @@
       <item row="0" column="1" colspan="2">
        <widget class="QComboBox" name="chooseDataComboBox"/>
       </item>
+      <item row="5" column="1" colspan="2">
+       <widget class="QListWidget" name="chooseRowsListWidget"/>
+      </item>
+      <item row="3" column="1" colspan="2">
+       <widget class="QListWidget" name="xVariableListWidget"/>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>chooseDataComboBox</tabstop>
+  <tabstop>figureNameLineEdit</tabstop>
+  <tabstop>plotTitleLineEdit</tabstop>
+  <tabstop>xVariableListWidget</tabstop>
+  <tabstop>chooseColumnComboBox</tabstop>
+  <tabstop>chooseRowsListWidget</tabstop>
+  <tabstop>minDoubleSpinBox</tabstop>
+  <tabstop>maxDoubleSpinBox</tabstop>
+  <tabstop>colorComboBox</tabstop>
+  <tabstop>lineComboBox</tabstop>
+  <tabstop>alphaDoubleSpinBox</tabstop>
+  <tabstop>lineWidthDoubleSpinBox</tabstop>
+  <tabstop>plotFilenameLineEdit</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

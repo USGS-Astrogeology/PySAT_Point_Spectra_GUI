@@ -17,10 +17,7 @@
      <property name="title">
       <string>Baseline Removal</string>
      </property>
-     <layout class="QFormLayout" name="formLayout">
-      <property name="fieldGrowthPolicy">
-       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-      </property>
+     <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="chooseDataLabel">
         <property name="text">
@@ -40,6 +37,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QComboBox" name="chooseAlgorithmComboBox"/>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <layout class="QVBoxLayout" name="algorithmLayout"/>
       </item>
      </layout>
     </widget>

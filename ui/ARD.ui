@@ -45,7 +45,7 @@
       <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox">
         <property name="decimals">
-         <number>5</number>
+         <number>8</number>
         </property>
         <property name="singleStep">
          <double>0.001000000000000</double>
@@ -115,14 +115,14 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="computerScoreLabel">
         <property name="text">
          <string>Computer Score</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QCheckBox" name="computerScoreCheckBox">
         <property name="text">
          <string>compute the objective function at each step of the model</string>
@@ -130,75 +130,13 @@
        </widget>
       </item>
       <item row="7" column="0">
-       <widget class="QLabel" name="fitInterceptLabel">
-        <property name="text">
-         <string>Fit Intercept</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox">
-        <property name="text">
-         <string>calculate the intercept for this model</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="normalizeLabel">
-        <property name="text">
-         <string>Normalize</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox">
-        <property name="text">
-         <string>regressors X will be normlized before regression</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="copyXLabel">
-        <property name="text">
-         <string>Copy X</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QCheckBox" name="copyXCheckBox">
-        <property name="text">
-         <string>X will be copied; else, it may be overwritten</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0">
-       <widget class="QLabel" name="verboseLabel">
-        <property name="text">
-         <string>Verbose</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox">
-        <property name="text">
-         <string>Verbose mode when fitting the model</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
        <widget class="QLabel" name="thresholdLambdaLabel">
         <property name="text">
          <string>Threshold Lambda</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="7" column="1">
        <widget class="QSpinBox" name="thresholdLambdaSpinBox">
         <property name="maximum">
          <number>999999999</number>
@@ -208,11 +146,106 @@
         </property>
        </widget>
       </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="fitInterceptLabel">
+        <property name="text">
+         <string>Fit Intercept</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="text">
+         <string>calculate the intercept for this model</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="normalizeLabel">
+        <property name="text">
+         <string>Normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QCheckBox" name="normalizeCheckBox">
+        <property name="text">
+         <string>regressors X will be normlized before regression</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="copyXLabel">
+        <property name="text">
+         <string>Copy X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QCheckBox" name="copyXCheckBox">
+        <property name="text">
+         <string>X will be copied; else, it may be overwritten</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="verboseLabel">
+        <property name="text">
+         <string>Verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="text">
+         <string>Verbose mode when fitting the model</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lambdaLabel_2">
+        <property name="text">
+         <string>Lambda</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QDoubleSpinBox" name="lambdaDoubleSpinBox_2">
+        <property name="decimals">
+         <number>8</number>
+        </property>
+        <property name="singleStep">
+         <double>0.000001000000000</double>
+        </property>
+        <property name="value">
+         <double>0.000001000000000</double>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>numOfIterationsSpinBox</tabstop>
+  <tabstop>toleranceDoubleSpinBox</tabstop>
+  <tabstop>alpha1DoubleSpinBox</tabstop>
+  <tabstop>alpha2DoubleSpinBox</tabstop>
+  <tabstop>lambdaDoubleSpinBox</tabstop>
+  <tabstop>computerScoreCheckBox</tabstop>
+  <tabstop>thresholdLambdaSpinBox</tabstop>
+  <tabstop>fitInterceptCheckBox</tabstop>
+  <tabstop>normalizeCheckBox</tabstop>
+  <tabstop>copyXCheckBox</tabstop>
+  <tabstop>verboseCheckBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

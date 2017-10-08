@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\nfinch\Desktop\GitHub\PySAT_Point_Spectra_GUI\ui\ReadChemCamData.ui'
-#
-# Created by: PyQt5 UI code generator 5.6
-#
-# WARNING! All changes made in this file will be lost!
+# Automatically generated - don't edit.
+# Use `python setup.py build_ui` to update it.
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -38,12 +35,12 @@ class Ui_Form(object):
         self.searchDirectorypushButton.setMaximumSize(QtCore.QSize(30, 16777215))
         self.searchDirectorypushButton.setObjectName("searchDirectorypushButton")
         self.gridLayout.addWidget(self.searchDirectorypushButton, 1, 2, 1, 1)
-        self.metadataFileSLabel = QtWidgets.QLabel(self.groupBox)
-        self.metadataFileSLabel.setObjectName("metadataFileSLabel")
-        self.gridLayout.addWidget(self.metadataFileSLabel, 2, 0, 1, 1)
-        self.metadataFileSLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.metadataFileSLineEdit.setObjectName("metadataFileSLineEdit")
-        self.gridLayout.addWidget(self.metadataFileSLineEdit, 2, 1, 1, 1)
+        self.metadataFilesLabel = QtWidgets.QLabel(self.groupBox)
+        self.metadataFilesLabel.setObjectName("metadataFilesLabel")
+        self.gridLayout.addWidget(self.metadataFilesLabel, 2, 0, 1, 1)
+        self.metadataFilesLineEdit = QtWidgets.QLineEdit(self.groupBox)
+        self.metadataFilesLineEdit.setObjectName("metadataFilesLineEdit")
+        self.gridLayout.addWidget(self.metadataFilesLineEdit, 2, 1, 1, 1)
         self.metadatapushButton = QtWidgets.QPushButton(self.groupBox)
         self.metadatapushButton.setMaximumSize(QtCore.QSize(30, 16777215))
         self.metadatapushButton.setObjectName("metadatapushButton")
@@ -76,16 +73,16 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.groupBox.setTitle(_translate("Form", "Read ChemCam Data"))
-        self.searchStringLabel.setText(_translate("Form", "Search String:"))
-        self.searchDirectoryLabel.setText(_translate("Form", "Search directory:"))
-        self.searchDirectorypushButton.setText(_translate("Form", "..."))
-        self.metadataFileSLabel.setText(_translate("Form", "Metadata file(s):"))
-        self.metadatapushButton.setText(_translate("Form", "..."))
-        self.outputFileNameLabel.setText(_translate("Form", "Output file name:"))
-        self.averagesLabel.setText(_translate("Form", "Averages"))
-        self.singleShotsLabel.setText(_translate("Form", "Single Shots"))
+        Form.setWindowTitle(("Form"))
+        self.groupBox.setTitle(("Read ChemCam Data"))
+        self.searchStringLabel.setText(("Search String:"))
+        self.searchDirectoryLabel.setText(("Search directory:"))
+        self.searchDirectorypushButton.setText(("..."))
+        self.metadataFilesLabel.setText(("Metadata file(s):"))
+        self.metadatapushButton.setText(("..."))
+        self.outputFileNameLabel.setText(("Output file name:"))
+        self.averagesLabel.setText(("Averages"))
+        self.singleShotsLabel.setText(("Single Shots"))
 
 
 if __name__ == "__main__":

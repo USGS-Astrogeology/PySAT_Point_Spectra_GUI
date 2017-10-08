@@ -118,6 +118,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>alphaDoubleSpinBox</tabstop>
+  <tabstop>maxNumOfIterationsSpinBox</tabstop>
+  <tabstop>toleranceDoubleSpinBox</tabstop>
+  <tabstop>fitInterceptCheckBox</tabstop>
+  <tabstop>forcePositiveCoefficientsCheckBox</tabstop>
+  <tabstop>optimizeWCrossValidaitonCheckBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

@@ -14,216 +14,332 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
-     <layout class="QFormLayout" name="formLayout">
-      <property name="fieldGrowthPolicy">
-       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="alphaLabel">
-        <property name="text">
-         <string>Alpha</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="maximum">
-         <double>9999999.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>1.000000000000000</double>
-        </property>
-        <property name="value">
-         <double>1.000000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="l1RatioLabel">
-        <property name="text">
-         <string>L1 Ratio</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QDoubleSpinBox" name="l1RatioDoubleSpinBox">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="maximum">
-         <double>9999999.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.500000000000000</double>
-        </property>
-        <property name="value">
-         <double>0.500000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="fitInterceptLabel">
-        <property name="text">
-         <string>Fit Intercept</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="normalizeLabel">
-        <property name="text">
-         <string>Normalize</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="precomputeLabel">
-        <property name="text">
-         <string>Precompute</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="precomputeComboBox">
+     <layout class="QVBoxLayout" name="ENLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <property name="text">
-          <string>False</string>
-         </property>
+         <widget class="QGroupBox" name="elasticNetCVGroupBox">
+          <property name="title">
+           <string>Elastic Net CV</string>
+          </property>
+          <layout class="QFormLayout" name="ElasticNetCV_2">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="l1_ratioLabel">
+             <property name="text">
+              <string>l1_ratio
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QDoubleSpinBox" name="l1_ratioDoubleSpinBox"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="epsLabel">
+             <property name="text">
+              <string>eps
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="epsDoubleSpinBox"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="n_alphasLabel">
+             <property name="text">
+              <string>n_alphas
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="n_alphasSpinBox"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="alphasLabel">
+             <property name="text">
+              <string>alphas
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="alphasLineEdit"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="fit_interceptLabel">
+             <property name="text">
+              <string>fit_intercept
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="fit_interceptCheckBox"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="normalizeLabel">
+             <property name="text">
+              <string>normalize
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="normalizeCheckBox"/>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="precomputeLabel">
+             <property name="text">
+              <string>precompute
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QComboBox" name="precomputeComboBox"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="max_iterLabel">
+             <property name="text">
+              <string>max_iter
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QSpinBox" name="max_iterSpinBox"/>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="tolLabel">
+             <property name="text">
+              <string>tol
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QDoubleSpinBox" name="tolDoubleSpinBox"/>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="copy_XLabel">
+             <property name="text">
+              <string>copy_X
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QCheckBox" name="copy_XCheckBox"/>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="verboseLabel">
+             <property name="text">
+              <string>verbose
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QCheckBox" name="verboseCheckBox"/>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="n_jobsLabel">
+             <property name="text">
+              <string>n_jobs
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QSpinBox" name="n_jobsSpinBox"/>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="positiveLabel">
+             <property name="text">
+              <string>positive
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QCheckBox" name="positiveCheckBox"/>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="selectionLabel">
+             <property name="text">
+              <string>selection</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QComboBox" name="selectionComboBox"/>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="cVLabel">
+             <property name="text">
+              <string>cv</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QSpinBox" name="cVSpinBox"/>
+           </item>
+          </layout>
+         </widget>
         </item>
         <item>
-         <property name="text">
-          <string>True</string>
-         </property>
+         <widget class="QGroupBox" name="elasticNetGroupBox">
+          <property name="title">
+           <string>Elastic Net</string>
+          </property>
+          <layout class="QFormLayout" name="ElasticNet">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="enalphaLabel">
+             <property name="text">
+              <string>alpha
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QDoubleSpinBox" name="enalphaDoubleSpinBox"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="enl1_ratioLabel">
+             <property name="text">
+              <string>l1_ratio
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="enl1_ratioDoubleSpinBox"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="enfit_interceptLabel">
+             <property name="text">
+              <string>fit_intercept
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="enfit_interceptCheckBox"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="ennormalizeLabel">
+             <property name="text">
+              <string>normalize
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="ennormalizeCheckBox"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="enprecomputeLabel">
+             <property name="text">
+              <string>precompute
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="enprecomputeCheckBox"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="enmax_iterLabel">
+             <property name="text">
+              <string>max_iter
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QSpinBox" name="enmax_iterSpinBox"/>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="encopy_XLabel">
+             <property name="text">
+              <string>copy_X
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QCheckBox" name="encopy_XCheckBox"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="entolLabel">
+             <property name="text">
+              <string>tol
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QDoubleSpinBox" name="entolDoubleSpinBox"/>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="enwarm_startLabel">
+             <property name="text">
+              <string>warm_start
+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QCheckBox" name="enwarm_startCheckBox"/>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="enpositiveLabel">
+             <property name="text">
+              <string>positive</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QCheckBox" name="enpositiveCheckBox"/>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="enselectionLabel">
+             <property name="text">
+              <string>selection</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QComboBox" name="enselectionComboBox">
+             <item>
+              <property name="text">
+               <string>cyclic</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>random</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
-        <item>
-         <property name="text">
-          <string>Array-like</string>
-         </property>
-        </item>
-       </widget>
+       </layout>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="maxNumOfIterationsLabel">
+      <item>
+       <widget class="QCheckBox" name="CVCheckBox">
         <property name="text">
-         <string>Max Num of Iterations</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QSpinBox" name="maxNumOfIterationsSpinBox">
-        <property name="maximum">
-         <number>99999</number>
-        </property>
-        <property name="value">
-         <number>1000</number>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="copyXLabel">
-        <property name="text">
-         <string>Copy X</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QCheckBox" name="copyXCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="toleranceLabel">
-        <property name="text">
-         <string>Tolerance</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox">
-        <property name="decimals">
-         <number>4</number>
-        </property>
-        <property name="singleStep">
-         <double>0.000100000000000</double>
-        </property>
-        <property name="value">
-         <double>0.000100000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="warmStartLabel">
-        <property name="text">
-         <string>Warm Start</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QCheckBox" name="warmStartCheckBox"/>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="positiveLabel">
-        <property name="text">
-         <string>Positive</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QCheckBox" name="positiveCheckBox"/>
-      </item>
-      <item row="10" column="0">
-       <widget class="QLabel" name="selectionLabel">
-        <property name="text">
-         <string>Selection</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QLineEdit" name="selectionLineEdit">
-        <property name="text">
-         <string>cyclic</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0">
-       <widget class="QLabel" name="randomStateLabel">
-        <property name="text">
-         <string>Random State</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <widget class="QLineEdit" name="randomStateLineEdit">
-        <property name="text">
-         <string>None</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0">
-       <widget class="QLabel" name="crossValidateLabel">
-        <property name="text">
-         <string>Cross Validate</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="1">
-       <widget class="QCheckBox" name="crossValidateCheckBox">
-        <property name="checked">
-         <bool>true</bool>
+         <string>CV</string>
         </property>
        </widget>
       </item>
@@ -235,34 +351,34 @@
  <resources/>
  <connections>
   <connection>
-   <sender>crossValidateCheckBox</sender>
+   <sender>CVCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>alphaDoubleSpinBox</receiver>
-   <slot>setDisabled(bool)</slot>
+   <receiver>elasticNetCVGroupBox</receiver>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>299</y>
+     <x>20</x>
+     <y>496</y>
     </hint>
     <hint type="destinationlabel">
-     <x>161</x>
-     <y>29</y>
+     <x>26</x>
+     <y>472</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>crossValidateCheckBox</sender>
+   <sender>CVCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>l1RatioDoubleSpinBox</receiver>
-   <slot>setDisabled(bool)</slot>
+   <receiver>elasticNetGroupBox</receiver>
+   <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>297</y>
+     <x>47</x>
+     <y>494</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>62</y>
+     <x>298</x>
+     <y>465</y>
     </hint>
    </hints>
   </connection>

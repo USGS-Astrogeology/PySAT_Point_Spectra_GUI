@@ -19,177 +19,153 @@
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
       </property>
       <item row="0" column="0">
-       <widget class="QLabel" name="numOfNonzeroCoeffsLabel">
+       <widget class="QLabel" name="fit_interceptLabel">
         <property name="text">
-         <string>Num of Nonzero Coeffs</string>
+         <string>fit_intercept</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QSpinBox" name="numOfNonzeroCoeffsSpinBox">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="maximum">
-         <number>999999</number>
-        </property>
-        <property name="value">
-         <number>500</number>
-        </property>
-       </widget>
+       <widget class="QCheckBox" name="fit_interceptCheckBox"/>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="fitInterceptLabel">
+       <widget class="QLabel" name="verboseLabel">
         <property name="text">
-         <string>Fit Intercept</string>
+         <string>verbose</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox">
-        <property name="text">
-         <string>Calculate the intercept for this model</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="QCheckBox" name="verboseCheckBox"/>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="positiveLabel">
+       <widget class="QLabel" name="normalizeLabel">
         <property name="text">
-         <string>Positive</string>
+         <string>normalize</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="positiveCheckBox">
-        <property name="text">
-         <string>Restrict coefficients to be &gt;= 0</string>
-        </property>
-       </widget>
+       <widget class="QCheckBox" name="normalizeCheckBox"/>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="verboseLabel">
+       <widget class="QLabel" name="precomputeLabel">
         <property name="text">
-         <string>Verbose</string>
+         <string>precompute</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox">
-        <property name="text">
-         <string>Verbose mode when fitting the model</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="precomputeLabel">
-        <property name="text">
-         <string>Precompute</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="copyXLabel">
-        <property name="text">
-         <string>Copy X</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QCheckBox" name="copyXCheckBox">
-        <property name="text">
-         <string>Computer the objective function at each step of the model</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="epsLabel">
-        <property name="text">
-         <string>Eps</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QDoubleSpinBox" name="epsDoubleSpinBox">
-        <property name="decimals">
-         <number>16</number>
-        </property>
-        <property name="value">
-         <double>2.220445000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="fitPathLabel">
-        <property name="text">
-         <string>Fit Path</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QCheckBox" name="fitPathCheckBox">
-        <property name="text">
-         <string>Store the full path in the coef_path_attribute</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="precomputeComboBox"/>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="normalizeLabel">
+       <widget class="QLabel" name="n_nonzero_coefsLabel">
         <property name="text">
-         <string>Normalize</string>
+         <string>n_nonzero_coefs</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox">
+       <widget class="QSpinBox" name="n_nonzero_coefsSpinBox"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="copy_XLabel">
         <property name="text">
-         <string>If True, the regressors X will be normalized before regression. ignored when fit_intercept is set to False.</string>
+         <string>copy_X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="copy_XCheckBox"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="fit_pathLabel">
+        <property name="text">
+         <string>fit_path</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="fit_pathCheckBox"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="positiveLabel">
+        <property name="text">
+         <string>positive</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QCheckBox" name="positiveCheckBox"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="max_iterLabel">
+        <property name="text">
+         <string>max_iter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QSpinBox" name="max_iterSpinBox">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item row="9" column="0">
-       <widget class="QLabel" name="crossValidatePathLabel">
+       <widget class="QLabel" name="cvLabel">
+        <property name="text">
+         <string>cv</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QSpinBox" name="cvSpinBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="value">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="max_n_alphasLabel">
+        <property name="text">
+         <string>max_n_alphas</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QSpinBox" name="max_n_alphasSpinBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="n_jobsLabel">
+        <property name="text">
+         <string>n_jobs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QSpinBox" name="n_jobsSpinBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="cVLabel">
         <property name="text">
          <string>Cross Validate</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="1">
-       <widget class="QCheckBox" name="crossValidateCheckBox">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QComboBox" name="comboBox">
-        <item>
-         <property name="text">
-          <string>True</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>False</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>auto</string>
-         </property>
-        </item>
-       </widget>
+      <item row="12" column="1">
+       <widget class="QCheckBox" name="cVCheckBox"/>
       </item>
      </layout>
     </widget>
@@ -199,18 +175,66 @@
  <resources/>
  <connections>
   <connection>
-   <sender>crossValidateCheckBox</sender>
+   <sender>cVCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>numOfNonzeroCoeffsSpinBox</receiver>
-   <slot>setDisabled(bool)</slot>
+   <receiver>max_iterSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>145</x>
-     <y>236</y>
+     <x>111</x>
+     <y>291</y>
     </hint>
     <hint type="destinationlabel">
-     <x>184</x>
-     <y>35</y>
+     <x>116</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cvSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>288</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>132</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>max_n_alphasSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>151</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>n_jobsSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>187</x>
+     <y>274</y>
     </hint>
    </hints>
   </connection>

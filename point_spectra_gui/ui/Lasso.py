@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\nfinch\Desktop\GitHub\PySAT_Point_Spectra_GUI\ui\Lasso.ui'
-#
-# Created by: PyQt5 UI code generator 5.6
-#
-# WARNING! All changes made in this file will be lost!
+# Automatically generated - don't edit.
+# Use `python setup.py build_ui` to update it.
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -74,16 +71,21 @@ class Ui_Form(object):
         self.retranslateUi(Form)
         self.optimizeWCrossValidaitonCheckBox.toggled['bool'].connect(self.alphaDoubleSpinBox.setDisabled)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        Form.setTabOrder(self.alphaDoubleSpinBox, self.maxNumOfIterationsSpinBox)
+        Form.setTabOrder(self.maxNumOfIterationsSpinBox, self.toleranceDoubleSpinBox)
+        Form.setTabOrder(self.toleranceDoubleSpinBox, self.fitInterceptCheckBox)
+        Form.setTabOrder(self.fitInterceptCheckBox, self.forcePositiveCoefficientsCheckBox)
+        Form.setTabOrder(self.forcePositiveCoefficientsCheckBox, self.optimizeWCrossValidaitonCheckBox)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.alphaLabel.setText(_translate("Form", "Alpha"))
-        self.maxNumOfIterationsLabel.setText(_translate("Form", "Max # of iterations"))
-        self.toleranceLabel.setText(_translate("Form", "Tolerance"))
-        self.fitInterceptLabel.setText(_translate("Form", "Fit Intercept"))
-        self.forcePositiveCoefficientsLabel.setText(_translate("Form", "Force positive coefficients"))
-        self.optimizeWCrossValidaitonLabel.setText(_translate("Form", "Optimize w/ Cross Validaiton (Ignores alpha)"))
+        Form.setWindowTitle(("Form"))
+        self.alphaLabel.setText(("Alpha"))
+        self.maxNumOfIterationsLabel.setText(("Max # of iterations"))
+        self.toleranceLabel.setText(("Tolerance"))
+        self.fitInterceptLabel.setText(("Fit Intercept"))
+        self.forcePositiveCoefficientsLabel.setText(("Force positive coefficients"))
+        self.optimizeWCrossValidaitonLabel.setText(("Optimize w/ Cross Validaiton (Ignores alpha)"))
 
 
 if __name__ == "__main__":

@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\nfinch\Desktop\GitHub\PySAT_Point_Spectra_GUI\ui\RemoveRows.ui'
-#
-# Created by: PyQt5 UI code generator 5.6
-#
-# WARNING! All changes made in this file will be lost!
+# Automatically generated - don't edit.
+# Use `python setup.py build_ui` to update it.
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -29,30 +26,32 @@ class Ui_Form(object):
         self.removeRowsWhereLabel = QtWidgets.QLabel(self.groupBox)
         self.removeRowsWhereLabel.setObjectName("removeRowsWhereLabel")
         self.gridLayout.addWidget(self.removeRowsWhereLabel, 1, 0, 1, 1)
-        self.isComboBox = QtWidgets.QComboBox(self.groupBox)
-        self.isComboBox.setObjectName("isComboBox")
-        self.gridLayout.addWidget(self.isComboBox, 1, 3, 1, 1)
+        self.valueComboBox = QtWidgets.QComboBox(self.groupBox)
+        self.valueComboBox.setObjectName("valueComboBox")
+        self.gridLayout.addWidget(self.valueComboBox, 1, 3, 1, 1)
         self.chooseDataLabel = QtWidgets.QLabel(self.groupBox)
         self.chooseDataLabel.setObjectName("chooseDataLabel")
         self.gridLayout.addWidget(self.chooseDataLabel, 0, 0, 1, 1)
         self.chooseDataComboBox = QtWidgets.QComboBox(self.groupBox)
         self.chooseDataComboBox.setObjectName("chooseDataComboBox")
         self.gridLayout.addWidget(self.chooseDataComboBox, 0, 1, 1, 1)
-        self.isComboBox_2 = QtWidgets.QComboBox(self.groupBox)
-        self.isComboBox_2.setObjectName("isComboBox_2")
-        self.gridLayout.addWidget(self.isComboBox_2, 1, 1, 1, 1)
+        self.colNameComboBox = QtWidgets.QComboBox(self.groupBox)
+        self.colNameComboBox.setObjectName("colNameComboBox")
+        self.gridLayout.addWidget(self.colNameComboBox, 1, 1, 1, 1)
         self.verticalLayout.addWidget(self.groupBox)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        Form.setTabOrder(self.chooseDataComboBox, self.colNameComboBox)
+        Form.setTabOrder(self.colNameComboBox, self.valueComboBox)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.groupBox.setTitle(_translate("Form", "Remove Rows"))
-        self.isLabel.setText(_translate("Form", "is "))
-        self.removeRowsWhereLabel.setText(_translate("Form", "Remove rows where"))
-        self.chooseDataLabel.setText(_translate("Form", "Choose Data:"))
+        Form.setWindowTitle(("Form"))
+        self.groupBox.setTitle(("Remove Rows"))
+        self.isLabel.setText(("is "))
+        self.removeRowsWhereLabel.setText(("Remove rows where"))
+        self.chooseDataLabel.setText(("Choose Data:"))
 
 
 if __name__ == "__main__":

@@ -39,7 +39,7 @@
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QComboBox" name="isComboBox"/>
+       <widget class="QComboBox" name="valueComboBox"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="chooseDataLabel">
@@ -52,13 +52,18 @@
        <widget class="QComboBox" name="chooseDataComboBox"/>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="isComboBox_2"/>
+       <widget class="QComboBox" name="colNameComboBox"/>
       </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>chooseDataComboBox</tabstop>
+  <tabstop>colNameComboBox</tabstop>
+  <tabstop>valueComboBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

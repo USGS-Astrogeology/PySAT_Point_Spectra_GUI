@@ -11,293 +11,289 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QGroupBox" name="groupbox">
+    <widget class="QGroupBox" name="groupBox">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QGroupBox" name="formGroupBox">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <layout class="QFormLayout" name="formLayout_2">
-         <property name="fieldGrowthPolicy">
-          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-         </property>
-         <item row="0" column="0">
-          <widget class="QLabel" name="alphaLabel_2">
-           <property name="text">
-            <string>Alpha</string>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QGroupBox" name="Ridge_CV">
+          <property name="title">
+           <string>Ridge CV</string>
+          </property>
+          <layout class="QFormLayout" name="formLayout_6">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox_2">
-           <property name="value">
-            <double>1.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="copyXLabel_2">
-           <property name="text">
-            <string>Copy X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QCheckBox" name="copyXCheckBox_2">
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="fitInterceptLabel_4">
-           <property name="text">
-            <string>Fit Intercept</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QCheckBox" name="fitInterceptCheckBox_4">
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="maxNumOfIterationsLabel_2">
-           <property name="text">
-            <string>Max num of Iterations</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="maxNumOfIterationslineEdit_2">
-           <property name="text">
-            <string>None</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="normalizeLabel_4">
-           <property name="text">
-            <string>Normalize</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QCheckBox" name="normalizeCheckBox_4"/>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="solverLabel_2">
-           <property name="text">
-            <string>Solver</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="solverComboBox_2">
-           <item>
-            <property name="text">
-             <string>auto</string>
-            </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="alphasLabel_cv">
+             <property name="text">
+              <string>alphas</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>svd</string>
-            </property>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="alphasLineEdit_cv">
+             <property name="text">
+              <string>0.1, 1.0, 10.0</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>cholesky</string>
-            </property>
+           <item row="1" column="0">
+            <widget class="QLabel" name="fitInterceptLabel_cv">
+             <property name="text">
+              <string>Fit intercept </string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>lsqr</string>
-            </property>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="fitInterceptCheckBox_cv">
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>sparse_cg</string>
-            </property>
+           <item row="2" column="0">
+            <widget class="QLabel" name="normalizeLabel_cv">
+             <property name="text">
+              <string>Normalize </string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>sag</string>
-            </property>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="normalizeCheckBox_cv"/>
            </item>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="toleranceLabel_2">
-           <property name="text">
-            <string>Tolerance</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox_2"/>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="randomStateLabel_2">
-           <property name="text">
-            <string>Random State</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLineEdit" name="randomStateLineEdit_2">
-           <property name="text">
-            <string>None</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="formGroupBox_CV">
-        <layout class="QFormLayout" name="formLayout_6">
-         <property name="fieldGrowthPolicy">
-          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-         </property>
-         <item row="0" column="0">
-          <widget class="QLabel" name="alphasLabel_2">
-           <property name="text">
-            <string>alphas</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="alphasLineEdit_2">
-           <property name="text">
-            <string>0.1, 1.0, 10.0</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="fitInterceptLabel_3">
-           <property name="text">
-            <string>Fit intercept </string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QCheckBox" name="fitInterceptCheckBox_3">
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="normalizeLabel_3">
-           <property name="text">
-            <string>Normalize </string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QCheckBox" name="normalizeCheckBox_3"/>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="scoringLabel_2">
-           <property name="text">
-            <string>Scoring</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QComboBox" name="scoringComboBox_2">
-           <item>
-            <property name="text">
-             <string>None</string>
-            </property>
+           <item row="3" column="0">
+            <widget class="QLabel" name="scoringLabel_cv">
+             <property name="text">
+              <string>Scoring</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>string</string>
-            </property>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="scoringComboBox_cv">
+             <item>
+              <property name="text">
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>string</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>callable</string>
+              </property>
+             </item>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>callable</string>
-            </property>
+           <item row="4" column="0">
+            <widget class="QLabel" name="gCVModeLabel_cv">
+             <property name="text">
+              <string>GCV mode</string>
+             </property>
+            </widget>
            </item>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="cvLabel_2">
-           <property name="text">
-            <string>CV</string>
+           <item row="4" column="1">
+            <widget class="QComboBox" name="gCVModeComboBox_cv">
+             <item>
+              <property name="text">
+               <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>auto</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>svd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>eigen</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="storeCVValuesLabel_cv">
+             <property name="text">
+              <string>Store CV Values           </string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="storeCVValuesCheckBox_cv"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="Ridge">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="title">
+           <string>Ridge</string>
+          </property>
+          <layout class="QFormLayout" name="formLayout_2">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLineEdit" name="cvLineEdit_2">
-           <property name="text">
-            <string>None</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="gCVModeLabel_2">
-           <property name="text">
-            <string>GCV mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="gCVModeComboBox_2">
-           <item>
-            <property name="text">
-             <string>None</string>
-            </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="alphaLabel">
+             <property name="text">
+              <string>Alpha</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>auto</string>
-            </property>
+           <item row="0" column="1">
+            <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox">
+             <property name="value">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>svd</string>
-            </property>
+           <item row="1" column="0">
+            <widget class="QLabel" name="copyXLabel">
+             <property name="text">
+              <string>Copy X</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>eigen</string>
-            </property>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="copyXCheckBox">
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="storeCVValuesLabel_2">
-           <property name="text">
-            <string>Store CV Values           </string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QCheckBox" name="storeCVValuesCheckBox_2"/>
-         </item>
-        </layout>
-       </widget>
+           <item row="2" column="0">
+            <widget class="QLabel" name="fitInterceptLabel">
+             <property name="text">
+              <string>Fit Intercept</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="fitInterceptCheckBox">
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="maxNumOfIterationsLabel">
+             <property name="text">
+              <string>Max num of Iterations</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="maxNumOfIterationslineEdit">
+             <property name="text">
+              <string>None</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="normalizeLabel">
+             <property name="text">
+              <string>Normalize</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="normalizeCheckBox"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="solverLabel">
+             <property name="text">
+              <string>Solver</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QComboBox" name="solverComboBox">
+             <item>
+              <property name="text">
+               <string>auto</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>svd</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>cholesky</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>lsqr</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>sparse_cg</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>sag</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="toleranceLabel">
+             <property name="text">
+              <string>Tolerance</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="randomStateLabel">
+             <property name="text">
+              <string>Random State</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLineEdit" name="randomStateLineEdit">
+             <property name="text">
+              <string>None</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QGroupBox" name="formGroupBox_2">
         <layout class="QFormLayout" name="formLayout_5">
          <item row="0" column="0">
-          <widget class="QLabel" name="crossValidateLabel_2">
+          <widget class="QLabel" name="crossValidateLabel">
            <property name="text">
             <string>Cross Validate              </string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QCheckBox" name="crossValidateCheckBox_2">
+          <widget class="QCheckBox" name="crossValidateCheckBox">
            <property name="checked">
             <bool>true</bool>
            </property>
@@ -314,34 +310,34 @@
  <resources/>
  <connections>
   <connection>
-   <sender>crossValidateCheckBox_2</sender>
+   <sender>crossValidateCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>formGroupBox_CV</receiver>
-   <slot>setEnabled(bool)</slot>
+   <receiver>Ridge_CV</receiver>
+   <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>411</y>
+     <x>148</x>
+     <y>256</y>
     </hint>
     <hint type="destinationlabel">
-     <x>117</x>
-     <y>284</y>
+     <x>147</x>
+     <y>213</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>crossValidateCheckBox_2</sender>
+   <sender>crossValidateCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>formGroupBox</receiver>
-   <slot>setDisabled(bool)</slot>
+   <receiver>Ridge</receiver>
+   <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>229</x>
-     <y>415</y>
+     <x>356</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
-     <x>99</x>
-     <y>136</y>
+     <x>357</x>
+     <y>227</y>
     </hint>
    </hints>
   </connection>

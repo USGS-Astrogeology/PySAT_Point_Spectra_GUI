@@ -15,10 +15,13 @@
    <item>
     <widget class="QGroupBox" name="formGroupBox">
      <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
       <item row="0" column="0">
        <widget class="QLabel" name="alphaLabel">
         <property name="text">
-         <string>Alpha </string>
+         <string>alpha</string>
         </property>
        </widget>
       </item>
@@ -26,154 +29,138 @@
        <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox"/>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="fitInterceptLabel">
+       <widget class="QLabel" name="fit_interceptLabel">
         <property name="text">
-         <string>Fit Intercept</string>
+         <string>fit_intercept</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="QCheckBox" name="fit_interceptCheckBox"/>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="positiveLabel">
+       <widget class="QLabel" name="verboseLabel">
         <property name="text">
-         <string>Positive</string>
+         <string>verbose</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="positiveCheckBox"/>
+       <widget class="QCheckBox" name="verboseCheckBox"/>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="verboseLabel">
+       <widget class="QLabel" name="normalizeLabel">
         <property name="text">
-         <string>Verbose</string>
+         <string>normalize</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox"/>
+       <widget class="QCheckBox" name="normalizeCheckBox"/>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="normalizeLabel">
+       <widget class="QLabel" name="precomputeLabel">
         <property name="text">
-         <string>Normalize</string>
+         <string>precompute</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="precomputeComboBox"/>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="copyXLabel">
+       <widget class="QLabel" name="max_iterLabel">
         <property name="text">
-         <string>Copy X</string>
+         <string>max_iter
+</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QCheckBox" name="copyXCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="QSpinBox" name="max_iterSpinBox"/>
       </item>
       <item row="6" column="0">
-       <widget class="QLabel" name="precomputeLabel">
+       <widget class="QLabel" name="copy_XLabel">
         <property name="text">
-         <string>Precompute</string>
+         <string>copy_X
+</string>
         </property>
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QComboBox" name="precomputeComboBox">
-        <item>
-         <property name="text">
-          <string>Auto</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>True</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>False</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>array-like</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QCheckBox" name="copy_XCheckBox"/>
       </item>
       <item row="7" column="0">
-       <widget class="QLabel" name="maxIterationsLabel">
+       <widget class="QLabel" name="fit_pathLabel">
         <property name="text">
-         <string>Max Iterations</string>
+         <string>fit_path
+</string>
         </property>
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QSpinBox" name="maxIterationsSpinBox">
-        <property name="maximum">
-         <number>9999999</number>
-        </property>
-        <property name="value">
-         <number>500</number>
-        </property>
-       </widget>
+       <widget class="QCheckBox" name="fit_pathCheckBox"/>
       </item>
       <item row="8" column="0">
-       <widget class="QLabel" name="epsLabel">
+       <widget class="QLabel" name="positiveLabel">
         <property name="text">
-         <string>Eps</string>
+         <string>positive</string>
         </property>
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QDoubleSpinBox" name="epsDoubleSpinBox">
-        <property name="decimals">
-         <number>16</number>
-        </property>
-        <property name="value">
-         <double>2.220446000000000</double>
-        </property>
-       </widget>
+       <widget class="QCheckBox" name="positiveCheckBox"/>
       </item>
       <item row="9" column="0">
-       <widget class="QLabel" name="fitPathLabel">
+       <widget class="QLabel" name="cvLabel">
         <property name="text">
-         <string>Fit Path</string>
+         <string>cv
+</string>
         </property>
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QCheckBox" name="fitPathCheckBox">
-        <property name="checked">
-         <bool>true</bool>
+       <widget class="QSpinBox" name="cvSpinBox"/>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="max_n_alphasLabel">
+        <property name="text">
+         <string>max_n_alphas
+</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="0">
+      <item row="10" column="1">
+       <widget class="QSpinBox" name="max_n_alphasSpinBox"/>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="n_jobsLabel">
+        <property name="text">
+         <string>n_jobs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QSpinBox" name="n_jobsSpinBox"/>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="criterionLabel">
+        <property name="text">
+         <string>criterion </string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QComboBox" name="criterionComboBox"/>
+      </item>
+      <item row="13" column="0">
        <widget class="QLabel" name="modelLabel">
         <property name="text">
          <string>Model</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="1">
+      <item row="13" column="1">
        <widget class="QComboBox" name="modelComboBox">
         <item>
          <property name="text">
