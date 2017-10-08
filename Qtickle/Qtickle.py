@@ -1,5 +1,4 @@
 import inspect
-import traceback
 from distutils.util import strtobool
 
 from PyQt5 import QtCore
@@ -13,8 +12,8 @@ class Qtickle(object):
     def guiSave(self):
         dict = {}
         # Save geometry
-        # self.settings.setValue('size', self.ui.size())
-        # self.settings.setValue('pos', self.ui.pos())
+        # self.settings.setValue('size', self.core.size())
+        # self.settings.setValue('pos', self.core.pos())
         try:
             for name, obj in inspect.getmembers(self.ui):
                 if isinstance(obj, QLineEdit):
@@ -73,15 +72,14 @@ class Qtickle(object):
                     # we'll just save the string representation of those items to be restored
                     dict[name + "_index"] = [str(x.text()) for x in obj.selectedItems()]
 
-            print(dict)  # Debug purposes
             return dict
         except Exception as e:
             print(e)
 
     def guiRestore(self, dict):
         # Restore geometry
-        # self.ui.resize(self.settings.value('size', QtCore.QSize(500, 500)))
-        # self.ui.move(self.settings.value('pos', QtCore.QPoint(60, 60)))
+        # self.core.resize(self.settings.value('size', QtCore.QSize(500, 500)))
+        # self.core.move(self.settings.value('pos', QtCore.QPoint(60, 60)))
         for name, obj in inspect.getmembers(self.ui):
             try:
                 if isinstance(obj, QLineEdit):
@@ -120,7 +118,7 @@ class Qtickle(object):
                     name = obj.objectName()
                     value = dict[name]
                     if value is not None:
-                        obj.setValue(int(value))
+                        obj.setValue(float(value))
 
                 if isinstance(obj, QLabel):
                     name = obj.objectName()
@@ -154,16 +152,16 @@ class Qtickle(object):
                             obj.addItem(list_item)
                     index = dict[name + "_index"]
                     try:
-                        obj.setCurrentItem(obj.findItems(index, QtCore.Qt.MatchExactly)[0])
+                        obj.setCurrentItem(obj.findItems(index[0], QtCore.Qt.MatchExactly)[0])
                     except:
                         pass
 
             except Exception as e:
                 print(e)
 
-    def isGuiChanged(self, ui, functionCall):
+    def isGuiChanged(self, functionCall):
         try:
-            for name, obj in inspect.getmembers(ui):
+            for name, obj in inspect.getmembers(self.ui):
                 if isinstance(obj, QLineEdit):
                     obj.textChanged.connect(lambda: functionCall())
 
@@ -171,7 +169,7 @@ class Qtickle(object):
                     obj.stateChanged.connect(lambda: functionCall())
 
                 if isinstance(obj, QRadioButton):
-                    obj.hitButton.connect(lambda: functionCall())
+                    obj.toggled.connect(lambda: functionCall())
 
                 if isinstance(obj, QSpinBox):
                     obj.valueChanged.connect(lambda: functionCall())

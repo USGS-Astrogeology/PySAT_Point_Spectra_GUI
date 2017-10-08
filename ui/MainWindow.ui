@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>435</width>
+    <height>506</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PYSAT Point Spectra GUI</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>400</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QVBoxLayout" name="widgetLayout"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QTextBrowser" name="textBrowser">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>200</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Console window&lt;br/&gt;This window gives you information about your running module&lt;br/&gt;Errors will also show up here, if they occur&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="progress_OK">
+      <item>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your current progression.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+        <property name="format">
+         <string>%p%</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="undoModulePushButton">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Re-run your last ran module&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Re-run Module</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="stopPushButton">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Completely stop the currently running module&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Stop Module</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteModulePushButton">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete a module that has not been ran&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Delete Module</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="okPushButton">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press this button when you are ready to run the modules in your workflow&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="whatsThis">
+         <string>Press this button when you're ready to run. (Ctrl+Enter)</string>
+        </property>
+        <property name="text">
+         <string>OK</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>435</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_Data"/>
+    <addaction name="actionRename_Data"/>
+    <addaction name="actionSave_Current_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionSet_Output_Path"/>
+    <addaction name="actionRead_ChemCam_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionCreate_New_Workflow"/>
+    <addaction name="actionClear_Workflow"/>
+    <addaction name="actionRestore_Workflow"/>
+    <addaction name="actionSave_Current_Workflow"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuPreprocessing">
+    <property name="title">
+     <string>Preprocessing</string>
+    </property>
+    <addaction name="actionRemove_Rows"/>
+    <addaction name="actionSplit_Data"/>
+    <addaction name="actionInterpolate"/>
+    <addaction name="actionRemove_Baseline"/>
+    <addaction name="actionApply_Mask"/>
+    <addaction name="actionPeak_Areas"/>
+    <addaction name="actionMultiply_by_Vector"/>
+    <addaction name="actionNormalization"/>
+    <addaction name="actionDimensionality_Reduction"/>
+    <addaction name="actionStratified_Folds"/>
+   </widget>
+   <widget class="QMenu" name="menuRegression">
+    <property name="title">
+     <string>Regression</string>
+    </property>
+    <addaction name="actionCross_Validation"/>
+    <addaction name="actionTrain"/>
+    <addaction name="actionPredict"/>
+    <addaction name="actionSubmodel_Predict"/>
+   </widget>
+   <widget class="QMenu" name="menuVisualization">
+    <property name="title">
+     <string>Visualization</string>
+    </property>
+    <addaction name="actionPlot"/>
+    <addaction name="actionPlot_Spectra"/>
+    <addaction name="actionPlot_ICA_PCA"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <widget class="QMenu" name="menuDark_Mode">
+     <property name="title">
+      <string>Theme</string>
+     </property>
+     <addaction name="actionDefault"/>
+     <addaction name="actionBrace_yourself"/>
+     <addaction name="actionQtmodern"/>
+    </widget>
+    <widget class="QMenu" name="menuDebug_Mode">
+     <property name="title">
+      <string>Debug Mode</string>
+     </property>
+     <addaction name="actionOn"/>
+     <addaction name="actionOff"/>
+    </widget>
+    <addaction name="menuDark_Mode"/>
+    <addaction name="menuDebug_Mode"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuPreprocessing"/>
+   <addaction name="menuRegression"/>
+   <addaction name="menuVisualization"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionRead_ChemCam_Data">
+   <property name="text">
+    <string>Read ChemCam Data</string>
+   </property>
+  </action>
+  <action name="actionLoad_Data">
+   <property name="text">
+    <string>Load Data</string>
+   </property>
+  </action>
+  <action name="actionSet_Output_Path">
+   <property name="text">
+    <string>Set Output Path</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Data">
+   <property name="text">
+    <string>Save Current Data</string>
+   </property>
+  </action>
+  <action name="actionCreate_New_Workflow">
+   <property name="text">
+    <string>Create New Workflow</string>
+   </property>
+  </action>
+  <action name="actionRestore_Workflow">
+   <property name="text">
+    <string>Restore Workflow</string>
+   </property>
+  </action>
+  <action name="actionSave_Current_Workflow">
+   <property name="text">
+    <string>Save Current Workflow</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionRemove_Rows">
+   <property name="text">
+    <string>Remove Rows</string>
+   </property>
+  </action>
+  <action name="actionSplit_Data">
+   <property name="text">
+    <string>Split Data</string>
+   </property>
+  </action>
+  <action name="actionInterpolate">
+   <property name="text">
+    <string>Interpolate</string>
+   </property>
+  </action>
+  <action name="actionRemove_Baseline">
+   <property name="text">
+    <string>Remove Baseline</string>
+   </property>
+  </action>
+  <action name="actionApply_Mask">
+   <property name="text">
+    <string>Apply Mask</string>
+   </property>
+  </action>
+  <action name="actionPeak_Areas">
+   <property name="text">
+    <string>Peak Areas</string>
+   </property>
+  </action>
+  <action name="actionMultiply_by_Vector">
+   <property name="text">
+    <string>Multiply by Vector</string>
+   </property>
+  </action>
+  <action name="actionNormalization">
+   <property name="text">
+    <string>Normalization</string>
+   </property>
+  </action>
+  <action name="actionDimensionality_Reduction">
+   <property name="text">
+    <string>Dimensionality Reduction</string>
+   </property>
+  </action>
+  <action name="actionStratified_Folds">
+   <property name="text">
+    <string>Stratified Folds</string>
+   </property>
+  </action>
+  <action name="actionCross_Validation">
+   <property name="text">
+    <string>Cross Validation</string>
+   </property>
+  </action>
+  <action name="actionTrain">
+   <property name="text">
+    <string>Regression Train</string>
+   </property>
+  </action>
+  <action name="actionSubmodel_Predict">
+   <property name="text">
+    <string>Submodel Predict</string>
+   </property>
+  </action>
+  <action name="actionPredict">
+   <property name="text">
+    <string>Regression Predict</string>
+   </property>
+  </action>
+  <action name="actionPlot">
+   <property name="text">
+    <string>Plot</string>
+   </property>
+  </action>
+  <action name="actionPlot_Spectra">
+   <property name="text">
+    <string>Plot Spectra</string>
+   </property>
+  </action>
+  <action name="actionPlot_ICA_PCA">
+   <property name="text">
+    <string>Plot ICA/PCA</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt...</string>
+   </property>
+  </action>
+  <action name="actionOpen_Workflow">
+   <property name="text">
+    <string>Open Workflow</string>
+   </property>
+  </action>
+  <action name="actionOn_2">
+   <property name="text">
+    <string>On</string>
+   </property>
+  </action>
+  <action name="actionOff_2">
+   <property name="text">
+    <string>Off</string>
+   </property>
+  </action>
+  <action name="actionRename_Data">
+   <property name="text">
+    <string>Rename Data</string>
+   </property>
+  </action>
+  <action name="actionQtmodern">
+   <property name="text">
+    <string>qtmodern</string>
+   </property>
+  </action>
+  <action name="actionDefault">
+   <property name="text">
+    <string>Default</string>
+   </property>
+  </action>
+  <action name="actionOn">
+   <property name="text">
+    <string>On</string>
+   </property>
+  </action>
+  <action name="actionOff">
+   <property name="text">
+    <string>Off</string>
+   </property>
+  </action>
+  <action name="actionBrace_yourself">
+   <property name="text">
+    <string>Brace yourself</string>
+   </property>
+  </action>
+  <action name="actionClear_Workflow">
+   <property name="text">
+    <string>Clear Workflow</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

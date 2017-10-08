@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="">
+     <layout class="QFormLayout" name="formLayout_2">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="largestWaveletScaleLabel">
+        <property name="text">
+         <string>Largest Wavelet Scale</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="largestWaveletScaleSpinBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lowestWaveletScaleLabel">
+        <property name="text">
+         <string>Lowest Wavelet Scale</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="lowestWaveletScaleSpinBox"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="interpolationMethodLabel">
+        <property name="text">
+         <string>Interpolation Method</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="interpolationMethodComboBox">
+        <item>
+         <property name="text">
+          <string>Spline</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Quadratic</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Linear</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

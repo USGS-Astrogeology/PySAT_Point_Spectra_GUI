@@ -1,0 +1,2 @@
+from point_spectra_gui.core.crossValidateMethods import GP
+from point_spectra_gui.core.crossValidateMethods import PLS

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Normalization</string>
+     </property>
+     <layout class="QVBoxLayout" name="Normalization">
+      <item>
+       <layout class="QFormLayout" name="chooseDataFormLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="chooseDataLabel">
+          <property name="text">
+           <string>Choose data</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="chooseDataComboBox"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="varToNormalizeVerticalLayout">
+        <item>
+         <widget class="QLabel" name="varToNormalizeLabel">
+          <property name="text">
+           <string>Variable to normalize</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="varToNormalizeListWidget"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="waveLengthLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox"/>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_2">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_2"/>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_2">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_2"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_3">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_3"/>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_3">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_3"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_4">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_4"/>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_4">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_4"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_5">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_5"/>
+        </item>
+        <item row="4" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_5">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_5"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_6">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_6"/>
+        </item>
+        <item row="5" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_6">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_6"/>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_7">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_7"/>
+        </item>
+        <item row="6" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_7">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_7"/>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_8">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_8"/>
+        </item>
+        <item row="7" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_8">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_8"/>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_9">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_9"/>
+        </item>
+        <item row="8" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_9">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_9"/>
+        </item>
+        <item row="9" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_10">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_10"/>
+        </item>
+        <item row="9" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_10">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_10"/>
+        </item>
+        <item row="10" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_11">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_11"/>
+        </item>
+        <item row="10" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_11">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_11"/>
+        </item>
+        <item row="11" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_12">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_12"/>
+        </item>
+        <item row="11" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_12">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_12"/>
+        </item>
+        <item row="12" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_13">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_13"/>
+        </item>
+        <item row="12" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_13">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_13"/>
+        </item>
+        <item row="13" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_14">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="13" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_14"/>
+        </item>
+        <item row="13" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_14">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="13" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_14"/>
+        </item>
+        <item row="14" column="0">
+         <widget class="QLabel" name="minimumWavelengthLabel_15">
+          <property name="text">
+           <string>Minimum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="14" column="2">
+         <widget class="QLabel" name="maximumWavelengthLabel_15">
+          <property name="text">
+           <string>Maximum wavelength</string>
+          </property>
+         </widget>
+        </item>
+        <item row="14" column="3">
+         <widget class="QSpinBox" name="maximumWavelengthSpinBox_15"/>
+        </item>
+        <item row="14" column="1">
+         <widget class="QSpinBox" name="minimumWavelengthSpinBox_15"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="addDelRangeLayout">
+        <item>
+         <widget class="QLabel" name="nRangesLabel">
+          <property name="text">
+           <string>Number of Ranges:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="rangeCountSpinBox">
+          <property name="maximum">
+           <number>14</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Plot</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QGridLayout" name="topLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="chooseDataLabel">
+          <property name="text">
+           <string>Choose data</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="chooseDataComboBox">
+          <property name="toolTip">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="figureNameLabel">
+          <property name="text">
+           <string>Figure name</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="figureNameLineEdit"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="plotTitleLabel">
+          <property name="text">
+           <string>Plot Title</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="plotTitleLineEdit"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="figureNameComboBox">
+          <property name="toolTip">
+           <string>Already have a figure, select from the ones available here</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="figureLabel">
+          <property name="text">
+           <string>Select an existing figure name</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="XYLayout">
+        <item>
+         <layout class="QFormLayout" name="xLayout">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="chooseXVariableLabel">
+            <property name="text">
+             <string>Choose X Variable</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="chooseXVariableComboBox"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="xTitleLabel">
+            <property name="text">
+             <string>X title</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="xTitleLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="xMinLabel">
+            <property name="text">
+             <string>X min</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="xMaxLabel">
+            <property name="text">
+             <string>X max</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="xMinDoubleSpinBox"/>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDoubleSpinBox" name="xMaxDoubleSpinBox"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="yLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="chooseYVariableLabel">
+            <property name="text">
+             <string>Choose Y Variable</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="chooseYVariableComboBox"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="yTitleLabel">
+            <property name="text">
+             <string>Y title</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="yTitleLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="yMinLabel">
+            <property name="text">
+             <string>Y min</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="yMaxLabel">
+            <property name="text">
+             <string>X max</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="yMinDoubleSpinBox"/>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDoubleSpinBox" name="yMaxDoubleSpinBox"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="botLayout">
+        <item row="1" column="0">
+         <widget class="QLabel" name="oneToOneLabel">
+          <property name="text">
+           <string>One to One</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="legendLabel">
+          <property name="text">
+           <string>Legend</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="alphaLabel">
+          <property name="text">
+           <string>Alpha</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="markerLabel">
+          <property name="text">
+           <string>Marker</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox"/>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="plotFilenameLabel">
+          <property name="text">
+           <string>Plot Filename</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="lineComboBox"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="lineLabel">
+          <property name="text">
+           <string>Line</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLineEdit" name="plotFilenameLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="colorComboBox"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="colorLabel">
+          <property name="text">
+           <string>Color</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="markerComboBox"/>
+        </item>
+        <item row="6" column="2">
+         <widget class="QPushButton" name="plotFilenamePushButton">
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="legendLineEdit"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="oneToOneCheckBox">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>chooseDataComboBox</tabstop>
+  <tabstop>figureNameLineEdit</tabstop>
+  <tabstop>plotTitleLineEdit</tabstop>
+  <tabstop>chooseXVariableComboBox</tabstop>
+  <tabstop>xTitleLineEdit</tabstop>
+  <tabstop>xMinDoubleSpinBox</tabstop>
+  <tabstop>xMaxDoubleSpinBox</tabstop>
+  <tabstop>chooseYVariableComboBox</tabstop>
+  <tabstop>yTitleLineEdit</tabstop>
+  <tabstop>yMinDoubleSpinBox</tabstop>
+  <tabstop>yMaxDoubleSpinBox</tabstop>
+  <tabstop>legendLineEdit</tabstop>
+  <tabstop>oneToOneCheckBox</tabstop>
+  <tabstop>colorComboBox</tabstop>
+  <tabstop>lineComboBox</tabstop>
+  <tabstop>markerComboBox</tabstop>
+  <tabstop>alphaDoubleSpinBox</tabstop>
+  <tabstop>plotFilenameLineEdit</tabstop>
+  <tabstop>plotFilenamePushButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
