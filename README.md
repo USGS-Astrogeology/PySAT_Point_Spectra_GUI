@@ -4,6 +4,7 @@
 
 1. Download the [**setup**](https://drive.google.com/file/d/0B51OpD0tMItxc0NqTG84UlVZaGs/view?usp=sharing) file
 2. Click and Install
+3. Run from shortcut in the Start menu. (Note: This installer is a new feature as of Oct 2017. If it does not work, please follow the command-line installation instructions below.)
 
 # Installation with Miniconda
 
