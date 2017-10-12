@@ -40,6 +40,7 @@ cd ..
 ### 4. Pip/Conda install necessary libraries
 
 ```bash
+conda config --set always_yes yes --set changeps1 no
 conda install pyqt
 conda install numpy
 conda install pandas
