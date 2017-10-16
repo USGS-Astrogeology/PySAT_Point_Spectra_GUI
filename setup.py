@@ -16,7 +16,7 @@ from distutils.dep_util import newer
 from distutils.spawn import find_executable
 from setuptools import setup, Command, find_packages
 
-PACKAGE_NAME = "Point Spectra GUI"
+PACKAGE_NAME = "point_spectra_gui"
 
 exclude_modules = [
     'ssl', 'bz2',
@@ -139,6 +139,7 @@ class point_spectra_gui_clean_ui(Command):
 setup(
     name=PACKAGE_NAME,
     version=__version__,
+    scripts=['point_spectra_gui'],
     description="A PDART-funded effort to design a spectral analysis tool for LIBS (and other) spectra",
     url="https://github.com/USGS-Astrogeology/PySAT",
     author="Ryan B. Anderson, Nicholas Finch",
