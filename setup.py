@@ -145,7 +145,7 @@ setup(
     author="Ryan B. Anderson, Nicholas Finch",
     author_email='rbanderson@usgs.gov, ngf4@nau.edu',
     license="Public Domain",
-    keywords='point_spectra_gui',
+    keywords='PYSAT LIBS PDART Point Spectra',
     package_dir={'point_spectra_gui': 'point_spectra_gui'},
     packages=find_packages(),
     cmdclass={
