@@ -1,27 +1,12 @@
 name: pysat_point_spectra_gui
 dependencies:
-  - python=3
- - icu
- - jpeg
- - libpng
+ - python=3
  - pyqt
- - qt
- - sip
- - sqlite
- - zlib
- - icc_rt
- - intel-openmp
- - mkl
  - numpy
  - pandas
- - python-dateutil
- - pytz
  - scipy
- - cycler
- - freetype
  - matplotlib
- - tornado 
  - pip:
-   - pysat
    - sklearn
    - qtmodern
+   - pysat

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="formGroupBox">
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="numOfIterationsLabel">
+        <property name="text">
+         <string>num of iterations</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="numOfIterationsLineEdit">
+        <property name="maximum" stdset="0">
+         <number>999999999</number>
+        </property>
+        <property name="value" stdset="0">
+         <number>300</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="toleranceLabel">
+        <property name="text">
+         <string>Tolerance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="toleranceLineEdit">
+        <property name="decimals" stdset="0">
+         <number>5</number>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>0.001000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="alpha1Label">
+        <property name="text">
+         <string>Alpha 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="alpha1LineEdit">
+        <property name="decimals" stdset="0">
+         <number>5</number>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>0.001000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="alpha2Label">
+        <property name="text">
+         <string>Alpha 2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="alpha2LineEdit">
+        <property name="decimals" stdset="0">
+         <number>8</number>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.000001000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>0.000001000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lambdaLabel">
+        <property name="text">
+         <string>Lambda</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lambdaLineEdit">
+        <property name="decimals" stdset="0">
+         <number>8</number>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.000001000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>0.000001000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="computerScoreLabel">
+        <property name="text">
+         <string>Computer Score</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="computerScoreCheckBox">
+        <property name="text">
+         <string>compute the objective function at each step of the model</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="fitInterceptLabel">
+        <property name="text">
+         <string>Fit Intercept</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="text">
+         <string>calculate the intercept for this model</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="normalizeLabel">
+        <property name="text">
+         <string>Normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QCheckBox" name="normalizeCheckBox">
+        <property name="text">
+         <string>regressors X will be normlized before regression</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="copyXLabel">
+        <property name="text">
+         <string>Copy X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QCheckBox" name="copyXCheckBox">
+        <property name="text">
+         <string>X will be copied; else, it may be overwritten</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="verboseLabel">
+        <property name="text">
+         <string>Verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="text">
+         <string>Verbose mode when fitting the model</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

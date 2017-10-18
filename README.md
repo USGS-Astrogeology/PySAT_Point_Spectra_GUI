@@ -80,12 +80,11 @@ Current Road Ahead
 
 ![FlowChart](./images/Flowchart.png)
 
-- The user begins by starting PYSAT_MAIN.
-- PYSAT_MAIN will begin by loading the splash screen and all necessary UI pieces
-- PYSAT_MAIN will then forward control to PYSAT_UI
-- PYSAT_UI displays the mainframe in which the UI's submodules will be loaded into
-- PYSAT_UI will then foward control to each submodule of focus
-- Each submodule builds the collective UI library
-- Each submodule fowards control to PYAT_FUNC which holds all the necessary logic functions
-- These logic functions then forward commands to the various PYSAT and Anaconda libraries
-- The values are then returned back up to PYSAT_FUNC which will then deal with changed data
+- The user begins by starting \_\_main\_\_.py.
+- \_\_main\_\_.py will load MainWindow.py which in turn will load the splash screen and all necessary UI pieces
+- MainWindow.py displays the mainframe in which the UI's submodules will be loaded into
+- MainWindow.py will then foward control to each submodule of focus
+- Each of the submodules build the collective UI library
+- Each submodule also contains all the necessary functions that will interact with Anaconda and PYSAT
+- The PYSAT and Anaconda libraries will then do the necessary data manipulations
+- The values are then returned back up to the Submodule which in turn is returned back to MainWindow which will then deal with changed data

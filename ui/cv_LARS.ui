@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="formGroupBox">
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="fit_interceptLabel">
+        <property name="text">
+         <string>fit_intercept</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="fit_interceptCheckBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="verboseLabel">
+        <property name="text">
+         <string>verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="normalizeLabel">
+        <property name="text">
+         <string>normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="normalizeCheckBox"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="precomputeLabel">
+        <property name="text">
+         <string>precompute</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="precomputeComboBox"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="n_nonzero_coefsLabel">
+        <property name="text">
+         <string>n_nonzero_coefs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="n_nonzero_coefsLineEdit"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="copy_XLabel">
+        <property name="text">
+         <string>copy_X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="copy_XCheckBox"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="fit_pathLabel">
+        <property name="text">
+         <string>fit_path</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="fit_pathCheckBox"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="positiveLabel">
+        <property name="text">
+         <string>positive</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QCheckBox" name="positiveCheckBox"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="max_iterLabel">
+        <property name="text">
+         <string>max_iter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="max_iterLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="cvLabel">
+        <property name="text">
+         <string>cv</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="cvLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="value" stdset="0">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="max_n_alphasLabel">
+        <property name="text">
+         <string>max_n_alphas</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QLineEdit" name="max_n_alphasLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="n_jobsLabel">
+        <property name="text">
+         <string>n_jobs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QLineEdit" name="n_jobsLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="cVLabel">
+        <property name="text">
+         <string>Cross Validate</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QCheckBox" name="cVCheckBox"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>max_iterLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>116</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cvLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>288</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>132</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>max_n_alphasLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>151</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cVCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>n_jobsLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>187</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

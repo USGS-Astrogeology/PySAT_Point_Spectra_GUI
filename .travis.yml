@@ -1,37 +1,17 @@
 language: python
-sudo: required
-python:
-  - "3.6"
-  - "3.5"
 cache:
-  - pip
-env:
-  global:
-    - PIP_INSTALL="pip3 install"
-  matrix:
-    - PYQT="$PIP_INSTALL pyqt5==5.9"
-before_install:
-  - $PYQT
+- pip
 install:
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda info -a
-  - conda create -q -n test_environment python=$TRAVIS_PYTHON_VERSION
-  - source activate test_environment 
-  - conda install pytest pytest-cov coverage sh anaconda-client
-  - pip install -r requirements.txt
-  - conda list
-  - python setup.py install
-  - git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT.git
-  - cd PySAT
-  - python setup.py install
-  - cd ..
+- wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
 script:
-  - python setup.py clean
-  - python setup.py build
-  - python setup.py install
-  - python tests/test_MainWindow.py
+- python setup.py sdist
+deploy:
+  provider: pypi
+  user: tisaconundrum
+  password:
+    secure: cEYBtOTzLRF7bWrissS1d+Gg+JYIxDlvWUPoFOcupc9L3cU8RGdVR+Ghu2fkeF+2Kye/+z3CKWdHn4TbtOV1s4loMTbObxabpAdxOgQGj5TOLfxxcO+XCByO5j4oW6EHtZR+9tVW5v5xbrS8qZOPWOTqwXJqbFJwwLWElEGU2cqWkfe6bAOyzRJOmlklNA33nzfyGQAm3+1Nz1D7ts+Xg8zfOWcn2alufUAKKWQcXRO2bfgScBa5lGYp2gGUx/ggdqQRD+nDJloPlBQTkzg1ayPzy67aHZxOgaanJ84Ps4J1sR/Csj6DHwAIeVFJKHStinGmlHRiJ8bF8Fp5+PppnVFmrzaC8xugfI8YoVYE+jQLZf0fzWXEtL8xVSkTVLIzTdLXw48jaXdRdMmCfXlLEK+XaQ+ZI4JRnSuFqw3CSPCymxSWEe1KdxuJ4KSkyn8q2EieP3lv6jZgKj+P8QiytBLqO0Tz3UsGIj2rHrlatplN7PYWXvtvB/idZX5HWyElCp9bCwh6exHbC+Dx0+LoQFAtjv1FZxh7EnDP7AOvfZixWevtGtfxFnwI9Qui8V7xlJClQ4nQnJbfyRGrbw6PaYVUvOw0bU/Sc8E8HLYpPe0HLIUVP2BGf6SxpOn8kHXbch9CEjTn3w9RGm+qz8DqNWu5gZIccDp7gCRIiAZwxaw=
+  on:
+    branch: dev
