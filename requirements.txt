@@ -6,4 +6,5 @@ sklearn
 numpy
 pandas
 PyQt5
+Qtickle
 pysat 
