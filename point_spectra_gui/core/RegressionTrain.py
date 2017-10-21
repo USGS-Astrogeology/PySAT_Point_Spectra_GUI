@@ -1,13 +1,13 @@
 import numpy as np
 import pandas as pd
 from PyQt5 import QtWidgets
+from Qtickle import Qtickle
 from pysat.regression import regression
 from pysat.spectral.spectral_data import spectral_data
-
-from Qtickle import Qtickle
 from point_spectra_gui.core.regressionMethods import *
 from point_spectra_gui.ui.RegressionTrain import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
+
 
 
 class RegressionTrain(Ui_Form, Basics):
