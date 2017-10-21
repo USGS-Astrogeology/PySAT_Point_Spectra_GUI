@@ -486,7 +486,7 @@ def get_splash(app):
     :param app:
     :return:
     """
-    dirs = ['../images/', '/PySAT_Point_Spectra_GUI/images', './PySAT_Point_Spectra_GUI/images']
+    dirs = ['../images/', '/point_spectra_gui/images', './point_spectra_gui/images']
     for dir in dirs:
         if os.path.exists(dir + 'splash.png'):
             splash_pix = QPixmap(dir + 'splash.png')  # default
