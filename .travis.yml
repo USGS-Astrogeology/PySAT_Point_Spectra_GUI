@@ -7,6 +7,16 @@ install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
 script:
+  - git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT.git
+  - conda config --set always_yes yes --set changeps1 no
+  - conda install pyqt
+  - conda install numpy
+  - conda install pandas
+  - conda install scipy
+  - pip install sklearn
+  - conda install matplotlib
+  - pip install qtmodern
+  - pip install Qtickle
   - python setup.py sdist
 deploy:
   provider: pypi
@@ -17,4 +27,9 @@ deploy:
   on:
     branch: dev
 after_deploy:
-  - pip install point_spectra_gui
+  - cd PySAT
+  - python setup.py install
+  - cd ..
+  - cd PySAT_Point_Spectra_GUI
+  - python setup.py install
+  - python point_spectra_gui
