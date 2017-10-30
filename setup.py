@@ -139,7 +139,6 @@ class point_spectra_gui_clean_ui(Command):
 setup(
     name=PACKAGE_NAME,
     version=__version__,
-    scripts=['point_spectra_gui'],
     description="A PDART-funded effort to design a spectral analysis tool for LIBS (and other) spectra",
     url="https://github.com/USGS-Astrogeology/PySAT",
     author="Ryan B. Anderson, Nicholas Finch",
