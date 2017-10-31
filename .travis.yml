@@ -9,6 +9,7 @@ install:
 script:
   - bash install_travis.sh
   - python setup.py sdist
+  - python point_spectra_gui/testing/t.py
 deploy:
   provider: pypi
   user: tisaconundrum
