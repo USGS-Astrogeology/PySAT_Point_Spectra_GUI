@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets
 
 from point_spectra_gui.ui.Dietrich import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-from pysat.spectral.baseline_code.dietrich import Dietrich
+from libpysat.spectral.baseline_code.dietrich import Dietrich
 
 class Ui_Form(Ui_Form, Basics):
     def setupUi(self, Form):

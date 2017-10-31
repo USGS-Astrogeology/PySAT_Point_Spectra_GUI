@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from pysat.spectral.baseline_code.polyfit import PolyFit
+from libpysat.spectral.baseline_code.polyfit import PolyFit
 
 from point_spectra_gui.ui.Polyfit import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics

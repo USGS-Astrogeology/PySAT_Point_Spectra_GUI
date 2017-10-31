@@ -1,7 +1,7 @@
 import pandas as pd
 from PyQt5 import QtWidgets
-from pysat.fileio import io_ccam_pds
-from pysat.spectral.spectral_data import spectral_data
+from libpysat.fileio import io_ccam_pds
+from libpysat.spectral.spectral_data import spectral_data
 
 from point_spectra_gui.ui.ReadChemCamData import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
