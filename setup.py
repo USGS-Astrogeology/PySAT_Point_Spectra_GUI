@@ -147,6 +147,11 @@ setup(
     keywords='PYSAT LIBS PDART Point Spectra',
     package_dir={'point_spectra_gui': 'point_spectra_gui'},
     packages=find_packages(),
+    entry_points={
+        'gui_scripts': [
+            'point_spectra_gui=point_spectra_gui.core.MainWindow:main'
+        ],
+    },
     cmdclass={
         'build_ui': point_spectra_gui_build_ui,
         'clean_ui': point_spectra_gui_clean_ui,
