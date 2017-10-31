@@ -53,7 +53,7 @@ pip install qtmodern
 ### 5 Start the application
 
 ```bash
-python PySAT_Point_Spectra_GUI\point_spectra_gui
+point_spectra_gui
 ```
 
 if the application fails to start because of a missing dependency try `pip` or `conda` installing it.
