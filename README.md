@@ -22,7 +22,7 @@ Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 ### 2. Download necessary libraries
 
 ```bash
-git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI.git
+pip install point_spectra_gui
 git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT.git
 ```
 
