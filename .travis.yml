@@ -9,6 +9,7 @@ install:
 script:
   - bash install_travis.sh
   - python setup.py sdist
+  - cd PySAT_Point_Spectra_GUI
   - python point_spectra_gui/testing/t.py
 deploy:
   provider: pypi
