@@ -7,8 +7,7 @@ install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
 script:
-  - bash install_travis.sh
-  - python setup.py sdist
+  - conda env create -n ppsg -f environment.yml
 deploy:
   provider: pypi
   user: tisaconundrum
@@ -18,5 +17,4 @@ deploy:
   on:
     branch: dev
 after_deploy:
-  - pip install point_spectra_gui
   - point_spectra_gui
