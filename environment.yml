@@ -10,4 +10,5 @@ dependencies:
    - sklearn
    - qtmodern
    - libpysat
+   - Qtickle
    - point_spectra_gui
