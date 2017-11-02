@@ -8,7 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(435, 506)
+        MainWindow.resize(515, 506)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignCenter)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 400, 211))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 472, 190))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.progress_OK)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 435, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 515, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -156,6 +156,8 @@ class Ui_MainWindow(object):
         self.actionBrace_yourself.setObjectName("actionBrace_yourself")
         self.actionClear_Workflow = QtWidgets.QAction(MainWindow)
         self.actionClear_Workflow.setObjectName("actionClear_Workflow")
+        self.actionSpectral_Derivative = QtWidgets.QAction(MainWindow)
+        self.actionSpectral_Derivative.setObjectName("actionSpectral_Derivative")
         self.menuFile.addAction(self.actionLoad_Data)
         self.menuFile.addAction(self.actionRename_Data)
         self.menuFile.addAction(self.actionSave_Current_Data)
@@ -179,6 +181,7 @@ class Ui_MainWindow(object):
         self.menuPreprocessing.addAction(self.actionNormalization)
         self.menuPreprocessing.addAction(self.actionDimensionality_Reduction)
         self.menuPreprocessing.addAction(self.actionStratified_Folds)
+        self.menuPreprocessing.addAction(self.actionSpectral_Derivative)
         self.menuRegression.addAction(self.actionCross_Validation)
         self.menuRegression.addAction(self.actionTrain)
         self.menuRegression.addAction(self.actionPredict)
@@ -265,6 +268,7 @@ class Ui_MainWindow(object):
         self.actionOff.setText(("Off"))
         self.actionBrace_yourself.setText(("Brace yourself"))
         self.actionClear_Workflow.setText(("Clear Workflow"))
+        self.actionSpectral_Derivative.setText(("Spectral Derivative"))
 
 
 if __name__ == "__main__":
