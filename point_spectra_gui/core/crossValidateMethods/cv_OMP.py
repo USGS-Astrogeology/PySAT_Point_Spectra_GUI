@@ -1,8 +1,8 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from sklearn.linear_model.omp import OrthogonalMatchingPursuit
 from sklearn.linear_model.omp import OrthogonalMatchingPursuitCV
 
-from point_spectra_gui.ui.OMP import Ui_Form
+from point_spectra_gui.ui.cv_OMP import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
@@ -19,15 +19,17 @@ class Ui_Form(Ui_Form, OrthogonalMatchingPursuit, OrthogonalMatchingPursuitCV, B
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.fitInterceptCheckBox.setChecked(self.fit_intercept)
-        self.normalizeCheckBox.setChecked(self.normalize)
-        self.defaultComboItem(self.precomputeComboBox, self.precompute)
+        self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(self.fit_intercept),QtCore.Qt.MatchExactly)[0])
+        self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(self.normalize),QtCore.Qt.MatchExactly)[0])
 
     def function(self):
-        params = {'fit_intercept': self.fitInterceptCheckBox.isChecked(),
-                  'normalize': self.normalizeCheckBox.isChecked(),
-                  'precompute': self.precomputeComboBox.currentText(),
-                  'CV': self.cVCheckBox.isChecked()}
+        fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
+        normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
+
+        params = {'fit_intercept': [fit_intercept_items],
+                  'normalize': [normalize_items],
+                  'precompute': ['auto'],
+                  'CV': [False]}
         modelkey = str(params)
         return params, modelkey
 

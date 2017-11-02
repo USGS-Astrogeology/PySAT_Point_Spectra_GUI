@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>348</width>
+    <height>279</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -21,7 +29,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="alphaLabel">
         <property name="text">
-         <string>alpha</string>
+         <string>Alpha</string>
         </property>
        </widget>
       </item>
@@ -31,150 +39,99 @@
       <item row="1" column="0">
        <widget class="QLabel" name="fit_interceptLabel">
         <property name="text">
-         <string>fit_intercept</string>
+         <string>Fit Intercept</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="fit_interceptCheckBox"/>
+       <widget class="QListWidget" name="fit_intercept_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="verboseLabel">
+       <widget class="QLabel" name="normalizeLabel">
         <property name="text">
-         <string>verbose</string>
+         <string>Normalize</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox"/>
+       <widget class="QListWidget" name="normalize_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="normalizeLabel">
+       <widget class="QLabel" name="max_iterLabel">
         <property name="text">
-         <string>normalize</string>
+         <string>Max # of iterations</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox"/>
+       <widget class="QLineEdit" name="max_iterLineEdit"/>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="precomputeLabel">
+       <widget class="QLabel" name="positiveLabel">
         <property name="text">
-         <string>precompute</string>
+         <string>Force positive coefficients</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QComboBox" name="precomputeComboBox"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="max_iterLabel">
-        <property name="text">
-         <string>max_iter
-</string>
+       <widget class="QListWidget" name="force_positive_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
         </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="max_iterLineEdit"/>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="copy_XLabel">
-        <property name="text">
-         <string>copy_X
-</string>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
         </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QCheckBox" name="copy_XCheckBox"/>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="fit_pathLabel">
-        <property name="text">
-         <string>fit_path
-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QCheckBox" name="fit_pathCheckBox"/>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="positiveLabel">
-        <property name="text">
-         <string>positive</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QCheckBox" name="positiveCheckBox"/>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="cvLabel">
-        <property name="text">
-         <string>cv
-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QLineEdit" name="cvLineEdit"/>
-      </item>
-      <item row="10" column="0">
-       <widget class="QLabel" name="max_n_alphasLabel">
-        <property name="text">
-         <string>max_n_alphas
-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QLineEdit" name="max_n_alphasLineEdit"/>
-      </item>
-      <item row="11" column="0">
-       <widget class="QLabel" name="n_jobsLabel">
-        <property name="text">
-         <string>n_jobs</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <widget class="QLineEdit" name="n_jobsLineEdit"/>
-      </item>
-      <item row="12" column="0">
-       <widget class="QLabel" name="criterionLabel">
-        <property name="text">
-         <string>criterion </string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="1">
-       <widget class="QComboBox" name="criterionComboBox"/>
-      </item>
-      <item row="13" column="0">
-       <widget class="QLabel" name="modelLabel">
-        <property name="text">
-         <string>Model</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="1">
-       <widget class="QComboBox" name="modelComboBox">
         <item>
          <property name="text">
-          <string>Lasso Lars</string>
+          <string>True</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Cross Validated Lasso Lars</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Information Criterion Lasso Lars</string>
+          <string>False</string>
          </property>
         </item>
        </widget>

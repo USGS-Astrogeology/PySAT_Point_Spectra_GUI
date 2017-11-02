@@ -145,16 +145,19 @@ class Qtickle(object):
                 if isinstance(obj, QListWidget):
                     name = obj.objectName()
                     values = dict[name + "_values"]
+                    index = dict[name + "_index"]
                     obj.clear()
                     if values is not None:
                         for value in values:
                             list_item = QListWidgetItem(value)
                             obj.addItem(list_item)
-                    index = dict[name + "_index"]
-                    try:
-                        obj.setCurrentItem(obj.findItems(index[0], QtCore.Qt.MatchExactly)[0])
-                    except:
-                        pass
+                            try:
+                                for i in index:
+                                    matching_items=obj.findItems(i, QtCore.Qt.MatchExactly)
+                                    for item in matching_items:
+                                        item.setSelected(True)
+                            except:
+                                pass
 
             except Exception as e:
                 print(e)

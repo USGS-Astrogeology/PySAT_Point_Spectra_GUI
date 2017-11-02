@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from PyQt5 import QtWidgets
 from pysat.regression import cv
 from pysat.spectral.spectral_data import spectral_data
@@ -28,9 +29,21 @@ class CrossValidation(Ui_Form, Basics):
 
     def connectWidgets(self):
         self.algorithm_list = ['Choose an algorithm',
-                               'PLS',
+                               'ARD',
+                               'BRR',
+                               'Elastic Net',
                                'GP',
-                               'More to come...']
+                               #'KRR',  This needs more work since it requires parameters for the kernel passed as an object
+                               'LARS',
+                               'LASSO',
+                               'LASSO LARS',
+                               'OLS',
+                               'OMP',
+                               'PLS',
+                               'Ridge',
+                               'SVR']
+
+
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
         self.setComboBox(self.chooseAlgorithmComboBox, self.algorithm_list)
         self.yMaxDoubleSpinBox.setMaximum(999999)
@@ -71,8 +84,6 @@ class CrossValidation(Ui_Form, Basics):
         yvars = [('comp', str(y.text())) for y in self.yVariableList.selectedItems()]
         yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
         params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
-        modelkey = method + ' - ' + str(yvars[0][-1]) + ' (' + str(yrange[0]) + '-' + str(yrange[1]) + ') '
-        print(params, modelkey)
 
         y = np.array(self.data[datakey].df[yvars])
         match = np.squeeze((y > yrange[0]) & (y < yrange[1]))
@@ -80,8 +91,26 @@ class CrossValidation(Ui_Form, Basics):
         # Warning: Params passing through cv.cv(params) needs to be in lists
         # Example: {'n_components': [4], 'scale': [False]}
         cv_obj = cv.cv(params)
-        self.data[datakey].df, self.cv_results = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
+        self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
                                                               yrange=yrange, method=method)
+        for n, key in enumerate(cvmodelkeys):
+            self.modelkeys.append(key)
+            self.models[key] = cvmodels[n]
+            coef = np.squeeze(cvmodels[n].model.coef_)
+            coef = pd.DataFrame(coef)
+            coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
+            coef = coef.T
+            coef[('meta', 'Model')] = key
+            try:
+                coef[('meta','Intercept')] = cvmodels[n].model.intercept_
+            except:
+                pass
+            try:
+                self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
+            except:
+                self.data['Model Coefficients'] = spectral_data(coef)
+                self.datakeys.append('Model Coefficients')
+
         self.datakeys.append('CV Results ' + modelkey)
         self.data['CV Results ' + modelkey] = self.cv_results
 
@@ -110,8 +139,19 @@ class CrossValidation(Ui_Form, Basics):
 
     def regressionMethods(self):
         self.alg = []
-        list_forms = [PLS,
-                      GP,
+        list_forms = [cv_ARD,
+                      cv_BayesianRidge,
+                      cv_ElasticNet,
+                      cv_GP,
+        #              cv_KRR,
+                      cv_LARS,
+                      cv_Lasso,
+                      cv_LassoLARS,
+                      cv_OLS,
+                      cv_OMP,
+                      cv_PLS,
+                      cv_Ridge,
+                      cv_SVR
                       ]
         for items in list_forms:
             self.alg.append(items.Ui_Form())

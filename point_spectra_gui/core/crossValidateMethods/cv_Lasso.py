@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets,QtCore
 from sklearn.linear_model.coordinate_descent import Lasso
-
-from point_spectra_gui.ui.Lasso import Ui_Form
+import numpy as np
+from point_spectra_gui.ui.cv_Lasso import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
@@ -18,20 +18,27 @@ class Ui_Form(Ui_Form, Lasso, Basics):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.alphaDoubleSpinBox.setValue(self.alpha)
-        self.fitInterceptCheckBox.setChecked(self.fit_intercept)
-        self.maxNumOfIterationsSpinBox.setValue(self.max_iter)
-        self.toleranceDoubleSpinBox.setValue(self.tol)
-        self.forcePositiveCoefficientsCheckBox.setChecked(self.positive)
+
+        self.minalpha_spin.setValue(1.0)
+        self.maxalpha_spin.setValue(1e3)
+        self.nalphas_spin.setValue(10)
+        self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(self.fit_intercept),QtCore.Qt.MatchExactly)[0])
+        self.maxNumOfIterationsLineEdit.setText(str(self.max_iter))
+        self.toleranceLineEdit.setText(str(self.tol))
+        self.forcePositive_list.setCurrentItem(self.forcePositive_list.findItems(str(self.positive),QtCore.Qt.MatchExactly)[0])
 
     def function(self):
-        params = {'alpha': self.alphaDoubleSpinBox.value(),
-                  'fit_intercept': self.fitInterceptCheckBox.isChecked(),
-                  'max_iter': int(self.maxNumOfIterationsSpinBox.value()),
-                  'tol': self.toleranceDoubleSpinBox.value(),
-                  'positive': self.forcePositiveCoefficientsCheckBox.isChecked(),
-                  'selection': 'random',
-                  'CV': self.optimizeWCrossValidaitonCheckBox.isChecked()}
+        fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
+        positive_items = [i.text() == 'True' for i in self.forcePositive_list.selectedItems()]
+        alphas = np.logspace(np.log10(self.minalpha_spin.value()*1e10), np.log10(self.maxalpha_spin.value()*1e10),
+                       num=self.nalphas_spin.value())
+        params = {'alpha': alphas,
+                  'fit_intercept': fit_intercept_items,
+                  'max_iter': [int(i) for i in self.maxNumOfIterationsLineEdit.text().split(',')],
+                  'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+                  'positive': positive_items,
+                  'selection': ['random']
+                  }
         modelkey = str(params)
         return params, modelkey
 
