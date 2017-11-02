@@ -1,6 +1,6 @@
 import numpy as np
 from PyQt5 import QtWidgets
-from pysat.spectral.spectral_data import spectral_data
+from libpysat.spectral.spectral_data import spectral_data
 
 from point_spectra_gui.ui.RemoveRows import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics

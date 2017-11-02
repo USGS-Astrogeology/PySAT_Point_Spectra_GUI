@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from pysat.spectral.baseline_code.mario import Mario
+from libpysat.spectral.baseline_code.mario import Mario
 
 from point_spectra_gui.ui.Mario import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics

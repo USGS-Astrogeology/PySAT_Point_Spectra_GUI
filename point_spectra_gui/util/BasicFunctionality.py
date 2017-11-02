@@ -1,10 +1,9 @@
 import inspect
 import sys
-
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import *
-
 from Qtickle import Qtickle
+
 
 
 class Basics:

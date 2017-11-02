@@ -1,9 +1,8 @@
-wheel
-pvl
-matplotlib
-scipy
-sklearn
+pyqt
 numpy
 pandas
-PyQt5
-pysat 
+scipy
+matplotlib
+sklearn
+qtmodern
+Qtickle

@@ -1,5 +1,4 @@
-
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import glob
 import os
@@ -12,15 +11,12 @@ from point_spectra_gui import __version__
 if sys.version_info < (3, 5):
     sys.exit("ERROR: You need Python 3.5 or higher to use point_spectra_gui.")
 
-
-
 from distutils import log
 from distutils.dep_util import newer
 from distutils.spawn import find_executable
 from setuptools import setup, Command, find_packages
 
-PACKAGE_NAME = "Point Spectra GUI"
-
+PACKAGE_NAME = "point_spectra_gui"
 
 exclude_modules = [
     'ssl', 'bz2',
@@ -32,8 +28,10 @@ exclude_modules = [
 
 tx_executable = find_executable('tx')
 
+
 def py_from_ui(uifile):
     return "%s.py" % os.path.splitext(os.path.basename(uifile))[0]
+
 
 def py_from_ui_with_defaultdir(uifile):
     return os.path.join("point_spectra_gui", "ui", py_from_ui(uifile))
@@ -138,35 +136,34 @@ class point_spectra_gui_clean_ui(Command):
             log.warn("'%s' does not exist -- can't clean it", pyfile)
 
 
-args = {
-    'name': PACKAGE_NAME,
-    'version': __version__,
-    'description': "A PDART-funded effort to design a spectral analysis tool for LIBS (and other) spectra",
-    # long_description=long_description,
-    'url': "https://github.com/USGS-Astrogeology/PySAT",
-    'author': "Ryan B. Anderson, Nicholas Finch",
-    'author_email': 'rbanderson@usgs.gov, ngf4@nau.edu',
-    'license': "Public Domain",
-    'keywords': 'MusicBrainz metadata tagger point_spectra_gui',
-    'package_dir': {'point_spectra_gui': 'point_spectra_gui'},
-    'packages': find_packages(),
-    'console_scripts': ['point_spectra_gui = point_spectra_gui.__main__:main'],
-    'cmdclass': {
+setup(
+    name=PACKAGE_NAME,
+    version=__version__,
+    description="A PDART-funded effort to design a spectral analysis tool for LIBS (and other) spectra",
+    url="https://github.com/USGS-Astrogeology/PySAT",
+    author="Ryan B. Anderson, Nicholas Finch",
+    author_email='rbanderson@usgs.gov, ngf4@nau.edu',
+    license="Public Domain",
+    keywords='PYSAT LIBS PDART Point Spectra',
+    package_dir={'point_spectra_gui': 'point_spectra_gui'},
+    packages=find_packages(),
+    install_requires =['sklearn', 'qtmodern', 'libpysat'],
+    entry_points={
+        'gui_scripts': [
+            'point_spectra_gui=point_spectra_gui.core.MainWindow:main'
+        ],
+    },
+    cmdclass={
         'build_ui': point_spectra_gui_build_ui,
         'clean_ui': point_spectra_gui_clean_ui,
     },
-    'classifiers': [
+    classifiers=[
         'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: MacOS',
         'Operating System :: POSIX :: Linux',
-        'Topic :: Science :: Spectral/LIBS',
-        'Topic :: Science :: Spectral/LIBS :: Analysis'
+        'Topic :: Scientific/Engineering',
     ]
-}
-
-
-# FIXME: this should check for the actual command ('install' vs. 'bdist_nsis', 'py2app', ...), not installed libraries
-setup(**args)
+)

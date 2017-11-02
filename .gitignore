@@ -89,3 +89,5 @@ auto_gitter.bat
 !images/*
 !inputs/*
 
+*.stackdump
+.pypirc
