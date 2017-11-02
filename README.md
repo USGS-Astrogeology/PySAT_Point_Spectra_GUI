@@ -21,7 +21,7 @@ source activate point_spectra_gui  # omit the `source` on Windows
 ### 4. Done! How to use point_spectra_gui
 
 ```bash
-source activate point_spectra_gui
+source activate point_spectra_gui  # omit the `source` on Windows
 point_spectra_gui
 ```
 
