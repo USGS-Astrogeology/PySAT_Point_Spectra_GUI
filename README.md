@@ -1,61 +1,30 @@
-[![Build Status](https://travis-ci.org/USGS-Astrogeology/PySAT_Point_Spectra_GUI.svg?branch=master)](https://travis-ci.org/USGS-Astrogeology/PySAT_Point_Spectra_GUI) [![Join the chat at https://gitter.im/USGS-Astrogeology/PySAT](https://badges.gitter.im/USGS-Astrogeology/PySAT.svg)](https://gitter.im/USGS-Astrogeology/PySAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/tisaconundrum2/PySAT_Point_Spectra_GUI.svg?branch=dev)](https://travis-ci.org/USGS-Astrogeology/PySAT_Point_Spectra_GUI) 
+[![Join the chat at https://gitter.im/USGS-Astrogeology/PySAT](https://badges.gitter.im/USGS-Astrogeology/PySAT.svg)](https://gitter.im/USGS-Astrogeology/PySAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-# Easy Windows Installation
-
-1. Download the [**setup**](https://drive.google.com/file/d/0B51OpD0tMItxc0NqTG84UlVZaGs/view?usp=sharing) file
-2. Click and Install
-
-# Installation with Miniconda
-
-You can also copy and paste the code into your terminal
-
-### Things you'll need
-
-<a href="https://git-scm.com/downloads">git-bash </a><br>
-<a href="https://conda.io/miniconda.html">Miniconda</a>
+## Installation
 
 ### 1. Fresh install of Miniconda (Skip to step 2 if you have Anaconda/Miniconda)
 
 Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 
-### 2. Download necessary libraries
+### 2. Download the environment file
+
+[Environment.yml](https://raw.githubusercontent.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI/master/environment.yml)
+
+### 3. Open a terminal (on Windows, `cmd`, not Powershell) in the directory where you saved the file and type:
 
 ```bash
-git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI.git
-git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT.git
+conda install conda=3  # SKIP THIS LINE ON WINDOWS
+conda env create -n point_spectra_gui -f environment.yml
+source activate point_spectra_gui  # omit the `source` on Windows
 ```
 
-### 3. Python install libraries
+### 4. Done! How to use point_spectra_gui
 
 ```bash
-cd PySAT
-python setup.py install
-cd ..
-cd PySAT_Point_Spectra_GUI
-python setup.py install
-cd ..
+source activate point_spectra_gui  # omit the `source` on Windows
+point_spectra_gui
 ```
-
-### 4. Pip/Conda install necessary libraries
-
-```bash
-conda install pyqt
-conda install numpy
-conda install pandas
-conda install scipy
-pip install sklearn
-conda install matplotlib
-pip install qtmodern
-```
-
-### 5 Start the application
-
-```bash
-python PySAT_Point_Spectra_GUI\point_spectra_gui
-```
-
-if the application fails to start because of a missing dependency try `pip` or `conda` installing it.
-
 
 # PYSAT UI
 ![PYSAT splash](./images/splash.png)  
