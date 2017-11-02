@@ -8,6 +8,8 @@ install:
   - hash -r
 script:
   - bash install_travis.sh
+  - python setup.py install
+  - python testing/t.py
 deploy:
   provider: pypi
   user: tisaconundrum
