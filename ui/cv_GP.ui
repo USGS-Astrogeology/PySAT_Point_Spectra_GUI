@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="formGroupBox">
+     <property name="title">
+      <string>Gaussian Process</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="2" column="0">
+       <widget class="QLabel" name="regrLabel">
+        <property name="text">
+         <string>Regression Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="regrComboBox"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="corrLabel">
+        <property name="text">
+         <string>Correlation Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="corrComboBox"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="storageModeLabel">
+        <property name="text">
+         <string>Storage Mode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="storageModeComboBox"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="verboseLabel">
+        <property name="text">
+         <string>Verbose</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="verboseCheckBox"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="theta0Label">
+        <property name="text">
+         <string>Theta 0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="optimizerLabel">
+        <property name="text">
+         <string>Optimizer Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QComboBox" name="optimizerComboBox"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="randomStartLabel">
+        <property name="text">
+         <string>Random Start</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="randomStartLineEdit"/>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="normalizeLabel">
+        <property name="text">
+         <string>Normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QCheckBox" name="normalizeCheckBox"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="theta0LineEdit"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="reductionMethodComboBox">
+        <item>
+         <property name="text">
+          <string>PCA</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ICA</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="reductionMethodLabel">
+        <property name="text">
+         <string>Choose dimensionality reduction method:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="numOfComponenetsLabel">
+        <property name="text">
+         <string>Number of Components</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="numOfComponenetsLineEdit"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

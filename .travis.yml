@@ -1,37 +1,24 @@
 language: python
-sudo: required
-python:
-  - "3.6"
-  - "3.5"
 cache:
   - pip
-env:
-  global:
-    - PIP_INSTALL="pip3 install"
-  matrix:
-    - PYQT="$PIP_INSTALL pyqt5==5.9"
-before_install:
-  - $PYQT
 install:
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda info -a
-  - conda create -q -n test_environment python=$TRAVIS_PYTHON_VERSION
-  - source activate test_environment 
-  - conda install pytest pytest-cov coverage sh anaconda-client
-  - pip install -r requirements.txt
-  - conda list
-  - python setup.py install
-  - git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT.git
-  - cd PySAT
-  - python setup.py install
-  - cd ..
 script:
-  - python setup.py clean
-  - python setup.py build
+  - bash install_travis.sh
   - python setup.py install
-  - python tests/test_MainWindow.py
+  - python testing/t.py
+deploy:
+  provider: pypi
+  user: tisaconundrum
+  password:
+    secure: WKib7Bz+0w0RIXjpG1H5tJSLXDEf/EFDJFFdLcK0ExlHN908hUgqcvJiJDdRhZwSkCSodjAER1gJDWrtgiu+nwSyM1lBczfA+wkwk5koQsNscE+wP9swVStSdl4yNMU6JgBTPoav+SR5nBStbF6X3UDi6K+qMFPjzeCNn+6Vd08YaEK9zrkp8Yt5D3WekIwZcKSwvo5Tn9v9GceupNeszvmRaYgAVEPtbEKbZ/fkjYIz0O77Fti4twyvEzHFtc1H1a8jIYfefYLPUwse6rwjJJVDOgE5O/+LGHUXnQFNNrh5tZRGYTKkek3bf/z8ASNGSlgUFpfwWWsaooXGYzZOWJDLbyi450HVNd9lSduXPc3Fs3GyQ5zk9Wc0kzLzHLqh1HtyPA/qInlEsctw7Z7aHVnnua3VTaeqBX8/MAPfEOsvmb2nHJCBwNd7LoBNHg44KKm11ICHSVsPVMc4AG7tTt+jV6H9edT0m/yVxxmk9zNEpAgSf7FXOrvNHtTMD0iEhKPtU+jQ2zMROYyNgnqvVoAnfPUtsDEYM3zWT2faN2xQpWmSYz6puhN8CymTlKx9VgbSe5jjwHLYrIEV0RFs1+j5X9JEDOyMOky5bYltZ/zgZsa3x0bn1OhTALX2HRxoZbMeAXCbX2tcKqbROqJ4Lu9VVXS6yL7s6sZDtUhU2zE=
+  distributions: sdist bdist_wheel
+  on:
+    branch: dev
+after_deploy:
+  - conda env create -n ppsg -f environment.yml
+  - source activate ppsg
+  - point_spectra_gui
