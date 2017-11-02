@@ -26,7 +26,7 @@ source activate point_spectra_gui  # omit the `source` on Windows
 point_spectra_gui
 ```
 
-### 5. Optional. Script to run the program
+### 5. Optional. Run program with a script
 
 If you'd like to be able to run our program without having to retype **4** out, simply copy the below text into notepad, and then save it as point_spectra_gui.bat
 
