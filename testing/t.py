@@ -54,43 +54,15 @@ class Ui_MainWindow(Ui_MainWindow):
         self.addWidget(core.SubmodelPredict.SubmodelPredict)
 
 
-def get_splash(app):
-    """
-    Get the splash screen for the application
-    But check to see if the image even exists
-    :param app:
-    :return:
-    """
-    dirs = ['../images/', '/point_spectra_gui/images', './point_spectra_gui/images']
-    for dir in dirs:
-        if os.path.exists(dir + 'splash.png'):
-            splash_pix = QPixmap(dir + 'splash.png')  # default
-            app_icon = QtGui.QIcon(dir + 'icon.png')
-            app.setWindowIcon(app_icon)
-            splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
-            splash.setMask(splash_pix.mask())
-            splash.show()
-            time.sleep(0.5)
-            app.processEvents()
-            return 0
-
-
-def setDarkmode(app):
-    settings = QSettings('USGS', 'PPSG')
-    p = settings.value('theme') == 'qtmodern'
-    if q and p:
-        qtmodern.styles.dark(app)
 
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    get_splash(app)
-    setDarkmode(app)
     mainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(mainWindow)
     mainWindow.show()
-    sys.exit(app.exec_())
+    app.exec_()
 
 
 if __name__ == '__main__':
