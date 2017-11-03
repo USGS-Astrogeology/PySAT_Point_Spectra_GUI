@@ -14,6 +14,9 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The &lt;span style=&quot; font-weight:600;&quot;&gt;Lasso&lt;/span&gt; is a linear model that estimates sparse coefficients. It is useful in some contexts due to its tendency to prefer solutions with fewer parameter values, effectively reducing the number of variables upon which the given solution is dependent. For this reason, the Lasso and its variants are fundamental to the field of compressed sensing. Under certain conditions, it can recover the exact set of non-zero weights (see Compressive sensing: tomography reconstruction with L1 prior (Lasso)).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -29,6 +32,9 @@
        <widget class="QLineEdit" name="alphaLineEdit">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;alpha : float, optional&lt;/p&gt;&lt;p&gt;Constant that multiplies the L1 term. Defaults to 1.0. alpha = 0 is equivalent to an ordinary least square, solved by the LinearRegression object. For numerical reasons, using alpha = 0 with the Lasso object is not advised. Given this, you should use the LinearRegression object.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="maximum" stdset="0">
          <double>999999999.000000000000000</double>
@@ -47,6 +53,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="maxNumOfIterationsLineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;max_iter : int, optional&lt;/p&gt;&lt;p&gt;The maximum number of iterations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="maximum" stdset="0">
          <number>999999999</number>
         </property>
@@ -71,6 +80,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;fit_intercept : boolean&lt;/p&gt;&lt;p&gt;whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="checked">
          <bool>true</bool>
         </property>
@@ -84,7 +96,11 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="forcePositiveCoefficientsCheckBox"/>
+       <widget class="QCheckBox" name="forcePositiveCoefficientsCheckBox">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;positive : bool, optional&lt;/p&gt;&lt;p&gt;When set to True, forces the coefficients to be positive.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="optimizeWCrossValidaitonLabel">
@@ -102,6 +118,9 @@
       </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="toleranceLineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tol : float, optional&lt;/p&gt;&lt;p&gt;The tolerance for the optimization: if the updates are smaller than tol, the optimization code checks the dual gap for optimality and continues until it is smaller than tol&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>5</number>
         </property>

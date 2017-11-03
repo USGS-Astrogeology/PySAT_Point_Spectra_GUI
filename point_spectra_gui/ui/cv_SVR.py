@@ -112,6 +112,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
+        self.formGroupBox.setToolTip(("<html><head/><body><p>The method of Support Vector Classification can be extended to solve regression problems. This method is called Support Vector Regression.</p><p>The model produced by support vector classification (as described above) depends only on a subset of the training data, because the cost function for building the model does not care about training points that lie beyond the margin. Analogously, the model produced by Support Vector Regression depends only on a subset of the training data, because the cost function for building the model ignores any training data close to the model prediction.</p></body></html>"))
         self.cLabel.setText(("C"))
         self.epsilonLabel.setText(("Epsilon"))
         self.kernelLabel.setText(("Kernel"))

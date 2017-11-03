@@ -80,12 +80,18 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
+        self.groupBox.setToolTip(("<html><head/><body><p>The <span style=\" font-weight:600;\">Lasso</span> is a linear model that estimates sparse coefficients. It is useful in some contexts due to its tendency to prefer solutions with fewer parameter values, effectively reducing the number of variables upon which the given solution is dependent. For this reason, the Lasso and its variants are fundamental to the field of compressed sensing. Under certain conditions, it can recover the exact set of non-zero weights (see Compressive sensing: tomography reconstruction with L1 prior (Lasso)).</p></body></html>"))
         self.alphaLabel.setText(("Alpha"))
+        self.alphaLineEdit.setToolTip(("<html><head/><body><p>alpha : float, optional</p><p>Constant that multiplies the L1 term. Defaults to 1.0. alpha = 0 is equivalent to an ordinary least square, solved by the LinearRegression object. For numerical reasons, using alpha = 0 with the Lasso object is not advised. Given this, you should use the LinearRegression object.</p></body></html>"))
         self.maxNumOfIterationsLabel.setText(("Max # of iterations"))
+        self.maxNumOfIterationsLineEdit.setToolTip(("<html><head/><body><p>max_iter : int, optional</p><p>The maximum number of iterations</p></body></html>"))
         self.toleranceLabel.setText(("Tolerance"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
+        self.fitInterceptCheckBox.setToolTip(("<html><head/><body><p>fit_intercept : boolean</p><p>whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered).</p></body></html>"))
         self.forcePositiveCoefficientsLabel.setText(("Force positive coefficients"))
+        self.forcePositiveCoefficientsCheckBox.setToolTip(("<html><head/><body><p>positive : bool, optional</p><p>When set to True, forces the coefficients to be positive.</p></body></html>"))
         self.optimizeWCrossValidaitonLabel.setText(("Optimize w/ Cross Validaiton (Ignores alpha)"))
+        self.toleranceLineEdit.setToolTip(("<html><head/><body><p>tol : float, optional</p><p>The tolerance for the optimization: if the updates are smaller than tol, the optimization code checks the dual gap for optimality and continues until it is smaller than tol</p></body></html>"))
 
 
 if __name__ == "__main__":

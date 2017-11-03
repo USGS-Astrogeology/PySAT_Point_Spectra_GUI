@@ -14,6 +14,9 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="formGroupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Open Sans,sans-serif'; font-size:13px; color:#333333; background-color:#ffffff;&quot;&gt;Interpolate a 1-D function.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Open Sans,sans-serif'; font-size:13px; font-style:italic; color:#333333;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans,sans-serif'; font-size:13px; color:#333333;&quot;&gt; and &lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans,sans-serif'; font-size:13px; font-style:italic; color:#333333;&quot;&gt;y&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans,sans-serif'; font-size:13px; color:#333333;&quot;&gt; are arrays of values used to approximate some function f: &lt;/span&gt;&lt;span style=&quot; font-family:'monospace'; font-size:13px; color:#000000; background-color:#f2f2f2;&quot;&gt;y = f(x)&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans,sans-serif'; font-size:13px; color:#333333;&quot;&gt;. This class returns a function whose call method uses interpolation to find the value of new points&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="title">
       <string>Interpolation</string>
      </property>
