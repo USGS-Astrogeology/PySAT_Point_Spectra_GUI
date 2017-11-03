@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
 from sklearn.linear_model.least_angle import LassoLars, LassoLarsCV, LassoLarsIC
-
+import numpy as np
 from point_spectra_gui.ui.cv_LassoLARS import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
@@ -20,7 +20,9 @@ class Ui_Form(Ui_Form, Basics):
     def connectWidgets(self):
         # LassoLARS
         ll = LassoLars()
-        self.alphaLineEdit.setText(str(ll.alpha))
+        self.minalpha_spin.setValue(1.0)
+        self.maxalpha_spin.setValue(1e3)
+        self.nalpha_spin.setValue(10)
         self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(ll.fit_intercept),QtCore.Qt.MatchExactly)[0])
         self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(ll.normalize),QtCore.Qt.MatchExactly)[0])
         self.max_iterLineEdit.setText(str(ll.max_iter))
@@ -31,16 +33,17 @@ class Ui_Form(Ui_Form, Basics):
         fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
         normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
         positive_items = [i.text() == 'True' for i in self.force_positive_list.selectedItems()]
-
+        alphas = np.logspace(np.log10(self.minalpha_spin.value() * 1e10), np.log10(self.maxalpha_spin.value() * 1e10),
+                             num=self.nalpha_spin.value())
         params = {
-            'alpha': self.alphaLineEdit.value(),
+            'alpha': alphas,
             'fit_intercept': fit_intercept_items,
-            'verbose': True,
+            'verbose': [True],
             'normalize': normalize_items,
-            'precompute': 'auto',
-            'max_iter': self.max_iterLineEdit.text().split(','),
-            'copy_X': True,
-            'fit_path': False,
+            'precompute': ['auto'],
+            'max_iter': [int(i) for i in self.max_iterLineEdit.text().split(',')],
+            'copy_X': [True],
+            'fit_path': [False],
             'positive': positive_items
         }
 

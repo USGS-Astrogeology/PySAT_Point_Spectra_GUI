@@ -22,6 +22,7 @@ class Ui_Form(Ui_Form, Lasso, Basics):
         self.minalpha_spin.setValue(1.0)
         self.maxalpha_spin.setValue(1e3)
         self.nalphas_spin.setValue(10)
+
         self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(self.fit_intercept),QtCore.Qt.MatchExactly)[0])
         self.maxNumOfIterationsLineEdit.setText(str(self.max_iter))
         self.toleranceLineEdit.setText(str(self.tol))
@@ -39,7 +40,12 @@ class Ui_Form(Ui_Form, Lasso, Basics):
                   'positive': positive_items,
                   'selection': ['random']
                   }
-        modelkey = str(params)
+        keyparams = params.pop('alpha')
+        keyparams['alpha_min']=self.minalpha_spin.value()*1e10
+        keyparams['alpha_max'] = self.maxalpha_spin.value() * 1e10
+        keyparams['n_alpha'] = self.nalphas_spin.value()
+
+        modelkey = str(keyparams)
         return params, modelkey
 
 

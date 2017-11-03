@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets,QtCore
 from sklearn.linear_model import ElasticNet
-
+import numpy as np
 from point_spectra_gui.ui.cv_ElasticNet import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
@@ -20,8 +20,11 @@ class Ui_Form(Ui_Form, ElasticNet, Basics):
     def connectWidgets(self):
         en = ElasticNet()
 
-        self.enalphaLineEdit.setText(str(en.alpha))
-        self.enl1_ratioLineEdit.setText(str(en.l1_ratio))
+        self.minalpha_spin.setValue(1.0)
+        self.maxalpha_spin.setValue(1e3)
+        self.nalpha_spin.setValue(10)
+
+        self.enl1_ratioLineEdit.setText('0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1.0')
         self.enfit_intercept_list.setCurrentItem(self.enfit_intercept_list.findItems(str(en.fit_intercept),QtCore.Qt.MatchExactly)[0])
         self.ennormalize_list.setCurrentItem(self.ennormalize_list.findItems(str(en.normalize),QtCore.Qt.MatchExactly)[0])
         #self.enprecomputeCheckBox.setChecked(en.precompute)
@@ -38,19 +41,20 @@ class Ui_Form(Ui_Form, ElasticNet, Basics):
         fit_intercept_items = [i.text() == 'True' for i in self.enfit_intercept_list.selectedItems()]
         normalize_items = [i.text() == 'True' for i in self.ennormalize_list.selectedItems()]
         positive_items = [i.text() == 'True' for i in self.enpositive_list.selectedItems()]
-
+        alphas = np.logspace(np.log10(self.minalpha_spin.value() * 1e10), np.log10(self.maxalpha_spin.value() * 1e10),
+                             num=self.nalpha_spin.value())
         params = {
-            'alpha': self.enalphaLineEdit.text().split(','),
-            'l1_ratio': self.enl1_ratioLineEdit.text().split(','),
+            'alpha': alphas,
+            'l1_ratio': [float(i) for i in self.enl1_ratioLineEdit.text().split(',')],
             'fit_intercept': fit_intercept_items,
             'normalize': normalize_items,
-            'precompute': True,
-            'max_iter': self.enmax_iterLineEdit.text().split(','),
-            'copy_X': True,
-            'tol': self.entolLineEdit.text().split(','),
-            'warm_start': True,
+            'precompute': [True],
+            'max_iter': [int(i) for i in self.enmax_iterLineEdit.text().split(',')],
+            'copy_X': [True],
+            'tol': [float(i) for i in self.entolLineEdit.text().split(',')],
+            'warm_start': [True],
             'positive': positive_items,
-            'selection': 'random'}
+            'selection': ['random']}
 
         modelkey = str(params)
         return params, modelkey

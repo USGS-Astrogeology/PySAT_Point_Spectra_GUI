@@ -1,0 +1,2 @@
+call activate point_spectra_gui
+point_spectra_gui

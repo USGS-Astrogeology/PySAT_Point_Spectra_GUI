@@ -26,8 +26,9 @@ class Ui_Form(Ui_Form, OrthogonalMatchingPursuit, OrthogonalMatchingPursuitCV, B
         fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
         normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
 
-        params = {'fit_intercept': [fit_intercept_items],
-                  'normalize': [normalize_items],
+        params = {'n_nonzero_coefs': [int(i) for i in self.n_coefs_lineedit.text().split(',')],
+                  'fit_intercept': fit_intercept_items,
+                  'normalize': normalize_items,
                   'precompute': ['auto'],
                   'CV': [False]}
         modelkey = str(params)

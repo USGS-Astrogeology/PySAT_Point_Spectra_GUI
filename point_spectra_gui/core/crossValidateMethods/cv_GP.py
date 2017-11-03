@@ -28,17 +28,21 @@ class Ui_Form(Ui_Form, GaussianProcess, Basics):
         self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(self.normalize),QtCore.Qt.MatchExactly)[0])
 
     def function(self):
-        normalize_items = [i.text() == 'True' for i in self.ennormalize_list.selectedItems()]
-
+        normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
+        regr_items = [str(i.text().lower()) for i in self.regression_list.selectedItems()]
+        corr_items = [str(i.text().lower().replace(' ','_')) for i in self.CorrelationList.selectedItems()]
+        dim_red_items = [str(i.text()) for i in self.DimRedList.selectedItems()]
         params = {
-            'regr': [self.regression_list.selectedItems()],
-            'corr': [self.CorrelationList.selectedItems()],
+            'reduce_dim': dim_red_items,
+            'n_components': [int(i) for i in self.numOfComponenetsLineEdit.text().split(',')],
+            'regr': regr_items,
+            'corr': corr_items,
             'storage_mode': ['light'],
             'verbose': [True],
-            'theta0': [self.theta0LineEdit.text().split(',')],
+            'theta0': [float(i) for i in self.theta0LineEdit.text().split(',')],
             'normalize': [normalize_items],
             'optimizer': ['fmin_cobyla'],
-            'random_start': [self.randomStartLineEdit.text().split(',')],
+            'random_start': [int(i) for i in self.randomStartLineEdit.text().split(',')],
         }
 
         modelkey = str(params)

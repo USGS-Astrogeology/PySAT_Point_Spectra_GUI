@@ -35,41 +35,34 @@
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
            <item row="0" column="0">
-            <widget class="QLabel" name="enalphaLabel">
+            <widget class="QLabel" name="minalpha_label">
              <property name="text">
-              <string>Alpha</string>
+              <string>Min Alpha (x1e10)</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="enalphaLineEdit">
-             <property name="text">
-              <string>1.0</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="enl1_ratioLabel">
              <property name="text">
               <string>L1 ratio</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="3" column="1">
             <widget class="QLineEdit" name="enl1_ratioLineEdit">
              <property name="text">
               <string>.1, .5, .7, .9, .95, .99, 1</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item row="4" column="0">
             <widget class="QLabel" name="enfit_interceptLabel">
              <property name="text">
               <string>Fit Intercept</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="4" column="1">
             <widget class="QListWidget" name="enfit_intercept_list">
              <property name="maximumSize">
               <size>
@@ -92,14 +85,14 @@
              </item>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="5" column="0">
             <widget class="QLabel" name="ennormalizeLabel">
              <property name="text">
               <string>Normalize</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
+           <item row="5" column="1">
             <widget class="QListWidget" name="ennormalize_list">
              <property name="maximumSize">
               <size>
@@ -122,42 +115,42 @@
              </item>
             </widget>
            </item>
-           <item row="4" column="0">
+           <item row="6" column="0">
             <widget class="QLabel" name="enmax_iterLabel">
              <property name="text">
               <string>Max. # of iterations</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
+           <item row="6" column="1">
             <widget class="QLineEdit" name="enmax_iterLineEdit">
              <property name="text">
               <string>1000</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="0">
+           <item row="7" column="0">
             <widget class="QLabel" name="entolLabel">
              <property name="text">
               <string>Tolerance</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="1">
+           <item row="7" column="1">
             <widget class="QLineEdit" name="entolLineEdit">
              <property name="text">
               <string>0.0001</string>
              </property>
             </widget>
            </item>
-           <item row="6" column="0">
+           <item row="8" column="0">
             <widget class="QLabel" name="enwarm_startLabel">
              <property name="text">
               <string>Warm Start</string>
              </property>
             </widget>
            </item>
-           <item row="6" column="1">
+           <item row="8" column="1">
             <widget class="QListWidget" name="enwarm_start_list">
              <property name="maximumSize">
               <size>
@@ -180,14 +173,14 @@
              </item>
             </widget>
            </item>
-           <item row="7" column="0">
+           <item row="9" column="0">
             <widget class="QLabel" name="enpositiveLabel">
              <property name="text">
               <string>Force Positive Coefficients</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="1">
+           <item row="9" column="1">
             <widget class="QListWidget" name="enpositive_list">
              <property name="maximumSize">
               <size>
@@ -208,6 +201,47 @@
                <string>False</string>
               </property>
              </item>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="maxalpha_label">
+             <property name="text">
+              <string>Max Alpha (x1e10)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="maxalpha_spin">
+             <property name="maximum">
+              <double>999999999.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QDoubleSpinBox" name="minalpha_spin">
+             <property name="maximum">
+              <double>999999999.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="nalpha_label">
+             <property name="toolTip">
+              <string extracomment="# of alpha values in a log distribution between the min and max alpha values."/>
+             </property>
+             <property name="text">
+              <string># of Alphas</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="nalpha_spin">
+             <property name="toolTip">
+              <string extracomment="# of alpha values in a log distribution between the min and max alpha values."/>
+             </property>
+             <property name="maximum">
+              <number>999999999</number>
+             </property>
             </widget>
            </item>
           </layout>

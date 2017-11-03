@@ -33,12 +33,12 @@ class Ui_Form(Ui_Form, KernelRidge, Basics):
 
     def function(self):
         k_attrib = {'None': None}
-        params = {'alpha': self.alphaLineEdit.text().split(','),
+        params = {'alpha': [float(i) for i in self.alphaLineEdit.text().split(',')],
                   'kernel': self.kernel_list.selectedItems(),
-                  'gamma': self.gammaLineEdit.text().split(','),
-                  'degree': self.degreeLineEdit.text().split(','),
-                  'coef0': self.coeff0LineEdit.text().split(','),
-                  'kernel_params': self.kernelParametersLineEdit.text().split(',')}
+                  'gamma': [float(i) for i in self.gammaLineEdit.text().split(',')],
+                  'degree': [float(i) for i in self.degreeLineEdit.text().split(',')],
+                  'coef0': [float(i) for i in self.coeff0LineEdit.text().split(',')],
+                  'kernel_params': [float(i) for i in self.kernelParametersLineEdit.text().split(',')]}
         modelkey = str(params)
         return params, modelkey
 

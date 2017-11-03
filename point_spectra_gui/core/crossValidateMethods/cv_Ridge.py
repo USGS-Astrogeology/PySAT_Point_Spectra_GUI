@@ -23,7 +23,7 @@ class Ui_Form(Ui_Form, Ridge, RidgeCV, Basics):
     def connectWidgets(self):
         ridge = Ridge()
 
-        self.alphaLineEdit.setText(str(ridge.alpha))
+        self.alphaLineEdit.setText('0.01, 0.1, 1.0, 10, 100')
         self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(ridge.fit_intercept),QtCore.Qt.MatchExactly)[0])
         self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(ridge.normalize),QtCore.Qt.MatchExactly)[0])
         self.toleranceLineEdit.setText(str(ridge.tol))
@@ -33,15 +33,18 @@ class Ui_Form(Ui_Form, Ridge, RidgeCV, Basics):
     def function(self):
         fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
         normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
-
-        params = {'alpha': self.alphaLineEdit.text().split(','),
-                  'copy_X': True,
+        try:
+            max_iter = [int(i) for i in self.maxNumOfIterationslineEdit.text().split(',')]
+        except:
+            max_iter = [None]
+        params = {'alpha': [float(i) for i in self.alphaLineEdit.text().split(',')],
+                  'copy_X': [True],
                   'fit_intercept': fit_intercept_items,
-                  'max_iter': self.maxNumOfIterationslineEdit.text().split(','),
+                  'max_iter': max_iter,
                   'normalize': normalize_items,
-                  'solver': 'auto',
-                  'tol': self.toleranceLineEdit.text().split(','),
-                  'random_state': None}
+                  'solver': ['auto'],
+                  'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+                  'random_state': [None]}
         modelkey = str(params)
         return params, modelkey
 

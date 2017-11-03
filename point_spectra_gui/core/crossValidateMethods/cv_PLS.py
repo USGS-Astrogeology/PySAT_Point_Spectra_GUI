@@ -21,9 +21,7 @@ class Ui_Form(Ui_Form, PLSRegression, Basics):
         self.numOfComponentsLineEdit.setText('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15')
 
     def function(self):
-        nc = self.numOfComponentsLineEdit.text().split(',')
-        nc = [int(i) for i in nc]
-        params = {'n_components': nc,
+        params = {'n_components': [int(i) for i in self.numOfComponentsLineEdit.text().split(',')],
                   'scale': [False]}
         modelkey = '(nc=' + str(params['n_components']) + ')'
         return params, modelkey

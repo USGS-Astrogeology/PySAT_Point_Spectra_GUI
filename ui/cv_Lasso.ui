@@ -62,13 +62,20 @@
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="nalphas_label">
+        <property name="toolTip">
+         <string extracomment="# of alpha values in a log distribution between the min and max alpha values."/>
+        </property>
         <property name="text">
          <string># of Alphas</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QSpinBox" name="nalphas_spin"/>
+       <widget class="QSpinBox" name="nalphas_spin">
+        <property name="toolTip">
+         <string extracomment="# of alpha values in a log distribution between the min and max alpha values."/>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="maxNumOfIterationsLabel">

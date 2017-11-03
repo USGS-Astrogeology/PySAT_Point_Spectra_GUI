@@ -35,12 +35,12 @@ class Ui_Form(Ui_Form, Basics):
 
         params = {
             'fit_intercept': fit_intercept_items,
-            'verbose': True,
+            'verbose': [True],
             'normalize': normalize_items,
-            'precompute': 'auto',
-            'n_nonzero_coefs': self.n_nonzero_coefsLineEdit.text().split(','),
-            'copy_X': True,
-            'fit_path': False,
+            'precompute': ['auto'],
+            'n_nonzero_coefs': [int(i) for i in self.n_nonzero_coefsLineEdit.text().split(',')],
+            'copy_X': [True],
+            'fit_path': [False],
             'positive': positive_items}
 
         modelkey = str(params)

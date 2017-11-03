@@ -29,19 +29,22 @@ class Ui_Form(Ui_Form, ARDRegression, Basics):
         self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(self.normalize),QtCore.Qt.MatchExactly)[0])
 
     def function(self):
+        fit_intercept_items = [i.text() == 'True' for i in self.fitIntercept_list.selectedItems()]
+        normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
+
         params = {
-            'n_iter': self.numOfIterationsLineEdit.text().split(','),
-            'tol': self.toleranceLineEdit.text().split(','),
-            'alpha_1': self.alpha1LineEdit.text().split(','),
-            'alpha_2': self.alpha2LineEdit.text().split(','),
-            'lambda_1': self.lambdaLineEdit.text().split(','),
-            'lambda_2': self.lambdaLineEdit_2.text().split(','),
-            'compute_score': False,
-            'threshold_lambda': self.thresholdLambdaLineEdit.text().split(','),
-            'fit_intercept': self.fitIntercept_list.selectedItems(),
-            'normalize': self.normalize_list.selectedItems(),
-            'copy_X': True,
-            'verbose': True}
+            'n_iter': [int(i) for i in self.numOfIterationsLineEdit.text().split(',')],
+            'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+            'alpha_1': [float(i) for i in self.alpha1LineEdit.text().split(',')],
+            'alpha_2': [float(i) for i in self.alpha2LineEdit.text().split(',')],
+            'lambda_1': [float(i) for i in self.lambdaLineEdit.text().split(',')],
+            'lambda_2': [float(i) for i in self.lambdaLineEdit_2.text().split(',')],
+            'compute_score': [False],
+            'threshold_lambda': [float(i) for i in self.thresholdLambdaLineEdit.text().split(',')],
+            'fit_intercept': fit_intercept_items,
+            'normalize': normalize_items,
+            'copy_X': [True],
+            'verbose': [True]}
         modelkey = str(params)
         return params, modelkey
 

@@ -41,17 +41,19 @@ class Ui_Form(Ui_Form, Basics):
         self.maxIterationsLineEdit.setText(str(svr.max_iter))
 
     def function(self):
-        params = {'C': self.cLineEdit.text().split(','),
-                  'epsilon': self.epsilonLineEdit.text().split(','),
-                  'kernel': self.kernel_list.selectedItems(),
-                  'degree': self.degreeLineEdit.text().split(','),
-                  'gamma': 'auto',
-                  'coef0': self.coeff0LineEdit.text().split(','),
-                  'shrinking': self.shrinking_list.selectedItems(),
-                  'tol': self.toleranceLineEdit.text().split(','),
-                  'cache_size': 200,
-                  'verbose': True,
-                  'max_iter': int(self.maxIterationsLineEdit.text().split(','))}
+        kernels = [str(i.text()) for i in self.kernel_list.selectedItems()]
+        shrinking_items = [i.text() == 'True' for i in self.shrinking_list.selectedItems()]
+        params = {'C': [float(i) for i in self.cLineEdit.text().split(',')],
+                  'epsilon': [float(i) for i in self.epsilonLineEdit.text().split(',')],
+                  'kernel': kernels,
+                  'degree': [int(i) for i in self.degreeLineEdit.text().split(',')],
+                  'gamma': ['auto'],
+                  'coef0': [float(i) for i in self.coeff0LineEdit.text().split(',')],
+                  'shrinking': shrinking_items,
+                  'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+                  'cache_size': [200],
+                  'verbose': [True],
+                  'max_iter': [int(i) for i in self.maxIterationsLineEdit.text().split(',')]}
         modelkey = str(params)
         return params, modelkey
 

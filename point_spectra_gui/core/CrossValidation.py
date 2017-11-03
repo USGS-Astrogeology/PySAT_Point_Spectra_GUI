@@ -96,20 +96,21 @@ class CrossValidation(Ui_Form, Basics):
         for n, key in enumerate(cvmodelkeys):
             self.modelkeys.append(key)
             self.models[key] = cvmodels[n]
-            coef = np.squeeze(cvmodels[n].model.coef_)
-            coef = pd.DataFrame(coef)
-            coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
-            coef = coef.T
-            coef[('meta', 'Model')] = key
-            try:
-                coef[('meta','Intercept')] = cvmodels[n].model.intercept_
-            except:
-                pass
-            try:
-                self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
-            except:
-                self.data['Model Coefficients'] = spectral_data(coef)
-                self.datakeys.append('Model Coefficients')
+            if method != 'GP':
+                coef = np.squeeze(cvmodels[n].model.coef_)
+                coef = pd.DataFrame(coef)
+                coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
+                coef = coef.T
+                coef[('meta', 'Model')] = key
+                try:
+                    coef[('meta','Intercept')] = cvmodels[n].model.intercept_
+                except:
+                    pass
+                try:
+                    self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
+                except:
+                    self.data['Model Coefficients'] = spectral_data(coef)
+                    self.datakeys.append('Model Coefficients')
 
         self.datakeys.append('CV Results ' + modelkey)
         self.data['CV Results ' + modelkey] = self.cv_results
