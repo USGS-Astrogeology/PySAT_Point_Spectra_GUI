@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from sklearn.svm.classes import SVR
 
-from point_spectra_gui.ui.SVR import Ui_Form
+from point_spectra_gui.ui.cv_SVR import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
@@ -31,32 +31,29 @@ class Ui_Form(Ui_Form, Basics):
         svr.verbose = False
         svr.max_iter = -1
 
-        self.cDoubleSpinBox.setValue(svr.C)
-        self.epsilonDoubleSpinBox.setValue(svr.epsilon)
-        self.defaultComboItem(self.kernelComboBox, svr.kernel)
-        self.degreeSpinBox.setValue(svr.degree)
-        self.defaultComboItem(self.gammaComboBox, svr.gamma)
-        self.coeff0DoubleSpinBox.setValue(svr.coef0)
-        self.shrinkingCheckBox.setChecked(svr.shrinking)
-        self.toleranceDoubleSpinBox.setValue(svr.tol)
-        self.cacheSizeSpinBox.setValue(svr.cache_size)
-        self.verboseCheckBox.setChecked(svr.verbose)
-        self.maxIterationsSpinBox.setValue(svr.max_iter)
+        self.cLineEdit.setText(str(svr.C))
+        self.epsilonLineEdit.setText(str(svr.epsilon))
+        self.kernel_list.setCurrentItem(self.kernel_list.findItems('Radial Basis Function',QtCore.Qt.MatchExactly)[0])
+        self.degreeLineEdit.setText(str(svr.degree))
+        self.coeff0LineEdit.setText(str(svr.coef0))
+        self.shrinking_list.setCurrentItem(self.shrinking_list.findItems(str(svr.shrinking),QtCore.Qt.MatchExactly)[0])
+        self.toleranceLineEdit.setText(str(svr.tol))
+        self.maxIterationsLineEdit.setText(str(svr.max_iter))
 
     def function(self):
-        gamma_index = self.gammaComboBox.currentIndex()
-        kernel_index = self.kernelComboBox.currentIndex()
-        params = {'C': self.cDoubleSpinBox.value(),
-                  'epsilon': self.epsilonDoubleSpinBox.value(),
-                  'kernel': self.kernelComboBox.itemText(kernel_index),
-                  'degree': self.degreeSpinBox.value(),
-                  'gamma': self.gammaComboBox.itemText(gamma_index),
-                  'coef0': self.coeff0DoubleSpinBox.value(),
-                  'shrinking': self.shrinkingCheckBox.isChecked(),
-                  'tol': self.toleranceDoubleSpinBox.value(),
-                  'cache_size': self.cacheSizeSpinBox.value(),
-                  'verbose': self.verboseCheckBox.isChecked(),
-                  'max_iter': int(self.maxIterationsSpinBox.value())}
+        kernels = [str(i.text()) for i in self.kernel_list.selectedItems()]
+        shrinking_items = [i.text() == 'True' for i in self.shrinking_list.selectedItems()]
+        params = {'C': [float(i) for i in self.cLineEdit.text().split(',')],
+                  'epsilon': [float(i) for i in self.epsilonLineEdit.text().split(',')],
+                  'kernel': kernels,
+                  'degree': [int(i) for i in self.degreeLineEdit.text().split(',')],
+                  'gamma': ['auto'],
+                  'coef0': [float(i) for i in self.coeff0LineEdit.text().split(',')],
+                  'shrinking': shrinking_items,
+                  'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+                  'cache_size': [200],
+                  'verbose': [True],
+                  'max_iter': [int(i) for i in self.maxIterationsLineEdit.text().split(',')]}
         modelkey = str(params)
         return params, modelkey
 

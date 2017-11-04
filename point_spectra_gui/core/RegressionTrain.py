@@ -32,7 +32,7 @@ class RegressionTrain(Ui_Form, Basics):
                                'PLS',
                                'OLS',
                                'OMP',
-                               'Lasso',
+                               'LASSO',
                                'Elastic Net',
                                'Ridge',
                                'Bayesian Ridge',

@@ -1,10 +1,10 @@
 import ast
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets,QtCore
 from sklearn.linear_model.ridge import Ridge
 from sklearn.linear_model.ridge import RidgeCV
 
-from point_spectra_gui.ui.Ridge import Ui_Form
+from point_spectra_gui.ui.cv_Ridge import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
@@ -21,56 +21,30 @@ class Ui_Form(Ui_Form, Ridge, RidgeCV, Basics):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.Ridge.setVisible(False)
-        ridgecv = RidgeCV()
-
-        self.alphasLineEdit_cv.setText(str(ridgecv.alphas))
-        self.fitInterceptCheckBox_cv.setChecked(ridgecv.fit_intercept)
-        self.normalizeCheckBox_cv.setChecked(ridgecv.normalize)
-        self.defaultComboItem(self.scoringComboBox_cv, ridgecv.scoring)
-        self.defaultComboItem(self.gCVModeComboBox_cv, ridgecv.gcv_mode)
-        self.storeCVValuesCheckBox_cv.setChecked(ridgecv.store_cv_values)
-
         ridge = Ridge()
 
-        self.alphaDoubleSpinBox.setValue(ridge.alpha)
-        self.fitInterceptCheckBox.setChecked(ridge.fit_intercept)
-        self.normalizeCheckBox.setChecked(ridge.normalize)
-        self.copyXCheckBox.setChecked(ridge.copy_X)
-        self.defaultComboItem(self.solverComboBox, ridge.solver)
-        self.toleranceDoubleSpinBox.setValue(ridge.tol)
-        self.randomStateLineEdit.setText(str(ridge.random_state))
+        self.alphaLineEdit.setText('0.01, 0.1, 1.0, 10, 100')
+        self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(ridge.fit_intercept),QtCore.Qt.MatchExactly)[0])
+        self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(ridge.normalize),QtCore.Qt.MatchExactly)[0])
+        self.toleranceLineEdit.setText(str(ridge.tol))
+        self.maxNumOfIterationslineEdit.setText(str(ridge.max_iter))
+
 
     def function(self):
-        m_attrib = {'None': None}
-        r_attrib = {'None': None}
+        fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
+        normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
         try:
-            m_state = int(self.maxNumOfIterationslineEdit.text())
+            max_iter = [int(i) for i in self.maxNumOfIterationslineEdit.text().split(',')]
         except:
-            m_state = m_attrib[self.maxNumOfIterationslineEdit.text()]
-        try:
-            r_state = int(self.randomStateLineEdit.text())
-        except:
-            r_state = r_attrib[self.randomStateLineEdit.text()]
-
-        if self.crossValidateCheckBox.isChecked():
-            params = {'alphas': ast.literal_eval(self.alphasLineEdit_cv.text()),
-                      'fit_intercept': self.fitInterceptCheckBox_cv.isChecked(),
-                      'normalize': self.normalizeCheckBox_cv.isChecked(),
-                      'scoring': {'None': None}.get(self.scoringComboBox_cv.currentText()),
-                      'gcv_mode': {'None': None}.get(self.gCVModeComboBox_cv.currentText()),
-                      'store_cv_values': self.storeCVValuesCheckBox_cv.isChecked(),
-                      'CV': self.crossValidateCheckBox.isChecked()}
-        else:
-            params = {'alpha': self.alphaDoubleSpinBox.value(),
-                      'copy_X': self.copyXCheckBox.isChecked(),
-                      'fit_intercept': self.fitInterceptCheckBox.isChecked(),
-                      'max_iter': m_state,
-                      'normalize': self.normalizeCheckBox.isChecked(),
-                      'solver': self.solverComboBox.currentText(),
-                      'tol': self.toleranceDoubleSpinBox.value(),
-                      'random_state': r_state,
-                      'CV': self.crossValidateCheckBox.isChecked()}
+            max_iter = [None]
+        params = {'alpha': [float(i) for i in self.alphaLineEdit.text().split(',')],
+                  'copy_X': [True],
+                  'fit_intercept': fit_intercept_items,
+                  'max_iter': max_iter,
+                  'normalize': normalize_items,
+                  'solver': ['auto'],
+                  'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+                  'random_state': [None]}
         modelkey = str(params)
         return params, modelkey
 

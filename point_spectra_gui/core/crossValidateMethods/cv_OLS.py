@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from sklearn.linear_model.base import LinearRegression
 
-from point_spectra_gui.ui.OLS import Ui_Form
+from point_spectra_gui.ui.cv_OLS import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
@@ -18,10 +18,11 @@ class Ui_Form(Ui_Form, LinearRegression, Basics):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.fitInterceptCheckBox.setChecked(self.fit_intercept)
+        self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(self.fit_intercept), QtCore.Qt.MatchExactly)[0])
 
     def function(self):
-        params = {'fit_intercept': self.fitInterceptCheckBox.isChecked()}
+        fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
+        params = {'fit_intercept': fit_intercept_items}
         modelkey = str(params)
         return params, modelkey
 
