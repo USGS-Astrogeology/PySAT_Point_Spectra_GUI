@@ -40,7 +40,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
-        self.formGroupBox.setToolTip(("<html><head/><body><p><span style=\" font-family:\'Open Sans,sans-serif\'; font-size:13px; color:#333333; background-color:#ffffff;\">Interpolate a 1-D function.</span></p><p><span style=\" font-family:\'Open Sans,sans-serif\'; font-size:13px; font-style:italic; color:#333333;\">x</span><span style=\" font-family:\'Open Sans,sans-serif\'; font-size:13px; color:#333333;\"> and </span><span style=\" font-family:\'Open Sans,sans-serif\'; font-size:13px; font-style:italic; color:#333333;\">y</span><span style=\" font-family:\'Open Sans,sans-serif\'; font-size:13px; color:#333333;\"> are arrays of values used to approximate some function f: </span><span style=\" font-family:\'monospace\'; font-size:13px; color:#000000; background-color:#f2f2f2;\">y = f(x)</span><span style=\" font-family:\'Open Sans,sans-serif\'; font-size:13px; color:#333333;\">. This class returns a function whose call method uses interpolation to find the value of new points</span></p></body></html>"))
+        self.formGroupBox.setToolTip(("<html><head/><body><p>Interpolate a 1-D function.</p><p><span style=\" font-style:italic;\">x</span> and <span style=\" font-style:italic;\">y</span> are arrays of values used to approximate some function f: y = f(x). This class returns a function whose call method uses interpolation to find the value of new points</p></body></html>"))
         self.formGroupBox.setTitle(("Interpolation"))
         self.interpolateDataLabel.setText(("Choose data to interpolate"))
         self.referenceDataLabel.setText(("Choose data to use as reference"))
