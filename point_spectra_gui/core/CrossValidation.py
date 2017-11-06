@@ -5,8 +5,7 @@ from Qtickle import Qtickle
 from libpysat.regression import cv
 from libpysat.spectral.spectral_data import spectral_data
 
-from point_spectra_gui.core.crossValidateMethods import cv_GP
-from point_spectra_gui.core.crossValidateMethods import cv_PLS
+from point_spectra_gui.core.crossValidateMethods import *
 from point_spectra_gui.ui.CrossValidation import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
