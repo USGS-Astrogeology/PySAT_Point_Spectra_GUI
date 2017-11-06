@@ -8,7 +8,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(287, 240)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -71,6 +70,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
+        self.formGroupBox.setToolTip(("<html><head/><body><p>Least-angle regression (LARS) is a regression algorithm for high-dimensional data, developed by Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani. LARS is similar to forward stepwise regression. At each step, it finds the predictor most correlated with the response. When there are multiple predictors having equal correlation, instead of continuing along the same predictor, it proceeds in a direction equiangular between the predictors.</p><p><span style=\" font-weight:600;\">The advantages of LARS are:</span></p><p>It is numerically efficient in contexts where p &gt;&gt; n (i.e., when the number of dimensions is significantly greater than the number of points)</p><p>It is computationally just as fast as forward selection and has the same order of complexity as an ordinary least squares.</p><p>It produces a full piecewise linear solution path, which is useful in cross-validation or similar attempts to tune the model.</p><p>If two variables are almost equally correlated with the response, then their coefficients should increase at approximately the same rate. The algorithm thus behaves as intuition would expect, and also is more stable.</p><p>It is easily modified to produce solutions for other estimators, like the Lasso.</p><p><span style=\" font-weight:600;\">The disadvantages of the LARS method include:</span></p><p>Because LARS is based upon an iterative refitting of the residuals, it would appear to be especially sensitive to the effects of noise. This problem is discussed in detail by Weisberg in the discussion section of the Efron et al. (2004) Annals of Statistics article.</p></body></html>"))
         self.fit_interceptLabel.setText(("Fit Intercept"))
         __sortingEnabled = self.fit_intercept_listWidget.isSortingEnabled()
         self.fit_intercept_listWidget.setSortingEnabled(False)
