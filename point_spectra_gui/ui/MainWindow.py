@@ -159,6 +159,8 @@ class Ui_MainWindow(object):
         self.actionClear_Workflow.setObjectName("actionClear_Workflow")
         self.actionSpectral_Derivative = QtWidgets.QAction(MainWindow)
         self.actionSpectral_Derivative.setObjectName("actionSpectral_Derivative")
+        self.actionOutlier_Removal = QtWidgets.QAction(MainWindow)
+        self.actionOutlier_Removal.setObjectName("actionOutlier_Removal")
         self.menuFile.addAction(self.actionLoad_Data)
         self.menuFile.addAction(self.actionRename_Data)
         self.menuFile.addAction(self.actionSave_Current_Data)
@@ -181,6 +183,7 @@ class Ui_MainWindow(object):
         self.menuPreprocessing.addAction(self.actionMultiply_by_Vector)
         self.menuPreprocessing.addAction(self.actionNormalization)
         self.menuPreprocessing.addAction(self.actionDimensionality_Reduction)
+        self.menuPreprocessing.addAction(self.actionOutlier_Removal)
         self.menuPreprocessing.addAction(self.actionStratified_Folds)
         self.menuPreprocessing.addAction(self.actionSpectral_Derivative)
         self.menuRegression.addAction(self.actionCross_Validation)
@@ -270,6 +273,7 @@ class Ui_MainWindow(object):
         self.actionBrace_yourself.setText(("Brace yourself"))
         self.actionClear_Workflow.setText(("Clear Workflow"))
         self.actionSpectral_Derivative.setText(("Spectral Derivative"))
+        self.actionOutlier_Removal.setText(("Outlier Removal"))
 
 
 if __name__ == "__main__":
