@@ -39,20 +39,7 @@ point_spectra_gui
 ![PYSAT splash](./images/splash.png)  
 
 - The UI's backend is designed and created in Python with the QT framework
-- The UI is being built to work closely with the original libraries
-
-Current Road Ahead
-- [x] Ported to version 5 of PyQt
-- [x] Working Modules on UI
-- [x] Selecting functions from Menubar adds functions dynamically
-- [x] Shortcuts such as Ctrl S to save
-- [ ] Embedded Plots and Graphs from data collected
-- [x] ~~Package all python packages: sklearn, scipy, numpy, matplotlib, pysat for user consumption~~ It has been discovered that the user can download Anaconda, and run our files as normal.
-- [x] Add ability to delete modules
-- [x] Add ability to save plots in personal files
-- [x] Add ability to save state of GUI, i.e. all number that user inputs will be there again after closing GUI
-- [x] Add ability to save data frame at any point in the workflow 
-- [ ] Setup a way to select points on a scatter plot.
+- Run into bugs or features that are missing? Let us know by reporting an issue!
 
 ## Control Flow
 
