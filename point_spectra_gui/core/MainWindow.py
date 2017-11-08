@@ -250,6 +250,9 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 lambda: self.addWidget(core.SubmodelPredict.SubmodelPredict))
             self.actionSpectral_Derivative.triggered.connect(
                 lambda: self.addWidget(core.SpecDeriv.SpecDeriv))
+            self.actionCombine_Data_Sets.triggered.connect(
+                lambda: self.addWidget(core.CombineDataSets.CombineDataSets))
+            self.actionData_Box.triggered.connect(lambda: self.dataViewDockWidget.show())
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
