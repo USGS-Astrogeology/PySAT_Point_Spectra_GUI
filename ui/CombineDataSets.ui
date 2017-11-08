@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="formGroupBox">
+     <property name="title">
+      <string>Combine Data Sets</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="dataSet1Label">
+        <property name="text">
+         <string>Data Set 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="dataSet1ComboBox"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="dataSet2Label">
+        <property name="text">
+         <string>Data Set 2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="dataSet2ComboBox"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="outputToDataSetLabel">
+        <property name="text">
+         <string>Output to DataSet: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="outputToDataSetComboBox"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
