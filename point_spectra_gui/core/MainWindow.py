@@ -398,6 +398,11 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         else:
             print("There is nothing running right now")
 
+    def on_refreshTable(self):
+        self.setComboBox(self.chooseDataComboBox, self.datakeys)
+        # pandasModel = PandasModel(self.data['data'].df)
+        # self.tableView.setModel(pandasModel)
+
     def _writeWindowAttributeSettings(self):
         '''
         Save window attributes as settings.
@@ -441,6 +446,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
         self.progressBar.setValue(1)  # displays 100% after process is finished.
+        self.on_refreshTable()
 
     def clear(self):
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
