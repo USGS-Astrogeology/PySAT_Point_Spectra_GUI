@@ -8,6 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
+        Form.resize(406, 778)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -222,13 +223,12 @@ class Ui_Form(object):
         self.Normalization.addLayout(self.waveLengthLayout)
         self.addDelRangeLayout = QtWidgets.QHBoxLayout()
         self.addDelRangeLayout.setObjectName("addDelRangeLayout")
-        self.nRangesLabel = QtWidgets.QLabel(self.groupBox)
-        self.nRangesLabel.setObjectName("nRangesLabel")
-        self.addDelRangeLayout.addWidget(self.nRangesLabel)
-        self.rangeCountSpinBox = QtWidgets.QSpinBox(self.groupBox)
-        self.rangeCountSpinBox.setMaximum(14)
-        self.rangeCountSpinBox.setObjectName("rangeCountSpinBox")
-        self.addDelRangeLayout.addWidget(self.rangeCountSpinBox)
+        self.add_range_button = QtWidgets.QPushButton(self.groupBox)
+        self.add_range_button.setObjectName("add_range_button")
+        self.addDelRangeLayout.addWidget(self.add_range_button)
+        self.delete_range_button = QtWidgets.QPushButton(self.groupBox)
+        self.delete_range_button.setObjectName("delete_range_button")
+        self.addDelRangeLayout.addWidget(self.delete_range_button)
         self.Normalization.addLayout(self.addDelRangeLayout)
         self.verticalLayout_3.addWidget(self.groupBox)
 
@@ -271,7 +271,8 @@ class Ui_Form(object):
         self.maximumWavelengthLabel_14.setText(("Maximum wavelength"))
         self.minimumWavelengthLabel_15.setText(("Minimum wavelength"))
         self.maximumWavelengthLabel_15.setText(("Maximum wavelength"))
-        self.nRangesLabel.setText(("Number of Ranges:"))
+        self.add_range_button.setText(("Add Range"))
+        self.delete_range_button.setText(("Delete Range"))
 
 
 if __name__ == "__main__":

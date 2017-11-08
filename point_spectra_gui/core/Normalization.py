@@ -61,9 +61,9 @@ class Normalization(Ui_Form, Basics):
         self.setMaximum(9999999)
         self.setHidden(self.normwidgets)
         self.qt.isGuiChanged(self.checkForNewMax)
-        self.rangeCountSpinBox.setMinimum(1)
-        self.rangeCountSpinBox.setMaximum(15)
-        self.rangeCountSpinBox.valueChanged.connect(self.on_change_rangeCountPushButton)
+        self.add_range_button.clicked.connect(lambda: self.on_addRange_pushed())
+        self.delete_range_button.clicked.connect(lambda: self.on_deleteRange_pushed())
+
 
     def on_change_rangeCountPushButton(self):
         spin = int(self.rangeCountSpinBox.value())
