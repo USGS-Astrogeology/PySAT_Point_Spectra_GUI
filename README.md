@@ -35,11 +35,15 @@ call activate point_spectra_gui
 point_spectra_gui
 ```
 
+# Bugs
+
+- Run into bugs or features that are missing? Let us know by reporting an issue!
+
 # PYSAT UI
 ![PYSAT splash](./images/splash.png)  
 
 - The UI's backend is designed and created in Python with the QT framework
-- Run into bugs or features that are missing? Let us know by reporting an issue!
+
 
 ## Control Flow
 
