@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
-from pysat.spectral.jade import JADE
+from libpysat.spectral.jade import JADE
 from point_spectra_gui.ui.dimred_JADE import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
