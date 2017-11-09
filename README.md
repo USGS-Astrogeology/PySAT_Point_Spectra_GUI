@@ -37,7 +37,7 @@ point_spectra_gui
 
 # Bugs
 
-- Run into bugs or features that are missing? Let us know by reporting an issue!
+## Run into bugs or features that are missing? Let us know by reporting an issue!
 
 # PYSAT UI
 ![PYSAT splash](./images/splash.png)  
