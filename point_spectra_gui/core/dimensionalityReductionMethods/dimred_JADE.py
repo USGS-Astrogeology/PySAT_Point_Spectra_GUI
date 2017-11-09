@@ -1,10 +1,9 @@
 from PyQt5 import QtWidgets, QtCore
-from libpysat.spectral.jade import JADE
 from point_spectra_gui.ui.dimred_JADE import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
-class Ui_Form(Ui_Form, JADE, Basics):
+class Ui_Form(Ui_Form, Basics):
     def setupUi(self, Form):
         super().setupUi(Form)
         self.checkMinAndMax()
