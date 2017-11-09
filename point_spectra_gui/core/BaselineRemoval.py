@@ -64,15 +64,18 @@ class BaselineRemoval(Ui_Form, Basics):
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
 
-        methodParameters = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
+        if self.checkoptions(datakey, self.datakeys,'data set'):
+            self.connectWidgets()
+        else:
+            methodParameters = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
 
-        datakey_new = datakey + '-Baseline Removed-' + method + str(methodParameters)
-        datakey_baseline = datakey + '-Baseline-' + method + str(methodParameters)
-        self.datakeys.append(datakey_new)
-        self.datakeys.append(datakey_baseline)
-        self.data[datakey_new] = spectral_data(self.data[datakey].df.copy(deep=True))
-        self.data[datakey_new].remove_baseline(method, segment=True, params=methodParameters)
-        self.data[datakey_baseline] = spectral_data(self.data[datakey_new].df_baseline)
+            datakey_new = datakey + '-Baseline Removed-' + method + str(methodParameters)
+            datakey_baseline = datakey + '-Baseline-' + method + str(methodParameters)
+            self.datakeys.append(datakey_new)
+            self.datakeys.append(datakey_baseline)
+            self.data[datakey_new] = spectral_data(self.data[datakey].df.copy(deep=True))
+            self.data[datakey_new].remove_baseline(method, segment=True, params=methodParameters)
+            self.data[datakey_baseline] = spectral_data(self.data[datakey_new].df_baseline)
 
     def hideAll(self):
         for a in self.alg:

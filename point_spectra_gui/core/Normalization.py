@@ -48,6 +48,7 @@ class Normalization(Ui_Form, Basics):
         self.__init__()
         super().setupUi(Form)
         Basics.setupUi(self, Form)
+        self.setHidden(self.normwidgets)
 
     def get_widget(self):
         return self.groupBox
@@ -59,7 +60,6 @@ class Normalization(Ui_Form, Basics):
             lambda: self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices()))
         self.setListWidget(self.varToNormalizeListWidget, self.xvar_choices())
         self.setMaximum(9999999)
-        self.setHidden(self.normwidgets)
         self.qt.isGuiChanged(self.checkForNewMax)
         self.add_range_button.clicked.connect(lambda: self.on_addRange_pushed())
         self.delete_range_button.clicked.connect(lambda: self.on_deleteRange_pushed())
@@ -74,7 +74,8 @@ class Normalization(Ui_Form, Basics):
 
     def setHidden(self, list):
         for i in range(1, len(list)):
-            list[i].setHidden(True)
+            if list[i].minimumWSpinBox.value() == list[i].maximumWSpinBox.value():
+                list[i].setHidden(True)
 
     def setMaximum(self, int_):
         for items in self.normwidgets:
@@ -147,20 +148,24 @@ class Normalization(Ui_Form, Basics):
         return xvarchoices
 
     def function(self):
-        ranges = []
-        for i in range(self.index):
-            ranges.append(self.normwidgets[i].getValues())
         datakey = self.chooseDataComboBox.currentText()
-        try:
-            col_var = self.varToNormalizeListWidget.currentItem().text()
-        except:
-            print("Did you remember to select a variable?")
-        print("{}".format(ranges))
-        try:
-            self.data[datakey].norm(ranges, col_var)
-            print("Normalization has been applied to the ranges: " + str(ranges))
-        except Exception as e:
-            print("There was a problem: ", e)
+
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+            ranges = []
+            for i in range(self.index):
+                ranges.append(self.normwidgets[i].getValues())
+            try:
+                col_var = self.varToNormalizeListWidget.currentItem().text()
+            except:
+                print("Did you remember to select a variable?")
+            print("{}".format(ranges))
+            try:
+                self.data[datakey].norm(ranges, col_var)
+                print("Normalization has been applied to the ranges: " + str(ranges))
+            except Exception as e:
+                print("There was a problem: ", e)
 
 
 if __name__ == "__main__":

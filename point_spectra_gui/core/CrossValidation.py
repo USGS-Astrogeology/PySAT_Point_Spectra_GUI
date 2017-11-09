@@ -82,40 +82,53 @@ class CrossValidation(Ui_Form, Basics):
         datakey = self.chooseDataComboBox.currentText()
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
         yvars = [('comp', str(y.text())) for y in self.yVariableList.selectedItems()]
-        yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
-        params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
+        yvars_to_compare = [str(y.text()) for y in self.yVariableList.selectedItems()]
 
-        y = np.array(self.data[datakey].df[yvars])
-        match = np.squeeze((y > yrange[0]) & (y < yrange[1]))
-        data_for_cv = spectral_data(self.data[datakey].df.ix[match])
-        # Warning: Params passing through cv.cv(params) needs to be in lists
-        # Example: {'n_components': [4], 'scale': [False]}
-        cv_obj = cv.cv(params)
-        self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
-                                                              yrange=yrange, method=method)
-        for n, key in enumerate(cvmodelkeys):
-            self.modelkeys.append(key)
-            self.models[key] = cvmodels[n]
-            self.model_xvars[key] = xvars
-            self.model_yvars[key] = yvars
-            if method != 'GP':
-                coef = np.squeeze(cvmodels[n].model.coef_)
-                coef = pd.DataFrame(coef)
-                coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
-                coef = coef.T
-                coef[('meta', 'Model')] = key
-                try:
-                    coef[('meta','Intercept')] = cvmodels[n].model.intercept_
-                except:
-                    pass
-                try:
-                    self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
-                except:
-                    self.data['Model Coefficients'] = spectral_data(coef)
-                    self.datakeys.append('Model Coefficients')
+        check_results = [self.checkoptions(datakey, self.datakeys, 'data set')]
+        for x in xvars:
+            check_results.append(self.checkoptions(x, self.xvar_choices(), 'X variable'))
+        for y in yvars_to_compare:
+            check_results.append(self.checkoptions(y, self.yvar_choices(), 'Y variable'))
 
-        self.datakeys.append('CV Results ' + modelkey)
-        self.data['CV Results ' + modelkey] = self.cv_results
+
+        if np.any(check_results):
+            self.connectWidgets()
+
+        else:
+            yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
+            params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
+
+            y = np.array(self.data[datakey].df[yvars])
+            match = np.squeeze((y > yrange[0]) & (y < yrange[1]))
+            data_for_cv = spectral_data(self.data[datakey].df.ix[match])
+            # Warning: Params passing through cv.cv(params) needs to be in lists
+            # Example: {'n_components': [4], 'scale': [False]}
+            cv_obj = cv.cv(params)
+            self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
+                                                                  yrange=yrange, method=method)
+            for n, key in enumerate(cvmodelkeys):
+                self.modelkeys.append(key)
+                self.models[key] = cvmodels[n]
+                self.model_xvars[key] = xvars
+                self.model_yvars[key] = yvars
+                if method != 'GP':
+                    coef = np.squeeze(cvmodels[n].model.coef_)
+                    coef = pd.DataFrame(coef)
+                    coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
+                    coef = coef.T
+                    coef[('meta', 'Model')] = key
+                    try:
+                        coef[('meta','Intercept')] = cvmodels[n].model.intercept_
+                    except:
+                        pass
+                    try:
+                        self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
+                    except:
+                        self.data['Model Coefficients'] = spectral_data(coef)
+                        self.datakeys.append('Model Coefficients')
+
+            self.datakeys.append('CV Results ' + modelkey)
+            self.data['CV Results ' + modelkey] = self.cv_results
 
     def yvar_choices(self):
         try:

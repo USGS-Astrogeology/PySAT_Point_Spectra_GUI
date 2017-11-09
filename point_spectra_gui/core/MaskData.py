@@ -24,9 +24,12 @@ class MaskData(Ui_Form, Basics):
 
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
-        maskfile = self.maskFileLineEdit.text()
-        self.data[datakey].mask(maskfile, maskvar='wvl')
-        print("Mask applied")
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+            maskfile = self.maskFileLineEdit.text()
+            self.data[datakey].mask(maskfile, maskvar='wvl')
+            print("Mask applied")
 
 
 if __name__ == "__main__":

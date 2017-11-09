@@ -190,7 +190,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.widgetLayout.addWidget(self.widgetList[-1].get_widget())
         scrollbar = self.scrollArea.verticalScrollBar()
         scrollbar.setValue(scrollbar.maximum())   #this should scroll the view all the way down after adding the new widget.
-        pass
+
 
     def menu_item_shortcuts(self):
         self.actionExit.setShortcut("ctrl+Q")
