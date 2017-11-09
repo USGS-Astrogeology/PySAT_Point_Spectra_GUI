@@ -97,6 +97,8 @@ class CrossValidation(Ui_Form, Basics):
         for n, key in enumerate(cvmodelkeys):
             self.modelkeys.append(key)
             self.models[key] = cvmodels[n]
+            self.model_xvars[key] = xvars
+            self.model_yvars[key] = yvars
             if method != 'GP':
                 coef = np.squeeze(cvmodels[n].model.coef_)
                 coef = pd.DataFrame(coef)

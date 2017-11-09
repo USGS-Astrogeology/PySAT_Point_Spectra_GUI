@@ -180,6 +180,7 @@
     <addaction name="actionMultiply_by_Vector"/>
     <addaction name="actionNormalization"/>
     <addaction name="actionDimensionality_Reduction"/>
+    <addaction name="actionOutlier_Removal"/>
     <addaction name="actionStratified_Folds"/>
     <addaction name="actionSpectral_Derivative"/>
    </widget>
@@ -484,6 +485,9 @@
   <action name="actionCombine_Data_Sets">
    <property name="text">
     <string>Combine Data Sets</string>
+  <action name="actionOutlier_Removal">
+   <property name="text">
+    <string>Outlier Removal</string>
    </property>
   </action>
  </widget>

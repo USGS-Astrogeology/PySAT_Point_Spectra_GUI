@@ -191,6 +191,8 @@ class Ui_MainWindow(object):
         self.actionData_Box.setObjectName("actionData_Box")
         self.actionCombine_Data_Sets = QtWidgets.QAction(MainWindow)
         self.actionCombine_Data_Sets.setObjectName("actionCombine_Data_Sets")
+        self.actionOutlier_Removal = QtWidgets.QAction(MainWindow)
+        self.actionOutlier_Removal.setObjectName("actionOutlier_Removal")
         self.menuFile.addAction(self.actionLoad_Data)
         self.menuFile.addAction(self.actionRename_Data)
         self.menuFile.addAction(self.actionSave_Current_Data)
@@ -214,6 +216,7 @@ class Ui_MainWindow(object):
         self.menuPreprocessing.addAction(self.actionMultiply_by_Vector)
         self.menuPreprocessing.addAction(self.actionNormalization)
         self.menuPreprocessing.addAction(self.actionDimensionality_Reduction)
+        self.menuPreprocessing.addAction(self.actionOutlier_Removal)
         self.menuPreprocessing.addAction(self.actionStratified_Folds)
         self.menuPreprocessing.addAction(self.actionSpectral_Derivative)
         self.menuRegression.addAction(self.actionCross_Validation)
@@ -310,6 +313,7 @@ class Ui_MainWindow(object):
         self.actionSpectral_Derivative.setText(("Spectral Derivative"))
         self.actionData_Box.setText(("Data Box"))
         self.actionCombine_Data_Sets.setText(("Combine Data Sets"))
+        self.actionOutlier_Removal.setText(("Outlier Removal"))
 
 
 if __name__ == "__main__":
