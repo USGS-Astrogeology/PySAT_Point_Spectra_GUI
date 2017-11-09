@@ -208,6 +208,7 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionExit)
         self.menuPreprocessing.addAction(self.actionRemove_Rows)
         self.menuPreprocessing.addAction(self.actionCombine_Data_Sets)
+        self.menuPreprocessing.addAction(self.actionOutlier_Removal)
         self.menuPreprocessing.addAction(self.actionSplit_Data)
         self.menuPreprocessing.addAction(self.actionInterpolate)
         self.menuPreprocessing.addAction(self.actionRemove_Baseline)
