@@ -5,6 +5,8 @@ import sys
 import time
 import warnings
 
+from point_spectra_gui.core import runPandasModel
+from point_spectra_gui.util.PandasModel import PandasModel
 from point_spectra_gui.util.themes import braceyourself, default
 
 try:
@@ -259,6 +261,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
+            self.chooseDataComboBox.currentIndexChanged.connect(runPandasModel.start())
             self.actionCreate_New_Workflow.triggered.connect(self.new)
             self.actionClear_Workflow.triggered.connect(self.clear)
             self.actionSave_Current_Workflow.triggered.connect(self.on_save_clicked)
@@ -403,8 +406,8 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
 
     def on_refreshTable(self):
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
-        # pandasModel = PandasModel(self.data['data'].df)
-        # self.tableView.setModel(pandasModel)
+        pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()].df)
+        self.tableView.setModel(pandasModel)
 
     def _writeWindowAttributeSettings(self):
         '''
@@ -449,7 +452,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
         self.progressBar.setValue(1)  # displays 100% after process is finished.
-        self.on_refreshTable()
 
     def clear(self):
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
@@ -489,7 +491,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 self.taskFinished.emit()
             except Exception as e:
                 print("Your module broke: please fix.", e)
-                self.widgetList[self.leftOff].setDisabled(False)
+                try:
+                    self.widgetList[self.leftOff].setDisabled(False)
+                except:
+                    pass
                 self.taskFinished.emit()
 
 
