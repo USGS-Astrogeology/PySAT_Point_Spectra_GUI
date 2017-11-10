@@ -7,7 +7,7 @@
 
 Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 
-### 2. Download the environment file
+### 2. Download the environment file (right click the link and save)
 
 [Environment.yml](https://raw.githubusercontent.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI/master/environment.yml)
 
