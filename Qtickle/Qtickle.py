@@ -21,6 +21,7 @@ class Qtickle(object):
                     value = obj.text()
                     dict[name] = value
 
+
                 if isinstance(obj, QCheckBox):
                     name = obj.objectName()
                     state = obj.isChecked()
@@ -81,6 +82,7 @@ class Qtickle(object):
         # self.core.resize(self.settings.value('size', QtCore.QSize(500, 500)))
         # self.core.move(self.settings.value('pos', QtCore.QPoint(60, 60)))
         for name, obj in inspect.getmembers(self.ui):
+            pass
             try:
                 if isinstance(obj, QLineEdit):
                     name = obj.objectName()
