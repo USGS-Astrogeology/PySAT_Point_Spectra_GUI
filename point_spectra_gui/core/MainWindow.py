@@ -5,8 +5,8 @@ import sys
 import time
 import warnings
 
-from point_spectra_gui.core import runPandasModel
 from point_spectra_gui.util.PandasModel import PandasModel
+from point_spectra_gui.util.Worker import Worker
 from point_spectra_gui.util.themes import braceyourself, default
 
 try:
@@ -70,13 +70,13 @@ class TitleWindow:
             return "{} - {} - {}".format(self.mainName, self.fileName, self.debugName)
 
 
-class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
-    taskFinished = QtCore.pyqtSignal()
-
+class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
     def __init__(self):
         super().__init__()
         self.widgetList = []
         self.leftOff = 0
+        self.runModules = Worker(self.on_runModules)
+        self.refreshTable = Worker(self.on_refreshTable)
 
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)  # Run the basic window UI
@@ -261,7 +261,8 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
-            self.chooseDataComboBox.currentIndexChanged.connect(runPandasModel.start())
+            self.chooseDataComboBox.currentIndexChanged.connect(lambda: self.refreshTable.start())
+            self.refreshTablePushButton.clicked.connect(lambda: self.refreshTable.start())
             self.actionCreate_New_Workflow.triggered.connect(self.new)
             self.actionClear_Workflow.triggered.connect(self.clear)
             self.actionSave_Current_Workflow.triggered.connect(self.on_save_clicked)
@@ -381,7 +382,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
 
     def on_okButton_clicked(self):
         self.onStart()
-        self.taskFinished.connect(self.onFinished)
+        self.runModules.taskFinished.connect(self.onFinished)
 
     def on_undoButton_clicked(self):
         """
@@ -398,16 +399,18 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             pass
 
     def on_stopButton_clicked(self):
-        if self.isRunning():
-            self.terminate()
-            self.taskFinished.emit()
+        if self.runModules.isRunning():
+            self.runModules.terminate()
+            self.runModules.taskFinished.emit()
         else:
             print("There is nothing running right now")
 
     def on_refreshTable(self):
-        self.setComboBox(self.chooseDataComboBox, self.datakeys)
-        pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()].df)
-        self.tableView.setModel(pandasModel)
+        try:
+            pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()].df)
+            self.tableView.setModel(pandasModel)
+        except:
+            print('KeyError: \'\': Cannot read from an empty string')
 
     def _writeWindowAttributeSettings(self):
         '''
@@ -446,12 +449,13 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
 
     def onStart(self):  # onStart function
         self.progressBar.setRange(0, 0)  # make the bar pulse green
-        self.start()  # TaskThread.start()
+        self.runModules.start()  # TaskThread.start()
         # This is multithreading thus run() == start()
 
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
         self.progressBar.setValue(1)  # displays 100% after process is finished.
+        self.refreshTable.start()
 
     def clear(self):
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
@@ -464,7 +468,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         p = mp.Process(target=main, args=())
         p.start()
 
-    def run(self):
+    def on_runModules(self):
         if self.debug:
             for modules in range(self.leftOff, len(self.widgetList)):
                 name_ = type(self.widgetList[modules]).__name__
@@ -475,7 +479,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 print("Module {} executed in: {} seconds".format(name_, e - s))
                 self.widgetList[modules].setDisabled(True)
                 self.leftOff = modules + 1
-            self.taskFinished.emit()
+            self.runModules.taskFinished.emit()
 
         else:
             try:
@@ -488,14 +492,14 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                     print("Module {} executed in: {} seconds".format(name_, e - s))
                     self.widgetList[modules].setDisabled(True)
                     self.leftOff = modules + 1
-                self.taskFinished.emit()
+                    self.runModules.taskFinished.emit()
             except Exception as e:
                 print("Your module broke: please fix.", e)
                 try:
                     self.widgetList[self.leftOff].setDisabled(False)
                 except:
                     pass
-                self.taskFinished.emit()
+                self.runModules.taskFinished.emit()
 
 
 def get_splash(app):

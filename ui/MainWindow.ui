@@ -6,15 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>785</width>
-    <height>509</height>
-   </rect>
-  </property>
-  <property name="maximumSize">
-   <size>
     <width>800</width>
-    <height>16777215</height>
-   </size>
+    <height>702</height>
+   </rect>
   </property>
   <property name="windowTitle">
    <string>PYSAT Point Spectra GUI</string>
@@ -50,8 +44,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>472</width>
-          <height>214</height>
+          <width>411</width>
+          <height>407</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -144,7 +138,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>785</width>
+     <width>800</width>
      <height>21</height>
     </rect>
    </property>
@@ -276,7 +270,7 @@
         <widget class="QComboBox" name="chooseDataComboBox"/>
        </item>
        <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="refreshTablePushButton">
          <property name="text">
           <string>Refresh Table</string>
          </property>
