@@ -14,7 +14,7 @@ Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 
 [Environment.yml](https://raw.githubusercontent.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI/master/environment.yml)
 
-![69f6a1ab-4d7e-4aba-b305-6210589ec448](https://user-images.githubusercontent.com/11879769/32648203-117140f4-c5b2-11e7-975f-53b99aab9e2b.gif)
+![dc336619-0412-4d4d-959d-dd4d83d863f8](https://user-images.githubusercontent.com/11879769/32661238-613f2386-c5e3-11e7-9e24-05bebb9ba8f7.gif)
 
 ### 3. Open a terminal (on Windows, `cmd`, not Powershell) in the directory where you saved the file and type:
 
