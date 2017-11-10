@@ -175,7 +175,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.textBrowser.setTextCursor(cursor)
         self.textBrowser.ensureCursorVisible()
 
-    def addWidget(self, obj, restore = False):
+    def addWidget(self, obj):
         """
         Organize our widgets using a list
         Each widget is addressed separately due to being in a list
@@ -183,7 +183,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         :return:
         """
         self.widgetList.append(obj())
-        self.widgetList[-1].setupUi(self.centralwidget, restore = restore)
+        self.widgetList[-1].setupUi(self.centralwidget)
         self.widgetLayout = QtWidgets.QVBoxLayout()
         self.widgetLayout.setObjectName("widgetLayout")
         self.verticalLayout_3.addLayout(self.widgetLayout)
@@ -317,7 +317,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             names to a list, you can't save function instances. So this is the next
             best thing.
             """
-            self.addWidget(getattr(getattr(core, f_items), f_items), restore = True)
+            self.addWidget(getattr(getattr(core, f_items), f_items))
 
         for i in range(1, len(dict)):
             self.widgetList[i - 1].setGuiParams(dict[i])

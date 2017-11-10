@@ -111,15 +111,28 @@ class Normalization(Ui_Form, Basics):
             print("Cannot delete any more ranges!")
 
     def function(self):
-        self.connectWidgets()
-        pass
-        # datakey = self.chooseDataComboBox.currentText()
-        # if self.checkoptions(datakey, self.datakeys, 'data set'):
-        #     self.connectWidgets()
-        # else:
-        #     maskfile = self.maskFileLineEdit.text()
-        #     self.data[datakey].mask(maskfile, maskvar='wvl')
-        #     print("Mask applied")
+        #self.connectWidgets()
+        datakey = self.chooseDataComboBox.currentText()
+
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+            range_vals = []
+            for i in range(len(self.ranges)):
+                range_min = self.ranges[i]['spins'][0].value()
+                range_max = self.ranges[i]['spins'][1].value()
+                if range_min != range_max:
+                    range_vals.append([range_min, range_max])
+            try:
+                col_var = self.varToNormalizeListWidget.currentItem().text()
+            except:
+                print("Did you remember to select a variable?")
+            print("{}".format(range_vals))
+            try:
+                self.data[datakey].norm(range_vals, col_var)
+                print("Normalization has been applied to the ranges: " + str(range_vals))
+            except Exception as e:
+                print("There was a problem: ", e)
 
     def xvar_choices(self):
         try:
