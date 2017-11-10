@@ -7,9 +7,14 @@
 
 Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 
+![982f2828-0d23-4dac-b84c-5808d47cd3ae](https://user-images.githubusercontent.com/11879769/32648152-ce130f7c-c5b1-11e7-954a-f580ff64f331.gif)
+
+
 ### 2. Download the environment file (right click the link and save)
 
 [Environment.yml](https://raw.githubusercontent.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI/master/environment.yml)
+
+![69f6a1ab-4d7e-4aba-b305-6210589ec448](https://user-images.githubusercontent.com/11879769/32648203-117140f4-c5b2-11e7-975f-53b99aab9e2b.gif)
 
 ### 3. Open a terminal (on Windows, `cmd`, not Powershell) in the directory where you saved the file and type:
 
@@ -19,12 +24,16 @@ conda env create -n point_spectra_gui -f environment.yml
 source activate point_spectra_gui  # omit the `source` on Windows
 ```
 
+![55096025-e378-4728-ba89-9ed1a5bcf24b](https://user-images.githubusercontent.com/11879769/32648500-3a948580-c5b3-11e7-86e9-cabf56827f1e.gif)
+
 ### 4. Done! How to use point_spectra_gui
 
 ```bash
 source activate point_spectra_gui  # omit the `source` on Windows
 point_spectra_gui
 ```
+
+![0f5329a7-1e09-49f2-8971-6e503b25f648](https://user-images.githubusercontent.com/11879769/32648596-ccd5ffa0-c5b3-11e7-9c38-44a5e4ad9ca1.gif)
 
 ### 5. Optional. Run program with a script
 
