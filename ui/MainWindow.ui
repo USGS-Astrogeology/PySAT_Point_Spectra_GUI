@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>702</height>
+    <width>511</width>
+    <height>596</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,8 +44,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>411</width>
-          <height>407</height>
+          <width>476</width>
+          <height>301</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -138,7 +138,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>511</width>
      <height>21</height>
     </rect>
    </property>
@@ -239,48 +239,6 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QDockWidget" name="dataViewDockWidget">
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>168</height>
-    </size>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <widget class="QTableView" name="tableView"/>
-     </item>
-     <item row="0" column="0">
-      <layout class="QFormLayout" name="chooseDataFormLayout">
-       <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="chooseDataLabel">
-         <property name="text">
-          <string>Choose Data</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="chooseDataComboBox"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="refreshTablePushButton">
-         <property name="text">
-          <string>Refresh Table</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-  </widget>
   <action name="actionRead_ChemCam_Data">
    <property name="text">
     <string>Read ChemCam Data</string>

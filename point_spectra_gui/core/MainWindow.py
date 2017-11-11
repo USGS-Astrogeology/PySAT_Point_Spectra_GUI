@@ -76,7 +76,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         self.widgetList = []
         self.leftOff = 0
         self.runModules = Worker(self.on_runModules)
-        self.refreshTable = Worker(self.on_refreshTable)
 
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)  # Run the basic window UI
@@ -257,12 +256,11 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
                 lambda: self.addWidget(core.SpecDeriv.SpecDeriv))
             self.actionCombine_Data_Sets.triggered.connect(
                 lambda: self.addWidget(core.CombineDataSets.CombineDataSets))
-            self.actionData_Box.triggered.connect(lambda: self.dataViewDockWidget.show())
+            self.actionData_Box.triggered.connect(
+                lambda: self.addWidget(core.DataTable.DataTable))
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
-            self.chooseDataComboBox.currentIndexChanged.connect(lambda: self.refreshTable.start())
-            self.refreshTablePushButton.clicked.connect(lambda: self.refreshTable.start())
             self.actionCreate_New_Workflow.triggered.connect(self.new)
             self.actionClear_Workflow.triggered.connect(self.clear)
             self.actionSave_Current_Workflow.triggered.connect(self.on_save_clicked)
@@ -274,6 +272,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
             self.actionOn.triggered.connect(self.debug_mode)
             self.actionOff.triggered.connect(self.normal_mode)
             self.actionExit.triggered.connect(self.MainWindow.close)
+            self.MainWindow.addDockWidget(QtCore.Qt.RightDockWidgetArea(2), )
 
         except Exception as e:
             print(e)
@@ -413,13 +412,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         else:
             print("There is nothing running right now")
 
-    def on_refreshTable(self):
-        try:
-            pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()].df)
-            self.tableView.setModel(pandasModel)
-        except:
-            print('KeyError: \'\': Cannot read from an empty string')
-
     def _writeWindowAttributeSettings(self):
         '''
         Save window attributes as settings.
@@ -455,10 +447,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
             pass
         self.settings.endGroup()
 
-    def onStart(self):  # onStart function
-        self.progressBar.setRange(0, 0)  # make the bar pulse green
-        self.runModules.start()  # TaskThread.start()
-        # This is multithreading thus run() == start()
     def onStart(self):
         """
         This is multithreading thus run() == start()
@@ -473,7 +461,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
         self.progressBar.setValue(1)  # displays 100% after process is finished.
-        self.refreshTable.start()
 
     def clear(self):
         """
