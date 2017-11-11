@@ -381,6 +381,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
             print("Cannot delete")
 
     def on_okButton_clicked(self):
+        """
+        Start the multithreading function
+        :return:
+        """
         self.onStart()
         self.runModules.taskFinished.connect(self.onFinished)
 
@@ -399,6 +403,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
             pass
 
     def on_stopButton_clicked(self):
+        """
+        Terminate running thread
+        :return:
+        """
         if self.runModules.isRunning():
             self.runModules.terminate()
             self.runModules.taskFinished.emit()
@@ -451,6 +459,16 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         self.progressBar.setRange(0, 0)  # make the bar pulse green
         self.runModules.start()  # TaskThread.start()
         # This is multithreading thus run() == start()
+    def onStart(self):
+        """
+        This is multithreading thus run() == start()
+        make the bar pulse green
+        TaskThread.start()
+        :return:
+        """
+        self.progressBar.setRange(0, 0)
+        self.runModules.start()
+
 
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
@@ -458,6 +476,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         self.refreshTable.start()
 
     def clear(self):
+        """
+        Delete all modules in GUI
+        :return:
+        """
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
             self.on_delete_module_clicked()
         self.title.setFileName('')
@@ -465,6 +487,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         self.textBrowser.clear()
 
     def new(self):
+        """
+        Start a new gui
+        :return:
+        """
         p = mp.Process(target=main, args=())
         p.start()
 
