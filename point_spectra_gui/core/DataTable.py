@@ -29,6 +29,14 @@ class DataTable(Ui_Form, Basics):
     def function(self):
         self.on_refreshTable()
 
+    def setDisabled(self, bool):
+        """
+        Override setDisabled since we don't want this table to be disabled.
+        :param bool:
+        :return:
+        """
+        pass
+
     def on_refreshTable(self):
         try:
             pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()].df)
