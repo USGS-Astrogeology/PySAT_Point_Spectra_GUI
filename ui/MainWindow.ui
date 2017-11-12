@@ -16,59 +16,56 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QSplitter" name="splitter">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>476</width>
+         <height>350</height>
+        </rect>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>0</number>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOn</enum>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>476</width>
-          <height>301</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="widgetLayout"/>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QVBoxLayout" name="widgetLayout"/>
+        </item>
+       </layout>
       </widget>
-      <widget class="QTextBrowser" name="textBrowser">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>200</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Console window&lt;br/&gt;This window gives you information about your running module&lt;br/&gt;Errors will also show up here, if they occur&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Console window&lt;br/&gt;This window gives you information about your running module&lt;br/&gt;Errors will also show up here, if they occur&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item>
