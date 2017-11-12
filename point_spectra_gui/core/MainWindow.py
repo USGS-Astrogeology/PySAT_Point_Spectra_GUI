@@ -5,7 +5,6 @@ import sys
 import time
 import warnings
 
-from point_spectra_gui.util.PandasModel import PandasModel
 from point_spectra_gui.util.Worker import Worker
 from point_spectra_gui.util.themes import braceyourself, default
 
@@ -272,7 +271,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
             self.actionOn.triggered.connect(self.debug_mode)
             self.actionOff.triggered.connect(self.normal_mode)
             self.actionExit.triggered.connect(self.MainWindow.close)
-            self.MainWindow.addDockWidget(QtCore.Qt.RightDockWidgetArea(2), )
 
         except Exception as e:
             print(e)
@@ -456,7 +454,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         """
         self.progressBar.setRange(0, 0)
         self.runModules.start()
-
 
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
