@@ -5,6 +5,9 @@
 
 ### 1. Fresh install of Miniconda (Skip to step 2 if you have Anaconda/Miniconda)
 
+\*Note for Windows: Please make sure you do not have any previous versions of Python on your system. If you do, it may make it difficult for Anaconda/Miniconda to use the command `conda` 
+<br>If you're still having issues with uninstalling Python, I recommend using <a href ="https://www.iobit.com/en/advanceduninstaller.php?">IObit Uninstaller</a>
+
 Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 
 ![982f2828-0d23-4dac-b84c-5808d47cd3ae](https://user-images.githubusercontent.com/11879769/32648152-ce130f7c-c5b1-11e7-954a-f580ff64f331.gif)
