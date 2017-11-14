@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>155</width>
+    <height>115</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -26,7 +34,14 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox"/>
+       <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="toolTip">
+         <string>whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered).</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="normalizeLabel">
@@ -36,7 +51,14 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox"/>
+       <widget class="QCheckBox" name="normalizeCheckBox">
+        <property name="toolTip">
+         <string>This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="precomputeLabel">
@@ -47,6 +69,12 @@
       </item>
       <item row="2" column="1">
        <widget class="QComboBox" name="precomputeComboBox">
+        <property name="toolTip">
+         <string>Whether to use a precomputed Gram and Xy matrix to speed up calculations. Improves performance when n_targets or n_samples is very large. Note that if you already have such matrices, you can pass them directly to the fit method.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html</string>
+        </property>
         <item>
          <property name="text">
           <string>auto</string>
@@ -72,7 +100,14 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QCheckBox" name="cVCheckBox"/>
+       <widget class="QCheckBox" name="cVCheckBox">
+        <property name="toolTip">
+         <string>Cross Validate</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
