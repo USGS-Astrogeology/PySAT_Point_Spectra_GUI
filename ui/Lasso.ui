@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>369</width>
+    <height>167</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -30,6 +38,12 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="toolTip">
+         <string>Constant that multiplies the L1 term. Defaults to 1.0. alpha = 0 is equivalent to an ordinary least square, solved by the LinearRegression object. For numerical reasons, using alpha = 0 with the Lasso object is not advised. Given this, you should use the LinearRegression object.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</string>
+        </property>
         <property name="maximum">
          <double>999999999.000000000000000</double>
         </property>
@@ -47,6 +61,12 @@
       </item>
       <item row="1" column="1">
        <widget class="QSpinBox" name="maxNumOfIterationsSpinBox">
+        <property name="toolTip">
+         <string>The maximum number of iterations</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</string>
+        </property>
         <property name="maximum">
          <number>999999999</number>
         </property>
@@ -71,6 +91,12 @@
       </item>
       <item row="3" column="1">
        <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="toolTip">
+         <string>whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered).</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</string>
+        </property>
         <property name="checked">
          <bool>true</bool>
         </property>
@@ -84,17 +110,30 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="forcePositiveCoefficientsCheckBox"/>
+       <widget class="QCheckBox" name="forcePositiveCoefficientsCheckBox">
+        <property name="toolTip">
+         <string>When set to True, forces the coefficients to be positive.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</string>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="optimizeWCrossValidaitonLabel">
         <property name="text">
-         <string>Optimize w/ Cross Validaiton (Ignores alpha)</string>
+         <string>Optimize w/ Cross Validation (Ignores alpha)</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
        <widget class="QCheckBox" name="optimizeWCrossValidaitonCheckBox">
+        <property name="toolTip">
+         <string>Optimize with Cross Validaiton</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</string>
+        </property>
         <property name="checked">
          <bool>true</bool>
         </property>
@@ -102,6 +141,12 @@
       </item>
       <item row="2" column="1">
        <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox">
+        <property name="toolTip">
+         <string>The tolerance for the optimization:</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</string>
+        </property>
         <property name="decimals">
          <number>5</number>
         </property>

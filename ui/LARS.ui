@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>196</width>
+    <height>321</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -26,7 +34,14 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QCheckBox" name="fit_interceptCheckBox"/>
+       <widget class="QCheckBox" name="fit_interceptCheckBox">
+        <property name="toolTip">
+         <string>Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered).</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="verboseLabel">
@@ -36,7 +51,14 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox"/>
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>Sets the verbosity amount</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="normalizeLabel">
@@ -46,7 +68,14 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox"/>
+       <widget class="QCheckBox" name="normalizeCheckBox">
+        <property name="toolTip">
+         <string>This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="precomputeLabel">
@@ -56,7 +85,14 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QComboBox" name="precomputeComboBox"/>
+       <widget class="QComboBox" name="precomputeComboBox">
+        <property name="toolTip">
+         <string>Whether to use a precomputed Gram matrix to speed up calculations. If set to 'auto' let us decide. The Gram matrix can also be passed as argument.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="n_nonzero_coefsLabel">
@@ -66,7 +102,14 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QSpinBox" name="n_nonzero_coefsSpinBox"/>
+       <widget class="QSpinBox" name="n_nonzero_coefsSpinBox">
+        <property name="toolTip">
+         <string>Target number of non-zero coefficients. Use np.inf for no limit.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="copy_XLabel">
@@ -76,7 +119,14 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QCheckBox" name="copy_XCheckBox"/>
+       <widget class="QCheckBox" name="copy_XCheckBox">
+        <property name="toolTip">
+         <string>If True, X will be copied; else, it may be overwritten.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="fit_pathLabel">
@@ -86,7 +136,14 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QCheckBox" name="fit_pathCheckBox"/>
+       <widget class="QCheckBox" name="fit_pathCheckBox">
+        <property name="toolTip">
+         <string>If True the full path is stored in the coef_path_ attribute. If you compute the solution for a large problem or many targets, setting fit_path to False will lead to a speedup, especially with a small alpha.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="positiveLabel">
@@ -96,7 +153,14 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QCheckBox" name="positiveCheckBox"/>
+       <widget class="QCheckBox" name="positiveCheckBox">
+        <property name="toolTip">
+         <string>Restrict coefficients to be &gt;= 0. Be aware that you might want to remove fit_intercept which is set True by default.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="max_iterLabel">
@@ -109,6 +173,12 @@
        <widget class="QSpinBox" name="max_iterSpinBox">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Maximum number of iterations to perform.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
         </property>
        </widget>
       </item>
@@ -123,6 +193,9 @@
        <widget class="QSpinBox" name="cvSpinBox">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
         </property>
         <property name="value">
          <number>3</number>
@@ -141,6 +214,9 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
        </widget>
       </item>
       <item row="11" column="0">
@@ -155,6 +231,9 @@
         <property name="enabled">
          <bool>false</bool>
         </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
        </widget>
       </item>
       <item row="12" column="0">
@@ -165,7 +244,14 @@
        </widget>
       </item>
       <item row="12" column="1">
-       <widget class="QCheckBox" name="cVCheckBox"/>
+       <widget class="QCheckBox" name="cVCheckBox">
+        <property name="toolTip">
+         <string>Cross Validate</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lars.html</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
