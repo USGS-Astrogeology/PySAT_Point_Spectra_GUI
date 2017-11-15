@@ -5,7 +5,6 @@ import sys
 import time
 import warnings
 
-from point_spectra_gui.util.Worker import Worker
 from point_spectra_gui.util.themes import braceyourself, default
 
 try:
@@ -69,12 +68,13 @@ class TitleWindow:
             return "{} - {} - {}".format(self.mainName, self.fileName, self.debugName)
 
 
-class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
+class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
+    taskFinished = QtCore.pyqtSignal()
+
     def __init__(self):
         super().__init__()
         self.widgetList = []
         self.leftOff = 0
-        self.runModules = Worker(self.on_runModules)
 
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)  # Run the basic window UI
@@ -386,7 +386,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         :return:
         """
         self.onStart()
-        self.runModules.taskFinished.connect(self.onFinished)
+        self.taskFinished.connect(self.onFinished)
 
     def on_undoButton_clicked(self):
         """
@@ -407,9 +407,9 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         Terminate running thread
         :return:
         """
-        if self.runModules.isRunning():
-            self.runModules.terminate()
-            self.runModules.taskFinished.emit()
+        if self.isRunning():
+            self.terminate()
+            self.taskFinished.emit()
         else:
             print("There is nothing running right now")
 
@@ -456,7 +456,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         :return:
         """
         self.progressBar.setRange(0, 0)
-        self.runModules.start()
+        self.start()
 
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
@@ -481,7 +481,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         p = mp.Process(target=main, args=())
         p.start()
 
-    def on_runModules(self):
+    def run(self):
         if self.debug:
             for modules in range(self.leftOff, len(self.widgetList)):
                 name_ = type(self.widgetList[modules]).__name__
@@ -492,7 +492,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
                 print("Module {} executed in: {} seconds".format(name_, e - s))
                 self.widgetList[modules].setDisabled(True)
                 self.leftOff = modules + 1
-            self.runModules.taskFinished.emit()
+            self.taskFinished.emit()
 
         else:
             try:
@@ -505,7 +505,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
                     print("Module {} executed in: {} seconds".format(name_, e - s))
                     self.widgetList[modules].setDisabled(True)
                     self.leftOff = modules + 1
-                    self.runModules.taskFinished.emit()
+                self.taskFinished.emit()
             except Exception as e:
                 print("Your module broke: please fix.", e)
                 try:
