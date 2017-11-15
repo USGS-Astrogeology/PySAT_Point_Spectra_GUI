@@ -36,7 +36,10 @@
       <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox">
         <property name="toolTip">
-         <string>Constant that multiplies the penalty term. Defaults to 1.0. alpha = 0 is equivalent to an ordinary least square, solved by LinearRegression. For numerical reasons, using alpha = 0 with the LassoLars object is not advised and you should prefer the LinearRegression object.</string>
+         <string>Constant that multiplies the penalty term. Defaults to 1.0. alpha = 0
+is equivalent to an ordinary least square, solved by LinearRegression.
+For numerical reasons, using alpha = 0 with the LassoLars object is not
+advised and you should prefer the LinearRegression object.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
@@ -53,7 +56,9 @@
       <item row="1" column="1">
        <widget class="QCheckBox" name="fit_interceptCheckBox">
         <property name="toolTip">
-         <string>whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered).</string>
+         <string>whether to calculate the intercept for this model. If set to false,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered).</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
@@ -87,7 +92,11 @@
       <item row="3" column="1">
        <widget class="QCheckBox" name="normalizeCheckBox">
         <property name="toolTip">
-         <string>This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False.</string>
+         <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing.StandardScaler before calling fit
+on an estimator with normalize=False.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
@@ -104,7 +113,9 @@
       <item row="4" column="1">
        <widget class="QComboBox" name="precomputeComboBox">
         <property name="toolTip">
-         <string>Whether to use a precomputed Gram matrix to speed up calculations. If set to 'auto' let us decide. The Gram matrix can also be passed as argument.</string>
+         <string>Whether to use a precomputed Gram matrix to speed up calculations. If
+set to 'auto' let us decide. The Gram matrix can also be passed as
+argument.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
@@ -158,7 +169,10 @@
       <item row="7" column="1">
        <widget class="QCheckBox" name="fit_pathCheckBox">
         <property name="toolTip">
-         <string>If True the full path is stored in the coef_path_ attribute. If you compute the solution for a large problem or many targets, setting fit_path to False will lead to a speedup, especially with a small alpha.</string>
+         <string>If True the full path is stored in the coef_path_ attribute. If you
+compute the solution for a large problem or many targets, setting
+fit_path to False will lead to a speedup, especially with a small
+alpha.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
@@ -175,7 +189,14 @@
       <item row="8" column="1">
        <widget class="QCheckBox" name="positiveCheckBox">
         <property name="toolTip">
-         <string>Restrict coefficients to be &gt;= 0. Be aware that you might want to remove fit_intercept which is set True by default. Under the positive restriction the model coefficients will not converge to the ordinary-least-squares solution for small values of alpha. Only coefficients up to the smallest alpha value (alphas_[alphas_ &gt; 0.].min() when fit_path=True) reached by the stepwise Lars-Lasso algorithm are typically in congruence with the solution of the coordinate descent Lasso estimator.</string>
+         <string>Restrict coefficients to be &gt;= 0. Be aware that you might want to
+remove fit_intercept which is set True by default. Under the positive
+restriction the model coefficients will not converge to the
+ordinary-least-squares solution for small values of alpha. Only
+coefficients up to the smallest alpha value
+(alphas_[alphas_ &gt; 0.].min() when fit_path=True) reached by the
+stepwise Lars-Lasso algorithm are typically in congruence with the
+solution of the coordinate descent Lasso estimator.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>

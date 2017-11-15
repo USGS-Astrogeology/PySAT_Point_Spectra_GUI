@@ -39,7 +39,11 @@
       <item row="0" column="1">
        <widget class="QSpinBox" name="alphaSpinBox">
         <property name="toolTip">
-         <string>Small positive values of alpha improve the conditioning of the problem and reduce the variance of the estimates. Alpha corresponds to (2*C)^-1 in other linear models such as LogisticRegression or LinearSVC. If an array is passed, penalties are assumed to be specific to the targets. Hence they must correspond in number.</string>
+         <string>Small positive values of alpha improve the conditioning of the problem
+and reduce the variance of the estimates. Alpha corresponds to (2*C)^-1
+in other linear models such as LogisticRegression or LinearSVC. If an
+array is passed, penalties are assumed to be specific to the targets.
+Hence they must correspond in number.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html</string>
@@ -56,7 +60,9 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="kernelLineEdit">
         <property name="toolTip">
-         <string>Kernel mapping used internally. A callable should accept two arguments and the keyword arguments passed to this object as kernel_params, and should return a floating point number.</string>
+         <string>Kernel mapping used internally. A callable should accept two arguments
+and the keyword arguments passed to this object as kernel_params, and
+should return a floating point number.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html</string>
@@ -76,7 +82,10 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="gammaLineEdit">
         <property name="toolTip">
-         <string>Gamma parameter for the RBF, laplacian, polynomial, exponential chi2 and sigmoid kernels. Interpretation of the default value is left to the kernel; see the documentation for sklearn.metrics.pairwise. Ignored by other kernels.</string>
+         <string>Gamma parameter for the RBF, laplacian, polynomial, exponential chi2
+and sigmoid kernels. Interpretation of the default value is left to
+the kernel; see the documentation for sklearn.metrics.pairwise.
+Ignored by other kernels.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html</string>
@@ -119,7 +128,8 @@
       <item row="4" column="1">
        <widget class="QDoubleSpinBox" name="coeff0DoubleSpinBox">
         <property name="toolTip">
-         <string>Zero coefficient for polynomial and sigmoid kernels. Ignored by other kernels.</string>
+         <string>Zero coefficient for polynomial and sigmoid kernels. Ignored by other
+kernels.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html</string>
@@ -142,7 +152,8 @@
       <item row="5" column="1">
        <widget class="QLineEdit" name="kernelParametersLineEdit">
         <property name="toolTip">
-         <string>Additional parameters (keyword arguments) for kernel function passed as callable object.</string>
+         <string>Additional parameters (keyword arguments) for kernel function passed
+as callable object.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html</string>

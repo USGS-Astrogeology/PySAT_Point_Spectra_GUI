@@ -36,7 +36,9 @@
       <item row="0" column="1">
        <widget class="QCheckBox" name="fitInterceptCheckBox">
         <property name="toolTip">
-         <string>whether to calculate the intercept for this model. If set to False, no intercept will be used in calculations (e.g. data is expected to be already centered).</string>
+         <string>whether to calculate the intercept for this model. If set to False,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered).</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html</string>
