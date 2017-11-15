@@ -116,10 +116,16 @@ class Ui_Form(object):
         self.cDoubleSpinBox.setToolTip(("Penalty parameter C of the error term."))
         self.cDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.epsilonLabel.setText(("Epsilon"))
-        self.epsilonDoubleSpinBox.setToolTip(("Epsilon in the epsilon-SVR model. It specifies the epsilon-tube within which no penalty is associated in the training loss function with points predicted within a distance epsilon from the actual value."))
+        self.epsilonDoubleSpinBox.setToolTip(_translate("Form", "Epsilon in the epsilon-SVR model. It specifies the epsilon-tube\n"
+"within which no penalty is associated in the training loss function\n"
+"with points predicted within a distance epsilon from the actual\n"
+"value."))
         self.epsilonDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.kernelLabel.setText(("Kernel"))
-        self.kernelComboBox.setToolTip(("Specifies the kernel type to be used in the algorithm. It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or a callable. If none is given, 'rbf' will be used. If a callable is given it is used to precompute the kernel matrix."))
+        self.kernelComboBox.setToolTip(_translate("Form", "Specifies the kernel type to be used in the algorithm. It must be one\n"
+"of \'linear\', \'poly\', \'rbf\', \'sigmoid\', \'precomputed\' or a callable.\n"
+"If none is given, \'rbf\' will be used. If a callable is given it is\n"
+"used to precompute the kernel matrix."))
         self.kernelComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.kernelComboBox.setItemText(0, ("rbf"))
         self.kernelComboBox.setItemText(1, ("poly"))
@@ -128,14 +134,16 @@ class Ui_Form(object):
         self.kernelComboBox.setItemText(4, ("precomputed"))
         self.degreeLabel.setText(("Degree"))
         self.gammaLabel.setText(("Gamma"))
-        self.gammaComboBox.setToolTip(("Kernel coefficient for 'rbf', 'poly' and 'sigmoid'. If gamma is 'auto' then 1/n_features will be used instead."))
+        self.gammaComboBox.setToolTip(_translate("Form", "Kernel coefficient for \'rbf\', \'poly\' and \'sigmoid\'. If gamma is \'auto\'\n"
+"then 1/n_features will be used instead."))
         self.gammaComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.gammaComboBox.setItemText(0, ("auto"))
         self.gammaComboBox.setItemText(1, ("rbf"))
         self.gammaComboBox.setItemText(2, ("poly"))
         self.gammaComboBox.setItemText(3, ("sigmoid"))
         self.coeff0Label.setText(("Coeff 0"))
-        self.coeff0DoubleSpinBox.setToolTip(("Independent term in kernel function. It is only significant in 'poly' and 'sigmoid'."))
+        self.coeff0DoubleSpinBox.setToolTip(_translate("Form", "Independent term in kernel function. It is only significant in \'poly\'\n"
+"and \'sigmoid\'."))
         self.coeff0DoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.shrinkingLabel.setText(("Shrinking"))
         self.shrinkingCheckBox.setToolTip(("Whether to use the shrinking heuristic."))
@@ -147,12 +155,15 @@ class Ui_Form(object):
         self.cacheSizeSpinBox.setToolTip(("Specify the size of the kernel cache (in MB)."))
         self.cacheSizeSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.verboseLabel.setText(("Verbose"))
-        self.verboseCheckBox.setToolTip(("Enable verbose output. Note that this setting takes advantage of a per-process runtime setting in libsvm that, if enabled, may not work properly in a multithreaded context."))
+        self.verboseCheckBox.setToolTip(_translate("Form", "Enable verbose output. Note that this setting takes advantage of a\n"
+"per-process runtime setting in libsvm that, if enabled, may not work\n"
+"properly in a multithreaded context."))
         self.verboseCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
         self.maxIterationsLabel.setText(("Max Iterations"))
         self.maxIterationsSpinBox.setToolTip(("Hard limit on iterations within solver, or -1 for no limit."))
         self.maxIterationsSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
-        self.degreeSpinBox.setToolTip(("Degree of the polynomial kernel function ('poly'). Ignored by all other kernels."))
+        self.degreeSpinBox.setToolTip(("Degree of the polynomial kernel function (\'poly\'). Ignored by all\n"
+"other kernels."))
         self.degreeSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html"))
 
 

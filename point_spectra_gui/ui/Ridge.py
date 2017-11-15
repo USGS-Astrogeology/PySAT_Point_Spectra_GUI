@@ -163,10 +163,16 @@ class Ui_Form(object):
         self.alphasLineEdit_cv.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.alphasLineEdit_cv.setText(("0.1, 1.0, 10.0"))
         self.fitInterceptLabel_cv.setText(("Fit intercept "))
-        self.fitInterceptCheckBox_cv.setToolTip(("Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered)."))
+        self.fitInterceptCheckBox_cv.setToolTip(_translate("Form", "Whether to calculate the intercept for this model. If set to false,\n"
+"no intercept will be used in calculations (e.g. data is expected to\n"
+"be already centered)."))
         self.fitInterceptCheckBox_cv.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.normalizeLabel_cv.setText(("Normalize "))
-        self.normalizeCheckBox_cv.setToolTip(("This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False."))
+        self.normalizeCheckBox_cv.setToolTip(_translate("Form", "This parameter is ignored when fit_intercept is set to False. If True,\n"
+"the regressors X will be normalized before regression by subtracting\n"
+"the mean and dividing by the l2-norm. If you wish to standardize,\n"
+"please use sklearn.preprocessing.StandardScaler before calling fit on\n"
+"an estimator with normalize=False."))
         self.normalizeCheckBox_cv.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.scoringLabel_cv.setText(("Scoring"))
         self.scoringComboBox_cv.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
@@ -183,37 +189,70 @@ class Ui_Form(object):
         self.storeCVValuesCheckBox_cv.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.Ridge.setTitle(("Ridge"))
         self.alphaLabel.setText(("Alpha"))
-        self.alphaDoubleSpinBox.setToolTip(("Regularization strength; must be a positive float. Regularization improves the conditioning of the problem and reduces the variance of the estimates. Larger values specify stronger regularization. Alpha corresponds to C^-1 in other linear models such as LogisticRegression or LinearSVC. If an array is passed, penalties are assumed to be specific to the targets. Hence they must correspond in number."))
+        self.alphaDoubleSpinBox.setToolTip(_translate("Form", "Regularization strength; must be a positive float. Regularization\n"
+"improves the conditioning of the problem and reduces the variance of\n"
+"the estimates. Larger values specify stronger regularization. Alpha\n"
+"corresponds to C^-1 in other linear models such as LogisticRegression\n"
+"or LinearSVC. If an array is passed, penalties are assumed to be specific\n"
+"to the targets. Hence they must correspond in number.\n"
+""))
         self.alphaDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.copyXLabel.setText(("Copy X"))
         self.copyXCheckBox.setToolTip(("If True, X will be copied; else, it may be overwritten."))
         self.copyXCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
-        self.fitInterceptCheckBox.setToolTip(("Whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered)."))
+        self.fitInterceptCheckBox.setToolTip(_translate("Form", "Whether to calculate the intercept for this model. If set to false,\n"
+"no intercept will be used in calculations (e.g. data is expected to\n"
+"be already centered)."))
         self.fitInterceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.maxNumOfIterationsLabel.setText(("Max num of Iterations"))
-        self.maxNumOfIterationslineEdit.setToolTip(("Maximum number of iterations for conjugate gradient solver. For 'sparse_cg' and 'lsqr' solvers, the default value is determined by scipy.sparse.linalg. For 'sag' solver, the default value is 1000."))
+        self.maxNumOfIterationslineEdit.setToolTip(_translate("Form", "Maximum number of iterations for conjugate gradient solver. For\n"
+"\'sparse_cg\' and \'lsqr\' solvers, the default value is determined by\n"
+"scipy.sparse.linalg. For \'sag\' solver, the default value is 1000.\n"
+""))
         self.maxNumOfIterationslineEdit.setText(("None"))
         self.normalizeLabel.setText(("Normalize"))
-        self.normalizeCheckBox.setToolTip(("This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False."))
+        self.normalizeCheckBox.setToolTip(_translate("Form", "This parameter is ignored when fit_intercept is set to False. If True,\n"
+"the regressors X will be normalized before regression by subtracting\n"
+"the mean and dividing by the l2-norm. If you wish to standardize,\n"
+"please use sklearn.preprocessing.StandardScaler before calling fit on\n"
+"an estimator with normalize=False."))
         self.normalizeCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.solverLabel.setText(("Solver"))
         self.toleranceLabel.setText(("Tolerance"))
         self.toleranceDoubleSpinBox.setToolTip(("Precision of the solution."))
         self.toleranceDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.randomStateLabel.setText(("Random State"))
-        self.randomStateLineEdit.setToolTip(("The seed of the pseudo random number generator to use when shuffling the data. If int, random_state is the seed used by the random number generator; If RandomState instance, random_state is the random number generator; If None, the random number generator is the RandomState instance used by np.random. Used when solver == 'sag'."))
+        self.randomStateLineEdit.setToolTip(_translate("Form", "The seed of the pseudo random number generator to use when shuffling\n"
+"the data. If int, random_state is the seed used by the random number\n"
+"generator; If RandomState instance, random_state is the random number\n"
+"generator; If None, the random number generator is the RandomState\n"
+"instance used by np.random. Used when solver == \'sag\'."))
         self.randomStateLineEdit.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.randomStateLineEdit.setText(("None"))
         self.solverComboBox.setToolTip(_translate("Form", "Solver to use in the computational routines:\n"
 "\n"
-"'auto' chooses the solver automatically based on the type of data.\n"
-"'svd' uses a Singular Value Decomposition of X to compute the Ridge coefficients. More stable for singular matrices than 'cholesky'.\n"
-"'cholesky' uses the standard scipy.linalg.solve function to obtain a closed-form solution.\n"
-"'sparse_cg' uses the conjugate gradient solver as found in scipy.sparse.linalg.cg. As an iterative algorithm, this solver is more appropriate than 'cholesky' for large-scale data (possibility to set tol and max_iter).\n"
-"'lsqr' uses the dedicated regularized least-squares routine scipy.sparse.linalg.lsqr. It is the fastest but may not be available in old scipy versions. It also uses an iterative procedure.\n"
-"'sag' uses a Stochastic Average Gradient descent, and 'saga' uses its improved, unbiased version named SAGA. Both methods also use an iterative procedure, and are often faster than other solvers when both n_samples and n_features are large. Note that 'sag' and 'saga' fast convergence is only guaranteed on features with approximately the same scale. You can preprocess the data with a scaler from sklearn.preprocessing.\n"
-"All last five solvers support both dense and sparse data. However, only 'sag' and 'saga' supports sparse input when fit_intercept is True."))
+"\'auto\' chooses the solver automatically based on the type of data.\n"
+"\'svd\' uses a Singular Value Decomposition of X to compute the Ridge\n"
+"coefficients. More stable for singular matrices than \'cholesky\'.\n"
+"\'cholesky\' uses the standard scipy.linalg.solve function to obtain a\n"
+"closed-form solution.\n"
+"\'sparse_cg\' uses the conjugate gradient solver as found in\n"
+"scipy.sparse.linalg.cg. As an iterative algorithm, this solver is more\n"
+"appropriate than \'cholesky\' for large-scale data (possibility to set tol\n"
+"and max_iter).\n"
+"\'lsqr\' uses the dedicated regularized least-squares routine\n"
+"scipy.sparse.linalg.lsqr. It is the fastest but may not be available in\n"
+"old scipy versions. It also uses an iterative procedure.\n"
+"\'sag\' uses a Stochastic Average Gradient descent, and \'saga\' uses its\n"
+"improved, unbiased version named SAGA. Both methods also use an\n"
+"iterative procedure, and are often faster than other solvers when both\n"
+"n_samples and n_features are large. Note that \'sag\' and \'saga\' fast\n"
+"convergence is only guaranteed on features with approximately the same\n"
+"scale. You can preprocess the data with a scaler from\n"
+"sklearn.preprocessing.\n"
+"All last five solvers support both dense and sparse data. However, only\n"
+"\'sag\' and \'saga\' supports sparse input when fit_intercept is True."))
         self.solverComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html"))
         self.solverComboBox.setItemText(0, ("auto"))
         self.solverComboBox.setItemText(1, ("svd"))

@@ -144,18 +144,26 @@ class Ui_Form(object):
         self.lambdaLabel.setText(("Lambda"))
         self.lambdaDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html"))
         self.computerScoreLabel.setText(("Computer Score"))
-        self.computerScoreCheckBox.setToolTip(("If True, compute the objective function at each step of the model. Default is False."))
+        self.computerScoreCheckBox.setToolTip(_translate("Form", "If True, compute the objective function at each step of the model.\n"
+"Default is False."))
         self.computerScoreCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html"))
         self.computerScoreCheckBox.setText(("compute the objective function at each step of the model"))
         self.thresholdLambdaLabel.setText(("Threshold Lambda"))
-        self.thresholdLambdaSpinBox.setToolTip(("threshold for removing (pruning) weights with high precision from the computation. Default is 1.e+4."))
+        self.thresholdLambdaSpinBox.setToolTip(("threshold for removing (pruning) weights with high precision from the\n"
+"computation. Default is 1.e+4."))
         self.thresholdLambdaSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
-        self.fitInterceptCheckBox.setToolTip(("whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered). Default is True."))
+        self.fitInterceptCheckBox.setToolTip(_translate("Form", "whether to calculate the intercept for this model. If set to false,\n"
+"no intercept will be used in calculations (e.g. data is expected to\n"
+"be already centered). Default is True."))
         self.fitInterceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html"))
         self.fitInterceptCheckBox.setText(("calculate the intercept for this model"))
         self.normalizeLabel.setText(("Normalize"))
-        self.normalizeCheckBox.setToolTip(("This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False."))
+        self.normalizeCheckBox.setToolTip(_translate("Form", "This parameter is ignored when fit_intercept is set to False. If True,\n"
+"the regressors X will be normalized before regression by subtracting\n"
+"the mean and dividing by the l2-norm. If you wish to standardize,\n"
+"please use sklearn.preprocessing.StandardScaler before calling fit on\n"
+"an estimator with normalize=False."))
         self.normalizeCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html"))
         self.normalizeCheckBox.setText(("regressors X will be normlized before regression"))
         self.copyXLabel.setText(("Copy X"))
