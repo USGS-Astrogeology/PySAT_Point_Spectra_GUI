@@ -154,7 +154,8 @@
       <item row="6" column="1">
        <widget class="QCheckBox" name="computerScoreCheckBox">
         <property name="toolTip">
-         <string>If True, compute the objective function at each step of the model. Default is False.</string>
+         <string>If True, compute the objective function at each step of the model.
+Default is False.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
@@ -174,7 +175,8 @@
       <item row="7" column="1">
        <widget class="QSpinBox" name="thresholdLambdaSpinBox">
         <property name="toolTip">
-         <string>threshold for removing (pruning) weights with high precision from the computation. Default is 1.e+4.</string>
+         <string>threshold for removing (pruning) weights with high precision from the
+computation. Default is 1.e+4.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
@@ -197,7 +199,9 @@
       <item row="8" column="1">
        <widget class="QCheckBox" name="fitInterceptCheckBox">
         <property name="toolTip">
-         <string>whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered). Default is True.</string>
+         <string>whether to calculate the intercept for this model. If set to false,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered). Default is True.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
@@ -220,7 +224,11 @@
       <item row="9" column="1">
        <widget class="QCheckBox" name="normalizeCheckBox">
         <property name="toolTip">
-         <string>This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False.</string>
+         <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing.StandardScaler before calling fit on
+an estimator with normalize=False.</string>
         </property>
         <property name="whatsThis">
          <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>

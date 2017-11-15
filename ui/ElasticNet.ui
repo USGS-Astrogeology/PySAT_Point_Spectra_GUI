@@ -45,7 +45,9 @@
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="l1_ratioDoubleSpinBox">
              <property name="toolTip">
-              <string>The ElasticNet mixing parameter, with 0 &lt;= l1_ratio &lt;= 1. For l1_ratio = 0 the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty. For 0 &lt; l1_ratio &lt; 1, the penalty is a combination of L1 and L2.</string>
+              <string>The ElasticNet mixing parameter, with 0 &lt;= l1_ratio &lt;= 1. For l1_ratio
+= 0 the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty.
+For 0 &lt; l1_ratio &lt; 1, the penalty is a combination of L1 and L2.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -108,7 +110,8 @@
            <item row="4" column="1">
             <widget class="QCheckBox" name="fit_interceptCheckBox">
              <property name="toolTip">
-              <string>Whether the intercept should be estimated or not. If False, the data is assumed to be already centered.</string>
+              <string>Whether the intercept should be estimated or not. If False, the data
+is assumed to be already centered.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -126,7 +129,11 @@
            <item row="5" column="1">
             <widget class="QCheckBox" name="normalizeCheckBox">
              <property name="toolTip">
-              <string>This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False.</string>
+              <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing. StandardScaler before calling fit on
+an estimator with normalize=False.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -144,7 +151,9 @@
            <item row="6" column="1">
             <widget class="QComboBox" name="precomputeComboBox">
              <property name="toolTip">
-              <string>Whether to use a precomputed Gram matrix to speed up calculations. The Gram matrix can also be passed as argument. For sparse input this option is always True to preserve sparsity.</string>
+              <string>Whether to use a precomputed Gram matrix to speed up calculations.
+The Gram matrix can also be passed as argument. For sparse input this
+option is always True to preserve sparsity.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -263,7 +272,10 @@
            <item row="15" column="1">
             <widget class="QComboBox" name="selectionComboBox">
              <property name="toolTip">
-              <string>If set to ‘random’, a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to ‘random’) often leads to significantly faster convergence especially when tol is higher than 1e-4.</string>
+              <string>If set to 'random', a random coefficient is updated every iteration
+rather than looping over features sequentially by default. This
+(setting to 'random') often leads to significantly faster convergence
+especially when tol is higher than 1e-4.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -307,7 +319,12 @@
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="enalphaDoubleSpinBox">
              <property name="toolTip">
-              <string>Constant that multiplies the penalty terms. Defaults to 1.0. See the notes for the exact mathematical meaning of this parameter.alpha = 0 is equivalent to an ordinary least square, solved by the LinearRegression object. For numerical reasons, using alpha = 0 with the Lasso object is not advised. Given this, you should use the LinearRegression object.</string>
+              <string>Constant that multiplies the penalty terms. Defaults to 1.0. See the
+notes for the exact mathematical meaning of this parameter. alpha = 0
+is equivalent to an ordinary least square, solved by the
+LinearRegression object. For numerical reasons, using alpha = 0 with
+the Lasso object is not advised. Given this, you should use the
+LinearRegression object.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -325,7 +342,9 @@
            <item row="1" column="1">
             <widget class="QDoubleSpinBox" name="enl1_ratioDoubleSpinBox">
              <property name="toolTip">
-              <string>The ElasticNet mixing parameter, with 0 &lt;= l1_ratio &lt;= 1. For l1_ratio = 0 the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty. For 0 &lt; l1_ratio &lt; 1, the penalty is a combination of L1 and L2.</string>
+              <string>The ElasticNet mixing parameter, with 0 &lt;= l1_ratio &lt;= 1. For l1_ratio
+= 0 the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty.
+For 0 &lt; l1_ratio &lt; 1, the penalty is a combination of L1 and L2.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -343,7 +362,8 @@
            <item row="2" column="1">
             <widget class="QCheckBox" name="enfit_interceptCheckBox">
              <property name="toolTip">
-              <string>Whether the intercept should be estimated or not. If False, the data is assumed to be already centered.</string>
+              <string>Whether the intercept should be estimated or not. If False, the data
+is assumed to be already centered.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -361,7 +381,11 @@
            <item row="3" column="1">
             <widget class="QCheckBox" name="ennormalizeCheckBox">
              <property name="toolTip">
-              <string>This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False.</string>
+              <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing. StandardScaler before calling fit on
+an estimator with normalize=False.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -379,7 +403,9 @@
            <item row="4" column="1">
             <widget class="QCheckBox" name="enprecomputeCheckBox">
              <property name="toolTip">
-              <string>Whether to use a precomputed Gram matrix to speed up calculations. The Gram matrix can also be passed as argument. For sparse input this option is always True to preserve sparsity.</string>
+              <string>Whether to use a precomputed Gram matrix to speed up calculations.
+The Gram matrix can also be passed as argument. For sparse input this
+option is always True to preserve sparsity.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -451,7 +477,8 @@
            <item row="8" column="1">
             <widget class="QCheckBox" name="enwarm_startCheckBox">
              <property name="toolTip">
-              <string>When set to True, reuse the solution of the previous call to fit as initialization, otherwise, just erase the previous solution.</string>
+              <string>When set to True, reuse the solution of the previous call to fit as
+initialization, otherwise, just erase the previous solution.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
@@ -485,7 +512,10 @@
            <item row="10" column="1">
             <widget class="QComboBox" name="enselectionComboBox">
              <property name="toolTip">
-              <string>If set to ‘random’, a random coefficient is updated every iteration rather than looping over features sequentially by default. This (setting to ‘random’) often leads to significantly faster convergence especially when tol is higher than 1e-4.</string>
+              <string>If set to 'random', a random coefficient is updated every iteration
+rather than looping over features sequentially by default. This
+(setting to 'random') often leads to significantly faster convergence
+especially when tol is higher than 1e-4.</string>
              </property>
              <property name="whatsThis">
               <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
