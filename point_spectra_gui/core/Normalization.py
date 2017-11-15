@@ -5,7 +5,7 @@ from point_spectra_gui.util.BasicFunctionality import Basics
 
 
 class Normalization(Ui_Form, Basics):
-    def setupUi(self, Form, restore = False):
+    def setupUi(self, Form, restore=False):
         if restore:
             self.restored = True
         super().setupUi(Form)
@@ -13,8 +13,6 @@ class Normalization(Ui_Form, Basics):
         self.index = 1
         self.hide_settings()
         Basics.setupUi(self, Form)
-
-
 
     def get_widget(self):
         return self.groupBox
@@ -26,8 +24,8 @@ class Normalization(Ui_Form, Basics):
             lineEdit.setText("*.csv")
 
     def setup_norm_ranges(self):
-        self.ranges = [{'labels':[self.minimumWavelengthLabel, self.maximumWavelengthLabel],
-                        'spins':[self.minimumWavelengthSpinBox, self.maximumWavelengthSpinBox]},
+        self.ranges = [{'labels': [self.minimumWavelengthLabel, self.maximumWavelengthLabel],
+                        'spins': [self.minimumWavelengthSpinBox, self.maximumWavelengthSpinBox]},
                        {'labels': [self.minimumWavelengthLabel_2, self.maximumWavelengthLabel_2],
                         'spins': [self.minimumWavelengthSpinBox_2, self.maximumWavelengthSpinBox_2]},
                        {'labels': [self.minimumWavelengthLabel_3, self.maximumWavelengthLabel_3],
@@ -57,12 +55,11 @@ class Normalization(Ui_Form, Basics):
                        {'labels': [self.minimumWavelengthLabel_15, self.maximumWavelengthLabel_15],
                         'spins': [self.minimumWavelengthSpinBox_15, self.maximumWavelengthSpinBox_15]}]
 
-
     def checkForNewMax(self):
-        for i in range(len(self.ranges)-1):
+        for i in range(len(self.ranges) - 1):
             self.ranges[i]['spins'][0].valueChanged.connect(self.ranges[i]['spins'][1].setMinimum)
-            self.ranges[i]['spins'][1].valueChanged.connect(self.ranges[i+1]['spins'][0].setMinimum)
-            self.ranges[i+1]['spins'][1].setMinimum(self.ranges[i+1]['spins'][0].value())
+            self.ranges[i]['spins'][1].valueChanged.connect(self.ranges[i + 1]['spins'][0].setMinimum)
+            self.ranges[i + 1]['spins'][1].setMinimum(self.ranges[i + 1]['spins'][0].value())
 
     def setMaximumValue(self, value):
         for range in self.ranges:
@@ -95,7 +92,7 @@ class Normalization(Ui_Form, Basics):
 
     def on_addRange_pushed(self):
         if self.index < len(self.ranges):
-            self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index]['spins'][1].value()+1)
+            self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index]['spins'][1].value() + 1)
             self.checkForNewMax()
             self.index += 1
         else:
@@ -104,14 +101,14 @@ class Normalization(Ui_Form, Basics):
     def on_deleteRange_pushed(self):
         if self.index > 1:
             self.index -= 1
-            self.ranges[self.index]['spins'][0].setValue(self.ranges[self.index-1]['spins'][1].value())
+            self.ranges[self.index]['spins'][0].setValue(self.ranges[self.index - 1]['spins'][1].value())
             self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index - 1]['spins'][1].value())
             self.checkForNewMax()
         else:
             print("Cannot delete any more ranges!")
 
     def function(self):
-        #self.connectWidgets()
+        # self.connectWidgets()
         datakey = self.chooseDataComboBox.currentText()
 
         if self.checkoptions(datakey, self.datakeys, 'data set'):
