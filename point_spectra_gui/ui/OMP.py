@@ -56,12 +56,20 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
+        self.fitInterceptCheckBox.setToolTip(("whether to calculate the intercept for this model. If set to false, no intercept will be used in calculations (e.g. data is expected to be already centered)."))
+        self.fitInterceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html"))
         self.normalizeLabel.setText(("Normalize"))
+        self.normalizeCheckBox.setToolTip(("This parameter is ignored when fit_intercept is set to False. If True, the regressors X will be normalized before regression by subtracting the mean and dividing by the l2-norm. If you wish to standardize, please use sklearn.preprocessing.StandardScaler before calling fit on an estimator with normalize=False."))
+        self.normalizeCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html"))
         self.precomputeLabel.setText(("Precompute"))
+        self.precomputeComboBox.setToolTip(("Whether to use a precomputed Gram and Xy matrix to speed up calculations. Improves performance when n_targets or n_samples is very large. Note that if you already have such matrices, you can pass them directly to the fit method."))
+        self.precomputeComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html"))
         self.precomputeComboBox.setItemText(0, ("auto"))
         self.precomputeComboBox.setItemText(1, ("True"))
         self.precomputeComboBox.setItemText(2, ("False"))
         self.cVLabel.setText(("CV"))
+        self.cVCheckBox.setToolTip(("Cross Validate"))
+        self.cVCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.OrthogonalMatchingPursuit.html"))
 
 
 if __name__ == "__main__":
