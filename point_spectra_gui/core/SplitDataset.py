@@ -24,18 +24,22 @@ class SplitDataset(Ui_Form, Basics):
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
         colname = self.splitOnUniqueValuesOfComboBox.currentText()
-        vars_level0 = self.data[datakey].df.columns.get_level_values(0)
-        vars_level1 = self.data[datakey].df.columns.get_level_values(1)
-        vars_level1 = list(vars_level1[vars_level0 != 'wvl'])
-        vars_level0 = list(vars_level0[vars_level0 != 'wvl'])
-        colname = (vars_level0[vars_level1.index(colname)], colname)
+        if (self.checkoptions(datakey, self.datakeys, 'data set') or
+            self.checkoptions(colname,self.datakeys,'column')):
+            self.connectWidgets()
+        else:
+            vars_level0 = self.data[datakey].df.columns.get_level_values(0)
+            vars_level1 = self.data[datakey].df.columns.get_level_values(1)
+            vars_level1 = list(vars_level1[vars_level0 != 'wvl'])
+            vars_level0 = list(vars_level0[vars_level0 != 'wvl'])
+            colname = (vars_level0[vars_level1.index(colname)], colname)
 
-        coldata = np.array([str(i) for i in self.data[datakey].df[colname]])
-        unique_values = np.unique(coldata)
-        for i in unique_values:
-            new_datakey = datakey + ' - ' + str(i)
-            self.datakeys.append(new_datakey)
-            self.data[new_datakey] = spectral_data(self.data[datakey].df.ix[coldata == i])
+            coldata = np.array([str(i) for i in self.data[datakey].df[colname]])
+            unique_values = np.unique(coldata)
+            for i in unique_values:
+                new_datakey = datakey + ' - ' + str(i)
+                self.datakeys.append(new_datakey)
+                self.data[new_datakey] = spectral_data(self.data[datakey].df.ix[coldata == i])
 
     def get_choices(self):
         try:

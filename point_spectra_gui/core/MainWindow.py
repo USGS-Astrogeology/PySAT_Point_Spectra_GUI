@@ -188,6 +188,9 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         self.widgetLayout.setObjectName("widgetLayout")
         self.verticalLayout_3.addLayout(self.widgetLayout)
         self.widgetLayout.addWidget(self.widgetList[-1].get_widget())
+        scrollbar = self.scrollArea.verticalScrollBar()
+        scrollbar.setValue(scrollbar.maximum())   #this should scroll the view all the way down after adding the new widget.
+
 
     def menu_item_shortcuts(self):
         self.actionExit.setShortcut("ctrl+Q")
@@ -202,7 +205,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, Basics):
         Connect all the widgets associated with the MainWindow UI
         :return:
         """
-        # TODO figure out how to get this code into `MainWindow.py`
+
         try:
             self.actionRead_ChemCam_Data.triggered.connect(
                 lambda: self.addWidget(core.ReadChemCamData.ReadChemCamData))

@@ -59,7 +59,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>1 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -79,7 +79,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_2">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>2 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -99,7 +99,7 @@
         <item row="2" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_3">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>3 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -119,7 +119,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_4">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>4 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -139,7 +139,7 @@
         <item row="4" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_5">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>5 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -159,7 +159,7 @@
         <item row="5" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_6">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>6 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -179,7 +179,7 @@
         <item row="6" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_7">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>7 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -199,7 +199,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_8">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>8 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -219,7 +219,7 @@
         <item row="8" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_9">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>9 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -239,7 +239,7 @@
         <item row="9" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_10">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>10 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -259,7 +259,7 @@
         <item row="10" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_11">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>11 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -279,7 +279,7 @@
         <item row="11" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_12">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>12 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -299,7 +299,7 @@
         <item row="12" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_13">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>13 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -319,7 +319,7 @@
         <item row="13" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_14">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>14 Minimum wavelength</string>
           </property>
          </widget>
         </item>
@@ -339,7 +339,7 @@
         <item row="14" column="0">
          <widget class="QLabel" name="minimumWavelengthLabel_15">
           <property name="text">
-           <string>Minimum wavelength</string>
+           <string>15 Minimum wavelength</string>
           </property>
          </widget>
         </item>

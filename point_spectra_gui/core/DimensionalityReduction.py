@@ -50,11 +50,14 @@ class DimensionalityReduction(Ui_Form, Basics):
     def function(self):
         method = self.chooseMethodComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
-       # xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
-        params, modelkey = self.getMethodParams(self.chooseMethodComboBox.currentIndex())
-        load_fit = False
-        col = 'wvl'
-        self.data[datakey].dim_red(col, method, [], params, load_fit = load_fit)
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+           # xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
+            params, modelkey = self.getMethodParams(self.chooseMethodComboBox.currentIndex())
+            load_fit = False
+            col = 'wvl'
+            self.data[datakey].dim_red(col, method, [], params, load_fit = load_fit)
 
 
     def make_dimred_widget(self, alg, params=None):
