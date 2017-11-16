@@ -422,7 +422,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.settings.beginGroup("mainWindow")
         self.settings.setValue("pos", self.MainWindow.pos())
         self.settings.setValue("maximized", self.MainWindow.isMaximized())
-        self.settings.setValue('splitter', self.splitter.saveState())
         if not self.MainWindow.isMaximized():
             self.settings.setValue("size", self.MainWindow.size())
 
@@ -438,7 +437,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.settings.beginGroup("mainWindow")
         # No need for toPoint, etc. : PySide converts types
         try:
-            self.splitter.restoreState(self.settings.value('splitter'))
             self.MainWindow.move(self.settings.value("pos"))
             if self.settings.value("maximized") in 'true':
                 self.MainWindow.showMaximized()
