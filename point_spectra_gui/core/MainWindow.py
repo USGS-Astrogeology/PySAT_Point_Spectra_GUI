@@ -510,7 +510,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                     self.widgetList[self.leftOff].setDisabled(False)
                 except:
                     pass
-                self.runModules.taskFinished.emit()
+                self.taskFinished.emit()
 
 
 def get_splash(app):
