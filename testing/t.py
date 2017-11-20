@@ -1,6 +1,4 @@
-import os.path
 import sys
-import time
 import warnings
 
 from point_spectra_gui import core
@@ -14,11 +12,7 @@ except:
     warnings.warn("You're missing the qtmodern package."
                   "to install it use pip install qtmodern")
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import *
-from PyQt5 import QtWidgets, QtGui
-from PyQt5.QtCore import QSettings
+from PyQt5 import QtWidgets
 
 from point_spectra_gui.core.MainWindow import Ui_MainWindow
 
@@ -29,7 +23,6 @@ class Ui_MainWindow(Ui_MainWindow):
         Connect all the widgets associated with the MainWindow UI
         :return:
         """
-        # TODO figure out how to get this code into `MainWindow.py`
         self.addWidget(core.ReadChemCamData.ReadChemCamData)
         self.addWidget(core.BaselineRemoval.BaselineRemoval)
         self.addWidget(core.CrossValidation.CrossValidation)
@@ -52,8 +45,6 @@ class Ui_MainWindow(Ui_MainWindow):
         self.addWidget(core.SplitDataset.SplitDataset)
         self.addWidget(core.StratifiedFolds.StratifiedFolds)
         self.addWidget(core.SubmodelPredict.SubmodelPredict)
-
-
 
 
 def main():
