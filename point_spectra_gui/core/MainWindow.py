@@ -501,6 +501,12 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         p.start()
 
     def runModules(self):
+        """
+        This function iterates through a list of object addresses
+        which then run it's dot notated function()
+
+        :return:
+        """
         for modules in range(self.leftOff, len(self.widgetList)):
             name_ = type(self.widgetList[modules]).__name__
             s = time.time()
@@ -515,6 +521,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         Logs an exception that occurs during the running of a function
         Take a function address in as an input
+
         :param function:
         :return:
         """
@@ -537,7 +544,8 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
 
     def run(self):
         """
-        Run through all the modules
+        Start the thread for running all the modules
+
         :return:
         """
         if self.debug:
