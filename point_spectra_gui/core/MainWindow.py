@@ -15,6 +15,11 @@ except:
     q = False
     warnings.warn("You're missing the qtmodern package."
                   "to install it use pip install qtmodern")
+import os
+import logging
+import platform
+import traceback
+from time import strftime
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPixmap
@@ -476,41 +481,55 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Start a new gui
         :return:
         """
+        self._writeWindowAttributeSettings()
         p = mp.Process(target=main, args=())
         p.start()
 
-    def run(self):
-        if self.debug:
-            for modules in range(self.leftOff, len(self.widgetList)):
-                name_ = type(self.widgetList[modules]).__name__
-                s = time.time()
-                print("{} Module is Running...".format(name_))
-                self.widgetList[modules].function()
-                e = time.time()
-                print("Module {} executed in: {} seconds".format(name_, e - s))
-                self.widgetList[modules].setDisabled(True)
-                self.leftOff = modules + 1
-            self.taskFinished.emit()
+    def runModules(self):
+        for modules in range(self.leftOff, len(self.widgetList)):
+            name_ = type(self.widgetList[modules]).__name__
+            s = time.time()
+            print("{} Module is Running...".format(name_))
+            self.widgetList[modules].function()
+            e = time.time()
+            print("Module {} executed in: {} seconds".format(name_, e - s))
+            self.widgetList[modules].setDisabled(True)
+            self.leftOff = modules + 1
 
+    def run(self):
+        """
+        Run through all the modules
+        :return:
+        """
+        if self.debug:
+            logfile = "file.log"
+            logpath = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\logs')
+
+            # -----
+            # Error Logging
+            try:
+                self.runModules()
+            except:
+                if not os.path.exists(logpath):
+                    os.makedirs(logpath)
+                timenow = strftime('%d-%m-%y_%H-%M-%S')
+                logfilename = "%s_%s" % (timenow, logfile)
+                logging.basicConfig(level=logging.DEBUG,
+                                    filename=(
+                                        os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))))
+                logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
+                traceback.print_exc()
+                print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
         else:
             try:
-                for modules in range(self.leftOff, len(self.widgetList)):
-                    name_ = type(self.widgetList[modules]).__name__
-                    s = time.time()
-                    print("{} Module is Running...".format(name_))
-                    self.widgetList[modules].function()
-                    e = time.time()
-                    print("Module {} executed in: {} seconds".format(name_, e - s))
-                    self.widgetList[modules].setDisabled(True)
-                    self.leftOff = modules + 1
-                self.taskFinished.emit()
+                self.runModules()
             except Exception as e:
                 print("Your module broke: please fix.", e)
                 try:
                     self.widgetList[self.leftOff].setDisabled(False)
                 except:
                     pass
-                self.taskFinished.emit()
+        self.taskFinished.emit()
 
 
 def get_splash(app):
