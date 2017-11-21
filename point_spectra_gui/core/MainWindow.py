@@ -115,8 +115,8 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Change the direction of stdout to print to the original console
         :return:
         """
-        # Restore sys.stdout
-        sys.stdout = sys.__stdout__
+        sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
+        sys.stderr = sys.__stderr__
         self._mode(self.actionOff, self.actionOn, True)
 
     def _mode(self, obj1, obj2, debug):
