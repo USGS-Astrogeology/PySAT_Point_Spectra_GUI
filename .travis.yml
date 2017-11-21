@@ -1,24 +1,23 @@
 language: python
 cache:
-  - pip
+- pip
 install:
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
+- wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
 script:
-  - bash install_travis.sh
-  - python setup.py install
-  - python testing/t.py
+- bash install_travis.sh
+- python setup.py install
 deploy:
   provider: pypi
   user: tisaconundrum
   password:
-    secure: WKib7Bz+0w0RIXjpG1H5tJSLXDEf/EFDJFFdLcK0ExlHN908hUgqcvJiJDdRhZwSkCSodjAER1gJDWrtgiu+nwSyM1lBczfA+wkwk5koQsNscE+wP9swVStSdl4yNMU6JgBTPoav+SR5nBStbF6X3UDi6K+qMFPjzeCNn+6Vd08YaEK9zrkp8Yt5D3WekIwZcKSwvo5Tn9v9GceupNeszvmRaYgAVEPtbEKbZ/fkjYIz0O77Fti4twyvEzHFtc1H1a8jIYfefYLPUwse6rwjJJVDOgE5O/+LGHUXnQFNNrh5tZRGYTKkek3bf/z8ASNGSlgUFpfwWWsaooXGYzZOWJDLbyi450HVNd9lSduXPc3Fs3GyQ5zk9Wc0kzLzHLqh1HtyPA/qInlEsctw7Z7aHVnnua3VTaeqBX8/MAPfEOsvmb2nHJCBwNd7LoBNHg44KKm11ICHSVsPVMc4AG7tTt+jV6H9edT0m/yVxxmk9zNEpAgSf7FXOrvNHtTMD0iEhKPtU+jQ2zMROYyNgnqvVoAnfPUtsDEYM3zWT2faN2xQpWmSYz6puhN8CymTlKx9VgbSe5jjwHLYrIEV0RFs1+j5X9JEDOyMOky5bYltZ/zgZsa3x0bn1OhTALX2HRxoZbMeAXCbX2tcKqbROqJ4Lu9VVXS6yL7s6sZDtUhU2zE=
+    secure: CYb3P8MzXgYxVnj2BTZ/l1+sAaHDQmlLP78szt7ZQKX4XvcFPSvzN/UQ/F/E8e08hVBNJvKUiETg72x+tuxjsglT6nwRO1w0JpbDhu7kKP9gFH8ySFxEyeJ/WmfRrp1Ax10yXyxEPW3l2BTCVUPfO4mXnydZljkoww//Dg4Y8VgikrDP1M+ThUfjajd2TvN8nQSvfzQEK7ObEr6Oasd2eNSHpqokhuDCf/aLPeN2PZR0qya89hIt+qHOULK4YGmShtSSv5Rus/giCn3nkLV4emsM4r1XdlipaDbr2D8Xciv5eZigLgBL4w3fFOijCVaNDIzoHC5ndwB9/Z1KaQWydE+IYHtoOVJCdb1dtg5p0aPCtceAdVkJqAvywPzWRY1Mt3EfuuGvCPLcgDCp1K6TneY0+H0cbbZVr0iHkXfpIiwxR5yFuG8L6k+WZjs/9ck2IdML86YRWZTKcpQL0lglyFeKCLNHTSjGWOF1ugCjsoXV+liceE+zPZdSVsAN9MQCXssmS75JLzwIvg7IeMgrBv1EJLEAGPw92hkZhy+hUf0BAJfuQKtg1VNGEnxjvBCdgaMOor1vczqg6sr5X6YEaDk0n1sVi7wvMSzPEqZWI53npYMLdrI9dwwiFsSUxGyHORojYPLKVxdM1TmYMeSrzg//nP2+THalvZh34JjzDBw=
   distributions: sdist bdist_wheel
   on:
     branch: dev
 after_deploy:
-  - conda env create -n ppsg -f environment.yml
-  - source activate ppsg
-  - point_spectra_gui
+- conda env create -n ppsg -f environment.yml
+- source activate ppsg
+- point_spectra_gui
