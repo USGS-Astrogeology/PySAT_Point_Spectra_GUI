@@ -17,12 +17,6 @@ class Normalization(Ui_Form, Basics):
     def get_widget(self):
         return self.groupBox
 
-    def on_getDataButton_clicked(self, lineEdit):
-        filename, _filter = QtWidgets.QFileDialog.getOpenFileName(None, "Open Mask Data File", '.', "(*.csv)")
-        lineEdit.setText(filename)
-        if lineEdit.text() == "":
-            lineEdit.setText("*.csv")
-
     def setup_norm_ranges(self):
         self.ranges = [{'labels': [self.minimumWavelengthLabel, self.maximumWavelengthLabel],
                         'spins': [self.minimumWavelengthSpinBox, self.maximumWavelengthSpinBox]},
@@ -62,6 +56,7 @@ class Normalization(Ui_Form, Basics):
             self.ranges[i + 1]['spins'][1].setMinimum(self.ranges[i + 1]['spins'][0].value())
 
     def setMaximumValue(self, value):
+        #wvls = self.data[self.chooseDataComboBox.currentText()].df['wvl']
         for range in self.ranges:
             range['spins'][0].setMaximum(value)
             range['spins'][1].setMaximum(value)
@@ -84,7 +79,7 @@ class Normalization(Ui_Form, Basics):
         self.chooseDataComboBox.currentIndexChanged.connect(
             lambda: self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices()))
         self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices())
-        self.setMaximumValue(999999999)
+        self.setMaximumValue(9999999)
         self.qt.isGuiChanged(self.checkForNewMax)
         self.qt.isGuiChanged(self.hide_settings)
         self.add_range_button.clicked.connect(lambda: self.on_addRange_pushed())

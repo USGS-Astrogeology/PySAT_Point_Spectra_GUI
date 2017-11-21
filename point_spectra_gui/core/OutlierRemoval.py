@@ -63,7 +63,7 @@ class OutlierRemoval(Ui_Form, Basics):
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
 
         if (self.checkoptions(datakey, self.datakeys, 'data set') or
-            self.checkoptions(xvars, self.xVariableList, 'variable')):
+            self.checkoptions(xvars, self.xvar_choices(), 'variable')):
             self.connectWidgets()
         else:
             params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
