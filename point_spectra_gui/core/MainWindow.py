@@ -103,6 +103,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def normal_mode(self):
         """
         Change the direction of stdout to print to the UI console instead
+
         :return:
         """
         sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
@@ -113,6 +114,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def debug_mode(self):
         """
         Change the direction of stdout to print to the original console
+
         :return:
         """
         sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
@@ -123,6 +125,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         Set the UI in debug or non-debug mode
         Save all the settings and grey out the necessary boxes
+
         :param obj1:
         :param obj2:
         :param debug:
@@ -184,6 +187,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         Organize our widgets using a list
         Each widget is addressed separately due to being in a list
+
         :param obj:
         :return:
         """
@@ -208,6 +212,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def connectWidgets(self):
         """
         Connect all the widgets associated with the MainWindow UI
+
         :return:
         """
 
@@ -315,6 +320,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         This function iterates through a `dict`
         and restores the UI
+
         :param dict:
         :return:
         """
@@ -334,6 +340,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def on_save_clicked(self):
         """
         Save the workflow to a *.wrf file
+
         :return:
         """
         try:
@@ -354,6 +361,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Choose a file
         Set the file to be read
         Pickle load our data and push it through the function setWidgetItems
+
         :return:
         """
         try:
@@ -374,6 +382,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Check to see if the last item is enabled
         If it is, delete the last item in the list
         And then call the del_layout function, which will remove the item from the UI
+
         :return:
         """
         try:
@@ -388,6 +397,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def on_okButton_clicked(self):
         """
         Start the multithreading function
+
         :return:
         """
         self.onStart()
@@ -398,6 +408,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Check to see if the last item in the list is enabled
         subtract 1 from leftOff
         enable the current leftOff item
+
         :return:
         """
         try:
@@ -410,6 +421,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def on_stopButton_clicked(self):
         """
         Terminate running thread
+
         :return:
         """
         if self.isRunning():
@@ -456,6 +468,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         This is multithreading thus run() == start()
         make the bar pulse green
         TaskThread.start()
+
         :return:
         """
         self.progressBar.setRange(0, 0)
@@ -468,6 +481,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def clear(self):
         """
         Delete all modules in GUI
+
         :return:
         """
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
@@ -479,6 +493,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def new(self):
         """
         Start a new gui
+
         :return:
         """
         self._writeWindowAttributeSettings()
@@ -543,6 +558,7 @@ def get_splash(app):
     """
     Get the splash screen for the application
     But check to see if the image even exists
+
     :param app:
     :return:
     """
