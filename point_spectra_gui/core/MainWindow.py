@@ -535,9 +535,8 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 os.makedirs(logpath)
             timenow = strftime('%d-%m-%y_%H-%M-%S')
             logfilename = "%s_%s" % (timenow, logfile)
-            logging.basicConfig(level=logging.DEBUG,
-                                filename=(
-                                    os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))))
+            filename = os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))
+            logging.basicConfig(level=logging.DEBUG, filename=filename)
             logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
             traceback.print_exc()
             print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
