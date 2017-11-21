@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>429</width>
+    <height>327</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -27,6 +35,12 @@
       </item>
       <item row="0" column="1">
        <widget class="QSpinBox" name="numOfIterationsSpinBox">
+        <property name="toolTip">
+         <string>Maximum number of iterations. Default is 300</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="maximum">
          <number>999999999</number>
         </property>
@@ -44,6 +58,12 @@
       </item>
       <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox">
+        <property name="toolTip">
+         <string>Stop the algorithm if w has converged. Default is 1.e-3.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="decimals">
          <number>8</number>
         </property>
@@ -64,6 +84,9 @@
       </item>
       <item row="2" column="1">
        <widget class="QDoubleSpinBox" name="alpha1DoubleSpinBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="decimals">
          <number>5</number>
         </property>
@@ -84,6 +107,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QDoubleSpinBox" name="alpha2DoubleSpinBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="decimals">
          <number>8</number>
         </property>
@@ -104,6 +130,9 @@
       </item>
       <item row="4" column="1">
        <widget class="QDoubleSpinBox" name="lambdaDoubleSpinBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="decimals">
          <number>8</number>
         </property>
@@ -124,6 +153,13 @@
       </item>
       <item row="6" column="1">
        <widget class="QCheckBox" name="computerScoreCheckBox">
+        <property name="toolTip">
+         <string>If True, compute the objective function at each step of the model.
+Default is False.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="text">
          <string>compute the objective function at each step of the model</string>
         </property>
@@ -138,6 +174,13 @@
       </item>
       <item row="7" column="1">
        <widget class="QSpinBox" name="thresholdLambdaSpinBox">
+        <property name="toolTip">
+         <string>threshold for removing (pruning) weights with high precision from the
+computation. Default is 1.e+4.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="maximum">
          <number>999999999</number>
         </property>
@@ -155,6 +198,14 @@
       </item>
       <item row="8" column="1">
        <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="toolTip">
+         <string>whether to calculate the intercept for this model. If set to false,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered). Default is True.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="text">
          <string>calculate the intercept for this model</string>
         </property>
@@ -172,6 +223,16 @@
       </item>
       <item row="9" column="1">
        <widget class="QCheckBox" name="normalizeCheckBox">
+        <property name="toolTip">
+         <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing.StandardScaler before calling fit on
+an estimator with normalize=False.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="text">
          <string>regressors X will be normlized before regression</string>
         </property>
@@ -186,6 +247,12 @@
       </item>
       <item row="10" column="1">
        <widget class="QCheckBox" name="copyXCheckBox">
+        <property name="toolTip">
+         <string>If True, X will be copied; else, it may be overwritten.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="text">
          <string>X will be copied; else, it may be overwritten</string>
         </property>
@@ -203,6 +270,12 @@
       </item>
       <item row="11" column="1">
        <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>Verbose mode when fitting the model.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="text">
          <string>Verbose mode when fitting the model</string>
         </property>
@@ -217,6 +290,9 @@
       </item>
       <item row="5" column="1">
        <widget class="QDoubleSpinBox" name="lambdaDoubleSpinBox_2">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ARDRegression.html</string>
+        </property>
         <property name="decimals">
          <number>8</number>
         </property>

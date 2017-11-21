@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>511</width>
+    <height>360</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -14,6 +22,12 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="formGroupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fit regression model with Bayesian Ridge Regression.&lt;/p&gt;&lt;p&gt;See Bayesian Ridge Regression for more information on the regressor.&lt;/p&gt;&lt;p&gt;Compared to the OLS (ordinary least squares) estimator, the coefficient weights are slightly shifted toward zeros, which stabilises them.&lt;/p&gt;&lt;p&gt;The histogram of the estimated weights is very peaked, as a sparsity-inducing prior is implied on the weights.&lt;/p&gt;&lt;p&gt;The estimation of the model is done by iteratively maximizing the marginal log-likelihood of the observations.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="title">
+      <string>ARD</string>
+     </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -27,6 +41,9 @@
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="numOfIterationsLineEdit">
+        <property name="text">
+         <string>300</string>
+        </property>
         <property name="maximum" stdset="0">
          <number>999999999</number>
         </property>
@@ -44,6 +61,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="toleranceLineEdit">
+        <property name="text">
+         <string>0.001</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>8</number>
         </property>
@@ -64,6 +84,9 @@
       </item>
       <item row="2" column="1">
        <widget class="QLineEdit" name="alpha1LineEdit">
+        <property name="text">
+         <string>0.000001</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>5</number>
         </property>
@@ -84,6 +107,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QLineEdit" name="alpha2LineEdit">
+        <property name="text">
+         <string>0.000001</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>8</number>
         </property>
@@ -104,6 +130,9 @@
       </item>
       <item row="4" column="1">
        <widget class="QLineEdit" name="lambdaLineEdit">
+        <property name="text">
+         <string>0.000001</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>8</number>
         </property>
@@ -112,99 +141,6 @@
         </property>
         <property name="value" stdset="0">
          <double>0.000001000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="computerScoreLabel">
-        <property name="text">
-         <string>Computer Score</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QCheckBox" name="computerScoreCheckBox">
-        <property name="text">
-         <string>compute the objective function at each step of the model</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="thresholdLambdaLabel">
-        <property name="text">
-         <string>Threshold Lambda</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLineEdit" name="thresholdLambdaLineEdit">
-        <property name="maximum" stdset="0">
-         <number>999999999</number>
-        </property>
-        <property name="value" stdset="0">
-         <number>100000</number>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="fitInterceptLabel">
-        <property name="text">
-         <string>Fit Intercept</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox">
-        <property name="text">
-         <string>calculate the intercept for this model</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="normalizeLabel">
-        <property name="text">
-         <string>Normalize</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox">
-        <property name="text">
-         <string>regressors X will be normlized before regression</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0">
-       <widget class="QLabel" name="copyXLabel">
-        <property name="text">
-         <string>Copy X</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QCheckBox" name="copyXCheckBox">
-        <property name="text">
-         <string>X will be copied; else, it may be overwritten</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0">
-       <widget class="QLabel" name="verboseLabel">
-        <property name="text">
-         <string>Verbose</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox">
-        <property name="text">
-         <string>Verbose mode when fitting the model</string>
         </property>
        </widget>
       </item>
@@ -217,6 +153,9 @@
       </item>
       <item row="5" column="1">
        <widget class="QLineEdit" name="lambdaLineEdit_2">
+        <property name="text">
+         <string>0.000001</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>8</number>
         </property>
@@ -226,6 +165,86 @@
         <property name="value" stdset="0">
          <double>0.000001000000000</double>
         </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="thresholdLambdaLabel">
+        <property name="text">
+         <string>Threshold Lambda</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="thresholdLambdaLineEdit">
+        <property name="text">
+         <string>10000</string>
+        </property>
+        <property name="maximum" stdset="0">
+         <number>999999999</number>
+        </property>
+        <property name="value" stdset="0">
+         <number>100000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="fitInterceptLabel">
+        <property name="text">
+         <string>Fit Intercept</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QListWidget" name="fitIntercept_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="normalizeLabel">
+        <property name="text">
+         <string>Normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QListWidget" name="normalize_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
@@ -240,12 +259,7 @@
   <tabstop>alpha2LineEdit</tabstop>
   <tabstop>lambdaLineEdit</tabstop>
   <tabstop>lambdaLineEdit_2</tabstop>
-  <tabstop>computerScoreCheckBox</tabstop>
   <tabstop>thresholdLambdaLineEdit</tabstop>
-  <tabstop>fitInterceptCheckBox</tabstop>
-  <tabstop>normalizeCheckBox</tabstop>
-  <tabstop>copyXCheckBox</tabstop>
-  <tabstop>verboseCheckBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>

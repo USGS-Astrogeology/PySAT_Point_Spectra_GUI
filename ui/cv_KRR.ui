@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>334</width>
+    <height>331</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -32,13 +40,6 @@
        <widget class="QLabel" name="kernelLabel">
         <property name="text">
          <string>Kernel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="kernelLineEdit">
-        <property name="text">
-         <string>linear</string>
         </property>
        </widget>
       </item>
@@ -102,6 +103,49 @@
         <property name="text">
          <string>None</string>
         </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QListWidget" name="kernel_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Linear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Radial Basis Function</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Polynomial</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sigmoid</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Laplacian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Chi-Squared</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>

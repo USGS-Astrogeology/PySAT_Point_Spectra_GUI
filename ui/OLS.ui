@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>117</width>
+    <height>51</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -27,6 +35,14 @@
       </item>
       <item row="0" column="1">
        <widget class="QCheckBox" name="fitInterceptCheckBox">
+        <property name="toolTip">
+         <string>whether to calculate the intercept for this model. If set to False,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered).</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html</string>
+        </property>
         <property name="checked">
          <bool>true</bool>
         </property>

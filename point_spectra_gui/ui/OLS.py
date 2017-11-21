@@ -36,6 +36,10 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
+        self.fitInterceptCheckBox.setToolTip(_translate("Form", "whether to calculate the intercept for this model. If set to False,\n"
+"no intercept will be used in calculations (e.g. data is expected to\n"
+"be already centered)."))
+        self.fitInterceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html"))
 
 
 if __name__ == "__main__":

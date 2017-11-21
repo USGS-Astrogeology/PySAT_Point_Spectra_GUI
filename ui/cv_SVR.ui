@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>421</width>
+    <height>390</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -14,6 +22,9 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="formGroupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The method of Support Vector Classification can be extended to solve regression problems. This method is called Support Vector Regression.&lt;/p&gt;&lt;p&gt;The model produced by support vector classification (as described above) depends only on a subset of the training data, because the cost function for building the model does not care about training points that lie beyond the margin. Analogously, the model produced by Support Vector Regression depends only on a subset of the training data, because the cost function for building the model ignores any training data close to the model prediction.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -21,7 +32,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="cLabel">
         <property name="text">
-         <string>C</string>
+         <string>Penalty Parameter</string>
         </property>
        </widget>
       </item>
@@ -54,30 +65,39 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QComboBox" name="kernelComboBox">
+       <widget class="QListWidget" name="kernel_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>120</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
         <item>
          <property name="text">
-          <string>rbf</string>
+          <string>Radial Basis Function</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>poly</string>
+          <string>Linear</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>sigmoid</string>
+          <string>Polynomial</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>linear</string>
+          <string>Sigmoid</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>precomputed</string>
+          <string>Precomputed</string>
          </property>
         </item>
        </widget>
@@ -85,7 +105,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="degreeLabel">
         <property name="text">
-         <string>Degree</string>
+         <string>Polynomial Degree</string>
         </property>
        </widget>
       </item>
@@ -93,64 +113,53 @@
        <widget class="QLineEdit" name="degreeLineEdit"/>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="gammaLabel">
-        <property name="text">
-         <string>Gamma</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="gammaComboBox">
-        <item>
-         <property name="text">
-          <string>auto</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>rbf</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>poly</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>sigmoid</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="5" column="0">
        <widget class="QLabel" name="coeff0Label">
         <property name="text">
          <string>Coeff 0</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="4" column="1">
        <widget class="QLineEdit" name="coeff0LineEdit"/>
       </item>
-      <item row="6" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="shrinkingLabel">
         <property name="text">
          <string>Shrinking</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
-       <widget class="QCheckBox" name="shrinkingCheckBox"/>
+      <item row="5" column="1">
+       <widget class="QListWidget" name="shrinking_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
       </item>
-      <item row="7" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="toleranceLabel">
         <property name="text">
          <string>Tolerance</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
+      <item row="6" column="1">
        <widget class="QLineEdit" name="toleranceLineEdit">
         <property name="decimals" stdset="0">
          <number>3</number>
@@ -160,41 +169,14 @@
         </property>
        </widget>
       </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="cacheSizeLabel">
-        <property name="text">
-         <string>Cache Size</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QLineEdit" name="cacheSizeLineEdit">
-        <property name="maximum" stdset="0">
-         <number>999</number>
-        </property>
-        <property name="value" stdset="0">
-         <number>200</number>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="verboseLabel">
-        <property name="text">
-         <string>Verbose</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox"/>
-      </item>
-      <item row="10" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="maxIterationsLabel">
         <property name="text">
          <string>Max Iterations</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="1">
+      <item row="7" column="1">
        <widget class="QLineEdit" name="maxIterationsLineEdit">
         <property name="minimum" stdset="0">
          <number>-1</number>

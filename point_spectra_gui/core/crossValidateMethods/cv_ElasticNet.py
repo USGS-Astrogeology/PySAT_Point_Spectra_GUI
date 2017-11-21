@@ -1,103 +1,60 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets,QtCore
 from sklearn.linear_model import ElasticNet
-from sklearn.linear_model.coordinate_descent import ElasticNetCV
-
-from point_spectra_gui.ui.ElasticNet import Ui_Form
+import numpy as np
+from point_spectra_gui.ui.cv_ElasticNet import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
-class Ui_Form(Ui_Form, ElasticNet, ElasticNetCV, Basics):
+class Ui_Form(Ui_Form, ElasticNet, Basics):
     def setupUi(self, Form):
         super().setupUi(Form)
         self.checkMinAndMax()
         self.connectWidgets()
 
     def get_widget(self):
-        return self.groupBox
+        return self.elasticNetGroupBox
 
     def setHidden(self, bool):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.elasticNetCVGroupBox.setHidden(True)
         en = ElasticNet()
-        encv = ElasticNetCV()
 
-        self.enalphaDoubleSpinBox.setValue(en.alpha)
-        self.enl1_ratioDoubleSpinBox.setValue(en.l1_ratio)
-        self.enfit_interceptCheckBox.setChecked(en.fit_intercept)
-        self.ennormalizeCheckBox.setChecked(en.normalize)
-        self.enprecomputeCheckBox.setChecked(en.precompute)
-        self.enmax_iterSpinBox.setValue(en.max_iter)
-        self.encopy_XCheckBox.setChecked(en.copy_X)
-        self.entolDoubleSpinBox.setValue(en.tol)
-        self.enwarm_startCheckBox.setChecked(en.warm_start)
-        self.enpositiveCheckBox.setChecked(en.positive)
-        self.setComboBox(self.enselectionComboBox, ['cyclic', 'random'])
-        self.defaultComboItem(self.enselectionComboBox, en.selection)
+        self.minalpha_spin.setValue(1.0)
+        self.maxalpha_spin.setValue(1e3)
+        self.nalpha_spin.setValue(10)
 
-        self.l1_ratioDoubleSpinBox.setValue(encv.l1_ratio)
-        self.epsDoubleSpinBox.setValue(encv.eps)
-        self.n_alphasSpinBox.setValue(encv.n_alphas)
-        self.alphasLineEdit.setText('None')
-        self.fit_interceptCheckBox.setChecked(encv.fit_intercept)
-        self.normalizeCheckBox.setChecked(encv.normalize)
-        self.setComboBox(self.precomputeComboBox, ['True', 'False', 'auto', 'array-like'])
-        self.defaultComboItem(self.precomputeComboBox, encv.precompute)
-        self.max_iterSpinBox.setValue(encv.max_iter)
-        self.tolDoubleSpinBox.setValue(encv.tol)
-        self.cVSpinBox.setValue(3)
-        self.copy_XCheckBox.setChecked(encv.copy_X)
-        self.verboseCheckBox.setChecked(encv.verbose)
-        self.n_jobsSpinBox.setValue(encv.n_jobs)
-        self.positiveCheckBox.setChecked(encv.positive)
-        self.setComboBox(self.selectionComboBox, ['cyclic', 'random'])
-        self.defaultComboItem(self.selectionComboBox, encv.selection)
+        self.enl1_ratioLineEdit.setText('0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1.0')
+        self.enfit_intercept_list.setCurrentItem(self.enfit_intercept_list.findItems(str(en.fit_intercept),QtCore.Qt.MatchExactly)[0])
+        self.ennormalize_list.setCurrentItem(self.ennormalize_list.findItems(str(en.normalize),QtCore.Qt.MatchExactly)[0])
+        #self.enprecomputeCheckBox.setChecked(en.precompute)
+        self.enmax_iterLineEdit.setText(str(en.max_iter))
+        #self.encopy_XCheckBox.setChecked(en.copy_X)
+        self.entolLineEdit.setText(str(en.tol))
+        self.enwarm_start_list.setCurrentItem(self.enwarm_start_list.findItems(str(en.warm_start),QtCore.Qt.MatchExactly)[0])
+        self.enpositive_list.setCurrentItem(self.enpositive_list.findItems(str(en.positive),QtCore.Qt.MatchExactly)[0])
+        #self.setComboBox(self.enselectionComboBox, ['cyclic', 'random'])
+        #self.defaultComboItem(self.enselectionComboBox, en.selection)
+
 
     def function(self):
-        p_attrib = {'False': False, 'True': True, 'Array-like': 'array-like'}
-        r_attrib = {'None': None}
-        # TODO Add back the random state later.
-        # try:
-        #     r_state = int(self.randomStateLineEdit.text())
-        # except:
-        #     r_state = r_attrib[self.randomStateLineEdit.text()]
-
-        index = self.precomputeComboBox.currentIndex()
-        precomputeComboBox = self.precomputeComboBox.itemText(index)
-
-        if self.CVCheckBox.isChecked():
-            params = {
-                'l1_ratio': self.l1_ratioDoubleSpinBox.value(),
-                'eps': self.epsDoubleSpinBox.value(),
-                'n_alphas': self.n_alphasSpinBox.value(),
-                'alphas': {'None': None}.get(self.alphasLineEdit.text()),
-                'fit_intercept': self.fit_interceptCheckBox.isChecked(),
-                'normalize': self.normalizeCheckBox.isChecked(),
-                'precompute': self.precomputeComboBox.currentText(),
-                'max_iter': self.max_iterSpinBox.value(),
-                'tol': self.max_iterSpinBox.value(),
-                'cv': self.cVSpinBox.value(),
-                'copy_X': self.copy_XCheckBox.isChecked(),
-                'verbose': self.verboseCheckBox.isChecked(),
-                'n_jobs': self.n_jobsSpinBox.value(),
-                'positive': self.positiveCheckBox.isChecked(),
-                'selection': self.selectionComboBox.currentText(),
-                'CV': self.CVCheckBox.isChecked()}
-        else:
-            params = {
-                'alpha': self.enalphaDoubleSpinBox.value(),
-                'l1_ratio': self.enl1_ratioDoubleSpinBox.value(),
-                'fit_intercept': self.enfit_interceptCheckBox.isChecked(),
-                'normalize': self.ennormalizeCheckBox.isChecked(),
-                'precompute': self.enprecomputeCheckBox.isChecked(),
-                'max_iter': self.enmax_iterSpinBox.value(),
-                'copy_X': self.encopy_XCheckBox.isChecked(),
-                'tol': self.entolDoubleSpinBox.value(),
-                'warm_start': self.enwarm_startCheckBox.isChecked(),
-                'positive': self.enpositiveCheckBox.isChecked(),
-                'selection': self.selectionComboBox.currentText(),
-                'CV': self.CVCheckBox.isChecked()}
+        fit_intercept_items = [i.text() == 'True' for i in self.enfit_intercept_list.selectedItems()]
+        normalize_items = [i.text() == 'True' for i in self.ennormalize_list.selectedItems()]
+        positive_items = [i.text() == 'True' for i in self.enpositive_list.selectedItems()]
+        alphas = np.logspace(np.log10(self.minalpha_spin.value() * 1e10), np.log10(self.maxalpha_spin.value() * 1e10),
+                             num=self.nalpha_spin.value())
+        params = {
+            'alpha': alphas,
+            'l1_ratio': [float(i) for i in self.enl1_ratioLineEdit.text().split(',')],
+            'fit_intercept': fit_intercept_items,
+            'normalize': normalize_items,
+            'precompute': [True],
+            'max_iter': [int(i) for i in self.enmax_iterLineEdit.text().split(',')],
+            'copy_X': [True],
+            'tol': [float(i) for i in self.entolLineEdit.text().split(',')],
+            'warm_start': [True],
+            'positive': positive_items,
+            'selection': ['random']}
 
         modelkey = str(params)
         return params, modelkey

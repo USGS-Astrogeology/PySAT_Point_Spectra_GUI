@@ -20,19 +20,23 @@ class PeakAreas(Ui_Form, Basics):
 
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
-        peaks_mins_file = self.peakMinimaLineEdit.text()
-        if peaks_mins_file == "None (calculate from average spectrum)":
-            peaks_mins_file = None
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
 
-        try:
-            peaks, mins = self.data[datakey].peak_area(peaks_mins_file=peaks_mins_file)
-            print("Peak Areas Calculated")
+            peaks_mins_file = self.peakMinimaLineEdit.text()
+            if peaks_mins_file == "None (calculate from average spectrum)":
+                peaks_mins_file = None
 
-            np.savetxt(self.outpath + '/peaks.csv', peaks, delimiter=',')
-            np.savetxt(self.outpath + '/mins.csv', mins, delimiter=',')
+            try:
+                peaks, mins = self.data[datakey].peak_area(peaks_mins_file=peaks_mins_file)
+                print("Peak Areas Calculated")
 
-        except Exception as e:
-            print(e)
+                np.savetxt(self.outpath + '/peaks.csv', peaks, delimiter=',')
+                np.savetxt(self.outpath + '/mins.csv', mins, delimiter=',')
+
+            except Exception as e:
+                print(e)
 
     def on_getDataButton_clicked(self, lineEdit):
         filename, _filter = QtWidgets.QFileDialog.getOpenFileName(None, "Open peaks and minima File", '.', "(*.csv)")

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>435</width>
-    <height>506</height>
+    <width>511</width>
+    <height>596</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,59 +16,56 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QSplitter" name="splitter">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>476</width>
+         <height>350</height>
+        </rect>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>0</number>
-       </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOn</enum>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>400</width>
-          <height>211</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="widgetLayout"/>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QVBoxLayout" name="widgetLayout"/>
+        </item>
+       </layout>
       </widget>
-      <widget class="QTextBrowser" name="textBrowser">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>200</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Console window&lt;br/&gt;This window gives you information about your running module&lt;br/&gt;Errors will also show up here, if they occur&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>150</height>
+       </size>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Console window&lt;br/&gt;This window gives you information about your running module&lt;br/&gt;Errors will also show up here, if they occur&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </item>
     <item>
@@ -138,7 +135,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>435</width>
+     <width>511</width>
      <height>21</height>
     </rect>
    </property>
@@ -165,6 +162,8 @@
      <string>Preprocessing</string>
     </property>
     <addaction name="actionRemove_Rows"/>
+    <addaction name="actionCombine_Data_Sets"/>
+    <addaction name="actionOutlier_Removal"/>
     <addaction name="actionSplit_Data"/>
     <addaction name="actionInterpolate"/>
     <addaction name="actionRemove_Baseline"/>
@@ -174,6 +173,7 @@
     <addaction name="actionNormalization"/>
     <addaction name="actionDimensionality_Reduction"/>
     <addaction name="actionStratified_Folds"/>
+    <addaction name="actionSpectral_Derivative"/>
    </widget>
    <widget class="QMenu" name="menuRegression">
     <property name="title">
@@ -221,11 +221,18 @@
     <addaction name="menuDark_Mode"/>
     <addaction name="menuDebug_Mode"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionData_Box"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuPreprocessing"/>
    <addaction name="menuRegression"/>
    <addaction name="menuVisualization"/>
    <addaction name="menuOptions"/>
+   <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -412,6 +419,26 @@
   <action name="actionClear_Workflow">
    <property name="text">
     <string>Clear Workflow</string>
+   </property>
+  </action>
+  <action name="actionSpectral_Derivative">
+   <property name="text">
+    <string>Spectral Derivative</string>
+   </property>
+  </action>
+  <action name="actionData_Box">
+   <property name="text">
+    <string>Data Box</string>
+   </property>
+  </action>
+  <action name="actionCombine_Data_Sets">
+   <property name="text">
+    <string>Combine Data Sets</string>
+   </property>
+  </action>
+  <action name="actionOutlier_Removal">
+   <property name="text">
+    <string>Outlier Removal</string>
    </property>
   </action>
  </widget>

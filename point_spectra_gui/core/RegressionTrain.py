@@ -32,7 +32,7 @@ class RegressionTrain(Ui_Form, Basics):
                                'PLS',
                                'OLS',
                                'OMP',
-                               'Lasso',
+                               'LASSO',
                                'Elastic Net',
                                'Ridge',
                                'Bayesian Ridge',
@@ -80,35 +80,46 @@ class RegressionTrain(Ui_Form, Basics):
         datakey = self.chooseDataComboBox.currentText()
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
         yvars = [('comp', str(y.text())) for y in self.yVariableList.selectedItems()]
-        yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
+        yvars_to_compare = [str(y.text()) for y in self.yVariableList.selectedItems()]
 
-        params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
-        # try:
-        modelkey = "{} - {} - ({}, {}) {}".format(method, yvars[0][-1], yrange[0], yrange[1], params)
-        self.modelkeys.append(modelkey)
-        print(params, modelkey)
-        self.models[modelkey] = regression.regression([method], [yrange], [params])
-        x = self.data[datakey].df[xvars]
-        y = self.data[datakey].df[yvars]
-        x = np.array(x)
-        y = np.array(y)
-        ymask = np.squeeze((y > yrange[0]) & (y < yrange[1]))
-        y = y[ymask]
-        x = x[ymask, :]
-        self.models[modelkey].fit(x, y)
-        self.model_xvars[modelkey] = xvars
-        self.model_yvars[modelkey] = yvars
-        coef = np.squeeze(self.models[modelkey].model.coef_)
-        coef = pd.DataFrame(coef)
-        coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
-        coef = coef.T
-        coef[('meta', 'Model')] = modelkey
+        check_results = [self.checkoptions(datakey, self.datakeys, 'data set')]
+        for x in xvars:
+            check_results.append(self.checkoptions(x,self.xvar_choices(),'X variable'))
+        for y in yvars_to_compare:
+            check_results.append(self.checkoptions(y,self.yvar_choices(),'Y variable'))
 
-        try:
-            self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
-        except:
-            self.data['Model Coefficients'] = spectral_data(coef)
-            self.datakeys.append('Model Coefficients')
+        if np.any(check_results):
+            self.connectWidgets()
+        else:
+            yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
+
+            params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
+            # try:
+            modelkey = "{} - {} - ({}, {}) {}".format(method, yvars[0][-1], yrange[0], yrange[1], params)
+            self.modelkeys.append(modelkey)
+            print(params, modelkey)
+            self.models[modelkey] = regression.regression([method], [yrange], [params])
+            x = self.data[datakey].df[xvars]
+            y = self.data[datakey].df[yvars]
+            x = np.array(x)
+            y = np.array(y)
+            ymask = np.squeeze((y > yrange[0]) & (y < yrange[1]))
+            y = y[ymask]
+            x = x[ymask, :]
+            self.models[modelkey].fit(x, y)
+            self.model_xvars[modelkey] = xvars
+            self.model_yvars[modelkey] = yvars
+            coef = np.squeeze(self.models[modelkey].model.coef_)
+            coef = pd.DataFrame(coef)
+            coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
+            coef = coef.T
+            coef[('meta', 'Model')] = modelkey
+
+            try:
+                self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
+            except:
+                self.data['Model Coefficients'] = spectral_data(coef)
+                self.datakeys.append('Model Coefficients')
 
     def yvar_choices(self):
         try:

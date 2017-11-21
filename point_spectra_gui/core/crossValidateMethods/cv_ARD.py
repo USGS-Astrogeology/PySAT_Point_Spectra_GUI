@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from sklearn.linear_model import ARDRegression
 
-from point_spectra_gui.ui.ARD import Ui_Form
+from point_spectra_gui.ui.cv_ARD import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
@@ -18,33 +18,33 @@ class Ui_Form(Ui_Form, ARDRegression, Basics):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.numOfIterationsSpinBox.setValue(self.n_iter)
-        self.toleranceDoubleSpinBox.setValue(self.tol)
-        self.alpha1DoubleSpinBox.setValue(self.alpha_1)
-        self.alpha2DoubleSpinBox.setValue(self.alpha_2)
-        self.lambdaDoubleSpinBox.setValue(self.lambda_1)
-        self.lambdaDoubleSpinBox_2.setValue(self.lambda_2)
-        self.computerScoreCheckBox.setChecked(self.compute_score)
-        self.thresholdLambdaSpinBox.setValue(self.threshold_lambda)
-        self.fitInterceptCheckBox.setChecked(self.fit_intercept)
-        self.normalizeCheckBox.setChecked(self.normalize)
-        self.copyXCheckBox.setChecked(self.copy_X)
-        self.verboseCheckBox.setChecked(self.verbose)
+        self.numOfIterationsLineEdit.setText(str(self.n_iter))
+        self.toleranceLineEdit.setText(str(self.tol))
+        self.alpha1LineEdit.setText(str(self.alpha_1))
+        self.alpha2LineEdit.setText(str(self.alpha_2))
+        self.lambdaLineEdit.setText(str(self.lambda_1))
+        self.lambdaLineEdit_2.setText(str(self.lambda_2))
+        self.thresholdLambdaLineEdit.setText(str(self.threshold_lambda))
+        self.fitIntercept_list.setCurrentItem(self.fitIntercept_list.findItems(str(self.fit_intercept),QtCore.Qt.MatchExactly)[0])
+        self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(self.normalize),QtCore.Qt.MatchExactly)[0])
 
     def function(self):
+        fit_intercept_items = [i.text() == 'True' for i in self.fitIntercept_list.selectedItems()]
+        normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
+
         params = {
-            'n_iter': self.numOfIterationsSpinBox.value(),
-            'tol': self.toleranceDoubleSpinBox.value(),
-            'alpha_1': self.alpha1DoubleSpinBox.value(),
-            'alpha_2': self.alpha2DoubleSpinBox.value(),
-            'lambda_1': self.lambdaDoubleSpinBox.value(),
-            'lambda_2': self.lambdaDoubleSpinBox_2.value(),
-            'compute_score': self.computerScoreCheckBox.isChecked(),
-            'threshold_lambda': self.thresholdLambdaSpinBox.value(),
-            'fit_intercept': self.fitInterceptCheckBox.isChecked(),
-            'normalize': self.normalizeCheckBox.isChecked(),
-            'copy_X': self.copyXCheckBox.isChecked(),
-            'verbose': self.verboseCheckBox.isChecked()}
+            'n_iter': [int(i) for i in self.numOfIterationsLineEdit.text().split(',')],
+            'tol': [float(i) for i in self.toleranceLineEdit.text().split(',')],
+            'alpha_1': [float(i) for i in self.alpha1LineEdit.text().split(',')],
+            'alpha_2': [float(i) for i in self.alpha2LineEdit.text().split(',')],
+            'lambda_1': [float(i) for i in self.lambdaLineEdit.text().split(',')],
+            'lambda_2': [float(i) for i in self.lambdaLineEdit_2.text().split(',')],
+            'compute_score': [False],
+            'threshold_lambda': [float(i) for i in self.thresholdLambdaLineEdit.text().split(',')],
+            'fit_intercept': fit_intercept_items,
+            'normalize': normalize_items,
+            'copy_X': [True],
+            'verbose': [True]}
         modelkey = str(params)
         return params, modelkey
 

@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>446</width>
+    <height>241</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -14,38 +22,72 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The &lt;span style=&quot; font-weight:600;&quot;&gt;Lasso&lt;/span&gt; is a linear model that estimates sparse coefficients. It is useful in some contexts due to its tendency to prefer solutions with fewer parameter values, effectively reducing the number of variables upon which the given solution is dependent. For this reason, the Lasso and its variants are fundamental to the field of compressed sensing. Under certain conditions, it can recover the exact set of non-zero weights (see Compressive sensing: tomography reconstruction with L1 prior (Lasso)).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
       </property>
       <item row="0" column="0">
-       <widget class="QLabel" name="alphaLabel">
+       <widget class="QLabel" name="minalphaLabel">
         <property name="text">
-         <string>Alpha</string>
+         <string>Minimum Alpha (x1e10)</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="alphaLineEdit">
-        <property name="enabled">
-         <bool>false</bool>
+       <widget class="QDoubleSpinBox" name="minalpha_spin">
+        <property name="decimals">
+         <number>3</number>
         </property>
-        <property name="maximum" stdset="0">
-         <double>999999999.000000000000000</double>
-        </property>
-        <property name="value" stdset="0">
-         <double>1.000000000000000</double>
+        <property name="maximum">
+         <double>1000000000.000000000000000</double>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
+       <widget class="QLabel" name="maxalpha_label">
+        <property name="text">
+         <string>Maximum Alpha  (x1e10)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="maxalpha_spin">
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <double>1000000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="nalphas_label">
+        <property name="toolTip">
+         <string extracomment="# of alpha values in a log distribution between the min and max alpha values."/>
+        </property>
+        <property name="text">
+         <string># of Alphas</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="nalphas_spin">
+        <property name="toolTip">
+         <string extracomment="# of alpha values in a log distribution between the min and max alpha values."/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
        <widget class="QLabel" name="maxNumOfIterationsLabel">
         <property name="text">
          <string>Max # of iterations</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="3" column="1">
        <widget class="QLineEdit" name="maxNumOfIterationsLineEdit">
         <property name="maximum" stdset="0">
          <number>999999999</number>
@@ -55,53 +97,18 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="toleranceLabel">
         <property name="text">
          <string>Tolerance</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="fitInterceptLabel">
-        <property name="text">
-         <string>Fit Intercept</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QCheckBox" name="fitInterceptCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="forcePositiveCoefficientsLabel">
-        <property name="text">
-         <string>Force positive coefficients</string>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="forcePositiveCoefficientsCheckBox"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="optimizeWCrossValidaitonLabel">
-        <property name="text">
-         <string>Optimize w/ Cross Validaiton (Ignores alpha)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QCheckBox" name="optimizeWCrossValidaitonCheckBox">
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
        <widget class="QLineEdit" name="toleranceLineEdit">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;tol : float, optional&lt;/p&gt;&lt;p&gt;The tolerance for the optimization: if the updates are smaller than tol, the optimization code checks the dual gap for optimality and continues until it is smaller than tol&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="decimals" stdset="0">
          <number>5</number>
         </property>
@@ -113,36 +120,75 @@
         </property>
        </widget>
       </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="fitInterceptLabel">
+        <property name="text">
+         <string>Fit Intercept</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QListWidget" name="fit_intercept_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="forcePositiveCoefficientsLabel">
+        <property name="text">
+         <string>Force positive coefficients</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QListWidget" name="forcePositive_list">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>alphaLineEdit</tabstop>
   <tabstop>maxNumOfIterationsLineEdit</tabstop>
   <tabstop>toleranceLineEdit</tabstop>
-  <tabstop>fitInterceptCheckBox</tabstop>
-  <tabstop>forcePositiveCoefficientsCheckBox</tabstop>
-  <tabstop>optimizeWCrossValidaitonCheckBox</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>optimizeWCrossValidaitonCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>alphaLineEdit</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>243</x>
-     <y>143</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>259</x>
-     <y>37</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

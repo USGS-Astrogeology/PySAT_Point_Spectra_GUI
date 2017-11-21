@@ -23,10 +23,15 @@ class Ui_Form(object):
         self.fitInterceptLabel = QtWidgets.QLabel(self.groupBox)
         self.fitInterceptLabel.setObjectName("fitInterceptLabel")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.fitInterceptLabel)
-        self.fitInterceptCheckBox = QtWidgets.QCheckBox(self.groupBox)
-        self.fitInterceptCheckBox.setChecked(True)
-        self.fitInterceptCheckBox.setObjectName("fitInterceptCheckBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.fitInterceptCheckBox)
+        self.fit_intercept_list = QtWidgets.QListWidget(self.groupBox)
+        self.fit_intercept_list.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.fit_intercept_list.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
+        self.fit_intercept_list.setObjectName("fit_intercept_list")
+        item = QtWidgets.QListWidgetItem()
+        self.fit_intercept_list.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.fit_intercept_list.addItem(item)
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.fit_intercept_list)
         self.verticalLayout.addWidget(self.groupBox)
 
         self.retranslateUi(Form)
@@ -36,6 +41,13 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
+        __sortingEnabled = self.fit_intercept_list.isSortingEnabled()
+        self.fit_intercept_list.setSortingEnabled(False)
+        item = self.fit_intercept_list.item(0)
+        item.setText(("True"))
+        item = self.fit_intercept_list.item(1)
+        item.setText(("False"))
+        self.fit_intercept_list.setSortingEnabled(__sortingEnabled)
 
 
 if __name__ == "__main__":

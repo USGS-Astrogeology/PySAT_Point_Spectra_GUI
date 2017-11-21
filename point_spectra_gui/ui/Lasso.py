@@ -81,11 +81,28 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
         self.alphaLabel.setText(("Alpha"))
+        self.alphaDoubleSpinBox.setToolTip(_translate("Form", "Constant that multiplies the L1 term. Defaults to 1.0. alpha = 0 is\n"
+"equivalent to an ordinary least square, solved by the LinearRegression\n"
+"object. For numerical reasons, using alpha = 0 with the Lasso object\n"
+"is not advised. Given this, you should use the LinearRegression object."))
+        self.alphaDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"))
         self.maxNumOfIterationsLabel.setText(("Max # of iterations"))
+        self.maxNumOfIterationsSpinBox.setToolTip(("The maximum number of iterations"))
+        self.maxNumOfIterationsSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"))
         self.toleranceLabel.setText(("Tolerance"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
+        self.fitInterceptCheckBox.setToolTip(_translate("Form", "whether to calculate the intercept for this model. If set to false,\n"
+"no intercept will be used in calculations (e.g. data is expected to\n"
+"be already centered)."))
+        self.fitInterceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"))
         self.forcePositiveCoefficientsLabel.setText(("Force positive coefficients"))
-        self.optimizeWCrossValidaitonLabel.setText(("Optimize w/ Cross Validaiton (Ignores alpha)"))
+        self.forcePositiveCoefficientsCheckBox.setToolTip(("When set to True, forces the coefficients to be positive."))
+        self.forcePositiveCoefficientsCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"))
+        self.optimizeWCrossValidaitonLabel.setText(("Optimize w/ Cross Validation (Ignores alpha)"))
+        self.optimizeWCrossValidaitonCheckBox.setToolTip(("Optimize with Cross Validaiton"))
+        self.optimizeWCrossValidaitonCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"))
+        self.toleranceDoubleSpinBox.setToolTip(("The tolerance for the optimization"))
+        self.toleranceDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html"))
 
 
 if __name__ == "__main__":

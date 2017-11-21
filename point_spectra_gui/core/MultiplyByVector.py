@@ -18,12 +18,16 @@ class MultiplyByVector(Ui_Form, Basics):
 
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
-        vectorfile = self.vectorFileLineEdit.text()
 
-        try:
-            self.data[datakey].multiply_vector(vectorfile)
-        except Exception as e:
-            print(e)
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+            vectorfile = self.vectorFileLineEdit.text()
+
+            try:
+                self.data[datakey].multiply_vector(vectorfile)
+            except Exception as e:
+                print(e)
 
     def on_getDataButton_clicked(self, lineEdit):
         filename, _filter = QtWidgets.QFileDialog.getOpenFileName(None, "Open Vector Data File", '.', "(*.csv)")

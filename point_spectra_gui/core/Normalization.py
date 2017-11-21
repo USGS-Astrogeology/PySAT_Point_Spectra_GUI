@@ -4,135 +4,127 @@ from point_spectra_gui.ui.Normalization import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
 
 
-class normWidgets:
-    def __init__(self, minimumWLabel, minimumWSpinBox, maximumWLabel, maximumWSpinBox):
-        self.minimumWLabel = minimumWLabel
-        self.minimumWSpinBox = minimumWSpinBox
-        self.maximumWLabel = maximumWLabel
-        self.maximumWSpinBox = maximumWSpinBox
-
-    def setHidden(self, bool):
-        self.minimumWLabel.setHidden(bool)
-        self.minimumWSpinBox.setHidden(bool)
-        self.maximumWLabel.setHidden(bool)
-        self.maximumWSpinBox.setHidden(bool)
-
-    def getValues(self):
-        return int(self.minimumWSpinBox.text()), int(self.maximumWSpinBox.text())
-
-    def setMaximum(self, int_):
-        self.minimumWSpinBox.setMaximum(int_)
-        self.maximumWSpinBox.setMaximum(int_)
-
-    def setValue(self, int_):
-        self.minimumWSpinBox.setValue(int_)
-        self.maximumWSpinBox.setValue(int_)
-
-    def spinBox(self, int_):
-        if int_ == 0:
-            return self.minimumWSpinBox
-        elif int_ == 1:
-            return self.maximumWSpinBox
-        else:
-            return "Not a valid number"
-
-
 class Normalization(Ui_Form, Basics):
-    def __init__(self):
-        super().__init__()
-        self.normwidgets = []
-        self.all_boxes = []
-        self.index = 1
-
-    def setupUi(self, Form):
-        self.__init__()
+    def setupUi(self, Form, restore=False):
+        if restore:
+            self.restored = True
         super().setupUi(Form)
+        self.setup_norm_ranges()
+        self.index = 1
+        self.hide_settings()
         Basics.setupUi(self, Form)
 
     def get_widget(self):
         return self.groupBox
 
+    def setup_norm_ranges(self):
+        self.ranges = [{'labels': [self.minimumWavelengthLabel, self.maximumWavelengthLabel],
+                        'spins': [self.minimumWavelengthSpinBox, self.maximumWavelengthSpinBox]},
+                       {'labels': [self.minimumWavelengthLabel_2, self.maximumWavelengthLabel_2],
+                        'spins': [self.minimumWavelengthSpinBox_2, self.maximumWavelengthSpinBox_2]},
+                       {'labels': [self.minimumWavelengthLabel_3, self.maximumWavelengthLabel_3],
+                        'spins': [self.minimumWavelengthSpinBox_3, self.maximumWavelengthSpinBox_3]},
+                       {'labels': [self.minimumWavelengthLabel_4, self.maximumWavelengthLabel_4],
+                        'spins': [self.minimumWavelengthSpinBox_4, self.maximumWavelengthSpinBox_4]},
+                       {'labels': [self.minimumWavelengthLabel_5, self.maximumWavelengthLabel_5],
+                        'spins': [self.minimumWavelengthSpinBox_5, self.maximumWavelengthSpinBox_5]},
+                       {'labels': [self.minimumWavelengthLabel_6, self.maximumWavelengthLabel_6],
+                        'spins': [self.minimumWavelengthSpinBox_6, self.maximumWavelengthSpinBox_6]},
+                       {'labels': [self.minimumWavelengthLabel_7, self.maximumWavelengthLabel_7],
+                        'spins': [self.minimumWavelengthSpinBox_7, self.maximumWavelengthSpinBox_7]},
+                       {'labels': [self.minimumWavelengthLabel_8, self.maximumWavelengthLabel_8],
+                        'spins': [self.minimumWavelengthSpinBox_8, self.maximumWavelengthSpinBox_8]},
+                       {'labels': [self.minimumWavelengthLabel_9, self.maximumWavelengthLabel_9],
+                        'spins': [self.minimumWavelengthSpinBox_9, self.maximumWavelengthSpinBox_9]},
+                       {'labels': [self.minimumWavelengthLabel_10, self.maximumWavelengthLabel_10],
+                        'spins': [self.minimumWavelengthSpinBox_10, self.maximumWavelengthSpinBox_10]},
+                       {'labels': [self.minimumWavelengthLabel_11, self.maximumWavelengthLabel_11],
+                        'spins': [self.minimumWavelengthSpinBox_11, self.maximumWavelengthSpinBox_11]},
+                       {'labels': [self.minimumWavelengthLabel_12, self.maximumWavelengthLabel_12],
+                        'spins': [self.minimumWavelengthSpinBox_12, self.maximumWavelengthSpinBox_12]},
+                       {'labels': [self.minimumWavelengthLabel_13, self.maximumWavelengthLabel_13],
+                        'spins': [self.minimumWavelengthSpinBox_13, self.maximumWavelengthSpinBox_13]},
+                       {'labels': [self.minimumWavelengthLabel_14, self.maximumWavelengthLabel_14],
+                        'spins': [self.minimumWavelengthSpinBox_14, self.maximumWavelengthSpinBox_14]},
+                       {'labels': [self.minimumWavelengthLabel_15, self.maximumWavelengthLabel_15],
+                        'spins': [self.minimumWavelengthSpinBox_15, self.maximumWavelengthSpinBox_15]}]
+
+    def checkForNewMax(self):
+        for i in range(len(self.ranges) - 1):
+            self.ranges[i]['spins'][0].valueChanged.connect(self.ranges[i]['spins'][1].setMinimum)
+            self.ranges[i]['spins'][1].valueChanged.connect(self.ranges[i + 1]['spins'][0].setMinimum)
+            self.ranges[i + 1]['spins'][1].setMinimum(self.ranges[i + 1]['spins'][0].value())
+
+    def setMaximumValue(self, value):
+        #wvls = self.data[self.chooseDataComboBox.currentText()].df['wvl']
+        for range in self.ranges:
+            range['spins'][0].setMaximum(value)
+            range['spins'][1].setMaximum(value)
+
+    def hide_settings(self):
+        for i in range(self.index, len(self.ranges)):
+            if self.ranges[i]['spins'][0].value() == self.ranges[i]['spins'][1].value():
+                self.ranges[i]['spins'][0].setHidden(True)
+                self.ranges[i]['spins'][1].setHidden(True)
+                self.ranges[i]['labels'][0].setHidden(True)
+                self.ranges[i]['labels'][1].setHidden(True)
+            else:
+                self.ranges[i]['spins'][0].setHidden(False)
+                self.ranges[i]['spins'][1].setHidden(False)
+                self.ranges[i]['labels'][0].setHidden(False)
+                self.ranges[i]['labels'][1].setHidden(False)
+
     def connectWidgets(self):
-        self.setupWidgets()
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
         self.chooseDataComboBox.currentIndexChanged.connect(
             lambda: self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices()))
-        self.setListWidget(self.varToNormalizeListWidget, self.xvar_choices())
-        self.setMaximum(9999999)
-        self.setHidden(self.normwidgets)
+        self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices())
+        self.setMaximumValue(9999999)
         self.qt.isGuiChanged(self.checkForNewMax)
-        self.rangeCountSpinBox.setMinimum(1)
-        self.rangeCountSpinBox.setMaximum(15)
-        self.rangeCountSpinBox.valueChanged.connect(self.on_change_rangeCountPushButton)
-
-    def on_change_rangeCountPushButton(self):
-        spin = int(self.rangeCountSpinBox.value())
-        while self.index < spin:
-            self.on_addRange_pushed()
-        while self.index > spin:
-            self.on_deleteRange_pushed()
-
-    def setHidden(self, list):
-        for i in range(1, len(list)):
-            list[i].setHidden(True)
-
-    def setMaximum(self, int_):
-        for items in self.normwidgets:
-            items.setMaximum(int_)
+        self.qt.isGuiChanged(self.hide_settings)
+        self.add_range_button.clicked.connect(lambda: self.on_addRange_pushed())
+        self.delete_range_button.clicked.connect(lambda: self.on_deleteRange_pushed())
 
     def on_addRange_pushed(self):
-        if self.index < len(self.normwidgets):
-            self.normwidgets[self.index].setHidden(False)
+        if self.index < len(self.ranges):
+            self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index]['spins'][1].value() + 1)
+            self.checkForNewMax()
             self.index += 1
         else:
-            print("Cannot add more wavelengths")
+            print("Cannot add more ranges!")
 
     def on_deleteRange_pushed(self):
         if self.index > 1:
             self.index -= 1
-            self.normwidgets[self.index].setHidden(True)
-            self.normwidgets[self.index].setValue(0)
+            self.ranges[self.index]['spins'][0].setValue(self.ranges[self.index - 1]['spins'][1].value())
+            self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index - 1]['spins'][1].value())
+            self.checkForNewMax()
         else:
-            print("Cannot delete any more wavelengths")
+            print("Cannot delete any more ranges!")
 
-    def setupWidgets(self):
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel, self.minimumWavelengthSpinBox,
-                                            self.maximumWavelengthLabel, self.maximumWavelengthSpinBox))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_2, self.minimumWavelengthSpinBox_2,
-                                            self.maximumWavelengthLabel_2, self.maximumWavelengthSpinBox_2))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_3, self.minimumWavelengthSpinBox_3,
-                                            self.maximumWavelengthLabel_3, self.maximumWavelengthSpinBox_3))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_4, self.minimumWavelengthSpinBox_4,
-                                            self.maximumWavelengthLabel_4, self.maximumWavelengthSpinBox_4))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_5, self.minimumWavelengthSpinBox_5,
-                                            self.maximumWavelengthLabel_5, self.maximumWavelengthSpinBox_5))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_6, self.minimumWavelengthSpinBox_6,
-                                            self.maximumWavelengthLabel_6, self.maximumWavelengthSpinBox_6))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_7, self.minimumWavelengthSpinBox_7,
-                                            self.maximumWavelengthLabel_7, self.maximumWavelengthSpinBox_7))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_8, self.minimumWavelengthSpinBox_8,
-                                            self.maximumWavelengthLabel_8, self.maximumWavelengthSpinBox_8))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_9, self.minimumWavelengthSpinBox_9,
-                                            self.maximumWavelengthLabel_9, self.maximumWavelengthSpinBox_9))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_10, self.minimumWavelengthSpinBox_10,
-                                            self.maximumWavelengthLabel_10, self.maximumWavelengthSpinBox_10))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_11, self.minimumWavelengthSpinBox_11,
-                                            self.maximumWavelengthLabel_11, self.maximumWavelengthSpinBox_11))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_12, self.minimumWavelengthSpinBox_12,
-                                            self.maximumWavelengthLabel_12, self.maximumWavelengthSpinBox_12))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_13, self.minimumWavelengthSpinBox_13,
-                                            self.maximumWavelengthLabel_13, self.maximumWavelengthSpinBox_13))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_14, self.minimumWavelengthSpinBox_14,
-                                            self.maximumWavelengthLabel_14, self.maximumWavelengthSpinBox_14))
-        self.normwidgets.append(normWidgets(self.minimumWavelengthLabel_15, self.minimumWavelengthSpinBox_15,
-                                            self.maximumWavelengthLabel_15, self.maximumWavelengthSpinBox_15))
-        for i in range(len(self.normwidgets)):
-            for j in range(0, 2):
-                self.all_boxes.append(self.normwidgets[i].spinBox(j))
+    def function(self):
+        # self.connectWidgets()
+        datakey = self.chooseDataComboBox.currentText()
 
-    def checkForNewMax(self):
-        for i in range(len(self.all_boxes) - 1):
-            self.all_boxes[i].valueChanged.connect(self.all_boxes[i + 1].setMinimum)
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+            range_vals = []
+            for i in range(len(self.ranges)):
+                range_min = self.ranges[i]['spins'][0].value()
+                range_max = self.ranges[i]['spins'][1].value()
+                if range_min != range_max:
+                    range_vals.append([range_min, range_max])
+            try:
+                col_var = self.varToNormalizeListWidget.currentItem().text()
+            except:
+                print("Did you remember to select a variable?")
+            print("{}".format(range_vals))
+            try:
+                self.data[datakey].norm(range_vals, col_var)
+                print("Normalization has been applied to the ranges: " + str(range_vals))
+            except Exception as e:
+                print("There was a problem: ", e)
 
     def xvar_choices(self):
         try:
@@ -146,27 +138,12 @@ class Normalization(Ui_Form, Basics):
             xvarchoices = ['No valid choices!']
         return xvarchoices
 
-    def function(self):
-        ranges = []
-        for i in range(self.index):
-            ranges.append(self.normwidgets[i].getValues())
-        datakey = self.chooseDataComboBox.currentText()
-        try:
-            col_var = self.varToNormalizeListWidget.currentItem().text()
-        except:
-            print("Did you remember to select a variable?")
-        print("{}".format(ranges))
-        try:
-            self.data[datakey].norm(ranges, col_var)
-            print("Normalization has been applied to the ranges: " + str(ranges))
-        except Exception as e:
-            print("There was a problem: ", e)
-
 
 if __name__ == "__main__":
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
+
     Form = QtWidgets.QWidget()
     ui = Normalization()
     ui.setupUi(Form)

@@ -93,6 +93,8 @@ class point_spectra_gui_build_ui(Command):
             uic.compileUi(uifile, tmp, True)
             source = tmp.getvalue()
             rc = re.compile(r'\n\n#.*?(?=\n\n)', re.MULTILINE | re.DOTALL)
+            t = re.compile(r'\n.*?Form.resize(.*)')
+            source = t.sub("", source)
             comment = ("\n\n# Automatically generated - don't edit.\n"
                        "# Use `python setup.py build_ui` to update it.")
             for r in list(_translate_re):

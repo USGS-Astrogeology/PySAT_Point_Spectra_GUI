@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>360</width>
+    <height>125</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="neighbors_label">
+        <property name="text">
+         <string># of neighbors</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="neighbors_spin">
+        <property name="maximum">
+         <number>1000000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="nc_label">
+        <property name="text">
+         <string># of components</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="nc_spin">
+        <property name="maximum">
+         <number>10000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="regularization_label">
+        <property name="text">
+         <string>Regularization</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="regularization_spin">
+        <property name="decimals">
+         <number>6</number>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>2000.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.001000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.001000000000000</double>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

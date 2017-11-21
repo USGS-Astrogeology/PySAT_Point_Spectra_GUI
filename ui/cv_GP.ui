@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>512</width>
+    <height>428</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -14,95 +22,46 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="formGroupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gaussian Processes (GP) are a generic supervised learning method designed to solve regression and probabilistic classification problems.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;The advantages of Gaussian processes are:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The prediction interpolates the observations (at least for regular kernels).&lt;/p&gt;&lt;p&gt;The prediction is probabilistic (Gaussian) so that one can compute empirical confidence intervals and decide based on those if one should refit (online fitting, adaptive fitting) the prediction in some region of interest.&lt;/p&gt;&lt;p&gt;Versatile: different kernels can be specified. Common kernels are provided, but it is also possible to specify custom kernels.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;The disadvantages of Gaussian processes include:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;They are not sparse, i.e., they use the whole samples/features information to perform the prediction.&lt;/p&gt;&lt;p&gt;They lose efficiency in high dimensional spaces - namely when the number of features exceeds a few dozens.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="title">
-      <string>Gaussian Process</string>
+      <string/>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
       </property>
-      <item row="2" column="0">
-       <widget class="QLabel" name="regrLabel">
+      <item row="1" column="0">
+       <widget class="QLabel" name="reductionMethodLabel">
         <property name="text">
-         <string>Regression Types</string>
+         <string>Choose dimensionality reduction method:</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="regrComboBox"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="corrLabel">
-        <property name="text">
-         <string>Correlation Types</string>
+      <item row="1" column="1">
+       <widget class="QListWidget" name="DimRedList">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="corrComboBox"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="storageModeLabel">
-        <property name="text">
-         <string>Storage Mode</string>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
         </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="storageModeComboBox"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="verboseLabel">
-        <property name="text">
-         <string>Verbose</string>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
         </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox"/>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="theta0Label">
-        <property name="text">
-         <string>Theta 0</string>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
         </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="optimizerLabel">
-        <property name="text">
-         <string>Optimizer Types</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QComboBox" name="optimizerComboBox"/>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="randomStartLabel">
-        <property name="text">
-         <string>Random Start</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QLineEdit" name="randomStartLineEdit"/>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="normalizeLabel">
-        <property name="text">
-         <string>Normalize</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox"/>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="theta0LineEdit"/>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="reductionMethodComboBox">
         <item>
          <property name="text">
           <string>PCA</string>
@@ -110,27 +69,178 @@
         </item>
         <item>
          <property name="text">
-          <string>ICA</string>
+          <string>FastICA</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="reductionMethodLabel">
-        <property name="text">
-         <string>Choose dimensionality reduction method:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="numOfComponenetsLabel">
         <property name="text">
          <string>Number of Components</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="numOfComponenetsLineEdit"/>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="numOfComponenetsLineEdit">
+        <property name="text">
+         <string>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="regrLabel">
+        <property name="text">
+         <string>Regression Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QListWidget" name="regression_list">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Linear</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Constant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Quadratic</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="corrLabel">
+        <property name="text">
+         <string>Correlation Types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QListWidget" name="CorrelationList">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Squared Exponential</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Absolute Exponential</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Generalized Exponential</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cubic</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Linear</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="theta0Label">
+        <property name="text">
+         <string>Theta</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="theta0LineEdit">
+        <property name="text">
+         <string>0.1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="ThetaL_Label">
+        <property name="text">
+         <string>Theta - Lower Bound</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="ThetaL"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="ThetaU_Label">
+        <property name="text">
+         <string>Theta - Upper Bound</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="ThetaU"/>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="randomStartLabel">
+        <property name="text">
+         <string># of random starts for MLE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="randomStartLineEdit"/>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="normalize_label">
+        <property name="text">
+         <string>Normalize</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QListWidget" name="normalize_list">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>True</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>False</string>
+         </property>
+        </item>
+       </widget>
       </item>
      </layout>
     </widget>

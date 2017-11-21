@@ -139,13 +139,25 @@ class Basics:
         """
         Sets up the information inside comboBox widgets
         This function does not need to be overridden.
-        :param comboBox:
-        :param keyValues:
+        :param comboBox: QtWidgets.QComboBox
+        :param keyValues: []
         :return:
         """
-        for i, choice in enumerate(keyValues):
-            comboBox.addItem("")
-            comboBox.setItemText(i, str(choice))
+        comboBox.clear()
+        comboBox.addItems(keyValues)
+
+    @staticmethod
+    def checkoptions(selection, actual_options, message):
+        if isinstance(selection,list):
+            for i in selection:
+                if i not in actual_options:
+                    print('Selected '+message+' does not exist. Refreshing options...')
+                    return True
+        else:
+            if selection not in actual_options:
+                print('Selected ' + message + ' does not exist. Refreshing options...')
+                return True
+        return False
 
     @staticmethod
     def changeComboListVars(obj, newchoices):

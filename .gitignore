@@ -91,3 +91,4 @@ auto_gitter.bat
 
 *.stackdump
 .pypirc
+*.xlsx

@@ -15,6 +15,11 @@ except:
     q = False
     warnings.warn("You're missing the qtmodern package."
                   "to install it use pip install qtmodern")
+import os
+import logging
+import platform
+import traceback
+from time import strftime
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QPixmap
@@ -188,6 +193,9 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.widgetLayout.setObjectName("widgetLayout")
         self.verticalLayout_3.addLayout(self.widgetLayout)
         self.widgetLayout.addWidget(self.widgetList[-1].get_widget())
+        # this should scroll the view all the way down after adding the new widget.
+        scrollbar = self.scrollArea.verticalScrollBar()
+        scrollbar.setValue(scrollbar.maximum())
 
     def menu_item_shortcuts(self):
         self.actionExit.setShortcut("ctrl+Q")
@@ -202,7 +210,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Connect all the widgets associated with the MainWindow UI
         :return:
         """
-        # TODO figure out how to get this code into `MainWindow.py`
+
         try:
             self.actionRead_ChemCam_Data.triggered.connect(
                 lambda: self.addWidget(core.ReadChemCamData.ReadChemCamData))
@@ -244,10 +252,19 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 lambda: self.addWidget(core.RemoveRows.RemoveRows))
             self.actionSplit_Data.triggered.connect(
                 lambda: self.addWidget(core.SplitDataset.SplitDataset))
+            self.actionOutlier_Removal.triggered.connect(
+                lambda: self.addWidget(core.OutlierRemoval.OutlierRemoval)
+            )
             self.actionStratified_Folds.triggered.connect(
                 lambda: self.addWidget(core.StratifiedFolds.StratifiedFolds))
             self.actionSubmodel_Predict.triggered.connect(
                 lambda: self.addWidget(core.SubmodelPredict.SubmodelPredict))
+            self.actionSpectral_Derivative.triggered.connect(
+                lambda: self.addWidget(core.SpecDeriv.SpecDeriv))
+            self.actionCombine_Data_Sets.triggered.connect(
+                lambda: self.addWidget(core.CombineDataSets.CombineDataSets))
+            self.actionData_Box.triggered.connect(
+                lambda: self.addWidget(core.DataTable.DataTable))
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
@@ -369,6 +386,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             print("Cannot delete")
 
     def on_okButton_clicked(self):
+        """
+        Start the multithreading function
+        :return:
+        """
         self.onStart()
         self.taskFinished.connect(self.onFinished)
 
@@ -387,6 +408,10 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             pass
 
     def on_stopButton_clicked(self):
+        """
+        Terminate running thread
+        :return:
+        """
         if self.isRunning():
             self.terminate()
             self.taskFinished.emit()
@@ -402,7 +427,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.settings.beginGroup("mainWindow")
         self.settings.setValue("pos", self.MainWindow.pos())
         self.settings.setValue("maximized", self.MainWindow.isMaximized())
-        self.settings.setValue('splitter', self.splitter.saveState())
         if not self.MainWindow.isMaximized():
             self.settings.setValue("size", self.MainWindow.size())
 
@@ -418,7 +442,6 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.settings.beginGroup("mainWindow")
         # No need for toPoint, etc. : PySide converts types
         try:
-            self.splitter.restoreState(self.settings.value('splitter'))
             self.MainWindow.move(self.settings.value("pos"))
             if self.settings.value("maximized") in 'true':
                 self.MainWindow.showMaximized()
@@ -428,16 +451,25 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             pass
         self.settings.endGroup()
 
-    def onStart(self):  # onStart function
-        self.progressBar.setRange(0, 0)  # make the bar pulse green
-        self.start()  # TaskThread.start()
-        # This is multithreading thus run() == start()
+    def onStart(self):
+        """
+        This is multithreading thus run() == start()
+        make the bar pulse green
+        TaskThread.start()
+        :return:
+        """
+        self.progressBar.setRange(0, 0)
+        self.start()
 
     def onFinished(self):  # onFinished function
         self.progressBar.setRange(0, 1)  # stop the bar pulsing green
         self.progressBar.setValue(1)  # displays 100% after process is finished.
 
     def clear(self):
+        """
+        Delete all modules in GUI
+        :return:
+        """
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
             self.on_delete_module_clicked()
         self.title.setFileName('')
@@ -445,38 +477,59 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.textBrowser.clear()
 
     def new(self):
+        """
+        Start a new gui
+        :return:
+        """
+        self._writeWindowAttributeSettings()
         p = mp.Process(target=main, args=())
         p.start()
 
-    def run(self):
-        if self.debug:
-            for modules in range(self.leftOff, len(self.widgetList)):
-                name_ = type(self.widgetList[modules]).__name__
-                s = time.time()
-                print("{} Module is Running...".format(name_))
-                self.widgetList[modules].function()
-                e = time.time()
-                print("Module {} executed in: {} seconds".format(name_, e - s))
-                self.widgetList[modules].setDisabled(True)
-                self.leftOff = modules + 1
-            self.taskFinished.emit()
+    def runModules(self):
+        for modules in range(self.leftOff, len(self.widgetList)):
+            name_ = type(self.widgetList[modules]).__name__
+            s = time.time()
+            print("{} Module is Running...".format(name_))
+            self.widgetList[modules].function()
+            e = time.time()
+            print("Module {} executed in: {} seconds".format(name_, e - s))
+            self.widgetList[modules].setDisabled(True)
+            self.leftOff = modules + 1
 
+    def run(self):
+        """
+        Run through all the modules
+        :return:
+        """
+        if self.debug:
+            logfile = "file.log"
+            logpath = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\logs')
+
+            # -----
+            # Error Logging
+            try:
+                self.runModules()
+            except:
+                if not os.path.exists(logpath):
+                    os.makedirs(logpath)
+                timenow = strftime('%d-%m-%y_%H-%M-%S')
+                logfilename = "%s_%s" % (timenow, logfile)
+                logging.basicConfig(level=logging.DEBUG,
+                                    filename=(
+                                        os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))))
+                logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
+                traceback.print_exc()
+                print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
         else:
             try:
-                for modules in range(self.leftOff, len(self.widgetList)):
-                    name_ = type(self.widgetList[modules]).__name__
-                    s = time.time()
-                    print("{} Module is Running...".format(name_))
-                    self.widgetList[modules].function()
-                    e = time.time()
-                    print("Module {} executed in: {} seconds".format(name_, e - s))
-                    self.widgetList[modules].setDisabled(True)
-                    self.leftOff = modules + 1
-                self.taskFinished.emit()
+                self.runModules()
             except Exception as e:
                 print("Your module broke: please fix.", e)
-                self.widgetList[self.leftOff].setDisabled(False)
-                self.taskFinished.emit()
+                try:
+                    self.widgetList[self.leftOff].setDisabled(False)
+                except:
+                    pass
+        self.taskFinished.emit()
 
 
 def get_splash(app):
