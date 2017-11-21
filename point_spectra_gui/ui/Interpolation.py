@@ -40,6 +40,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
+        self.formGroupBox.setToolTip(("<html><head/><body><p>Interpolate a 1-D function.</p><p><span style=\" font-style:italic;\">x</span> and <span style=\" font-style:italic;\">y</span> are arrays of values used to approximate some function f: y = f(x). This class returns a function whose call method uses interpolation to find the value of new points</p></body></html>"))
         self.formGroupBox.setTitle(("Interpolation"))
         self.interpolateDataLabel.setText(("Choose data to interpolate"))
         self.referenceDataLabel.setText(("Choose data to use as reference"))

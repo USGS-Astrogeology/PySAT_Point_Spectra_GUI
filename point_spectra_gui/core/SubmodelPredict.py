@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from pysat.regression import sm
+from libpysat.regression import sm
 
 from point_spectra_gui.ui.SubmodelPredict import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics

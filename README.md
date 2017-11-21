@@ -1,80 +1,62 @@
-[![Build Status](https://travis-ci.org/USGS-Astrogeology/PySAT_Point_Spectra_GUI.svg?branch=master)](https://travis-ci.org/USGS-Astrogeology/PySAT_Point_Spectra_GUI) [![Join the chat at https://gitter.im/USGS-Astrogeology/PySAT](https://badges.gitter.im/USGS-Astrogeology/PySAT.svg)](https://gitter.im/USGS-Astrogeology/PySAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/tisaconundrum2/PySAT_Point_Spectra_GUI.svg?branch=dev)](https://travis-ci.org/USGS-Astrogeology/PySAT_Point_Spectra_GUI) 
+[![Join the chat at https://gitter.im/USGS-Astrogeology/PySAT](https://badges.gitter.im/USGS-Astrogeology/PySAT.svg)](https://gitter.im/USGS-Astrogeology/PySAT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-# Easy Windows Installation
-
-1. Download the [**setup**](https://drive.google.com/file/d/0B51OpD0tMItxc0NqTG84UlVZaGs/view?usp=sharing) file
-2. Click and Install
-
-# Installation with Miniconda
-
-You can also copy and paste the code into your terminal
-
-### Things you'll need
-
-<a href="https://git-scm.com/downloads">git-bash </a><br>
-<a href="https://conda.io/miniconda.html">Miniconda</a>
+## Installation
 
 ### 1. Fresh install of Miniconda (Skip to step 2 if you have Anaconda/Miniconda)
 
+\*Note for Windows: Please make sure you do not have any previous versions of Python on your system. If you do, it may make it difficult for Anaconda/Miniconda to use the command `conda` 
+<br>If you're still having issues with uninstalling Python, I recommend using <a href ="https://www.iobit.com/en/advanceduninstaller.php?">IObit Uninstaller</a><br>
+Lastly, if all else fails, try turning your machine off and then on again.
+
 Install <a href="https://conda.io/miniconda.html">Miniconda</a>
 
-### 2. Download necessary libraries
+![982f2828-0d23-4dac-b84c-5808d47cd3ae](https://user-images.githubusercontent.com/11879769/32648152-ce130f7c-c5b1-11e7-954a-f580ff64f331.gif)
+
+
+### 2. Download the environment file (right click the link and save)
+
+[Environment.yml](https://raw.githubusercontent.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI/master/environment.yml)
+
+![dc336619-0412-4d4d-959d-dd4d83d863f8](https://user-images.githubusercontent.com/11879769/32661238-613f2386-c5e3-11e7-9e24-05bebb9ba8f7.gif)
+
+### 3. Open a terminal (on Windows, `cmd`, not Powershell) in the directory where you saved the file and type:
 
 ```bash
-git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT_Point_Spectra_GUI.git
-git clone --depth=50 --branch=master https://github.com/USGS-Astrogeology/PySAT.git
+conda install conda=3  # SKIP THIS LINE ON WINDOWS
+conda env create -n point_spectra_gui -f environment.yml
+source activate point_spectra_gui  # omit the `source` on Windows
 ```
 
-### 3. Python install libraries
+![55096025-e378-4728-ba89-9ed1a5bcf24b](https://user-images.githubusercontent.com/11879769/32648500-3a948580-c5b3-11e7-86e9-cabf56827f1e.gif)
+
+### 4. Done! How to use point_spectra_gui
 
 ```bash
-cd PySAT
-python setup.py install
-cd ..
-cd PySAT_Point_Spectra_GUI
-python setup.py install
-cd ..
+source activate point_spectra_gui  # omit the `source` on Windows
+point_spectra_gui
 ```
 
-### 4. Pip/Conda install necessary libraries
+![0f5329a7-1e09-49f2-8971-6e503b25f648](https://user-images.githubusercontent.com/11879769/32648596-ccd5ffa0-c5b3-11e7-9c38-44a5e4ad9ca1.gif)
 
-```bash
-conda install pyqt
-conda install numpy
-conda install pandas
-conda install scipy
-pip install sklearn
-conda install matplotlib
-pip install qtmodern
+### 5. Optional. Run program with a script
+
+If you'd like to be able to run our program without having to retype **4** out, simply copy the below text into notepad, and then save it as point_spectra_gui.bat
+
+```
+call activate point_spectra_gui
+point_spectra_gui
 ```
 
-### 5 Start the application
+# Bugs
 
-```bash
-python PySAT_Point_Spectra_GUI\point_spectra_gui
-```
-
-if the application fails to start because of a missing dependency try `pip` or `conda` installing it.
-
+## Run into bugs or features that are missing? Let us know by reporting an issue!
 
 # PYSAT UI
 ![PYSAT splash](./images/splash.png)  
 
 - The UI's backend is designed and created in Python with the QT framework
-- The UI is being built to work closely with the original libraries
 
-Current Road Ahead
-- [x] Ported to version 5 of PyQt
-- [x] Working Modules on UI
-- [x] Selecting functions from Menubar adds functions dynamically
-- [x] Shortcuts such as Ctrl S to save
-- [ ] Embedded Plots and Graphs from data collected
-- [x] ~~Package all python packages: sklearn, scipy, numpy, matplotlib, pysat for user consumption~~ It has been discovered that the user can download Anaconda, and run our files as normal.
-- [x] Add ability to delete modules
-- [x] Add ability to save plots in personal files
-- [x] Add ability to save state of GUI, i.e. all number that user inputs will be there again after closing GUI
-- [x] Add ability to save data frame at any point in the workflow 
-- [ ] Setup a way to select points on a scatter plot.
 
 ## Control Flow
 

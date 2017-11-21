@@ -1,10 +1,9 @@
 import inspect
 import sys
-
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import *
-
 from Qtickle import Qtickle
+
 
 
 class Basics:
@@ -140,13 +139,12 @@ class Basics:
         """
         Sets up the information inside comboBox widgets
         This function does not need to be overridden.
-        :param comboBox:
-        :param keyValues:
+        :param comboBox: QtWidgets.QComboBox
+        :param keyValues: []
         :return:
         """
-        for i, choice in enumerate(keyValues):
-            comboBox.addItem("")
-            comboBox.setItemText(i, str(choice))
+        comboBox.clear()
+        comboBox.addItems(keyValues)
 
     @staticmethod
     def checkoptions(selection, actual_options, message):

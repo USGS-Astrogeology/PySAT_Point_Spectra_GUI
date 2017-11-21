@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from pysat.plotting.plots import pca_ica_plot
+from libpysat.plotting.plots import pca_ica_plot
 
 from point_spectra_gui.ui.Plot_ICA_PCA import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics

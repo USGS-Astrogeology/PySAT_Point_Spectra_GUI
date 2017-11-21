@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>292</width>
+    <height>398</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -26,7 +34,17 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox"/>
+       <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox">
+        <property name="toolTip">
+         <string>Constant that multiplies the penalty term. Defaults to 1.0. alpha = 0
+is equivalent to an ordinary least square, solved by LinearRegression.
+For numerical reasons, using alpha = 0 with the LassoLars object is not
+advised and you should prefer the LinearRegression object.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="fit_interceptLabel">
@@ -36,7 +54,16 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="fit_interceptCheckBox"/>
+       <widget class="QCheckBox" name="fit_interceptCheckBox">
+        <property name="toolTip">
+         <string>whether to calculate the intercept for this model. If set to false,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered).</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="verboseLabel">
@@ -46,7 +73,14 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QCheckBox" name="verboseCheckBox"/>
+       <widget class="QCheckBox" name="verboseCheckBox">
+        <property name="toolTip">
+         <string>Sets the verbosity amount</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="normalizeLabel">
@@ -56,7 +90,18 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QCheckBox" name="normalizeCheckBox"/>
+       <widget class="QCheckBox" name="normalizeCheckBox">
+        <property name="toolTip">
+         <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing.StandardScaler before calling fit
+on an estimator with normalize=False.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="precomputeLabel">
@@ -66,7 +111,16 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QComboBox" name="precomputeComboBox"/>
+       <widget class="QComboBox" name="precomputeComboBox">
+        <property name="toolTip">
+         <string>Whether to use a precomputed Gram matrix to speed up calculations. If
+set to 'auto' let us decide. The Gram matrix can also be passed as
+argument.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="max_iterLabel">
@@ -77,7 +131,14 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QSpinBox" name="max_iterSpinBox"/>
+       <widget class="QSpinBox" name="max_iterSpinBox">
+        <property name="toolTip">
+         <string>Maximum number of iterations to perform.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="copy_XLabel">
@@ -88,7 +149,14 @@
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QCheckBox" name="copy_XCheckBox"/>
+       <widget class="QCheckBox" name="copy_XCheckBox">
+        <property name="toolTip">
+         <string>If True, X will be copied; else, it may be overwritten.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="fit_pathLabel">
@@ -99,7 +167,17 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QCheckBox" name="fit_pathCheckBox"/>
+       <widget class="QCheckBox" name="fit_pathCheckBox">
+        <property name="toolTip">
+         <string>If True the full path is stored in the coef_path_ attribute. If you
+compute the solution for a large problem or many targets, setting
+fit_path to False will lead to a speedup, especially with a small
+alpha.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="8" column="0">
        <widget class="QLabel" name="positiveLabel">
@@ -109,7 +187,21 @@
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QCheckBox" name="positiveCheckBox"/>
+       <widget class="QCheckBox" name="positiveCheckBox">
+        <property name="toolTip">
+         <string>Restrict coefficients to be &gt;= 0. Be aware that you might want to
+remove fit_intercept which is set True by default. Under the positive
+restriction the model coefficients will not converge to the
+ordinary-least-squares solution for small values of alpha. Only
+coefficients up to the smallest alpha value
+(alphas_[alphas_ &gt; 0.].min() when fit_path=True) reached by the
+stepwise Lars-Lasso algorithm are typically in congruence with the
+solution of the coordinate descent Lasso estimator.</string>
+        </property>
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="9" column="0">
        <widget class="QLabel" name="cvLabel">
@@ -120,7 +212,11 @@
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QSpinBox" name="cvSpinBox"/>
+       <widget class="QSpinBox" name="cvSpinBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="10" column="0">
        <widget class="QLabel" name="max_n_alphasLabel">
@@ -131,7 +227,11 @@
        </widget>
       </item>
       <item row="10" column="1">
-       <widget class="QSpinBox" name="max_n_alphasSpinBox"/>
+       <widget class="QSpinBox" name="max_n_alphasSpinBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="11" column="0">
        <widget class="QLabel" name="n_jobsLabel">
@@ -141,7 +241,11 @@
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QSpinBox" name="n_jobsSpinBox"/>
+       <widget class="QSpinBox" name="n_jobsSpinBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="12" column="0">
        <widget class="QLabel" name="criterionLabel">
@@ -151,7 +255,11 @@
        </widget>
       </item>
       <item row="12" column="1">
-       <widget class="QComboBox" name="criterionComboBox"/>
+       <widget class="QComboBox" name="criterionComboBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
+       </widget>
       </item>
       <item row="13" column="0">
        <widget class="QLabel" name="modelLabel">
@@ -162,6 +270,9 @@
       </item>
       <item row="13" column="1">
        <widget class="QComboBox" name="modelComboBox">
+        <property name="whatsThis">
+         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
+        </property>
         <item>
          <property name="text">
           <string>Lasso Lars</string>

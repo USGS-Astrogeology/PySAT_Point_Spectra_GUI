@@ -7,11 +7,17 @@ install:
 - export PATH="$HOME/miniconda/bin:$PATH"
 - hash -r
 script:
-- python setup.py sdist
+- bash install_travis.sh
+- python setup.py install
 deploy:
   provider: pypi
   user: tisaconundrum
   password:
-    secure: cEYBtOTzLRF7bWrissS1d+Gg+JYIxDlvWUPoFOcupc9L3cU8RGdVR+Ghu2fkeF+2Kye/+z3CKWdHn4TbtOV1s4loMTbObxabpAdxOgQGj5TOLfxxcO+XCByO5j4oW6EHtZR+9tVW5v5xbrS8qZOPWOTqwXJqbFJwwLWElEGU2cqWkfe6bAOyzRJOmlklNA33nzfyGQAm3+1Nz1D7ts+Xg8zfOWcn2alufUAKKWQcXRO2bfgScBa5lGYp2gGUx/ggdqQRD+nDJloPlBQTkzg1ayPzy67aHZxOgaanJ84Ps4J1sR/Csj6DHwAIeVFJKHStinGmlHRiJ8bF8Fp5+PppnVFmrzaC8xugfI8YoVYE+jQLZf0fzWXEtL8xVSkTVLIzTdLXw48jaXdRdMmCfXlLEK+XaQ+ZI4JRnSuFqw3CSPCymxSWEe1KdxuJ4KSkyn8q2EieP3lv6jZgKj+P8QiytBLqO0Tz3UsGIj2rHrlatplN7PYWXvtvB/idZX5HWyElCp9bCwh6exHbC+Dx0+LoQFAtjv1FZxh7EnDP7AOvfZixWevtGtfxFnwI9Qui8V7xlJClQ4nQnJbfyRGrbw6PaYVUvOw0bU/Sc8E8HLYpPe0HLIUVP2BGf6SxpOn8kHXbch9CEjTn3w9RGm+qz8DqNWu5gZIccDp7gCRIiAZwxaw=
+    secure: gSgpEqoiW/3U4ybL5S0MNNlqXPP99v5G9Wjnjh4B4xCmkZgMYvLl01Xwj/RyPXTnR6+uU1fwXNOeCTzXGN1Tu2NJdlPvMsdEOQbcZIgdvM6TqTCuLAzxWTkXeAhKBfctViPqZvDIPRSNbdAxDAlchZbHjx+MIs/S+/LBcIuI4RUt7+Q0ZML4HN57de1Dxd2bHQwjCOjRCDMavAmsoaWToY9Qzdh+Ti30Le1ZY3ZsO/nM4d6PDAng4vBjwdJ6iSK/5BqY9ipkfqWAvkbDLxVfkFyNt/QIOAg4h6tlyj2RdCLLBIjEGmdrL3K1T5jttnchkmBzc5bCDJF8AmzGPd916t5tXBShqxp2KA/Fg8MTPEuhoISp2o2ABZnQawATeKSqVV4F24zrUwiGT5tj8SEsLvPa+HlaAH3g7u1w2Vm2qinRjGGX4IRj+6jxkPGjEgHR2GMwRnHDkCEwo/VxyRCC/fJi42bUJoF97+IepoHQrrTe07wa0BRhfD/FsNivAxecIAUk/hLD/XHxujwxL2KTDWpKmR5Na3byp9hugIAjBgtPEknedEabwqthAD10glnjfXjJ6Pz/Y4wty82FqmYZ2dj1K4EaEO00G2mIjj71ItpIEL6RjzLbsAHOyUK6T6r7GBrp9PgQAmf6EsODdwJ1JEAte/bxqRqHmL9S62uVqw4=
+  distributions: sdist bdist_wheel
   on:
-    branch: dev
+    branch: master
+after_deploy:
+- conda env create -n ppsg -f environment.yml
+- source activate ppsg
+- point_spectra_gui

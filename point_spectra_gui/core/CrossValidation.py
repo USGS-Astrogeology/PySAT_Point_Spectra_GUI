@@ -1,13 +1,14 @@
 import numpy as np
 import pandas as pd
 from PyQt5 import QtWidgets
-from pysat.regression import cv
-from pysat.spectral.spectral_data import spectral_data
-
 from Qtickle import Qtickle
+from libpysat.regression import cv
+from libpysat.spectral.spectral_data import spectral_data
+
 from point_spectra_gui.core.crossValidateMethods import *
 from point_spectra_gui.ui.CrossValidation import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
+
 
 
 class CrossValidation(Ui_Form, Basics):

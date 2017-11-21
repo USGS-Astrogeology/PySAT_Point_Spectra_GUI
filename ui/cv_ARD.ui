@@ -22,6 +22,12 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="formGroupBox">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fit regression model with Bayesian Ridge Regression.&lt;/p&gt;&lt;p&gt;See Bayesian Ridge Regression for more information on the regressor.&lt;/p&gt;&lt;p&gt;Compared to the OLS (ordinary least squares) estimator, the coefficient weights are slightly shifted toward zeros, which stabilises them.&lt;/p&gt;&lt;p&gt;The histogram of the estimated weights is very peaked, as a sparsity-inducing prior is implied on the weights.&lt;/p&gt;&lt;p&gt;The estimation of the model is done by iteratively maximizing the marginal log-likelihood of the observations.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="title">
+      <string>ARD</string>
+     </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

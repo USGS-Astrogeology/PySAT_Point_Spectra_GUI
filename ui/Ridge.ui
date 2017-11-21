@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>579</width>
+    <height>293</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
     <horstretch>0</horstretch>
@@ -35,6 +43,9 @@
            </item>
            <item row="0" column="1">
             <widget class="QLineEdit" name="alphasLineEdit_cv">
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <property name="text">
               <string>0.1, 1.0, 10.0</string>
              </property>
@@ -49,6 +60,14 @@
            </item>
            <item row="1" column="1">
             <widget class="QCheckBox" name="fitInterceptCheckBox_cv">
+             <property name="toolTip">
+              <string>Whether to calculate the intercept for this model. If set to false,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered).</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <property name="checked">
               <bool>true</bool>
              </property>
@@ -62,7 +81,18 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QCheckBox" name="normalizeCheckBox_cv"/>
+            <widget class="QCheckBox" name="normalizeCheckBox_cv">
+             <property name="toolTip">
+              <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing.StandardScaler before calling fit on
+an estimator with normalize=False.</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
+            </widget>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="scoringLabel_cv">
@@ -73,6 +103,9 @@
            </item>
            <item row="3" column="1">
             <widget class="QComboBox" name="scoringComboBox_cv">
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <item>
               <property name="text">
                <string>None</string>
@@ -99,6 +132,9 @@
            </item>
            <item row="4" column="1">
             <widget class="QComboBox" name="gCVModeComboBox_cv">
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <item>
               <property name="text">
                <string>None</string>
@@ -129,7 +165,11 @@
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QCheckBox" name="storeCVValuesCheckBox_cv"/>
+            <widget class="QCheckBox" name="storeCVValuesCheckBox_cv">
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -155,6 +195,18 @@
            </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox">
+             <property name="toolTip">
+              <string>Regularization strength; must be a positive float. Regularization
+improves the conditioning of the problem and reduces the variance of
+the estimates. Larger values specify stronger regularization. Alpha
+corresponds to C^-1 in other linear models such as LogisticRegression
+or LinearSVC. If an array is passed, penalties are assumed to be specific
+to the targets. Hence they must correspond in number.
+</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <property name="value">
               <double>1.000000000000000</double>
              </property>
@@ -169,6 +221,12 @@
            </item>
            <item row="1" column="1">
             <widget class="QCheckBox" name="copyXCheckBox">
+             <property name="toolTip">
+              <string>If True, X will be copied; else, it may be overwritten.</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <property name="checked">
               <bool>true</bool>
              </property>
@@ -183,6 +241,14 @@
            </item>
            <item row="2" column="1">
             <widget class="QCheckBox" name="fitInterceptCheckBox">
+             <property name="toolTip">
+              <string>Whether to calculate the intercept for this model. If set to false,
+no intercept will be used in calculations (e.g. data is expected to
+be already centered).</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <property name="checked">
               <bool>true</bool>
              </property>
@@ -197,6 +263,12 @@
            </item>
            <item row="3" column="1">
             <widget class="QLineEdit" name="maxNumOfIterationslineEdit">
+             <property name="toolTip">
+              <string>Maximum number of iterations for conjugate gradient solver. For
+'sparse_cg' and 'lsqr' solvers, the default value is determined by
+scipy.sparse.linalg. For 'sag' solver, the default value is 1000.
+</string>
+             </property>
              <property name="text">
               <string>None</string>
              </property>
@@ -210,7 +282,18 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QCheckBox" name="normalizeCheckBox"/>
+            <widget class="QCheckBox" name="normalizeCheckBox">
+             <property name="toolTip">
+              <string>This parameter is ignored when fit_intercept is set to False. If True,
+the regressors X will be normalized before regression by subtracting
+the mean and dividing by the l2-norm. If you wish to standardize,
+please use sklearn.preprocessing.StandardScaler before calling fit on
+an estimator with normalize=False.</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
+            </widget>
            </item>
            <item row="5" column="0">
             <widget class="QLabel" name="solverLabel">
@@ -219,8 +302,77 @@
              </property>
             </widget>
            </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="toleranceLabel">
+             <property name="text">
+              <string>Tolerance</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox">
+             <property name="toolTip">
+              <string>Precision of the solution.</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="randomStateLabel">
+             <property name="text">
+              <string>Random State</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLineEdit" name="randomStateLineEdit">
+             <property name="toolTip">
+              <string>The seed of the pseudo random number generator to use when shuffling
+the data. If int, random_state is the seed used by the random number
+generator; If RandomState instance, random_state is the random number
+generator; If None, the random number generator is the RandomState
+instance used by np.random. Used when solver == 'sag'.</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
+             <property name="text">
+              <string>None</string>
+             </property>
+            </widget>
+           </item>
            <item row="5" column="1">
             <widget class="QComboBox" name="solverComboBox">
+             <property name="toolTip">
+              <string>Solver to use in the computational routines:
+
+'auto' chooses the solver automatically based on the type of data.
+'svd' uses a Singular Value Decomposition of X to compute the Ridge
+coefficients. More stable for singular matrices than 'cholesky'.
+'cholesky' uses the standard scipy.linalg.solve function to obtain a
+closed-form solution.
+'sparse_cg' uses the conjugate gradient solver as found in
+scipy.sparse.linalg.cg. As an iterative algorithm, this solver is more
+appropriate than 'cholesky' for large-scale data (possibility to set tol
+and max_iter).
+'lsqr' uses the dedicated regularized least-squares routine
+scipy.sparse.linalg.lsqr. It is the fastest but may not be available in
+old scipy versions. It also uses an iterative procedure.
+'sag' uses a Stochastic Average Gradient descent, and 'saga' uses its
+improved, unbiased version named SAGA. Both methods also use an
+iterative procedure, and are often faster than other solvers when both
+n_samples and n_features are large. Note that 'sag' and 'saga' fast
+convergence is only guaranteed on features with approximately the same
+scale. You can preprocess the data with a scaler from
+sklearn.preprocessing.
+All last five solvers support both dense and sparse data. However, only
+'sag' and 'saga' supports sparse input when fit_intercept is True.</string>
+             </property>
+             <property name="whatsThis">
+              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+             </property>
              <item>
               <property name="text">
                <string>auto</string>
@@ -253,30 +405,6 @@
              </item>
             </widget>
            </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="toleranceLabel">
-             <property name="text">
-              <string>Tolerance</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QDoubleSpinBox" name="toleranceDoubleSpinBox"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="randomStateLabel">
-             <property name="text">
-              <string>Random State</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="randomStateLineEdit">
-             <property name="text">
-              <string>None</string>
-             </property>
-            </widget>
-           </item>
           </layout>
          </widget>
         </item>
@@ -294,6 +422,12 @@
          </item>
          <item row="0" column="1">
           <widget class="QCheckBox" name="crossValidateCheckBox">
+           <property name="toolTip">
+            <string>Cross Validate</string>
+           </property>
+           <property name="whatsThis">
+            <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</string>
+           </property>
            <property name="checked">
             <bool>true</bool>
            </property>

@@ -8,7 +8,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(652, 278)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -16,14 +15,9 @@ class Ui_Form(object):
         Form.setSizePolicy(sizePolicy)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.groupBox = QtWidgets.QGroupBox(Form)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.Ridge = QtWidgets.QGroupBox(self.groupBox)
+        self.Ridge = QtWidgets.QGroupBox(Form)
         self.Ridge.setEnabled(True)
+        self.Ridge.setTitle("")
         self.Ridge.setObjectName("Ridge")
         self.formLayout_2 = QtWidgets.QFormLayout(self.Ridge)
         self.formLayout_2.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
@@ -70,9 +64,7 @@ class Ui_Form(object):
         self.toleranceLineEdit = QtWidgets.QLineEdit(self.Ridge)
         self.toleranceLineEdit.setObjectName("toleranceLineEdit")
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.toleranceLineEdit)
-        self.horizontalLayout.addWidget(self.Ridge)
-        self.verticalLayout.addLayout(self.horizontalLayout)
-        self.verticalLayout_2.addWidget(self.groupBox)
+        self.verticalLayout_2.addWidget(self.Ridge)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -80,7 +72,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
-        self.Ridge.setTitle(("Ridge"))
         self.alphaLabel.setText(("Alpha"))
         self.fitInterceptLabel.setText(("Fit Intercept"))
         __sortingEnabled = self.fit_intercept_list.isSortingEnabled()

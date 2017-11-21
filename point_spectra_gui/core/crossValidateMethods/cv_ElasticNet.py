@@ -12,7 +12,7 @@ class Ui_Form(Ui_Form, ElasticNet, Basics):
         self.connectWidgets()
 
     def get_widget(self):
-        return self.groupBox
+        return self.elasticNetGroupBox
 
     def setHidden(self, bool):
         self.get_widget().setHidden(bool)

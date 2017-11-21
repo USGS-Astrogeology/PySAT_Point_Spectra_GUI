@@ -93,6 +93,8 @@ class point_spectra_gui_build_ui(Command):
             uic.compileUi(uifile, tmp, True)
             source = tmp.getvalue()
             rc = re.compile(r'\n\n#.*?(?=\n\n)', re.MULTILINE | re.DOTALL)
+            t = re.compile(r'\n.*?Form.resize(.*)')
+            source = t.sub("", source)
             comment = ("\n\n# Automatically generated - don't edit.\n"
                        "# Use `python setup.py build_ui` to update it.")
             for r in list(_translate_re):
@@ -139,7 +141,6 @@ class point_spectra_gui_clean_ui(Command):
 setup(
     name=PACKAGE_NAME,
     version=__version__,
-    scripts=['point_spectra_gui'],
     description="A PDART-funded effort to design a spectral analysis tool for LIBS (and other) spectra",
     url="https://github.com/USGS-Astrogeology/PySAT",
     author="Ryan B. Anderson, Nicholas Finch",
@@ -148,6 +149,12 @@ setup(
     keywords='PYSAT LIBS PDART Point Spectra',
     package_dir={'point_spectra_gui': 'point_spectra_gui'},
     packages=find_packages(),
+    install_requires =['sklearn', 'qtmodern', 'libpysat'],
+    entry_points={
+        'gui_scripts': [
+            'point_spectra_gui=point_spectra_gui.core.MainWindow:main'
+        ],
+    },
     cmdclass={
         'build_ui': point_spectra_gui_build_ui,
         'clean_ui': point_spectra_gui_clean_ui,

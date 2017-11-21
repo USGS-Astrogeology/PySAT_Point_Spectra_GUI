@@ -208,55 +208,133 @@ class Ui_Form(object):
         self.elasticNetCVGroupBox.setTitle(("Elastic Net CV"))
         self.l1_ratioLabel.setText(_translate("Form", "l1_ratio\n"
 ""))
+        self.l1_ratioDoubleSpinBox.setToolTip(_translate("Form", "The ElasticNet mixing parameter, with 0 <= l1_ratio <= 1. For l1_ratio\n"
+"= 0 the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty.\n"
+"For 0 < l1_ratio < 1, the penalty is a combination of L1 and L2."))
+        self.l1_ratioDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.epsLabel.setText(_translate("Form", "eps\n"
 ""))
+        self.epsDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.n_alphasLabel.setText(_translate("Form", "n_alphas\n"
 ""))
+        self.n_alphasSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.alphasLabel.setText(_translate("Form", "alphas\n"
 ""))
+        self.alphasLineEdit.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.fit_interceptLabel.setText(_translate("Form", "fit_intercept\n"
 ""))
+        self.fit_interceptCheckBox.setToolTip(_translate("Form", "Whether the intercept should be estimated or not. If False, the data\n"
+"is assumed to be already centered."))
+        self.fit_interceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.normalizeLabel.setText(_translate("Form", "normalize\n"
 ""))
+        self.normalizeCheckBox.setToolTip(_translate("Form", "This parameter is ignored when fit_intercept is set to False. If True,\n"
+"the regressors X will be normalized before regression by subtracting\n"
+"the mean and dividing by the l2-norm. If you wish to standardize,\n"
+"please use sklearn.preprocessing. StandardScaler before calling fit on\n"
+"an estimator with normalize=False."))
+        self.normalizeCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.precomputeLabel.setText(_translate("Form", "precompute\n"
 ""))
+        self.precomputeComboBox.setToolTip(_translate("Form", "Whether to use a precomputed Gram matrix to speed up calculations.\n"
+"The Gram matrix can also be passed as argument. For sparse input this\n"
+"option is always True to preserve sparsity."))
+        self.precomputeComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.max_iterLabel.setText(_translate("Form", "max_iter\n"
 ""))
+        self.max_iterSpinBox.setToolTip(("The maximum number of iterations"))
+        self.max_iterSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.tolLabel.setText(_translate("Form", "tol\n"
 ""))
+        self.tolDoubleSpinBox.setToolTip(("The tolerance for the optimization:"))
+        self.tolDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.copy_XLabel.setText(_translate("Form", "copy_X\n"
 ""))
+        self.copy_XCheckBox.setToolTip(("If True, X will be copied; else, it may be overwritten."))
+        self.copy_XCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.verboseLabel.setText(_translate("Form", "verbose\n"
 ""))
+        self.verboseCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.n_jobsLabel.setText(_translate("Form", "n_jobs\n"
 ""))
+        self.n_jobsSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.positiveLabel.setText(_translate("Form", "positive\n"
 ""))
+        self.positiveCheckBox.setToolTip(("When set to True, forces the coefficients to be positive."))
+        self.positiveCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.selectionLabel.setText(("selection"))
+        self.selectionComboBox.setToolTip(_translate("Form", "If set to \'random\', a random coefficient is updated every iteration\n"
+"rather than looping over features sequentially by default. This\n"
+"(setting to \'random\') often leads to significantly faster convergence\n"
+"especially when tol is higher than 1e-4."))
+        self.selectionComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.cVLabel.setText(("cv"))
+        self.cVSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.elasticNetGroupBox.setTitle(("Elastic Net"))
         self.enalphaLabel.setText(_translate("Form", "alpha\n"
 ""))
+        self.enalphaDoubleSpinBox.setToolTip(_translate("Form", "Constant that multiplies the penalty terms. Defaults to 1.0. See the\n"
+"notes for the exact mathematical meaning of this parameter. alpha = 0\n"
+"is equivalent to an ordinary least square, solved by the\n"
+"LinearRegression object. For numerical reasons, using alpha = 0 with\n"
+"the Lasso object is not advised. Given this, you should use the\n"
+"LinearRegression object."))
+        self.enalphaDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enl1_ratioLabel.setText(_translate("Form", "l1_ratio\n"
 ""))
+        self.enl1_ratioDoubleSpinBox.setToolTip(_translate("Form", "The ElasticNet mixing parameter, with 0 <= l1_ratio <= 1. For l1_ratio\n"
+"= 0 the penalty is an L2 penalty. For l1_ratio = 1 it is an L1 penalty.\n"
+"For 0 < l1_ratio < 1, the penalty is a combination of L1 and L2."))
+        self.enl1_ratioDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enfit_interceptLabel.setText(_translate("Form", "fit_intercept\n"
 ""))
+        self.enfit_interceptCheckBox.setToolTip(_translate("Form", "Whether the intercept should be estimated or not. If False, the data\n"
+"is assumed to be already centered."))
+        self.enfit_interceptCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.ennormalizeLabel.setText(_translate("Form", "normalize\n"
 ""))
+        self.ennormalizeCheckBox.setToolTip(_translate("Form", "This parameter is ignored when fit_intercept is set to False. If True,\n"
+"the regressors X will be normalized before regression by subtracting\n"
+"the mean and dividing by the l2-norm. If you wish to standardize,\n"
+"please use sklearn.preprocessing. StandardScaler before calling fit on\n"
+"an estimator with normalize=False."))
+        self.ennormalizeCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enprecomputeLabel.setText(_translate("Form", "precompute\n"
 ""))
+        self.enprecomputeCheckBox.setToolTip(_translate("Form", "Whether to use a precomputed Gram matrix to speed up calculations.\n"
+"The Gram matrix can also be passed as argument. For sparse input this\n"
+"option is always True to preserve sparsity."))
+        self.enprecomputeCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enmax_iterLabel.setText(_translate("Form", "max_iter\n"
 ""))
+        self.enmax_iterSpinBox.setToolTip(("The maximum number of iterations"))
+        self.enmax_iterSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.encopy_XLabel.setText(_translate("Form", "copy_X\n"
 ""))
+        self.encopy_XCheckBox.setToolTip(("If True, X will be copied; else, it may be overwritten."))
+        self.encopy_XCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.entolLabel.setText(_translate("Form", "tol\n"
 ""))
+        self.entolDoubleSpinBox.setToolTip(("The tolerance for the optimization:"))
+        self.entolDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enwarm_startLabel.setText(_translate("Form", "warm_start\n"
 ""))
+        self.enwarm_startCheckBox.setToolTip(_translate("Form", "When set to True, reuse the solution of the previous call to fit as\n"
+"initialization, otherwise, just erase the previous solution."))
+        self.enwarm_startCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enpositiveLabel.setText(("positive"))
+        self.enpositiveCheckBox.setToolTip(("When set to True, forces the coefficients to be positive."))
+        self.enpositiveCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enselectionLabel.setText(("selection"))
+        self.enselectionComboBox.setToolTip(_translate("Form", "If set to \'random\', a random coefficient is updated every iteration\n"
+"rather than looping over features sequentially by default. This\n"
+"(setting to \'random\') often leads to significantly faster convergence\n"
+"especially when tol is higher than 1e-4."))
+        self.enselectionComboBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enselectionComboBox.setItemText(0, ("cyclic"))
         self.enselectionComboBox.setItemText(1, ("random"))
+        self.CVCheckBox.setToolTip(("Cross Validate"))
+        self.CVCheckBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.CVCheckBox.setText(("CV"))
 
 

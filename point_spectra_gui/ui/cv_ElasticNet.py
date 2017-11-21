@@ -8,7 +8,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(527, 430)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -16,13 +15,8 @@ class Ui_Form(object):
         Form.setSizePolicy(sizePolicy)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.groupBox = QtWidgets.QGroupBox(Form)
-        self.groupBox.setObjectName("groupBox")
-        self.ENLayout = QtWidgets.QVBoxLayout(self.groupBox)
-        self.ENLayout.setObjectName("ENLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.elasticNetGroupBox = QtWidgets.QGroupBox(self.groupBox)
+        self.elasticNetGroupBox = QtWidgets.QGroupBox(Form)
+        self.elasticNetGroupBox.setTitle("")
         self.elasticNetGroupBox.setObjectName("elasticNetGroupBox")
         self.ElasticNet = QtWidgets.QFormLayout(self.elasticNetGroupBox)
         self.ElasticNet.setFieldGrowthPolicy(QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
@@ -116,9 +110,7 @@ class Ui_Form(object):
         self.nalpha_spin.setMaximum(999999999)
         self.nalpha_spin.setObjectName("nalpha_spin")
         self.ElasticNet.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.nalpha_spin)
-        self.horizontalLayout.addWidget(self.elasticNetGroupBox)
-        self.ENLayout.addLayout(self.horizontalLayout)
-        self.verticalLayout.addWidget(self.groupBox)
+        self.verticalLayout.addWidget(self.elasticNetGroupBox)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -126,7 +118,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
-        self.elasticNetGroupBox.setTitle(("Elastic Net"))
         self.minalpha_label.setText(("Min Alpha (x1e10)"))
         self.enl1_ratioLabel.setText(("L1 ratio"))
         self.enl1_ratioLineEdit.setText((".1, .5, .7, .9, .95, .99, 1"))

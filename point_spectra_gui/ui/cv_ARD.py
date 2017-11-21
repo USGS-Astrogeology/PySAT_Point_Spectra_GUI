@@ -8,7 +8,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(511, 360)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -120,6 +119,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
+        self.formGroupBox.setToolTip(("<html><head/><body><p>Fit regression model with Bayesian Ridge Regression.</p><p>See Bayesian Ridge Regression for more information on the regressor.</p><p>Compared to the OLS (ordinary least squares) estimator, the coefficient weights are slightly shifted toward zeros, which stabilises them.</p><p>The histogram of the estimated weights is very peaked, as a sparsity-inducing prior is implied on the weights.</p><p>The estimation of the model is done by iteratively maximizing the marginal log-likelihood of the observations.</p></body></html>"))
+        self.formGroupBox.setTitle(("ARD"))
         self.numOfIterationsLabel.setText(("num of iterations"))
         self.numOfIterationsLineEdit.setText(("300"))
         self.toleranceLabel.setText(("Tolerance"))

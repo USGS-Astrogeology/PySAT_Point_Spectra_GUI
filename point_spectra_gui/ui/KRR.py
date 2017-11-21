@@ -68,14 +68,38 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
+        Form.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.alphaLabel.setText(("Alpha"))
+        self.alphaSpinBox.setToolTip(_translate("Form", "Small positive values of alpha improve the conditioning of the problem\n"
+"and reduce the variance of the estimates. Alpha corresponds to (2*C)^-1\n"
+"in other linear models such as LogisticRegression or LinearSVC. If an\n"
+"array is passed, penalties are assumed to be specific to the targets.\n"
+"Hence they must correspond in number."))
+        self.alphaSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.kernelLabel.setText(("Kernel"))
+        self.kernelLineEdit.setToolTip(_translate("Form", "Kernel mapping used internally. A callable should accept two arguments\n"
+"and the keyword arguments passed to this object as kernel_params, and\n"
+"should return a floating point number."))
+        self.kernelLineEdit.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.kernelLineEdit.setText(("linear"))
         self.gammaLabel.setText(("Gamma"))
+        self.gammaLineEdit.setToolTip(_translate("Form", "Gamma parameter for the RBF, laplacian, polynomial, exponential chi2\n"
+"and sigmoid kernels. Interpretation of the default value is left to\n"
+"the kernel; see the documentation for sklearn.metrics.pairwise.\n"
+"Ignored by other kernels."))
+        self.gammaLineEdit.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.gammaLineEdit.setText(("None"))
         self.degreeLabel.setText(("Degree"))
+        self.degreeDoubleSpinBox.setToolTip(("Degree of the polynomial kernel. Ignored by other kernels."))
+        self.degreeDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.coeff0Label.setText(("Coeff 0"))
+        self.coeff0DoubleSpinBox.setToolTip(_translate("Form", "Zero coefficient for polynomial and sigmoid kernels. Ignored by other\n"
+"kernels."))
+        self.coeff0DoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.kernelParametersLabel.setText(("Kernel Parameters"))
+        self.kernelParametersLineEdit.setToolTip(("Additional parameters (keyword arguments) for kernel function passed\n"
+"as callable object."))
+        self.kernelParametersLineEdit.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html"))
         self.kernelParametersLineEdit.setText(("None"))
 
 

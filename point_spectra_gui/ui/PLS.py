@@ -34,6 +34,8 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
         self.numOfComponentsLabel.setText(("Num of Components"))
+        self.numOfComponentsLineEdit.setToolTip(("Number of components to keep."))
+        self.numOfComponentsLineEdit.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.PLSRegression.html"))
 
 
 if __name__ == "__main__":

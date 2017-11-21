@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from pysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
+from libpysat.spectral.baseline_code.ccam_remove_continuum import ccam_br
 
 from point_spectra_gui.ui.CCAM import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
