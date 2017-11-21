@@ -496,30 +496,37 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.widgetList[modules].setDisabled(True)
             self.leftOff = modules + 1
 
+    def _exceptionLogger(self, function):
+        """
+        Logs an exception that occurs during the running of a function
+        Take a function address in as an input
+        :param function:
+        :return:
+        """
+        logfile = "file.log"
+        logpath = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\logs')
+
+        try:
+            function()
+        except:
+            if not os.path.exists(logpath):
+                os.makedirs(logpath)
+            timenow = strftime('%d-%m-%y_%H-%M-%S')
+            logfilename = "%s_%s" % (timenow, logfile)
+            logging.basicConfig(level=logging.DEBUG,
+                                filename=(
+                                    os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))))
+            logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
+            traceback.print_exc()
+            print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
+
     def run(self):
         """
         Run through all the modules
         :return:
         """
         if self.debug:
-            logfile = "file.log"
-            logpath = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop\\logs')
-
-            # -----
-            # Error Logging
-            try:
-                self.runModules()
-            except:
-                if not os.path.exists(logpath):
-                    os.makedirs(logpath)
-                timenow = strftime('%d-%m-%y_%H-%M-%S')
-                logfilename = "%s_%s" % (timenow, logfile)
-                logging.basicConfig(level=logging.DEBUG,
-                                    filename=(
-                                        os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))))
-                logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
-                traceback.print_exc()
-                print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
+            self._exceptionLogger(self.runModules)
         else:
             try:
                 self.runModules()
