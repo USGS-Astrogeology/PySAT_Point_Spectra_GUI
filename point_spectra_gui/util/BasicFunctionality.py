@@ -88,6 +88,10 @@ class Basics:
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict)
 
+    def isGuiChanged(self):
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.isGuiChanged()
+
     def function(self):
         """
         Each Module's functionality will be ran in this function.
