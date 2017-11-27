@@ -40,6 +40,7 @@ class Basics:
     def __init__(self):
         self.qt = Qtickle.Qtickle(self)
         self.settings = QSettings('USGS', 'PPSG')
+        self.flag = False
 
     def setupUi(self, Form):
         self.Form = Form
@@ -87,10 +88,14 @@ class Basics:
         """
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict)
+        self.qt.isGuiChanged(self.setUiFlag)
 
-    def isGuiChanged(self):
-        self.qt = Qtickle.Qtickle(self)
-        self.qt.isGuiChanged()
+    def getGuiState(self):
+        """
+        Get the state of the current module
+        :return:
+        """
+        return self.getUiFlag()
 
     def function(self):
         """
@@ -137,6 +142,20 @@ class Basics:
 
             if isinstance(obj, QDoubleSpinBox):
                 obj.setDecimals(7)
+
+    def setUiFlag(self):
+        """
+        Set the flag to true when the state of the current module changes
+        :return:
+        """
+        self.flag = True
+
+    def getUiFlag(self):
+        """
+        Return the flag for the UI's state
+        :return:
+        """
+        return self.flag
 
     @staticmethod
     def setComboBox(comboBox, keyValues):
