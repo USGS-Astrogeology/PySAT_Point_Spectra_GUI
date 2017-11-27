@@ -170,19 +170,6 @@ class Basics:
         comboBox.addItems(keyValues)
 
     @staticmethod
-    def checkoptions(selection, actual_options, message):
-        if isinstance(selection,list):
-            for i in selection:
-                if i not in actual_options:
-                    print('Selected '+message+' does not exist. Refreshing options...')
-                    return True
-        else:
-            if selection not in actual_options:
-                print('Selected ' + message + ' does not exist. Refreshing options...')
-                return True
-        return False
-
-    @staticmethod
     def changeComboListVars(obj, newchoices):
         """
         Function changes combo boxes
