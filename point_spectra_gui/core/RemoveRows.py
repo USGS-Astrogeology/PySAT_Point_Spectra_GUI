@@ -28,28 +28,28 @@ class RemoveRows(Ui_Form, Basics):
         colname = self.colNameComboBox.currentText()
         value = self.valueComboBox.currentText()
         value = value.split(' : ')[0]
-        if (self.checkoptions(datakey, self.datakeys, 'data set') or
-            self.checkoptions(colname,self.get_colname_choices(),'column') or
-            self.checkoptions(value,self.get_rowval_choices(), 'value')):
-            self.connectWidgets()
-        else:
-            print(datakey, colname, value)
-            print(self.data[datakey].df.shape)
-            vars_level0 = self.data[datakey].df.columns.get_level_values(0)
-            vars_level1 = self.data[datakey].df.columns.get_level_values(1)
-            vars_level1 = list(vars_level1[vars_level0 != 'wvl'])
-            vars_level0 = list(vars_level0[vars_level0 != 'wvl'])
-            colname = (vars_level0[vars_level1.index(colname)], colname)
+        # if (self.checkoptions(datakey, self.datakeys, 'data set') or
+        #     self.checkoptions(colname,self.get_colname_choices(),'column') or
+        #     self.checkoptions(value,self.get_rowval_choices(), 'value')):
+        #     self.connectWidgets()
+        # else:
+        #print(datakey, colname, value)
+        print(self.data[datakey].df.shape)
+        vars_level0 = self.data[datakey].df.columns.get_level_values(0)
+        vars_level1 = self.data[datakey].df.columns.get_level_values(1)
+        vars_level1 = list(vars_level1[vars_level0 != 'wvl'])
+        vars_level0 = list(vars_level0[vars_level0 != 'wvl'])
+        colname = (vars_level0[vars_level1.index(colname)], colname)
 
-            if value == 'Null':
-                self.data[datakey] = spectral_data(self.data[datakey].df.ix[-self.data[datakey].df[colname].isnull()])
-            else:
-                # find where the values in the specified column match the value to be removed
-                coldata = np.array([str(i) for i in self.data[datakey].df[colname]])
-                match = coldata == value
-                # keep everything except where match is true
-                self.data[datakey] = spectral_data(self.data[datakey].df.ix[~match])
-            print(self.data[datakey].df.shape)
+        if value == 'Null':
+            self.data[datakey] = spectral_data(self.data[datakey].df.ix[-self.data[datakey].df[colname].isnull()])
+        else:
+            # find where the values in the specified column match the value to be removed
+            coldata = np.array([str(i) for i in self.data[datakey].df[colname]])
+            match = coldata == value
+            # keep everything except where match is true
+            self.data[datakey] = spectral_data(self.data[datakey].df.ix[~match])
+        print(self.data[datakey].df.shape)
 
     def get_colname_choices(self):
         try:
