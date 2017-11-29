@@ -536,13 +536,12 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
             name_ = type(self.widgetList[modules]).__name__
             s = time.time()
             print("{} Module is Running...".format(name_))
-            # try:
-            #     if self.getGuiState():
-            #         for modules in range(self.leftOff + 1, len(self.widgetList)):
-            #
-            #
-            # except Exception as e:
-            #     print("There was a problem in restoring the state of the UI", e)
+            try:
+                if self.getGuiState():
+                    for modules in range(self.leftOff + 1, len(self.widgetList)):
+                        self.selectiveGuiParams(self.restorefilename)
+            except Exception as e:
+                print("There was a problem in restoring the state of the UI", e)
             self.widgetList[modules].function()
             e = time.time()
             print("Module {} executed in: {} seconds".format(name_, e - s))
