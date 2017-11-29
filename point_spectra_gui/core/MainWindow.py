@@ -547,7 +547,8 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
             logfilename = "%s_%s" % (timenow, logfile)
             filename = os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))
             logging.basicConfig(level=logging.DEBUG, filename=filename)
-            logging.exception('[%s %s] (%s) Version: %s:' % (platform.system(), platform.release(), timenow, __version__))
+            logging.exception(
+                '[%s %s] (%s) Version: %s:' % (platform.system(), platform.release(), timenow, __version__))
             traceback.print_exc()
             print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
 
