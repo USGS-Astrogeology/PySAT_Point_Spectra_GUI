@@ -5,6 +5,7 @@ import sys
 import time
 import warnings
 
+from point_spectra_gui.core.About import About
 from point_spectra_gui.util.themes import braceyourself, default
 
 try:
@@ -269,7 +270,7 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
                 lambda: self.addWidget(core.CombineDataSets.CombineDataSets))
             self.actionData_Box.triggered.connect(
                 lambda: self.addWidget(core.DataTable.DataTable))
-            self.actionAbout.triggered.connect(lambda: core.About.main(QtWidgets.QApplication(sys.argv), self.centralwidget))
+            self.actionAbout.triggered.connect(self.on_About_clicked)
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
@@ -434,6 +435,10 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
             self.taskFinished.emit()
         else:
             print("There is nothing running right now")
+
+    def on_About_clicked(self):
+        form = About(self.MainWindow)
+        form.show()
 
     def _writeWindowAttributeSettings(self):
         '''
