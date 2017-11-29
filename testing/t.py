@@ -14,10 +14,10 @@ except:
 
 from PyQt5 import QtWidgets
 
-from point_spectra_gui.core.MainWindow import Ui_MainWindow
+from point_spectra_gui.core.MainWindow import MainWindow
 
 
-class Ui_MainWindow(Ui_MainWindow):
+class Ui_MainWindow(MainWindow):
     def connectWidgets(self):
         """
         Connect all the widgets associated with the MainWindow UI
