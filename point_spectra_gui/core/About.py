@@ -1,29 +1,22 @@
-# -*- coding: utf-8 -*-
-
-# Automatically generated - don't edit.
-# Use `python setup.py build_ui` to update it.
+import sys
 
 from PyQt5 import QtWidgets
 
 from point_spectra_gui.__init__ import __version__
 from point_spectra_gui.ui.About import Ui_Form
-import sys
 
 
-class About(Ui_Form):
-    def setupUi(self, Form):
-        super().setupUi(Form)
+class About(QtWidgets.QWidget, Ui_Form):
+    def __init__(self, *args, **kwargs):
+        QtWidgets.QWidget.__init__(self, *args, **kwargs)
+        self.setupUi(self)
         self.versionLabel.setText("Version " + __version__)
 
 
-def main():
-
+if __name__ == "__main__":
+    import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = About()
-    ui.setupUi(Form)
-    Form.show()
-    app.exec_()
+    form = About()
+    form.show()
+    sys.exit(app.exec_())
 
-if __name__ == '__main__':
-    main()
