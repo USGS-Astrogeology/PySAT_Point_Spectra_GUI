@@ -27,7 +27,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import QSettings
 
-from point_spectra_gui import core
+from point_spectra_gui import core, __version__
 from point_spectra_gui.ui import MainWindow
 from point_spectra_gui.util import delete
 from point_spectra_gui.util.BasicFunctionality import Basics
@@ -258,8 +258,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.actionSplit_Data.triggered.connect(
                 lambda: self.addWidget(core.SplitDataset.SplitDataset))
             self.actionOutlier_Removal.triggered.connect(
-                lambda: self.addWidget(core.OutlierRemoval.OutlierRemoval)
-            )
+                lambda: self.addWidget(core.OutlierRemoval.OutlierRemoval))
             self.actionStratified_Folds.triggered.connect(
                 lambda: self.addWidget(core.StratifiedFolds.StratifiedFolds))
             self.actionSubmodel_Predict.triggered.connect(
@@ -270,6 +269,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 lambda: self.addWidget(core.CombineDataSets.CombineDataSets))
             self.actionData_Box.triggered.connect(
                 lambda: self.addWidget(core.DataTable.DataTable))
+            self.actionAbout.triggered.connect(lambda: core.About.main(QtWidgets.QApplication(sys.argv), self.centralwidget))
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
@@ -537,7 +537,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             logfilename = "%s_%s" % (timenow, logfile)
             filename = os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))
             logging.basicConfig(level=logging.DEBUG, filename=filename)
-            logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
+            logging.exception('[%s %s] (%s) Version: %s:' % (platform.system(), platform.release(), timenow, __version__))
             traceback.print_exc()
             print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
 
