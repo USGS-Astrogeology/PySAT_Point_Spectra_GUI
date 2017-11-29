@@ -515,12 +515,32 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         This function iterates through a list of object addresses
         which then run it's dot notated function()
 
+        iterate through our widgets, start from the last left off item
+        get the name of our current widget item
+        start the timers
+        print the name of the module running
+        if current module has been changed
+            try: # we try because there may be a situation where we aren't using a *.wrf file
+                for (leftOff+1, len(self.widgetList)) update entire UI and selectively restore a portion of it
+        run our current modules function()
+        get our end time
+        print how long it took our current module to execute based on start time and end time
+        disable our current module
+        increment our left off module
+
         :return:
         """
         for modules in range(self.leftOff, len(self.widgetList)):
             name_ = type(self.widgetList[modules]).__name__
             s = time.time()
             print("{} Module is Running...".format(name_))
+            # try:
+            #     if self.getGuiState():
+            #         for modules in range(self.leftOff + 1, len(self.widgetList)):
+            #
+            #
+            # except Exception as e:
+            #     print("There was a problem in restoring the state of the UI", e)
             self.widgetList[modules].function()
             e = time.time()
             print("Module {} executed in: {} seconds".format(name_, e - s))

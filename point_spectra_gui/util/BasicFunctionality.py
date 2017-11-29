@@ -1,9 +1,10 @@
 import inspect
 import sys
+
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import *
-from Qtickle import Qtickle
 
+from Qtickle import Qtickle
 
 
 class Basics:
@@ -89,6 +90,18 @@ class Basics:
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict)
         self.qt.isGuiChanged(self.setUiFlag)
+
+    def selectiveGuiParams(self, dict):
+        """
+        Selectively restore the UI.
+        We don't want to lose the content we have selected
+        but we don't want to override crucial information
+
+        :param dict:
+        :return:
+        """
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict)
 
     def getGuiState(self):
         """
