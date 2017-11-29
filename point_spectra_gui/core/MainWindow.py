@@ -200,7 +200,9 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         self.widgetLayout.addWidget(self.widgetList[-1].get_widget())
         # this should scroll the view all the way down after adding the new widget.
         scrollbar = self.scrollArea.verticalScrollBar()
+        # this should scroll the view all the way down after adding the new widget.
         scrollbar.setValue(scrollbar.maximum())
+        pass
 
     def menu_item_shortcuts(self):
         self.actionExit.setShortcut("ctrl+Q")
@@ -367,9 +369,9 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         """
         try:
             self.restorefilename, _filter = QtWidgets.QFileDialog.getOpenFileName(None,
-                                                                      "Open Workflow File",
-                                                                      self.outpath,
-                                                                      '(*.wrf)')
+                                                                                  "Open Workflow File",
+                                                                                  self.outpath,
+                                                                                  '(*.wrf)')
             print(self.restorefilename)
             with open(self.restorefilename, 'rb') as fp:
                 self.setWidgetItems(pickle.load(fp))

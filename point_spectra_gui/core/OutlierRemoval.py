@@ -61,13 +61,10 @@ class OutlierRemoval(Ui_Form, Basics):
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
-
-        if (self.checkoptions(datakey, self.datakeys, 'data set') or
-            self.checkoptions(xvars, self.xvar_choices(), 'variable')):
-            self.connectWidgets()
-        else:
-            params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
-            self.data[datakey].outlier_removal(xvars, method, params)
+        params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
+        self.data[datakey].outlier_removal(xvars, method, params)
+        #self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
+        #                                                      yrange=yrange, method=method)
 
     def xvar_choices(self):
         try:

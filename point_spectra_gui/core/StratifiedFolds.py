@@ -26,25 +26,22 @@ class StratifiedFolds(Ui_Form, Basics):
 
     def function(self):
         datakey = self.chooseDataToStratifyComboBox.currentText()
-        if self.checkoptions(datakey, self.datakeys, 'data set'):
-            self.connectWidgets()
-        else:
-            nfolds = self.nFoldsSpinBox.value()
-            try:
-                testfold = int(self.testFoldsSpinBox.value())
-            except:
-                testfold = 1
-            colname = ('comp', self.chooseVarComboBox.currentText())
-            self.data[datakey].stratified_folds(nfolds=nfolds, sortby=colname)
+        nfolds = self.nFoldsSpinBox.value()
+        try:
+            testfold = int(self.testFoldsSpinBox.value())
+        except:
+            testfold = 1
+        colname = ('comp', self.chooseVarComboBox.currentText())
+        self.data[datakey].stratified_folds(nfolds=nfolds, sortby=colname)
 
-            self.data[datakey + '-Train'] = self.data[datakey].rows_match(('meta', 'Folds'), [testfold], invert=True)
-            self.data[datakey + '-Test'] = self.data[datakey].rows_match(('meta', 'Folds'), [testfold])
-            self.datakeys.append(datakey + '-Train')
-            self.datakeys.append(datakey + '-Test')
+        self.data[datakey + '-Train'] = self.data[datakey].rows_match(('meta', 'Folds'), [testfold], invert=True)
+        self.data[datakey + '-Test'] = self.data[datakey].rows_match(('meta', 'Folds'), [testfold])
+        self.datakeys.append(datakey + '-Train')
+        self.datakeys.append(datakey + '-Test')
 
-            print(self.data.keys())
-            print(self.data[datakey + '-Test'].df.index.shape)
-            print(self.data[datakey + '-Train'].df.index.shape)
+        print(self.data.keys())
+        print(self.data[datakey + '-Test'].df.index.shape)
+        print(self.data[datakey + '-Train'].df.index.shape)
 
     def strat_fold_change_vars(self):
         self.chooseVarComboBox.clear()

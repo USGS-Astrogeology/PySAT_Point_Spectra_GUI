@@ -13,19 +13,21 @@ class RegressionPredict(Ui_Form, Basics):
         return self.formGroupBox
 
     def connectWidgets(self):
-        self.setComboBox(self.chooseDataComboBox, self.datakeys)
+        self.setComboBox(self.chooseDataComboBox, self.data)
         self.setComboBox(self.chooseModelComboBox, self.modelkeys)
 
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
         modelkey = self.chooseModelComboBox.currentText()
-        if (self.checkoptions(datakey, self.datakeys, 'data set') or
-            self.checkoptions(modelkey, self.modelkeys, 'model')):
-            self.connectWidgets()
-        else:
-            predictname = ('predict', modelkey + ' - ' + datakey + ' - Predict')
+        predictname = ('predict', modelkey + ' - ' + datakey + ' - Predict')
+
+        try:
             prediction = self.models[modelkey].predict(self.data[datakey].df[self.model_xvars[modelkey]])
             self.data[datakey].df[predictname] = prediction
+            pass
+        except Exception as e:
+            print(e)
+
 
 if __name__ == "__main__":
     import sys

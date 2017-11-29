@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
-from Qtickle import Qtickle
 
+from Qtickle import Qtickle
 from point_spectra_gui.core.dimensionalityReductionMethods import *
 from point_spectra_gui.ui.DimensionalityReduction import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
@@ -50,14 +50,11 @@ class DimensionalityReduction(Ui_Form, Basics):
     def function(self):
         method = self.chooseMethodComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
-        if self.checkoptions(datakey, self.datakeys, 'data set'):
-            self.connectWidgets()
-        else:
-            # xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
-            params, modelkey = self.getMethodParams(self.chooseMethodComboBox.currentIndex())
-            load_fit = False
-            col = 'wvl'
-            self.data[datakey].dim_red(col, method, [], params, load_fit=load_fit)
+        # xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
+        params, modelkey = self.getMethodParams(self.chooseMethodComboBox.currentIndex())
+        load_fit = False
+        col = 'wvl'
+        self.data[datakey].dim_red(col, method, [], params, load_fit=load_fit)
 
     def make_dimred_widget(self, alg, params=None):
         self.hideAll()
