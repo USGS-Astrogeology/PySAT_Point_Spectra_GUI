@@ -377,6 +377,11 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         except Exception as e:
             print("File not loaded: {}".format(e))
 
+    def on_selective_restore(self):
+        with open(self.restorefilename, 'rb') as fp:
+            for i in range(1, len(dict)):
+                self.widgetList[i - 1].setGuiParams(dict[i])
+
     def on_delete_module_clicked(self):
         """
         Check to see if the last item is enabled
