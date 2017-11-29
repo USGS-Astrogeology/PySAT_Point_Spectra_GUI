@@ -365,14 +365,14 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         :return:
         """
         try:
-            filename, _filter = QtWidgets.QFileDialog.getOpenFileName(None,
+            self.restorefilename, _filter = QtWidgets.QFileDialog.getOpenFileName(None,
                                                                       "Open Workflow File",
                                                                       self.outpath,
                                                                       '(*.wrf)')
-            print(filename)
-            with open(filename, 'rb') as fp:
+            print(self.restorefilename)
+            with open(self.restorefilename, 'rb') as fp:
                 self.setWidgetItems(pickle.load(fp))
-            self.title.setFileName(filename.split('/')[-1])
+            self.title.setFileName(self.restorefilename.split('/')[-1])
             self.MainWindow.setWindowTitle(self.title.display())
         except Exception as e:
             print("File not loaded: {}".format(e))
