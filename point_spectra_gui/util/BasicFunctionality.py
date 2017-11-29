@@ -95,7 +95,7 @@ class Basics:
         """
         Selectively restore the UI.
         We don't want to lose the content we have selected
-        but we don't want to override crucial information
+        but we don't want to override crucial information either
 
         :param dict:
         :return:
