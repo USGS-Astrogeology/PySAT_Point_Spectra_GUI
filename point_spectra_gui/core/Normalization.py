@@ -1,7 +1,45 @@
+import numpy as np
 from PyQt5 import QtWidgets
 
 from point_spectra_gui.ui.Normalization import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
+
+
+class norm_range:
+    def __init__(self, minLabel, minSpin, maxLabel, maxSpin, hidden):
+        self.minLabel = minLabel
+        self.minSpin = minSpin
+        self.maxLabel = maxLabel
+        self.maxSpin = maxSpin
+        self.hidden = hidden
+        self.hidden.setHidden(True)
+        self.hidden.stateChanged.connect(self.Hidden)
+        self.setLimits(0.0, 9999999.0)
+
+    def Hidden(self):
+        if self.hidden.isChecked():
+            self.minLabel.setHidden(True)
+            self.minSpin.setHidden(True)
+            self.maxLabel.setHidden(True)
+            self.maxSpin.setHidden(True)
+        else:
+            self.minLabel.setHidden(False)
+            self.minSpin.setHidden(False)
+            self.maxLabel.setHidden(False)
+            self.maxSpin.setHidden(False)
+
+    def getValues(self):
+        return self.minSpin.value(), self.maxSpin.value()
+
+    def setLimits(self, min, max):
+        self.minSpin.setMinimum(min)
+        self.maxSpin.setMinimum(min)
+        self.minSpin.setMaximum(max)
+        self.maxSpin.setMaximum(max)
+
+    def setValue(self, int_):
+        self.minSpin.setValue(int_)
+        self.maxSpin.setValue(int_)
 
 
 class Normalization(Ui_Form, Basics):
@@ -10,118 +48,151 @@ class Normalization(Ui_Form, Basics):
             self.restored = True
         super().setupUi(Form)
         self.setup_norm_ranges()
-        self.index = 1
-        self.hide_settings()
+        self.index.setHidden(True)
         Basics.setupUi(self, Form)
 
     def get_widget(self):
         return self.groupBox
 
     def setup_norm_ranges(self):
-        self.ranges = [{'labels': [self.minimumWavelengthLabel, self.maximumWavelengthLabel],
-                        'spins': [self.minimumWavelengthSpinBox, self.maximumWavelengthSpinBox]},
-                       {'labels': [self.minimumWavelengthLabel_2, self.maximumWavelengthLabel_2],
-                        'spins': [self.minimumWavelengthSpinBox_2, self.maximumWavelengthSpinBox_2]},
-                       {'labels': [self.minimumWavelengthLabel_3, self.maximumWavelengthLabel_3],
-                        'spins': [self.minimumWavelengthSpinBox_3, self.maximumWavelengthSpinBox_3]},
-                       {'labels': [self.minimumWavelengthLabel_4, self.maximumWavelengthLabel_4],
-                        'spins': [self.minimumWavelengthSpinBox_4, self.maximumWavelengthSpinBox_4]},
-                       {'labels': [self.minimumWavelengthLabel_5, self.maximumWavelengthLabel_5],
-                        'spins': [self.minimumWavelengthSpinBox_5, self.maximumWavelengthSpinBox_5]},
-                       {'labels': [self.minimumWavelengthLabel_6, self.maximumWavelengthLabel_6],
-                        'spins': [self.minimumWavelengthSpinBox_6, self.maximumWavelengthSpinBox_6]},
-                       {'labels': [self.minimumWavelengthLabel_7, self.maximumWavelengthLabel_7],
-                        'spins': [self.minimumWavelengthSpinBox_7, self.maximumWavelengthSpinBox_7]},
-                       {'labels': [self.minimumWavelengthLabel_8, self.maximumWavelengthLabel_8],
-                        'spins': [self.minimumWavelengthSpinBox_8, self.maximumWavelengthSpinBox_8]},
-                       {'labels': [self.minimumWavelengthLabel_9, self.maximumWavelengthLabel_9],
-                        'spins': [self.minimumWavelengthSpinBox_9, self.maximumWavelengthSpinBox_9]},
-                       {'labels': [self.minimumWavelengthLabel_10, self.maximumWavelengthLabel_10],
-                        'spins': [self.minimumWavelengthSpinBox_10, self.maximumWavelengthSpinBox_10]},
-                       {'labels': [self.minimumWavelengthLabel_11, self.maximumWavelengthLabel_11],
-                        'spins': [self.minimumWavelengthSpinBox_11, self.maximumWavelengthSpinBox_11]},
-                       {'labels': [self.minimumWavelengthLabel_12, self.maximumWavelengthLabel_12],
-                        'spins': [self.minimumWavelengthSpinBox_12, self.maximumWavelengthSpinBox_12]},
-                       {'labels': [self.minimumWavelengthLabel_13, self.maximumWavelengthLabel_13],
-                        'spins': [self.minimumWavelengthSpinBox_13, self.maximumWavelengthSpinBox_13]},
-                       {'labels': [self.minimumWavelengthLabel_14, self.maximumWavelengthLabel_14],
-                        'spins': [self.minimumWavelengthSpinBox_14, self.maximumWavelengthSpinBox_14]},
-                       {'labels': [self.minimumWavelengthLabel_15, self.maximumWavelengthLabel_15],
-                        'spins': [self.minimumWavelengthSpinBox_15, self.maximumWavelengthSpinBox_15]}]
+        self.ranges = [norm_range(self.minWvlLabel, self.minWvlSpin, self.maxWvlLabel, self.maxWvlSpin, self.hidden_1),
+                       norm_range(self.minWvlLabel_2, self.minWvlSpin_2, self.maxWvlLabel_2, self.maxWvlSpin_2,
+                                  self.hidden_2),
+                       norm_range(self.minWvlLabel_3, self.minWvlSpin_3, self.maxWvlLabel_3, self.maxWvlSpin_3,
+                                  self.hidden_3),
+                       norm_range(self.minWvlLabel_4, self.minWvlSpin_4, self.maxWvlLabel_4, self.maxWvlSpin_4,
+                                  self.hidden_4),
+                       norm_range(self.minWvlLabel_5, self.minWvlSpin_5, self.maxWvlLabel_5, self.maxWvlSpin_5,
+                                  self.hidden_5),
+                       norm_range(self.minWvlLabel_6, self.minWvlSpin_6, self.maxWvlLabel_6, self.maxWvlSpin_6,
+                                  self.hidden_6),
+                       norm_range(self.minWvlLabel_7, self.minWvlSpin_7, self.maxWvlLabel_7, self.maxWvlSpin_7,
+                                  self.hidden_7),
+                       norm_range(self.minWvlLabel_8, self.minWvlSpin_8, self.maxWvlLabel_8, self.maxWvlSpin_8,
+                                  self.hidden_8),
+                       norm_range(self.minWvlLabel_9, self.minWvlSpin_9, self.maxWvlLabel_9, self.maxWvlSpin_9,
+                                  self.hidden_9),
+                       norm_range(self.minWvlLabel_10, self.minWvlSpin_10, self.maxWvlLabel_10, self.maxWvlSpin_10,
+                                  self.hidden_10),
+                       norm_range(self.minWvlLabel_11, self.minWvlSpin_11, self.maxWvlLabel_11, self.maxWvlSpin_11,
+                                  self.hidden_11),
+                       norm_range(self.minWvlLabel_12, self.minWvlSpin_12, self.maxWvlLabel_12, self.maxWvlSpin_12,
+                                  self.hidden_12),
+                       norm_range(self.minWvlLabel_13, self.minWvlSpin_13, self.maxWvlLabel_13, self.maxWvlSpin_13,
+                                  self.hidden_13),
+                       norm_range(self.minWvlLabel_14, self.minWvlSpin_14, self.maxWvlLabel_14, self.maxWvlSpin_14,
+                                  self.hidden_14),
+                       norm_range(self.minWvlLabel_15, self.minWvlSpin_15, self.maxWvlLabel_15, self.maxWvlSpin_15,
+                                  self.hidden_15)]
+        self.spin_list = []
+        for i in self.ranges:
+            self.spin_list.append(i.minSpin)
+            self.spin_list.append(i.maxSpin)
+            i.hidden.setChecked(True)
+        self.ranges[0].hidden.setChecked(False)
 
-    def checkForNewMax(self):
-        for i in range(len(self.ranges) - 1):
-            self.ranges[i]['spins'][0].valueChanged.connect(self.ranges[i]['spins'][1].setMinimum)
-            self.ranges[i]['spins'][1].valueChanged.connect(self.ranges[i + 1]['spins'][0].setMinimum)
-            self.ranges[i + 1]['spins'][1].setMinimum(self.ranges[i + 1]['spins'][0].value())
+    def setDataLimits(self):
+        # if the data exists, get the min and max of the data and use as the limits for the ranges
+        datamin = 0.0
+        datamax = 9999999.0
+        try:
+            data = self.data[self.chooseDataComboBox.currentText()]
+            tempmin = np.min(data.df[self.varToNormalizeListWidget.currentItem().text()].columns.values)
+            tempmax = np.max(data.df[self.varToNormalizeListWidget.currentItem().text()].columns.values)
+            if type(tempmin) is not str:
+                datamin = tempmin
+            if type(tempmax) is not str:
+                datamax = tempmax
+        except:
+            pass
 
-    def setMaximumValue(self, value):
-        # wvls = self.data[self.chooseDataComboBox.currentText()].df['wvl']
-        for range in self.ranges:
-            range['spins'][0].setMaximum(value)
-            range['spins'][1].setMaximum(value)
+        for i in range(len(self.ranges)):
+            self.ranges[i].setLimits(datamin, datamax)
+        try:
+            if type(tempmin) is not str:
+                self.setDataRanges()
+        except:
+            pass
 
-    def hide_settings(self):
-        for i in range(self.index, len(self.ranges)):
-            if self.ranges[i]['spins'][0].value() == self.ranges[i]['spins'][1].value():
-                self.ranges[i]['spins'][0].setHidden(True)
-                self.ranges[i]['spins'][1].setHidden(True)
-                self.ranges[i]['labels'][0].setHidden(True)
-                self.ranges[i]['labels'][1].setHidden(True)
-            else:
-                self.ranges[i]['spins'][0].setHidden(False)
-                self.ranges[i]['spins'][1].setHidden(False)
-                self.ranges[i]['labels'][0].setHidden(False)
-                self.ranges[i]['labels'][1].setHidden(False)
+    def setDataRanges(self):
+        x = self.data[self.chooseDataComboBox.currentText()].df[
+            self.varToNormalizeListWidget.currentItem().text()].columns.values
+        # borrowed this from baseline removal code, which in turn borrowed from matplotlib's boxplot outlier detection.
+        d = np.diff(x)
+        q1, q3 = np.percentile(d, (25, 75))
+        cutoff = q3 + 1.5 * (q3 - q1)
+        inds, = np.where(d > cutoff)
+        xvals = (x[inds] + x[inds + 1]) / 2.0  # set values to the middle of the gaps
+        xvals = np.append(xvals, np.max(x))
+        self.index.setValue(len(xvals))
+        print('index set to ' + str(self.index.value()))
+        for i, val in enumerate(xvals):
+            self.ranges[i].maxSpin.setValue(val)
+            self.ranges[i].hidden.setChecked(False)
+
+    def updateVal(self):
+        # step through the spinboxes and make sure that each successive box value is
+        # greater than or equal to the one before it
+        for i in range(1, len(self.spin_list)):
+            if self.spin_list[i].value() < self.spin_list[i - 1].value():
+                self.spin_list[i].setValue(self.spin_list[i - 1].value())
 
     def connectWidgets(self):
+        # populate combobox with dataset names
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
+
+        # update list of variables to normalize when data set selection is changed
         self.chooseDataComboBox.currentIndexChanged.connect(
             lambda: self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices()))
         self.changeComboListVars(self.varToNormalizeListWidget, self.xvar_choices())
-        self.setMaximumValue(9999999)
-        self.qt.isGuiChanged(self.checkForNewMax)
-        self.qt.isGuiChanged(self.hide_settings)
+
+        # when the variable to normalize is changed, update the min max and default norm ranges
+        self.varToNormalizeListWidget.itemSelectionChanged.connect(self.setDataLimits)
+
+        # when anything in the gui is changed, run update val to make sure values are increasing
+        self.qt.isGuiChanged(self.updateVal)
+
+        # connect the add and delete ranges buttons
         self.add_range_button.clicked.connect(lambda: self.on_addRange_pushed())
         self.delete_range_button.clicked.connect(lambda: self.on_deleteRange_pushed())
 
     def on_addRange_pushed(self):
-        if self.index < len(self.ranges):
-            self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index]['spins'][1].value() + 1)
-            self.checkForNewMax()
-            self.index += 1
+        if self.index.value() < len(self.ranges):
+            self.ranges[self.index.value()].hidden.setChecked(False)
+            self.index.setValue(self.index.value() + 1)
+            print('Index is now: ' + str(self.index.value()))
         else:
             print("Cannot add more ranges!")
 
     def on_deleteRange_pushed(self):
-        if self.index > 1:
-            self.index -= 1
-            self.ranges[self.index]['spins'][0].setValue(self.ranges[self.index - 1]['spins'][1].value())
-            self.ranges[self.index]['spins'][1].setValue(self.ranges[self.index - 1]['spins'][1].value())
-            self.checkForNewMax()
+        if self.index.value() > 1:
+            self.index.setValue(self.index.value() - 1)
+            self.ranges[self.index.value()].hidden.setChecked(True)
+            print('Index is now: ' + str(self.index.value()))
         else:
             print("Cannot delete any more ranges!")
 
     def function(self):
-        # self.connectWidgets()
         datakey = self.chooseDataComboBox.currentText()
-
-        range_vals = []
-        for i in range(len(self.ranges)):
-            range_min = self.ranges[i]['spins'][0].value()
-            range_max = self.ranges[i]['spins'][1].value()
-            if range_min != range_max:
-                range_vals.append([range_min, range_max])
-        try:
-            col_var = self.varToNormalizeListWidget.currentItem().text()
-        except:
-            print("Did you remember to select a variable?")
-        print("{}".format(range_vals))
-        try:
-            self.data[datakey].norm(range_vals, col_var)
-            print("Normalization has been applied to the ranges: " + str(range_vals))
-        except Exception as e:
-            print("There was a problem: ", e)
+        if self.checkoptions(datakey, self.datakeys, 'data set'):
+            self.connectWidgets()
+        else:
+            range_vals = []
+            for i in self.ranges:
+                range_min, range_max = i.getValues()
+                if range_min != range_max:
+                    range_vals.append([range_min, range_max])
+                    pass
+            try:
+                col_var = self.varToNormalizeListWidget.currentItem().text()
+            except:
+                print("Did you remember to select a variable?")
+            print("{}".format(range_vals))
+            try:
+                self.data[datakey].norm(range_vals, col_var)
+                print("Normalization has been applied to the ranges: " + str(range_vals))
+            except Exception as e:
+                print("There was a problem: ", e)
 
     def xvar_choices(self):
         try:
