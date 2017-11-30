@@ -175,25 +175,22 @@ class Normalization(Ui_Form, Basics):
 
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
-        if self.checkoptions(datakey, self.datakeys, 'data set'):
-            self.connectWidgets()
-        else:
-            range_vals = []
-            for i in self.ranges:
-                range_min, range_max = i.getValues()
-                if range_min != range_max:
-                    range_vals.append([range_min, range_max])
-                    pass
-            try:
-                col_var = self.varToNormalizeListWidget.currentItem().text()
-            except:
-                print("Did you remember to select a variable?")
-            print("{}".format(range_vals))
-            try:
-                self.data[datakey].norm(range_vals, col_var)
-                print("Normalization has been applied to the ranges: " + str(range_vals))
-            except Exception as e:
-                print("There was a problem: ", e)
+        range_vals = []
+        for i in self.ranges:
+            range_min, range_max = i.getValues()
+            if range_min != range_max:
+                range_vals.append([range_min, range_max])
+                pass
+        try:
+            col_var = self.varToNormalizeListWidget.currentItem().text()
+        except:
+            print("Did you remember to select a variable?")
+        print("{}".format(range_vals))
+        try:
+            self.data[datakey].norm(range_vals, col_var)
+            print("Normalization has been applied to the ranges: " + str(range_vals))
+        except Exception as e:
+            print("There was a problem: ", e)
 
     def xvar_choices(self):
         try:
