@@ -282,7 +282,7 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
             self.actionRestore_Workflow.triggered.connect(self.on_restore_clicked)
             self.deleteModulePushButton.clicked.connect(self.on_delete_module_clicked)
             self.okPushButton.clicked.connect(self.on_okButton_clicked)
-            self.undoModulePushButton.clicked.connect(self.on_undoButton_clicked)
+            self.undoModulePushButton.clicked.connect(self.on_Rerun_Button_clicked)
             self.stopPushButton.clicked.connect(self.on_stopButton_clicked)
             self.actionOn.triggered.connect(self.debug_mode)
             self.actionOff.triggered.connect(self.normal_mode)
@@ -380,11 +380,6 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         except Exception as e:
             print("File not loaded: {}".format(e))
 
-    def on_selective_restore(self):
-        with open(self.restorefilename, 'rb') as fp:
-            for i in range(1, len(dict)):
-                self.widgetList[i - 1].setGuiParams(dict[i])
-
     def on_delete_module_clicked(self):
         """
         Check to see if the last item is enabled
@@ -411,7 +406,7 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         self.onStart()
         self.taskFinished.connect(self.onFinished)
 
-    def on_undoButton_clicked(self):
+    def on_Rerun_Button_clicked(self):
         """
         Check to see if the last item in the list is enabled
         subtract 1 from leftOff
@@ -521,9 +516,10 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         get the name of our current widget item
         start the timers
         print the name of the module running
-        if current module has been changed
-            try: # we try because there may be a situation where we aren't using a *.wrf file
-                for (leftOff+1, len(self.widgetList)) update entire UI and selectively restore a portion of it
+        if a restored file exists
+            run connectWidgets # to update the current UI widget
+            run selectiveRestore # to select the right items
+            Terminate running process, and let the user decide if they want to continue forwad
         run our current modules function()
         get our end time
         print how long it took our current module to execute based on start time and end time
@@ -532,16 +528,20 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
 
         :return:
         """
+        dic = None
+        try:
+            with open(self.restorefilename, 'rb') as fp:
+                dic = pickle.load(fp)
+        except:
+            pass
+
         for modules in range(self.leftOff, len(self.widgetList)):
             name_ = type(self.widgetList[modules]).__name__
             s = time.time()
             print("{} Module is Running...".format(name_))
-            try:
-                if self.getGuiState():
-                    for modules in range(self.leftOff + 1, len(self.widgetList)):
-                        self.selectiveGuiParams(self.restorefilename)
-            except Exception as e:
-                print("There was a problem in restoring the state of the UI", e)
+            if dic is not None:
+                self.widgetList[modules].connectWidgets()
+                self.widgetList[modules].selectiveSetGuiParams(dic[modules + 1])
             self.widgetList[modules].function()
             e = time.time()
             print("Module {} executed in: {} seconds".format(name_, e - s))
