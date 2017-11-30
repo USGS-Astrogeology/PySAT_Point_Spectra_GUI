@@ -89,9 +89,9 @@ class Basics:
         """
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict)
-        self.qt.isGuiChanged(self.setUiFlag)
+        self.qt.isGuiChanged(self.setGuiState)
 
-    def selectiveGuiParams(self, dict):
+    def selectiveSetGuiParams(self, dict):
         """
         Selectively restore the UI.
         We don't want to lose the content we have selected
@@ -102,13 +102,6 @@ class Basics:
         """
         self.qt = Qtickle.Qtickle(self)
         self.qt.selectiveGuiRestore(dict)
-
-    def getGuiState(self):
-        """
-        Get the state of the current module
-        :return:
-        """
-        return self.getUiFlag()
 
     def function(self):
         """
@@ -156,14 +149,14 @@ class Basics:
             if isinstance(obj, QDoubleSpinBox):
                 obj.setDecimals(7)
 
-    def setUiFlag(self):
+    def setGuiState(self):
         """
         Set the flag to true when the state of the current module changes
         :return:
         """
         self.flag = True
 
-    def getUiFlag(self):
+    def getGuiState(self):
         """
         Return the flag for the UI's state
         :return:
