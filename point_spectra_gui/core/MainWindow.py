@@ -439,8 +439,8 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
             print("There is nothing running right now")
 
     def on_About_clicked(self):
-        form = About(self.MainWindow)
-        form.show()
+        self.form = About()
+        self.form.show()
 
     def _writeWindowAttributeSettings(self):
         '''
