@@ -55,7 +55,8 @@ class Normalization(Ui_Form, Basics):
         return self.groupBox
 
     def setup_norm_ranges(self):
-        self.ranges = [norm_range(self.minWvlLabel, self.minWvlSpin, self.maxWvlLabel, self.maxWvlSpin, self.hidden_1),
+        self.ranges = [norm_range(self.minWvlLabel, self.minWvlSpin, self.maxWvlLabel, self.maxWvlSpin,
+                                  self.hidden_1),
                        norm_range(self.minWvlLabel_2, self.minWvlSpin_2, self.maxWvlLabel_2, self.maxWvlSpin_2,
                                   self.hidden_2),
                        norm_range(self.minWvlLabel_3, self.minWvlSpin_3, self.maxWvlLabel_3, self.maxWvlSpin_3,
