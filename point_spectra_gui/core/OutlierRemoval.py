@@ -1,11 +1,10 @@
-import numpy as np
-import pandas as pd
 from PyQt5 import QtWidgets
 
 from Qtickle import Qtickle
+from point_spectra_gui.core.outlierRemovalMethods import *
 from point_spectra_gui.ui.OutlierRemoval import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-from point_spectra_gui.core.outlierRemovalMethods import *
+
 
 class OutlierRemoval(Ui_Form, Basics):
     def setupUi(self, Form):
@@ -57,13 +56,31 @@ class OutlierRemoval(Ui_Form, Basics):
         for i in range(len(dict)):
             self.alg[i - 1].setGuiParams(dict[i])
 
+    def selectiveSetGuiParams(self, dict):
+        """
+        Override Basics' selective Restore function
+
+        Setup Qtickle
+        selectively restore the UI, the data to do that will be in the 0th element of the dictionary
+        We will then iterate through the rest of the dictionary
+        Will now restore the parameters for the algorithms in the list, Each of the algs have their own selectiveSetGuiParams
+
+        :param dict:
+        :return:
+        """
+
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict[0])
+        for i in range(len(dict)):
+            self.alg[i - 1].selectiveSetGuiParams(dict[i])
+
     def function(self):
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
         params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
         self.data[datakey].outlier_removal(xvars, method, params)
-        #self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
+        # self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
         #                                                      yrange=yrange, method=method)
 
     def xvar_choices(self):

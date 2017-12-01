@@ -1,13 +1,13 @@
 import numpy as np
 import pandas as pd
 from PyQt5 import QtWidgets
-from Qtickle import Qtickle
 from libpysat.regression import regression
 from libpysat.spectral.spectral_data import spectral_data
+
+from Qtickle import Qtickle
 from point_spectra_gui.core.regressionMethods import *
 from point_spectra_gui.ui.RegressionTrain import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-
 
 
 class RegressionTrain(Ui_Form, Basics):
@@ -70,10 +70,34 @@ class RegressionTrain(Ui_Form, Basics):
         return s
 
     def setGuiParams(self, dict):
+        """
+        Overriding Basics' setGuiParams as we are using a list of lists to
+
+        :param dict:
+        :return:
+        """
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict[0])
         for i in range(len(dict)):
             self.alg[i - 1].setGuiParams(dict[i])
+
+    def selectiveSetGuiParams(self, dict):
+        """
+        Override Basics' selective Restore function
+
+        Setup Qtickle
+        selectively restore the UI, the data to do that will be in the 0th element of the dictionary
+        We will then iterate through the rest of the dictionary
+        Will now restore the parameters for the algorithms in the list, Each of the algs have their own selectiveSetGuiParams
+
+        :param dict:
+        :return:
+        """
+
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict[0])
+        for i in range(len(dict)):
+            self.alg[i - 1].selectiveSetGuiParams(dict[i])
 
     def function(self):
         method = self.chooseAlgorithmComboBox.currentText()
