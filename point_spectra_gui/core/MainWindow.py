@@ -519,7 +519,7 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
         if a restored file exists
             run connectWidgets # to update the current UI widget
             run selectiveRestore # to select the right items
-            Terminate running process, and let the user decide if they want to continue forwad
+            Terminate running process, and let the user decide if they want to continue forward
         run our current modules function()
         get our end time
         print how long it took our current module to execute based on start time and end time
