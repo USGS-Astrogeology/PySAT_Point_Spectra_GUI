@@ -36,7 +36,6 @@ class Qtickle(object):
                     value = obj.text()
                     dict[name] = value
 
-
                 if isinstance(obj, QCheckBox):
                     name = obj.objectName()
                     state = obj.isChecked()
@@ -168,13 +167,10 @@ class Qtickle(object):
                         for value in values:
                             list_item = QListWidgetItem(value)
                             obj.addItem(list_item)
-                            try:
-                                for i in index:
-                                    matching_items=obj.findItems(i, QtCore.Qt.MatchExactly)
-                                    for item in matching_items:
-                                        obj.setCurrentItem(item)
-                            except:
-                                pass
+                        for i in index:
+                            matching_items = obj.findItems(i, QtCore.Qt.MatchExactly)
+                            for item in matching_items:
+                                obj.setCurrentItem(item)
 
             except Exception as e:
                 print(e)
@@ -261,13 +257,10 @@ class Qtickle(object):
                         for value in values:
                             list_item = QListWidgetItem(value)
                             obj.addItem(list_item)
-                            try:
-                                for i in index:
-                                    matching_items = obj.findItems(i, QtCore.Qt.MatchExactly)
-                                    for item in matching_items:
-                                        obj.setCurrentItem(item)
-                            except:
-                                pass
+                        for i in index:
+                            matching_items = obj.findItems(i, QtCore.Qt.MatchExactly)
+                            for item in matching_items:
+                                obj.setCurrentItem(item)
 
             except Exception as e:
                 print(e)
