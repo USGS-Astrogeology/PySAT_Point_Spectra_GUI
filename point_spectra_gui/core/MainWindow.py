@@ -539,9 +539,9 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
             name_ = type(self.widgetList[modules]).__name__
             s = time.time()
             print("{} Module is Running...".format(name_))
-            if dic is not None:
-                self.widgetList[modules].connectWidgets()
-                self.widgetList[modules].selectiveSetGuiParams(dic[modules + 1])
+            # if dic is not None:
+            #     self.widgetList[modules].connectWidgets()
+            #     self.widgetList[modules].selectiveSetGuiParams(dic[modules + 1])
             self.widgetList[modules].function()
             e = time.time()
             print("Module {} executed in: {} seconds".format(name_, e - s))
