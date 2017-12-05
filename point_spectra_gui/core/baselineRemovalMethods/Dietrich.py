@@ -21,8 +21,8 @@ class Ui_Form(Ui_Form, Basics):
         self.numOfErosionsSpinBox.setValue(br.num_erosions_)
 
     def function(self):
-        methodParameters = {'half_window_': int(self.halfWindowSpinBox.value()),
-                            'num_erosions_': int(self.numOfErosionsSpinBox.value())}
+        methodParameters = {'half_window_': self.halfWindowSpinBox.value(),
+                            'num_erosions_': self.numOfErosionsSpinBox.value()}
         return methodParameters
 
 

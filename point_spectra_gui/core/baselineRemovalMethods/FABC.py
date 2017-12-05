@@ -23,8 +23,8 @@ class Ui_Form(Ui_Form, Basics):
         self.dilationSpinBox.setValue(br.smoothness_)
 
     def function(self):
-        methodParameters = {'dilation_': float(self.smoothnessDoubleSpinBox.value()),
-                            'smoothness_': int(self.dilationSpinBox.value())}
+        methodParameters = {'dilation_': self.smoothnessDoubleSpinBox.value(),
+                            'smoothness_': self.dilationSpinBox.value()}
         return methodParameters
 
 

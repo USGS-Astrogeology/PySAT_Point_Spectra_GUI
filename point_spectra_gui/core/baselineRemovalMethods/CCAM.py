@@ -23,8 +23,8 @@ class Ui_Form(Ui_Form, Basics):
         self.largestWaveletScaleSpinBox.setValue(CCAM.lv_)
 
     def function(self):
-        methodParameters = {'lv_': int(self.largestWaveletScaleSpinBox.value()),
-                            'lvmin_': int(self.lowestWaveletScaleSpinBox.value())}
+        methodParameters = {'lv_': self.largestWaveletScaleSpinBox.value(),
+                            'lvmin_': self.lowestWaveletScaleSpinBox.value()}
 
         int_flag = self.interpolationMethodComboBox.currentText()
         if int_flag == 'Linear':

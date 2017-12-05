@@ -29,10 +29,10 @@ class Ui_Form(Ui_Form, Basics):
         self.convergenceThresholdDoubleSpinBox.setValue(als.conv_thresh_)
 
     def function(self):
-        methodParameters = {'asymmetry_': float(self.asymmetryDoubleSpinBox.value()),
-                            'smoothness_': float(self.smoothnessDoubleSpinBox.value()),
-                            'max_iters_': int(self.maxNumOfIterationsSpinBox.value()),
-                            'conv_thresh_': float(self.convergenceThresholdDoubleSpinBox.value())}
+        methodParameters = {'asymmetry_': self.asymmetryDoubleSpinBox.value(),
+                            'smoothness_': self.smoothnessDoubleSpinBox.value(),
+                            'max_iters_': self.maxNumOfIterationsSpinBox.value(),
+                            'conv_thresh_': self.convergenceThresholdDoubleSpinBox.value()}
         return methodParameters
 
 

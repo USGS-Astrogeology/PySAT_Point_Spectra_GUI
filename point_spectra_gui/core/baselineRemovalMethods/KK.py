@@ -25,10 +25,10 @@ class Ui_Form(Ui_Form, Basics):
         self.exponentSpinBox.setValue(br.exponent_)
 
     def function(self):
-        methodParameters = {'top_width_': int(self.topWidthSpinBox.value()),
-                            'bottom_width_': int(self.bottomWidthSpinBox.value()),
+        methodParameters = {'top_width_': self.topWidthSpinBox.value(),
+                            'bottom_width_': self.bottomWidthSpinBox.value(),
                             'tangent_': self.tangentCheckBox.isChecked(),
-                            'exponent_': int(self.exponentSpinBox.value())}
+                            'exponent_': self.exponentSpinBox.value()}
         return methodParameters
 
 

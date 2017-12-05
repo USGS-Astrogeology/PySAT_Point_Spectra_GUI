@@ -22,7 +22,7 @@ class Ui_Form(Ui_Form, Basics):
         self.windowSizeSpinBox.setValue(br.window_)
 
     def function(self):
-        methodParameters = {'window_': int(self.windowSizeSpinBox.value())}
+        methodParameters = {'window_': self.windowSizeSpinBox.value()}
         return methodParameters
 
 
