@@ -164,22 +164,21 @@ class Basics:
         return self.flag
 
     @staticmethod
-    def getChangedValues(input_dictionary, function_parameters):
+    def getChangedValues(input_dictionary, algorithm):
         """
-        check symmetrically if the values in the dictionary don't match values in list
-        if this is the case, add the new value along with it's name to the
-        dictionary.
+        Check symmetrically if the values in the dictionary match with values in the algorithm
+        If they don't, then we will want to record those changed values.
 
-        iterate through the dictionary
-        if the item in the dictionary doesn't match the item in function parameter
-        update the output dictionary with that new value
+        Example input: getChangedValues(methodParameters, AirPLS())
 
-        You will need to make sure that function_parameters are organized correctly, or this won't work
+        :param input_dictionary:
+        :param algorithm:
+        :return:
         """
         dic = {}
-        for key, i in input_dictionary:
-            if input_dictionary[key] != function_parameters[i]:
-                dic.update({key: function_parameters[i]})
+        for key in input_dictionary:
+            if input_dictionary[key] != getattr(algorithm, key):  # key gives us a string
+                dic.update({key: input_dictionary[key]})
 
         return dic
 
