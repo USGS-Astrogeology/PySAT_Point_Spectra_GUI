@@ -63,11 +63,11 @@ class BaselineRemoval(Ui_Form, Basics):
     def function(self):
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
+        # return method parameters and parameters that changed
+        methodParameters, _changed = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
 
-        methodParameters = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
-
-        datakey_new = datakey + '-Baseline Removed-' + method + str(methodParameters)
-        datakey_baseline = datakey + '-Baseline-' + method + str(methodParameters)
+        datakey_new = datakey + '-Baseline Removed-' + method + str(_changed)
+        datakey_baseline = datakey + '-Baseline-' + method + str(_changed)
         self.datakeys.append(datakey_new)
         self.datakeys.append(datakey_baseline)
         self.data[datakey_new] = spectral_data(self.data[datakey].df.copy(deep=True))
