@@ -164,6 +164,26 @@ class Basics:
         return self.flag
 
     @staticmethod
+    def getChangedValues(input_dictionary, function_parameters):
+        """
+        check symmetrically if the values in the dictionary don't match values in list
+        if this is the case, add the new value along with it's name to the
+        dictionary.
+
+        iterate through the dictionary
+        if the item in the dictionary doesn't match the item in function parameter
+        update the output dictionary with that new value
+
+        You will need to make sure that function_parameters are organized correctly, or this won't work
+        """
+        dic = {}
+        for key, i in input_dictionary:
+            if input_dictionary[key] != function_parameters[i]:
+                dic.update({key: function_parameters[i]})
+
+        return dic
+
+    @staticmethod
     def setComboBox(comboBox, keyValues):
         """
         Sets up the information inside comboBox widgets
