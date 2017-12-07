@@ -192,6 +192,7 @@ class Basics:
         :return:
         """
         comboBox.clear()
+        comboBox.setMaximumWidth(200)
         comboBox.addItems(keyValues)
 
     @staticmethod
