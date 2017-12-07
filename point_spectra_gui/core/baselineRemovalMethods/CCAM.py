@@ -34,7 +34,7 @@ class Ui_Form(Ui_Form, Basics):
         elif int_flag == 'Spline':
             methodParameters.update({'int_flag_': 2})
 
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, ccam_br())
 
 
 if __name__ == "__main__":

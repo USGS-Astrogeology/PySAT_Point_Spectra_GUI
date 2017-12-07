@@ -108,7 +108,7 @@ class RegressionTrain(Ui_Form, Basics):
 
         params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
         # try:
-        modelkey = "{} - {} - ({}, {}) {}".format(method, yvars[0][-1], yrange[0], yrange[1], params)
+        modelkey = "{} - {} - ({}, {}) {}".format(method, yvars[0][-1], yrange[0], yrange[1], modelkey)
         self.modelkeys.append(modelkey)
         print(params, modelkey)
         self.models[modelkey] = regression.regression([method], [yrange], [params])

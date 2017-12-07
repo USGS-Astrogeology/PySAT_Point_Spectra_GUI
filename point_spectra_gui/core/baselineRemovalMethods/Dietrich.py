@@ -1,8 +1,9 @@
 from PyQt5 import QtWidgets
+from libpysat.spectral.baseline_code.dietrich import Dietrich
 
 from point_spectra_gui.ui.Dietrich import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-from libpysat.spectral.baseline_code.dietrich import Dietrich
+
 
 class Ui_Form(Ui_Form, Basics):
     def setupUi(self, Form):
@@ -23,7 +24,7 @@ class Ui_Form(Ui_Form, Basics):
     def function(self):
         methodParameters = {'half_window_': self.halfWindowSpinBox.value(),
                             'num_erosions_': self.numOfErosionsSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, Dietrich())
 
 
 if __name__ == "__main__":

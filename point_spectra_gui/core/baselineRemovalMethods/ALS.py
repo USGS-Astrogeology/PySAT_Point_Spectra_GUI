@@ -33,7 +33,7 @@ class Ui_Form(Ui_Form, Basics):
                             'smoothness_': self.smoothnessDoubleSpinBox.value(),
                             'max_iters_': self.maxNumOfIterationsSpinBox.value(),
                             'conv_thresh_': self.convergenceThresholdDoubleSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, ALS())
 
 
 if __name__ == "__main__":

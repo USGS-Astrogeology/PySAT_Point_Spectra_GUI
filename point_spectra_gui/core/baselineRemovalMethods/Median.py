@@ -23,7 +23,7 @@ class Ui_Form(Ui_Form, Basics):
 
     def function(self):
         methodParameters = {'window_': self.windowSizeSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, MedianFilter())
 
 
 if __name__ == "__main__":

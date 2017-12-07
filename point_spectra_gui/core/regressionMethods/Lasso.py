@@ -32,8 +32,7 @@ class Ui_Form(Ui_Form, Lasso, Basics):
                   'positive': self.forcePositiveCoefficientsCheckBox.isChecked(),
                   'selection': 'random',
                   'CV': self.optimizeWCrossValidaitonCheckBox.isChecked()}
-        modelkey = str(params)
-        return params, modelkey
+        return params, self.getChangedValues(params, Lasso())
 
 
 if __name__ == "__main__":

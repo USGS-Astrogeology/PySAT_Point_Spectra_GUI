@@ -29,7 +29,7 @@ class Ui_Form(Ui_Form, Basics):
                             'bottom_width_': self.bottomWidthSpinBox.value(),
                             'tangent_': self.tangentCheckBox.isChecked(),
                             'exponent_': self.exponentSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, KK())
 
 
 if __name__ == "__main__":

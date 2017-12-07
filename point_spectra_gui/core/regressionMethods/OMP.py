@@ -28,8 +28,8 @@ class Ui_Form(Ui_Form, OrthogonalMatchingPursuit, OrthogonalMatchingPursuitCV, B
                   'normalize': self.normalizeCheckBox.isChecked(),
                   'precompute': self.precomputeComboBox.currentText(),
                   'CV': self.cVCheckBox.isChecked()}
-        modelkey = str(params)
-        return params, modelkey
+
+        return params, self.getChangedValues(params, OrthogonalMatchingPursuit())
 
 
 if __name__ == "__main__":

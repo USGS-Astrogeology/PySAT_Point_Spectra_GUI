@@ -39,8 +39,7 @@ class Ui_Form(Ui_Form, KernelRidge, Basics):
                   'degree': self.degreeDoubleSpinBox.value(),
                   'coef0': self.coeff0DoubleSpinBox.value(),
                   'kernel_params': k_attrib[self.kernelParametersLineEdit.text()]}
-        modelkey = str(params)
-        return params, modelkey
+        return params, self.getChangedValues(params, KernelRidge())
 
 
 if __name__ == "__main__":

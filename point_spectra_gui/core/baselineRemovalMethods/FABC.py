@@ -25,7 +25,7 @@ class Ui_Form(Ui_Form, Basics):
     def function(self):
         methodParameters = {'dilation_': self.smoothnessDoubleSpinBox.value(),
                             'smoothness_': self.dilationSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, FABC())
 
 
 if __name__ == "__main__":

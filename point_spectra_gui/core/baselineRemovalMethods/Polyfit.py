@@ -26,7 +26,7 @@ class Ui_Form(Ui_Form, Basics):
         methodParameters = {'poly_order_': self.orderSpinBox.value(),
                             'stdv_': self.numOfStandardDeviationsSpinBox.value(),
                             'max_iter_': self.maxNumOfIterationsSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, PolyFit())
 
 
 if __name__ == "__main__":

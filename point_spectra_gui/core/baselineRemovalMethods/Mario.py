@@ -31,7 +31,7 @@ class Ui_Form(Ui_Form, Basics):
         methodParameters = {'poly_order_': self.polynomialOrderSpinBox.value(),
                             'max_iters_': maxNIDSpinBox,
                             'tol_': self.toleranceDoubleSpinBox.value()}
-        return methodParameters
+        return methodParameters, self.getChangedValues(methodParameters, Mario())
 
 
 if __name__ == "__main__":
