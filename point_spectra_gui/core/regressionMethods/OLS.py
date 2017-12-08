@@ -22,8 +22,7 @@ class Ui_Form(Ui_Form, LinearRegression, Basics):
 
     def function(self):
         params = {'fit_intercept': self.fitInterceptCheckBox.isChecked()}
-        modelkey = str(params)
-        return params, modelkey
+        return params, self.getChangedValues(params, LinearRegression())
 
 
 if __name__ == "__main__":

@@ -1,14 +1,13 @@
 import numpy as np
 import pandas as pd
 from PyQt5 import QtWidgets
-from Qtickle import Qtickle
 from libpysat.regression import cv
 from libpysat.spectral.spectral_data import spectral_data
 
+from Qtickle import Qtickle
 from point_spectra_gui.core.crossValidateMethods import *
 from point_spectra_gui.ui.CrossValidation import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-
 
 
 class CrossValidation(Ui_Form, Basics):
@@ -34,7 +33,7 @@ class CrossValidation(Ui_Form, Basics):
                                'BRR',
                                'Elastic Net',
                                'GP',
-                               #'KRR',  This needs more work since it requires parameters for the kernel passed as an object
+                               # 'KRR',  This needs more work since it requires parameters for the kernel passed as an object
                                'LARS',
                                'LASSO',
                                'LASSO LARS',
@@ -43,7 +42,6 @@ class CrossValidation(Ui_Form, Basics):
                                'PLS',
                                'Ridge',
                                'SVR']
-
 
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
         self.setComboBox(self.chooseAlgorithmComboBox, self.algorithm_list)
@@ -78,58 +76,65 @@ class CrossValidation(Ui_Form, Basics):
         for i in range(len(dict)):
             self.alg[i - 1].setGuiParams(dict[i])
 
+    def selectiveSetGuiParams(self, dict):
+        """
+        Override Basics' selective Restore function
+
+        Setup Qtickle
+        selectively restore the UI, the data to do that will be in the 0th element of the dictionary
+        We will then iterate through the rest of the dictionary
+        Will now restore the parameters for the algorithms in the list, Each of the algs have their own selectiveSetGuiParams
+
+        :param dict:
+        :return:
+        """
+
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict[0])
+        for i in range(len(dict)):
+            self.alg[i - 1].selectiveSetGuiParams(dict[i])
+
     def function(self):
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
         yvars = [('comp', str(y.text())) for y in self.yVariableList.selectedItems()]
-        yvars_to_compare = [str(y.text()) for y in self.yVariableList.selectedItems()]
+        yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
+        params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
 
-        check_results = [self.checkoptions(datakey, self.datakeys, 'data set')]
-        for x in xvars:
-            check_results.append(self.checkoptions(x, self.xvar_choices(), 'X variable'))
-        for y in yvars_to_compare:
-            check_results.append(self.checkoptions(y, self.yvar_choices(), 'Y variable'))
+        y = np.array(self.data[datakey].df[yvars])
+        match = np.squeeze((y > yrange[0]) & (y < yrange[1]))
+        data_for_cv = spectral_data(self.data[datakey].df.ix[match])
+        # Warning: Params passing through cv.cv(params) needs to be in lists
+        # Example: {'n_components': [4], 'scale': [False]}
+        cv_obj = cv.cv(params)
+        self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars,
+                                                                                     ycol=yvars,
+                                                                                     yrange=yrange, method=method)
+        for n, key in enumerate(cvmodelkeys):
+            self.modelkeys.append(key)
+            self.models[key] = cvmodels[n]
+            self.model_xvars[key] = xvars
+            self.model_yvars[key] = yvars
+            if method != 'GP':
+                coef = np.squeeze(cvmodels[n].model.coef_)
+                coef = pd.DataFrame(coef)
+                coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
+                coef = coef.T
+                coef[('meta', 'Model')] = key
+                try:
+                    coef[('meta', 'Intercept')] = cvmodels[n].model.intercept_
+                except:
+                    pass
+                try:
+                    self.data['Model Coefficients'] = spectral_data(
+                        pd.concat([self.data['Model Coefficients'].df, coef]))
+                except:
+                    self.data['Model Coefficients'] = spectral_data(coef)
+                    self.datakeys.append('Model Coefficients')
 
-
-        if np.any(check_results):
-            self.connectWidgets()
-
-        else:
-            yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
-            params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
-
-            y = np.array(self.data[datakey].df[yvars])
-            match = np.squeeze((y > yrange[0]) & (y < yrange[1]))
-            data_for_cv = spectral_data(self.data[datakey].df.ix[match])
-            # Warning: Params passing through cv.cv(params) needs to be in lists
-            # Example: {'n_components': [4], 'scale': [False]}
-            cv_obj = cv.cv(params)
-            self.data[datakey].df, self.cv_results, cvmodels, cvmodelkeys = cv_obj.do_cv(data_for_cv.df, xcols=xvars, ycol=yvars,
-                                                                  yrange=yrange, method=method)
-            for n, key in enumerate(cvmodelkeys):
-                self.modelkeys.append(key)
-                self.models[key] = cvmodels[n]
-                self.model_xvars[key] = xvars
-                self.model_yvars[key] = yvars
-                if method != 'GP':
-                    coef = np.squeeze(cvmodels[n].model.coef_)
-                    coef = pd.DataFrame(coef)
-                    coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
-                    coef = coef.T
-                    coef[('meta', 'Model')] = key
-                    try:
-                        coef[('meta','Intercept')] = cvmodels[n].model.intercept_
-                    except:
-                        pass
-                    try:
-                        self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
-                    except:
-                        self.data['Model Coefficients'] = spectral_data(coef)
-                        self.datakeys.append('Model Coefficients')
-
-            self.datakeys.append('CV Results ' + modelkey)
-            self.data['CV Results ' + modelkey] = self.cv_results
+        self.datakeys.append('CV Results ' + modelkey)
+        self.data['CV Results ' + modelkey] = self.cv_results
 
     def yvar_choices(self):
         try:
@@ -160,7 +165,7 @@ class CrossValidation(Ui_Form, Basics):
                       cv_BayesianRidge,
                       cv_ElasticNet,
                       cv_GP,
-        #              cv_KRR,
+                      #              cv_KRR,
                       cv_LARS,
                       cv_Lasso,
                       cv_LassoLARS,

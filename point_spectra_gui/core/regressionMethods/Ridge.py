@@ -61,6 +61,8 @@ class Ui_Form(Ui_Form, Ridge, RidgeCV, Basics):
                       'gcv_mode': {'None': None}.get(self.gCVModeComboBox_cv.currentText()),
                       'store_cv_values': self.storeCVValuesCheckBox_cv.isChecked(),
                       'CV': self.crossValidateCheckBox.isChecked()}
+            return params, self.getChangedValues(params, RidgeCV())
+
         else:
             params = {'alpha': self.alphaDoubleSpinBox.value(),
                       'copy_X': self.copyXCheckBox.isChecked(),
@@ -71,8 +73,7 @@ class Ui_Form(Ui_Form, Ridge, RidgeCV, Basics):
                       'tol': self.toleranceDoubleSpinBox.value(),
                       'random_state': r_state,
                       'CV': self.crossValidateCheckBox.isChecked()}
-        modelkey = str(params)
-        return params, modelkey
+            return params, self.getChangedValues(params, Ridge())
 
 
 if __name__ == "__main__":

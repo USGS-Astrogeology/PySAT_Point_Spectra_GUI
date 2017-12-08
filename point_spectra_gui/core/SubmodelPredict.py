@@ -100,20 +100,17 @@ class SubmodelPredict(Ui_Form, Basics):
         self.submodel_gui_info.append([self.referenceModelComboBox.currentText(), [-9999, 9999]])
 
         datakey = self.chooseDataComboBox.currentText()
-        submodel_checkoptions = [self.checkoptions(datakey, self.datakeys, 'data set')]
+
         for sub_gui in self.submodel_gui_info:
             min_temp = sub_gui[1][0]
             max_temp = sub_gui[1][1]
             blendranges.append([min_temp, max_temp])
             submodel_names.append(sub_gui[0])
-            submodel_checkoptions.append(self.checkoptions(submodel_names[-1],self.modelkeys,'model'))
 
         if self.optimizeSubmodelRangesCheckBox.isChecked():
             trueval_data = self.optimizeSubmodelRangesComboBox.currentText()
-            submodel_checkoptions.append(self.checkoptions(trueval_data,self.datakeys,'data set'))
         else:
             trueval_data = None
-
 
         # Check if reference data name has been provided
         # if so, get reference data values
@@ -121,7 +118,6 @@ class SubmodelPredict(Ui_Form, Basics):
             truevals = self.data[trueval_data].df[self.model_yvars[submodel_names[0]]]
         else:
             truevals = None
-
 
         # step through the submodel names and get the actual models and the x data
         for i in submodel_names:

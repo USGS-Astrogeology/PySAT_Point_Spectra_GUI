@@ -1,13 +1,13 @@
 import numpy as np
 import pandas as pd
 from PyQt5 import QtWidgets
-from Qtickle import Qtickle
 from libpysat.regression import regression
 from libpysat.spectral.spectral_data import spectral_data
+
+from Qtickle import Qtickle
 from point_spectra_gui.core.regressionMethods import *
 from point_spectra_gui.ui.RegressionTrain import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-
 
 
 class RegressionTrain(Ui_Form, Basics):
@@ -70,56 +70,69 @@ class RegressionTrain(Ui_Form, Basics):
         return s
 
     def setGuiParams(self, dict):
+        """
+        Overriding Basics' setGuiParams as we are using a list of lists to
+
+        :param dict:
+        :return:
+        """
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict[0])
         for i in range(len(dict)):
             self.alg[i - 1].setGuiParams(dict[i])
+
+    def selectiveSetGuiParams(self, dict):
+        """
+        Override Basics' selective Restore function
+
+        Setup Qtickle
+        selectively restore the UI, the data to do that will be in the 0th element of the dictionary
+        We will then iterate through the rest of the dictionary
+        Will now restore the parameters for the algorithms in the list, Each of the algs have their own selectiveSetGuiParams
+
+        :param dict:
+        :return:
+        """
+
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict[0])
+        for i in range(len(dict)):
+            self.alg[i - 1].selectiveSetGuiParams(dict[i])
 
     def function(self):
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
         xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
         yvars = [('comp', str(y.text())) for y in self.yVariableList.selectedItems()]
-        yvars_to_compare = [str(y.text()) for y in self.yVariableList.selectedItems()]
+        yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
 
-        check_results = [self.checkoptions(datakey, self.datakeys, 'data set')]
-        for x in xvars:
-            check_results.append(self.checkoptions(x,self.xvar_choices(),'X variable'))
-        for y in yvars_to_compare:
-            check_results.append(self.checkoptions(y,self.yvar_choices(),'Y variable'))
+        params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
+        # try:
+        modelkey = "{} - {} - ({}, {}) {}".format(method, yvars[0][-1], yrange[0], yrange[1], modelkey)
+        self.modelkeys.append(modelkey)
+        print(params, modelkey)
+        self.models[modelkey] = regression.regression([method], [yrange], [params])
+        x = self.data[datakey].df[xvars]
+        y = self.data[datakey].df[yvars]
+        x = np.array(x)
+        y = np.array(y)
+        ymask = np.squeeze((y > yrange[0]) & (y < yrange[1]))
+        y = y[ymask]
+        x = x[ymask, :]
+        self.models[modelkey].fit(x, y)
+        self.model_xvars[modelkey] = xvars
+        self.model_yvars[modelkey] = yvars
+        coef = np.squeeze(self.models[modelkey].model.coef_)
+        coef = pd.DataFrame(coef)
+        coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
+        coef = coef.T
+        coef[('meta', 'Model')] = modelkey
 
-        if np.any(check_results):
-            self.connectWidgets()
-        else:
-            yrange = [self.yMinDoubleSpinBox.value(), self.yMaxDoubleSpinBox.value()]
-
-            params, modelkey = self.getMethodParams(self.chooseAlgorithmComboBox.currentIndex())
-            # try:
-            modelkey = "{} - {} - ({}, {}) {}".format(method, yvars[0][-1], yrange[0], yrange[1], params)
-            self.modelkeys.append(modelkey)
-            print(params, modelkey)
-            self.models[modelkey] = regression.regression([method], [yrange], [params])
-            x = self.data[datakey].df[xvars]
-            y = self.data[datakey].df[yvars]
-            x = np.array(x)
-            y = np.array(y)
-            ymask = np.squeeze((y > yrange[0]) & (y < yrange[1]))
-            y = y[ymask]
-            x = x[ymask, :]
-            self.models[modelkey].fit(x, y)
-            self.model_xvars[modelkey] = xvars
-            self.model_yvars[modelkey] = yvars
-            coef = np.squeeze(self.models[modelkey].model.coef_)
-            coef = pd.DataFrame(coef)
-            coef.index = pd.MultiIndex.from_tuples(self.data[datakey].df[xvars].columns.values)
-            coef = coef.T
-            coef[('meta', 'Model')] = modelkey
-
-            try:
-                self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
-            except:
-                self.data['Model Coefficients'] = spectral_data(coef)
-                self.datakeys.append('Model Coefficients')
+        try:
+            self.data['Model Coefficients'] = spectral_data(pd.concat([self.data['Model Coefficients'].df, coef]))
+        except:
+            self.data['Model Coefficients'] = spectral_data(coef)
+            self.datakeys.append('Model Coefficients')
 
     def yvar_choices(self):
         try:

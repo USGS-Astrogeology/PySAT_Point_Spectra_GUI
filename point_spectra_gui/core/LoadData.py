@@ -29,7 +29,7 @@ class LoadData(Ui_loadData, Basics):
         keyname = params['dataSetNameLineEdit']
         print('Loading data file: ' + str(filename))
         if keyname in self.datakeys:
-            print("That \"Data Set Name\" is already in use. Try something else.")
+            raise Exception("That \"Data Set Name\" is already in use. Try something else.")
         else:
             self.datakeys.append(keyname)
             self.data[keyname] = spectral_data(pd.read_csv(filename, header=[0, 1], verbose=True))

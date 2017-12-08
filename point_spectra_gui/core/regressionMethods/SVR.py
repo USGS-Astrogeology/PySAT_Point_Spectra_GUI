@@ -57,8 +57,8 @@ class Ui_Form(Ui_Form, Basics):
                   'cache_size': self.cacheSizeSpinBox.value(),
                   'verbose': self.verboseCheckBox.isChecked(),
                   'max_iter': int(self.maxIterationsSpinBox.value())}
-        modelkey = str(params)
-        return params, modelkey
+
+        return params, self.getChangedValues(params, SVR())
 
 
 if __name__ == "__main__":

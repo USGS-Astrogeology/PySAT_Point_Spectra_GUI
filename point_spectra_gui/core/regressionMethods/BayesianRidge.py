@@ -42,8 +42,8 @@ class Ui_Form(Ui_Form, BayesianRidge, Basics):
                   'normalize': self.normalizeCheckBox.isChecked(),
                   'copy_X': self.copyXCheckBox.isChecked(),
                   'verbose': self.verboseCheckBox.isChecked()}
-        modelkey = str(params)
-        return params, modelkey
+
+        return params, self.getChangedValues(params, BayesianRidge())
 
 
 if __name__ == "__main__":
