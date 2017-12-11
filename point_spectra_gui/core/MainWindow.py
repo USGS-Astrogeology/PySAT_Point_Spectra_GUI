@@ -27,8 +27,8 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import QSettings
 
-from point_spectra_gui import core
-from point_spectra_gui.ui import MainWindow
+from point_spectra_gui import core, __version__
+from point_spectra_gui.ui.MainWindow import Ui_MainWindow
 from point_spectra_gui.util import delete
 from point_spectra_gui.util.BasicFunctionality import Basics
 from point_spectra_gui.util.excepthook import my_exception_hook
@@ -73,7 +73,7 @@ class TitleWindow:
             return "{} - {} - {}".format(self.mainName, self.fileName, self.debugName)
 
 
-class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
+class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
     taskFinished = QtCore.pyqtSignal()
 
     def __init__(self):
@@ -103,6 +103,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def normal_mode(self):
         """
         Change the direction of stdout to print to the UI console instead
+
         :return:
         """
         sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
@@ -113,6 +114,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def debug_mode(self):
         """
         Change the direction of stdout to print to the original console
+
         :return:
         """
         sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
@@ -123,6 +125,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         Set the UI in debug or non-debug mode
         Save all the settings and grey out the necessary boxes
+
         :param obj1:
         :param obj2:
         :param debug:
@@ -184,6 +187,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         Organize our widgets using a list
         Each widget is addressed separately due to being in a list
+
         :param obj:
         :return:
         """
@@ -195,7 +199,9 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         self.widgetLayout.addWidget(self.widgetList[-1].get_widget())
         # this should scroll the view all the way down after adding the new widget.
         scrollbar = self.scrollArea.verticalScrollBar()
+        # this should scroll the view all the way down after adding the new widget.
         scrollbar.setValue(scrollbar.maximum())
+        pass
 
     def menu_item_shortcuts(self):
         self.actionExit.setShortcut("ctrl+Q")
@@ -208,6 +214,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def connectWidgets(self):
         """
         Connect all the widgets associated with the MainWindow UI
+
         :return:
         """
 
@@ -253,8 +260,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.actionSplit_Data.triggered.connect(
                 lambda: self.addWidget(core.SplitDataset.SplitDataset))
             self.actionOutlier_Removal.triggered.connect(
-                lambda: self.addWidget(core.OutlierRemoval.OutlierRemoval)
-            )
+                lambda: self.addWidget(core.OutlierRemoval.OutlierRemoval))
             self.actionStratified_Folds.triggered.connect(
                 lambda: self.addWidget(core.StratifiedFolds.StratifiedFolds))
             self.actionSubmodel_Predict.triggered.connect(
@@ -263,8 +269,8 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 lambda: self.addWidget(core.SpecDeriv.SpecDeriv))
             self.actionCombine_Data_Sets.triggered.connect(
                 lambda: self.addWidget(core.CombineDataSets.CombineDataSets))
-            self.actionData_Box.triggered.connect(
-                lambda: self.addWidget(core.DataTable.DataTable))
+            self.actionData_Box.triggered.connect(self.on_DataTable_clicked)
+            self.actionAbout.triggered.connect(self.on_About_clicked)
             self.actionQtmodern.triggered.connect(lambda: self.theme('qtmodern'))
             self.actionDefault.triggered.connect(lambda: self.theme('default'))
             self.actionBrace_yourself.triggered.connect(lambda: self.theme('braceyourself'))
@@ -274,7 +280,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.actionRestore_Workflow.triggered.connect(self.on_restore_clicked)
             self.deleteModulePushButton.clicked.connect(self.on_delete_module_clicked)
             self.okPushButton.clicked.connect(self.on_okButton_clicked)
-            self.undoModulePushButton.clicked.connect(self.on_undoButton_clicked)
+            self.undoModulePushButton.clicked.connect(self.on_Rerun_Button_clicked)
             self.stopPushButton.clicked.connect(self.on_stopButton_clicked)
             self.actionOn.triggered.connect(self.debug_mode)
             self.actionOff.triggered.connect(self.normal_mode)
@@ -315,6 +321,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         This function iterates through a `dict`
         and restores the UI
+
         :param dict:
         :return:
         """
@@ -334,6 +341,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def on_save_clicked(self):
         """
         Save the workflow to a *.wrf file
+
         :return:
         """
         try:
@@ -354,17 +362,18 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Choose a file
         Set the file to be read
         Pickle load our data and push it through the function setWidgetItems
+
         :return:
         """
         try:
-            filename, _filter = QtWidgets.QFileDialog.getOpenFileName(None,
-                                                                      "Open Workflow File",
-                                                                      self.outpath,
-                                                                      '(*.wrf)')
-            print(filename)
-            with open(filename, 'rb') as fp:
+            self.restorefilename, _filter = QtWidgets.QFileDialog.getOpenFileName(None,
+                                                                                  "Open Workflow File",
+                                                                                  self.outpath,
+                                                                                  '(*.wrf)')
+            print(self.restorefilename)
+            with open(self.restorefilename, 'rb') as fp:
                 self.setWidgetItems(pickle.load(fp))
-            self.title.setFileName(filename.split('/')[-1])
+            self.title.setFileName(self.restorefilename.split('/')[-1])
             self.MainWindow.setWindowTitle(self.title.display())
         except Exception as e:
             print("File not loaded: {}".format(e))
@@ -374,6 +383,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         Check to see if the last item is enabled
         If it is, delete the last item in the list
         And then call the del_layout function, which will remove the item from the UI
+
         :return:
         """
         try:
@@ -388,16 +398,18 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def on_okButton_clicked(self):
         """
         Start the multithreading function
+
         :return:
         """
         self.onStart()
         self.taskFinished.connect(self.onFinished)
 
-    def on_undoButton_clicked(self):
+    def on_Rerun_Button_clicked(self):
         """
         Check to see if the last item in the list is enabled
         subtract 1 from leftOff
         enable the current leftOff item
+
         :return:
         """
         try:
@@ -410,6 +422,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def on_stopButton_clicked(self):
         """
         Terminate running thread
+
         :return:
         """
         if self.isRunning():
@@ -417,6 +430,14 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
             self.taskFinished.emit()
         else:
             print("There is nothing running right now")
+
+    def on_About_clicked(self):
+        self.aboutForm = core.About.About()
+        self.aboutForm.show()
+
+    def on_DataTable_clicked(self):
+        self.dataForm = core.DataTable.DataTable()
+        self.dataForm.show()
 
     def _writeWindowAttributeSettings(self):
         '''
@@ -456,6 +477,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         This is multithreading thus run() == start()
         make the bar pulse green
         TaskThread.start()
+
         :return:
         """
         self.progressBar.setRange(0, 0)
@@ -468,6 +490,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def clear(self):
         """
         Delete all modules in GUI
+
         :return:
         """
         while len(self.widgetList) > 0 and self.widgetList[-1].isEnabled():
@@ -479,6 +502,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
     def new(self):
         """
         Start a new gui
+
         :return:
         """
         self._writeWindowAttributeSettings()
@@ -486,10 +510,40 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         p.start()
 
     def runModules(self):
+        """
+        This function iterates through a list of object addresses
+        which then run it's dot notated function()
+
+        iterate through our widgets, start from the last left off item
+        get the name of our current widget item
+        start the timers
+        print the name of the module running
+        if a restored file exists
+            run connectWidgets # to update the current UI widget
+            run selectiveRestore # to select the right items
+            Terminate running process, and let the user decide if they want to continue forward
+        run our current modules function()
+        get our end time
+        print how long it took our current module to execute based on start time and end time
+        disable our current module
+        increment our left off module
+
+        :return:
+        """
+        dic = None
+        try:
+            with open(self.restorefilename, 'rb') as fp:
+                dic = pickle.load(fp)
+        except:
+            pass
+
         for modules in range(self.leftOff, len(self.widgetList)):
             name_ = type(self.widgetList[modules]).__name__
             s = time.time()
             print("{} Module is Running...".format(name_))
+            # if dic is not None:
+            #     self.widgetList[modules].connectWidgets()
+            #     self.widgetList[modules].selectiveSetGuiParams(dic[modules + 1])
             self.widgetList[modules].function()
             e = time.time()
             print("Module {} executed in: {} seconds".format(name_, e - s))
@@ -500,6 +554,7 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
         """
         Logs an exception that occurs during the running of a function
         Take a function address in as an input
+
         :param function:
         :return:
         """
@@ -513,16 +568,17 @@ class Ui_MainWindow(MainWindow.Ui_MainWindow, QtCore.QThread, Basics):
                 os.makedirs(logpath)
             timenow = strftime('%d-%m-%y_%H-%M-%S')
             logfilename = "%s_%s" % (timenow, logfile)
-            logging.basicConfig(level=logging.DEBUG,
-                                filename=(
-                                    os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))))
-            logging.exception('[%s %s] (%s):' % (platform.system(), platform.release(), timenow))
+            filename = os.path.join(str(os.getcwd()), "%s" % (os.path.join(logpath, logfilename)))
+            logging.basicConfig(level=logging.DEBUG, filename=filename)
+            logging.exception(
+                '[%s %s] (%s) Version: %s:' % (platform.system(), platform.release(), timenow, __version__))
             traceback.print_exc()
             print('\nException was logged to "%s"' % (os.path.join(logpath, logfilename)))
 
     def run(self):
         """
-        Run through all the modules
+        Start the thread for running all the modules
+
         :return:
         """
         if self.debug:
@@ -543,6 +599,7 @@ def get_splash(app):
     """
     Get the splash screen for the application
     But check to see if the image even exists
+
     :param app:
     :return:
     """
@@ -574,7 +631,7 @@ def main():
     get_splash(app)
     setDarkmode(app)
     mainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = MainWindow()
     ui.setupUi(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())

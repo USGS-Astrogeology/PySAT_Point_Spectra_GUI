@@ -28,12 +28,7 @@ class RemoveRows(Ui_Form, Basics):
         colname = self.colNameComboBox.currentText()
         value = self.valueComboBox.currentText()
         value = value.split(' : ')[0]
-        # if (self.checkoptions(datakey, self.datakeys, 'data set') or
-        #     self.checkoptions(colname,self.get_colname_choices(),'column') or
-        #     self.checkoptions(value,self.get_rowval_choices(), 'value')):
-        #     self.connectWidgets()
-        # else:
-        #print(datakey, colname, value)
+        print(datakey, colname, value)
         print(self.data[datakey].df.shape)
         vars_level0 = self.data[datakey].df.columns.get_level_values(0)
         vars_level1 = self.data[datakey].df.columns.get_level_values(1)

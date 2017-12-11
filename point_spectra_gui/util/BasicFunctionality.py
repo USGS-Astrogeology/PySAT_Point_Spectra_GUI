@@ -1,9 +1,10 @@
 import inspect
 import sys
+
 from PyQt5.QtCore import QSettings
 from PyQt5.QtWidgets import *
-from Qtickle import Qtickle
 
+from Qtickle import Qtickle
 
 
 class Basics:
@@ -40,6 +41,7 @@ class Basics:
     def __init__(self):
         self.qt = Qtickle.Qtickle(self)
         self.settings = QSettings('USGS', 'PPSG')
+        self.flag = False
 
     def setupUi(self, Form):
         self.Form = Form
@@ -87,6 +89,19 @@ class Basics:
         """
         self.qt = Qtickle.Qtickle(self)
         self.qt.guiRestore(dict)
+        self.qt.isGuiChanged(self.setGuiState)
+
+    def selectiveSetGuiParams(self, dict):
+        """
+        Selectively restore the UI.
+        We don't want to lose the content we have selected
+        but we don't want to override crucial information either
+
+        :param dict:
+        :return:
+        """
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict)
 
     def function(self):
         """
@@ -134,6 +149,39 @@ class Basics:
             if isinstance(obj, QDoubleSpinBox):
                 obj.setDecimals(7)
 
+    def setGuiState(self):
+        """
+        Set the flag to true when the state of the current module changes
+        :return:
+        """
+        self.flag = True
+
+    def getGuiState(self):
+        """
+        Return the flag for the UI's state
+        :return:
+        """
+        return self.flag
+
+    @staticmethod
+    def getChangedValues(input_dictionary, algorithm):
+        """
+        Check symmetrically if the values in the dictionary match with values in the algorithm
+        If they don't, then we will want to record those changed values.
+
+        Example input: getChangedValues(methodParameters, AirPLS())
+
+        :param input_dictionary:
+        :param algorithm:
+        :return:
+        """
+        dic = {}
+        for key in input_dictionary:
+            if input_dictionary[key] != getattr(algorithm, key):  # key gives us a string
+                dic.update({key: input_dictionary[key]})
+
+        return dic
+
     @staticmethod
     def setComboBox(comboBox, keyValues):
         """
@@ -144,20 +192,8 @@ class Basics:
         :return:
         """
         comboBox.clear()
+        comboBox.setMaximumWidth(200)
         comboBox.addItems(keyValues)
-
-    @staticmethod
-    def checkoptions(selection, actual_options, message):
-        if isinstance(selection,list):
-            for i in selection:
-                if i not in actual_options:
-                    print('Selected '+message+' does not exist. Refreshing options...')
-                    return True
-        else:
-            if selection not in actual_options:
-                print('Selected ' + message + ' does not exist. Refreshing options...')
-                return True
-        return False
 
     @staticmethod
     def changeComboListVars(obj, newchoices):

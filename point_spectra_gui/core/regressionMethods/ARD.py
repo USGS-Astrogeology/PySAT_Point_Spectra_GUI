@@ -46,8 +46,8 @@ class Ui_Form(Ui_Form, ARDRegression, Basics):
             'normalize': self.normalizeCheckBox.isChecked(),
             'copy_X': self.copyXCheckBox.isChecked(),
             'verbose': self.verboseCheckBox.isChecked()}
-        modelkey = str(params)
-        return params, modelkey
+
+        return params, self.getChangedValues(params, ARDRegression())
 
 
 if __name__ == "__main__":

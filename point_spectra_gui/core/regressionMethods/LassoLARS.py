@@ -57,6 +57,8 @@ class Ui_Form(Ui_Form, Basics):
                 'positive': self.positiveCheckBox.isChecked(),
                 'model': model
             }
+            return params, self.getChangedValues(params, LassoLars())
+
         elif model == 1:
             params = {
                 'fit_intercept': self.fit_interceptCheckBox.isChecked(),
@@ -71,6 +73,8 @@ class Ui_Form(Ui_Form, Basics):
                 'positive': self.positiveCheckBox.isChecked(),
                 'model': model
             }
+            return params, self.getChangedValues(params, LassoLarsCV())
+
         elif model == 2:
             params = {
                 'criterion': self.criterionComboBox.currentText(),
@@ -83,12 +87,10 @@ class Ui_Form(Ui_Form, Basics):
                 'positive': self.positiveCheckBox.isChecked(),
                 'model': model
             }
+            return params, self.getChangedValues(params, LassoLarsIC())
         else:
             params = {}
             print("Error")
-
-        modelkey = str(params)
-        return params, modelkey
 
 
 if __name__ == "__main__":

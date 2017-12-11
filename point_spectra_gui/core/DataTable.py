@@ -3,7 +3,7 @@
 # Automatically generated - don't edit.
 # Use `python setup.py build_ui` to update it.
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 
 from point_spectra_gui.ui.DataTable import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
@@ -11,11 +11,11 @@ from point_spectra_gui.util.PandasModel import PandasModel
 from point_spectra_gui.util.Worker import Worker
 
 
-class DataTable(Ui_Form, Basics):
-    def setupUi(self, Form):
-        self.Form = Form
-        super().setupUi(Form)
-        Basics.setupUi(self, Form)
+class DataTable(QtWidgets.QWidget, Ui_Form, Basics):
+    def __init__(self, *args, **kwargs):
+        QtWidgets.QWidget.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+        self.connectWidgets()
         self.refreshTable = Worker(self.on_refreshTable)
 
     def get_widget(self):
@@ -23,19 +23,9 @@ class DataTable(Ui_Form, Basics):
 
     def connectWidgets(self):
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
-        self.chooseDataComboBox.currentIndexChanged.connect(lambda: self.refreshTable.start())
-        self.refreshTablePushButton.clicked.connect(lambda: self.refreshTable.start())
-
-    def function(self):
-        self.on_refreshTable()
-
-    def setDisabled(self, bool):
-        """
-        Override setDisabled since we don't want this table to be disabled.
-        :param bool:
-        :return:
-        """
-        pass
+        self.chooseDataComboBox.currentIndexChanged.connect(lambda: self.on_refreshTable())
+        self.refreshDataPushButton.clicked.connect(lambda: self.connectWidgets())
+        self.refreshTablePushButton.clicked.connect(lambda: self.on_refreshTable())
 
     def on_refreshTable(self):
         try:
@@ -48,9 +38,6 @@ class DataTable(Ui_Form, Basics):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
+    Form = DataTable()
     Form.show()
     sys.exit(app.exec_())
-

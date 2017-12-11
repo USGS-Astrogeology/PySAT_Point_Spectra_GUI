@@ -17,13 +17,10 @@ class SpecDeriv(Ui_Form, Basics):
 
     def function(self):
         datakey = self.chooseDataToDerivComboBox.currentText()
-        if self.checkoptions(datakey, self.datakeys, 'data set'):
-            self.connectWidgets()
-        else:
-            new_datakey = datakey + ' - Derivative'
-            self.datakeys.append(new_datakey)
-            self.data[new_datakey]=self.data[datakey].deriv()
-            print("Derivative Applied")
+        new_datakey = datakey + ' - Derivative'
+        self.datakeys.append(new_datakey)
+        self.data[new_datakey]=self.data[datakey].deriv()
+        print("Derivative Applied")
 
 
 if __name__ == "__main__":
