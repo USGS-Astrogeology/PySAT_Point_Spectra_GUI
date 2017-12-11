@@ -40,6 +40,7 @@ class Ui_Form(Ui_Form, GaussianProcess, Basics):
             'storage_mode': ['light'],
             'verbose': [True],
             'theta0': [float(i) for i in self.theta0LineEdit.text().split(',')],
+            #where are the bounds on Theta? need to check this
             'normalize': [normalize_items],
             'optimizer': ['fmin_cobyla'],
             'random_start': [int(i) for i in self.randomStartLineEdit.text().split(',')],
