@@ -20,9 +20,9 @@ class Ui_Form(Ui_Form, Basics):
     def connectWidgets(self):
         # LassoLARS
         ll = LassoLars()
-        self.minalpha_spin.setValue(1.0)
-        self.maxalpha_spin.setValue(1e3)
-        self.nalpha_spin.setValue(10)
+        self.minalpha_spin.setValue(0.0000001)
+        self.maxalpha_spin.setValue(0.01)
+        self.nalpha_spin.setValue(100)
         self.fit_intercept_list.setCurrentItem(self.fit_intercept_list.findItems(str(ll.fit_intercept),QtCore.Qt.MatchExactly)[0])
         self.normalize_list.setCurrentItem(self.normalize_list.findItems(str(ll.normalize),QtCore.Qt.MatchExactly)[0])
         self.max_iterLineEdit.setText(str(ll.max_iter))

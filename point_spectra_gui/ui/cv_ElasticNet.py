@@ -118,7 +118,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
-        self.minalpha_label.setText(("Min Alpha (x1e10)"))
+        self.minalpha_label.setText(("Min Alpha"))
         self.enl1_ratioLabel.setText(("L1 ratio"))
         self.enl1_ratioLineEdit.setText((".1, .5, .7, .9, .95, .99, 1"))
         self.enfit_interceptLabel.setText(("Fit Intercept"))
@@ -157,7 +157,7 @@ class Ui_Form(object):
         item = self.enpositive_list.item(1)
         item.setText(("False"))
         self.enpositive_list.setSortingEnabled(__sortingEnabled)
-        self.maxalpha_label.setText(("Max Alpha (x1e10)"))
+        self.maxalpha_label.setText(("Max Alpha"))
         self.nalpha_label.setText(("# of Alphas"))
 
 

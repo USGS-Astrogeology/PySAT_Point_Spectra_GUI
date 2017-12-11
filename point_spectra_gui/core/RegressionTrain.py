@@ -35,10 +35,10 @@ class RegressionTrain(Ui_Form, Basics):
                                'LASSO',
                                'Elastic Net',
                                'Ridge',
-                               'Bayesian Ridge',
+                               'BRR',
                                'ARD',
                                'LARS',
-                               'Lasso LARS',
+                               'LASSO LARS',
                                'SVR',
                                'KRR',
                                'More to come...']
