@@ -32,7 +32,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="minalpha_label">
         <property name="text">
-         <string>Min Alpha (x1e10)</string>
+         <string>Min Alpha</string>
         </property>
        </widget>
       </item>
@@ -201,7 +201,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="maxalpha_label">
         <property name="text">
-         <string>Max Alpha (x1e10)</string>
+         <string>Max Alpha</string>
         </property>
        </widget>
       </item>

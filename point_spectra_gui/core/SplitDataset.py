@@ -41,8 +41,9 @@ class SplitDataset(Ui_Form, Basics):
         try:
             self.vars_level0 = self.data[self.chooseDataComboBox.currentText()].df.columns.get_level_values(0)
             self.vars_level1 = self.data[self.chooseDataComboBox.currentText()].df.columns.get_level_values(1)
-            self.vars_level1 = list(self.vars_level1[self.vars_level0 != 'wvl'])
-            self.vars_level0 = list(self.vars_level0[self.vars_level0 != 'wvl'])
+            self.vars_level1 = list(self.vars_level1[(self.vars_level0 != 'wvl') & (self.vars_level0 != 'masked')])
+            self.vars_level0 = list(self.vars_level0[(self.vars_level0 != 'wvl') & (self.vars_level0 != 'masked')])
+
             colnamechoices = self.vars_level1
             return colnamechoices
         except:
