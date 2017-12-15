@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
+    <width>518</width>
     <height>564</height>
    </rect>
   </property>
@@ -316,21 +316,6 @@ especially when tol is higher than 1e-4.</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QDoubleSpinBox" name="enalphaDoubleSpinBox">
-             <property name="toolTip">
-              <string>Constant that multiplies the penalty terms. Defaults to 1.0. See the
-notes for the exact mathematical meaning of this parameter. alpha = 0
-is equivalent to an ordinary least square, solved by the
-LinearRegression object. For numerical reasons, using alpha = 0 with
-the Lasso object is not advised. Given this, you should use the
-LinearRegression object.</string>
-             </property>
-             <property name="whatsThis">
-              <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0">
             <widget class="QLabel" name="enl1_ratioLabel">
              <property name="text">
@@ -531,6 +516,9 @@ especially when tol is higher than 1e-4.</string>
               </property>
              </item>
             </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="alpha_text"/>
            </item>
           </layout>
          </widget>

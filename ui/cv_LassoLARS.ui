@@ -38,6 +38,9 @@
       </item>
       <item row="0" column="1">
        <widget class="QDoubleSpinBox" name="minalpha_spin">
+        <property name="decimals">
+         <number>20</number>
+        </property>
         <property name="maximum">
          <double>999999999.000000000000000</double>
         </property>
@@ -52,6 +55,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="maxalpha_spin">
+        <property name="decimals">
+         <number>20</number>
+        </property>
         <property name="maximum">
          <double>999999999.000000000000000</double>
         </property>

@@ -125,9 +125,6 @@ class Ui_Form(object):
         self.enalphaLabel = QtWidgets.QLabel(self.elasticNetGroupBox)
         self.enalphaLabel.setObjectName("enalphaLabel")
         self.ElasticNet.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.enalphaLabel)
-        self.enalphaDoubleSpinBox = QtWidgets.QDoubleSpinBox(self.elasticNetGroupBox)
-        self.enalphaDoubleSpinBox.setObjectName("enalphaDoubleSpinBox")
-        self.ElasticNet.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.enalphaDoubleSpinBox)
         self.enl1_ratioLabel = QtWidgets.QLabel(self.elasticNetGroupBox)
         self.enl1_ratioLabel.setObjectName("enl1_ratioLabel")
         self.ElasticNet.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.enl1_ratioLabel)
@@ -190,6 +187,9 @@ class Ui_Form(object):
         self.enselectionComboBox.addItem("")
         self.enselectionComboBox.addItem("")
         self.ElasticNet.setWidget(10, QtWidgets.QFormLayout.FieldRole, self.enselectionComboBox)
+        self.alpha_text = QtWidgets.QLineEdit(self.elasticNetGroupBox)
+        self.alpha_text.setObjectName("alpha_text")
+        self.ElasticNet.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.alpha_text)
         self.horizontalLayout.addWidget(self.elasticNetGroupBox)
         self.ENLayout.addLayout(self.horizontalLayout)
         self.CVCheckBox = QtWidgets.QCheckBox(self.groupBox)
@@ -273,13 +273,6 @@ class Ui_Form(object):
         self.elasticNetGroupBox.setTitle(("Elastic Net"))
         self.enalphaLabel.setText(_translate("Form", "alpha\n"
 ""))
-        self.enalphaDoubleSpinBox.setToolTip(_translate("Form", "Constant that multiplies the penalty terms. Defaults to 1.0. See the\n"
-"notes for the exact mathematical meaning of this parameter. alpha = 0\n"
-"is equivalent to an ordinary least square, solved by the\n"
-"LinearRegression object. For numerical reasons, using alpha = 0 with\n"
-"the Lasso object is not advised. Given this, you should use the\n"
-"LinearRegression object."))
-        self.enalphaDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html"))
         self.enl1_ratioLabel.setText(_translate("Form", "l1_ratio\n"
 ""))
         self.enl1_ratioDoubleSpinBox.setToolTip(_translate("Form", "The ElasticNet mixing parameter, with 0 <= l1_ratio <= 1. For l1_ratio\n"

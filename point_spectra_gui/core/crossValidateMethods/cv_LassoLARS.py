@@ -33,7 +33,7 @@ class Ui_Form(Ui_Form, Basics):
         fit_intercept_items = [i.text() == 'True' for i in self.fit_intercept_list.selectedItems()]
         normalize_items = [i.text() == 'True' for i in self.normalize_list.selectedItems()]
         positive_items = [i.text() == 'True' for i in self.force_positive_list.selectedItems()]
-        alphas = np.logspace(np.log10(self.minalpha_spin.value() * 1e10), np.log10(self.maxalpha_spin.value() * 1e10),
+        alphas = np.logspace(np.log10(self.minalpha_spin.value()), np.log10(self.maxalpha_spin.value()),
                              num=self.nalpha_spin.value())
         params = {
             'alpha': alphas,
@@ -44,7 +44,8 @@ class Ui_Form(Ui_Form, Basics):
             'max_iter': [int(i) for i in self.max_iterLineEdit.text().split(',')],
             'copy_X': [True],
             'fit_path': [False],
-            'positive': positive_items
+            'positive': positive_items,
+            'model': [0]
         }
 
 

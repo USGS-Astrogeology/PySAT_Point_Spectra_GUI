@@ -263,8 +263,8 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Basics):
                 lambda: self.addWidget(core.OutlierRemoval.OutlierRemoval))
             self.actionStratified_Folds.triggered.connect(
                 lambda: self.addWidget(core.StratifiedFolds.StratifiedFolds))
-            self.actionSubmodel_Predict.triggered.connect(
-                lambda: self.addWidget(core.SubmodelPredict.SubmodelPredict))
+            self.actionSubmodel_Blend.triggered.connect(
+                lambda: self.addWidget(core.SubmodelBlend.SubmodelBlend))
             self.actionSpectral_Derivative.triggered.connect(
                 lambda: self.addWidget(core.SpecDeriv.SpecDeriv))
             self.actionCombine_Data_Sets.triggered.connect(

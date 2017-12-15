@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>669</width>
+    <height>718</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Blend Submodel Predictions</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="10" column="4">
+       <widget class="QLabel" name="maxLabel_7">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="PredictionComboBox"/>
+      </item>
+      <item row="18" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_15"/>
+      </item>
+      <item row="8" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_5">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="referencePredictionComboBox"/>
+      </item>
+      <item row="15" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_12">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_12"/>
+      </item>
+      <item row="11" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_8"/>
+      </item>
+      <item row="18" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_15">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="4">
+       <widget class="QLabel" name="maxLabel_14">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QLabel" name="maxLabel_2">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_2"/>
+      </item>
+      <item row="19" column="1">
+       <widget class="QComboBox" name="highPredictionComboBox"/>
+      </item>
+      <item row="9" column="2">
+       <widget class="QLabel" name="minLabel_6">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="minLabel">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLabel" name="minLabel_4">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_8">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="4">
+       <widget class="QLabel" name="maxLabel_5">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_6">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_7">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="referencePredictionLabel">
+        <property name="text">
+         <string>Choose reference model prediction: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLabel" name="minLabel_3">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="4">
+       <widget class="QLabel" name="maxLabel_6">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="lowPredictionMaxLabel">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="2">
+       <widget class="QLabel" name="minLabel_9">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_10">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_12">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_9"/>
+      </item>
+      <item row="19" column="3">
+       <widget class="QDoubleSpinBox" name="highPredictionMinSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_11"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_4"/>
+      </item>
+      <item row="10" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_7">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_5"/>
+      </item>
+      <item row="6" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_3">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_6">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_8">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="4">
+       <widget class="QLabel" name="maxLabel_11">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="4">
+       <widget class="QLabel" name="maxLabel_3">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="19" column="0">
+       <widget class="QLabel" name="highPredictionLabel">
+        <property name="text">
+         <string>High Model Prediction</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_13"/>
+      </item>
+      <item row="14" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_11">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLabel" name="minLabel_2">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_3">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="20" column="0" colspan="6">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="addSubPushButton">
+          <property name="text">
+           <string>Add submodel prediction</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deleteSubPushButton">
+          <property name="text">
+           <string>Delete submodel prediction</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="optimizeSubRangesCheckBox">
+          <property name="text">
+           <string>Optimize </string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="17" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_14"/>
+      </item>
+      <item row="17" column="2">
+       <widget class="QLabel" name="minLabel_14">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="2">
+       <widget class="QLabel" name="minLabel_11">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_4">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="lowPredictionComboBox"/>
+      </item>
+      <item row="12" column="4">
+       <widget class="QLabel" name="maxLabel_9">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="19" column="2">
+       <widget class="QLabel" name="highPredictionMinLabel">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="2">
+       <widget class="QLabel" name="minLabel_13">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QDoubleSpinBox" name="lowPredictionMaxSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>910</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="18" column="2">
+       <widget class="QLabel" name="minLabel_15">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="minLabel_5">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_10"/>
+      </item>
+      <item row="7" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_4">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_3"/>
+      </item>
+      <item row="7" column="4">
+       <widget class="QLabel" name="maxLabel_4">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_5">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_6"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lowPredictionLabel">
+        <property name="text">
+         <string>Low Model Prediction</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="chooseDatalabel">
+        <property name="text">
+         <string>Choose data</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="4">
+       <widget class="QLabel" name="maxLabel_13">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_13">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="4">
+       <widget class="QLabel" name="maxLabel_12">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_10">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="chooseDatacomboBox"/>
+      </item>
+      <item row="17" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_14">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_14">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="2">
+       <widget class="QLabel" name="minLabel_12">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="18" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_15">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_13">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="4">
+       <widget class="QLabel" name="maxLabel_10">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_11">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="18" column="4">
+       <widget class="QLabel" name="maxLabel_15">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_9">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="4">
+       <widget class="QLabel" name="maxLabel_8">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="2">
+       <widget class="QLabel" name="minLabel_10">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QDoubleSpinBox" name="minSpinBox_2">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="2">
+       <widget class="QLabel" name="minLabel_7">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QComboBox" name="PredictionComboBox_7"/>
+      </item>
+      <item row="4" column="4">
+       <widget class="QLabel" name="maxLabel">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="2">
+       <widget class="QLabel" name="minLabel_8">
+        <property name="text">
+         <string>Min</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_2">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="21" column="0" colspan="6">
+       <layout class="QFormLayout" name="formLayout_3">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <property name="formAlignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="optimizeSubRangesLabel">
+          <property name="text">
+           <string>Choose reference to optimize blending ranges:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="optimizeSubRangesComboBox"/>
+        </item>
+       </layout>
+      </item>
+      <item row="12" column="5">
+       <widget class="QDoubleSpinBox" name="maxSpinBox_9">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="index_spin"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>referencePredictionComboBox</tabstop>
+  <tabstop>lowPredictionComboBox</tabstop>
+  <tabstop>lowPredictionMaxSpinBox</tabstop>
+  <tabstop>PredictionComboBox</tabstop>
+  <tabstop>minSpinBox</tabstop>
+  <tabstop>maxSpinBox</tabstop>
+  <tabstop>PredictionComboBox_2</tabstop>
+  <tabstop>minSpinBox_2</tabstop>
+  <tabstop>maxSpinBox_2</tabstop>
+  <tabstop>PredictionComboBox_3</tabstop>
+  <tabstop>minSpinBox_3</tabstop>
+  <tabstop>maxSpinBox_3</tabstop>
+  <tabstop>PredictionComboBox_4</tabstop>
+  <tabstop>minSpinBox_4</tabstop>
+  <tabstop>maxSpinBox_4</tabstop>
+  <tabstop>PredictionComboBox_5</tabstop>
+  <tabstop>minSpinBox_5</tabstop>
+  <tabstop>maxSpinBox_5</tabstop>
+  <tabstop>PredictionComboBox_6</tabstop>
+  <tabstop>minSpinBox_6</tabstop>
+  <tabstop>maxSpinBox_6</tabstop>
+  <tabstop>PredictionComboBox_7</tabstop>
+  <tabstop>minSpinBox_7</tabstop>
+  <tabstop>maxSpinBox_7</tabstop>
+  <tabstop>PredictionComboBox_8</tabstop>
+  <tabstop>minSpinBox_8</tabstop>
+  <tabstop>maxSpinBox_8</tabstop>
+  <tabstop>PredictionComboBox_9</tabstop>
+  <tabstop>minSpinBox_9</tabstop>
+  <tabstop>maxSpinBox_9</tabstop>
+  <tabstop>PredictionComboBox_10</tabstop>
+  <tabstop>minSpinBox_10</tabstop>
+  <tabstop>maxSpinBox_10</tabstop>
+  <tabstop>PredictionComboBox_11</tabstop>
+  <tabstop>minSpinBox_11</tabstop>
+  <tabstop>maxSpinBox_11</tabstop>
+  <tabstop>PredictionComboBox_12</tabstop>
+  <tabstop>minSpinBox_12</tabstop>
+  <tabstop>maxSpinBox_12</tabstop>
+  <tabstop>PredictionComboBox_13</tabstop>
+  <tabstop>minSpinBox_13</tabstop>
+  <tabstop>maxSpinBox_13</tabstop>
+  <tabstop>PredictionComboBox_14</tabstop>
+  <tabstop>minSpinBox_14</tabstop>
+  <tabstop>maxSpinBox_14</tabstop>
+  <tabstop>PredictionComboBox_15</tabstop>
+  <tabstop>minSpinBox_15</tabstop>
+  <tabstop>maxSpinBox_15</tabstop>
+  <tabstop>highPredictionComboBox</tabstop>
+  <tabstop>highPredictionMinSpinBox</tabstop>
+  <tabstop>addSubPushButton</tabstop>
+  <tabstop>deleteSubPushButton</tabstop>
+  <tabstop>optimizeSubRangesCheckBox</tabstop>
+  <tabstop>optimizeSubRangesComboBox</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>optimizeSubRangesCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>optimizeSubRangesComboBox</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>554</x>
+     <y>678</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>711</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>optimizeSubRangesCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>optimizeSubRangesLabel</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>725</x>
+     <y>671</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>722</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

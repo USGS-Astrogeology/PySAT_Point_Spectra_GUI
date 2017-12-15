@@ -23,9 +23,6 @@ class Ui_Form(object):
         self.alphaLabel = QtWidgets.QLabel(self.formGroupBox)
         self.alphaLabel.setObjectName("alphaLabel")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.alphaLabel)
-        self.alphaDoubleSpinBox = QtWidgets.QDoubleSpinBox(self.formGroupBox)
-        self.alphaDoubleSpinBox.setObjectName("alphaDoubleSpinBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.alphaDoubleSpinBox)
         self.fit_interceptLabel = QtWidgets.QLabel(self.formGroupBox)
         self.fit_interceptLabel.setObjectName("fit_interceptLabel")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.fit_interceptLabel)
@@ -107,6 +104,9 @@ class Ui_Form(object):
         self.modelComboBox.addItem("")
         self.modelComboBox.addItem("")
         self.formLayout.setWidget(13, QtWidgets.QFormLayout.FieldRole, self.modelComboBox)
+        self.alpha_text = QtWidgets.QLineEdit(self.formGroupBox)
+        self.alpha_text.setObjectName("alpha_text")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.alpha_text)
         self.verticalLayout.addWidget(self.formGroupBox)
 
         self.retranslateUi(Form)
@@ -116,11 +116,6 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(("Form"))
         self.alphaLabel.setText(("alpha"))
-        self.alphaDoubleSpinBox.setToolTip(_translate("Form", "Constant that multiplies the penalty term. Defaults to 1.0. alpha = 0\n"
-"is equivalent to an ordinary least square, solved by LinearRegression.\n"
-"For numerical reasons, using alpha = 0 with the LassoLars object is not\n"
-"advised and you should prefer the LinearRegression object."))
-        self.alphaDoubleSpinBox.setWhatsThis(("http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html"))
         self.fit_interceptLabel.setText(("fit_intercept"))
         self.fit_interceptCheckBox.setToolTip(_translate("Form", "whether to calculate the intercept for this model. If set to false,\n"
 "no intercept will be used in calculations (e.g. data is expected to\n"
