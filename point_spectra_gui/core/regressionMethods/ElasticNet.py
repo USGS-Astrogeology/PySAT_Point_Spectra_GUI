@@ -23,7 +23,7 @@ class Ui_Form(Ui_Form, ElasticNet, ElasticNetCV, Basics):
         en = ElasticNet()
         encv = ElasticNetCV()
 
-        self.enalphaDoubleSpinBox.setValue(en.alpha)
+        self.alpha_text.setValue(en.alpha)
         self.enl1_ratioDoubleSpinBox.setValue(en.l1_ratio)
         self.enfit_interceptCheckBox.setChecked(en.fit_intercept)
         self.ennormalizeCheckBox.setChecked(en.normalize)
@@ -86,7 +86,7 @@ class Ui_Form(Ui_Form, ElasticNet, ElasticNetCV, Basics):
                 'CV': self.CVCheckBox.isChecked()}
         else:
             params = {
-                'alpha': self.enalphaDoubleSpinBox.value(),
+                'alpha': self.alpha_text.value(),
                 'l1_ratio': self.enl1_ratioDoubleSpinBox.value(),
                 'fit_intercept': self.enfit_interceptCheckBox.isChecked(),
                 'normalize': self.ennormalizeCheckBox.isChecked(),

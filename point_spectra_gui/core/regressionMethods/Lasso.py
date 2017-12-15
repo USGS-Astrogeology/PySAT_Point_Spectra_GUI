@@ -18,14 +18,14 @@ class Ui_Form(Ui_Form, Lasso, Basics):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.alphaDoubleSpinBox.setValue(self.alpha)
+        self.alpha_text.setText(str(self.alpha))
         self.fitInterceptCheckBox.setChecked(self.fit_intercept)
         self.maxNumOfIterationsSpinBox.setValue(self.max_iter)
         self.toleranceDoubleSpinBox.setValue(self.tol)
         self.forcePositiveCoefficientsCheckBox.setChecked(self.positive)
 
     def function(self):
-        params = {'alpha': self.alphaDoubleSpinBox.value(),
+        params = {'alpha': float(self.alpha_text.text()),
                   'fit_intercept': self.fitInterceptCheckBox.isChecked(),
                   'max_iter': int(self.maxNumOfIterationsSpinBox.value()),
                   'tol': self.toleranceDoubleSpinBox.value(),

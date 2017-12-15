@@ -20,7 +20,7 @@ class Ui_Form(Ui_Form, Basics):
     def connectWidgets(self):
         # LassoLARS
         ll = LassoLars()
-        self.alphaDoubleSpinBox.setValue(ll.alpha)
+        self.alpha_text.setValue(ll.alpha)
         self.fit_interceptCheckBox.setChecked(ll.fit_intercept)
         self.verboseCheckBox.setChecked(ll.verbose)
         self.normalizeCheckBox.setChecked(ll.normalize)
@@ -46,7 +46,7 @@ class Ui_Form(Ui_Form, Basics):
         model = self.modelComboBox.currentIndex()
         if model == 0:
             params = {
-                'alpha': self.alphaDoubleSpinBox.value(),
+                'alpha': self.alpha_text.value(),
                 'fit_intercept': self.fit_interceptCheckBox.isChecked(),
                 'verbose': self.fit_interceptCheckBox.isChecked(),
                 'normalize': self.normalizeCheckBox.isChecked(),

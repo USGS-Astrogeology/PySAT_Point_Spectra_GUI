@@ -33,19 +33,6 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QDoubleSpinBox" name="alphaDoubleSpinBox">
-        <property name="toolTip">
-         <string>Constant that multiplies the penalty term. Defaults to 1.0. alpha = 0
-is equivalent to an ordinary least square, solved by LinearRegression.
-For numerical reasons, using alpha = 0 with the LassoLars object is not
-advised and you should prefer the LinearRegression object.</string>
-        </property>
-        <property name="whatsThis">
-         <string>http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoLars.html</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="fit_interceptLabel">
         <property name="text">
@@ -289,6 +276,9 @@ solution of the coordinate descent Lasso estimator.</string>
          </property>
         </item>
        </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="alpha_text"/>
       </item>
      </layout>
     </widget>
