@@ -19,14 +19,11 @@ class Interpolation(Ui_Form, Basics):
     def function(self):
         datakey_to_interp = self.interpolateDataComboBox.currentText()
         datakey_ref = self.referenceDataComboBox.currentText()
-        if (self.checkoptions(datakey_to_interp, self.datakeys, 'data set') or
-            self.checkoptions(datakey_ref,self.datakeys,'data set')):
-            self.connectWidgets()
-        else:
-            try:
-                self.data[datakey_to_interp].interp(self.data[datakey_ref].df['wvl'].columns)
-            except Exception as e:
-                print(e)
+        print(self.data[datakey_ref].df.columns.levels[0])
+        try:
+            self.data[datakey_to_interp].interp(self.data[datakey_ref].df['wvl'].columns)
+        except Exception as e:
+            print(e)
 
 
 if __name__ == "__main__":

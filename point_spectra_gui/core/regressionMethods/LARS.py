@@ -51,6 +51,8 @@ class Ui_Form(Ui_Form, Basics):
                 'n_jobs': self.n_jobsSpinBox.value(),
                 'CV': self.cVCheckBox.isChecked(),
             }
+            return params, self.getChangedValues(params, LarsCV())
+
         else:
             params = {
                 'fit_intercept': self.fit_interceptCheckBox.isChecked(),
@@ -64,9 +66,9 @@ class Ui_Form(Ui_Form, Basics):
                 'positive': self.positiveCheckBox.isChecked(),
                 'CV': self.cVCheckBox.isChecked(),
             }
+            return params, self.getChangedValues(params, Lars())
 
-        modelkey = str(params)
-        return params, modelkey
+
 
 
 if __name__ == "__main__":

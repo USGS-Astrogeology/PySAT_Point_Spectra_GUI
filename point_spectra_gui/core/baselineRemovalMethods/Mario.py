@@ -25,13 +25,13 @@ class Ui_Form(Ui_Form, Basics):
         self.toleranceDoubleSpinBox.setValue(br.tol_)
 
     def function(self):
-        maxNIDSpinBox = float(self.maximumNumOfIterationsDoubleSpinBox.value())
+        maxNIDSpinBox = self.maximumNumOfIterationsDoubleSpinBox.value()
         if maxNIDSpinBox == 0:
             maxNIDSpinBox = None
-        methodParameters = {'poly_order_': int(self.polynomialOrderSpinBox.value()),
+        methodParameters = {'poly_order_': self.polynomialOrderSpinBox.value(),
                             'max_iters_': maxNIDSpinBox,
-                            'tol_': float(self.toleranceDoubleSpinBox.value())}
-        return methodParameters
+                            'tol_': self.toleranceDoubleSpinBox.value()}
+        return methodParameters, self.getChangedValues(methodParameters, Mario())
 
 
 if __name__ == "__main__":

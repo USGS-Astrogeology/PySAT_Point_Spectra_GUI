@@ -46,8 +46,7 @@ class Ui_Form(Ui_Form, GaussianProcess, Basics):
             'random_start': self.randomStartSpinBox.value(),
         }
 
-        modelkey = str(params)
-        return params, modelkey
+        return params, self.getChangedValues(params, GaussianProcess())
 
 
 if __name__ == "__main__":

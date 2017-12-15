@@ -120,6 +120,7 @@ class RemoveRows(Ui_Form, Basics):
         match_combined = np.all(match_vectors, axis=0)
         print(self.data[datakey].df.shape)
         self.data[datakey] = spectral_data(self.data[datakey].df.ix[~match_combined])
+
         print(self.data[datakey].df.shape)
 
         pass

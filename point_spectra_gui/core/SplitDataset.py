@@ -24,10 +24,6 @@ class SplitDataset(Ui_Form, Basics):
     def function(self):
         datakey = self.chooseDataComboBox.currentText()
         colname = self.splitOnUniqueValuesOfComboBox.currentText()
-        # if (self.checkoptions(datakey, self.datakeys, 'data set') or
-        #     self.checkoptions(colname,self.datakeys,'column')):
-        #     self.connectWidgets()
-        # else:
         vars_level0 = self.data[datakey].df.columns.get_level_values(0)
         vars_level1 = self.data[datakey].df.columns.get_level_values(1)
         vars_level1 = list(vars_level1[vars_level0 != 'wvl'])

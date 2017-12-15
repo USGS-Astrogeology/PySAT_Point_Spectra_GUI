@@ -84,6 +84,8 @@ class Ui_Form(Ui_Form, ElasticNet, ElasticNetCV, Basics):
                 'positive': self.positiveCheckBox.isChecked(),
                 'selection': self.selectionComboBox.currentText(),
                 'CV': self.CVCheckBox.isChecked()}
+            return params, self.getChangedValues(params, ElasticNetCV())
+
         else:
             params = {
                 'alpha': self.alpha_text.value(),
@@ -98,9 +100,8 @@ class Ui_Form(Ui_Form, ElasticNet, ElasticNetCV, Basics):
                 'positive': self.enpositiveCheckBox.isChecked(),
                 'selection': self.selectionComboBox.currentText(),
                 'CV': self.CVCheckBox.isChecked()}
+            return params, self.getChangedValues(params, ElasticNet())
 
-        modelkey = str(params)
-        return params, modelkey
 
 
 if __name__ == "__main__":

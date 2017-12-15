@@ -1,11 +1,12 @@
 from PyQt5 import QtWidgets
+
+from Qtickle import Qtickle
 from point_spectra_gui.core.dimensionalityReductionMethods import *
 from point_spectra_gui.ui.DimensionalityReduction import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
-from Qtickle import Qtickle
+
 
 class DimensionalityReduction(Ui_Form, Basics):
-
     def setupUi(self, Form):
         self.Form = Form
         super().setupUi(Form)
@@ -28,7 +29,6 @@ class DimensionalityReduction(Ui_Form, Basics):
         self.chooseMethodComboBox.currentIndexChanged.connect(
             lambda: self.make_dimred_widget(self.chooseMethodComboBox.currentText()))
 
-
     def getGuiParams(self):
         """
         Overriding Basics' getGuiParams, because I'll need to do a list of lists
@@ -47,18 +47,32 @@ class DimensionalityReduction(Ui_Form, Basics):
         for i in range(len(dict)):
             self.alg[i - 1].setGuiParams(dict[i])
 
+    def selectiveSetGuiParams(self, dict):
+        """
+        Override Basics' selective Restore function
+
+        Setup Qtickle
+        selectively restore the UI, the data to do that will be in the 0th element of the dictionary
+        We will then iterate through the rest of the dictionary
+        Will now restore the parameters for the algorithms in the list, Each of the algs have their own selectiveSetGuiParams
+
+        :param dict:
+        :return:
+        """
+
+        self.qt = Qtickle.Qtickle(self)
+        self.qt.selectiveGuiRestore(dict[0])
+        for i in range(len(dict)):
+            self.alg[i - 1].selectiveSetGuiParams(dict[i])
+
     def function(self):
         method = self.chooseMethodComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
-        if self.checkoptions(datakey, self.datakeys, 'data set'):
-            self.connectWidgets()
-        else:
-           # xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
-            params, modelkey = self.getMethodParams(self.chooseMethodComboBox.currentIndex())
-            load_fit = False
-            col = 'wvl'
-            self.data[datakey].dim_red(col, method, [], params, load_fit = load_fit)
-
+        # xvars = [str(x.text()) for x in self.xVariableList.selectedItems()]
+        params, modelkey = self.getMethodParams(self.chooseMethodComboBox.currentIndex())
+        load_fit = False
+        col = 'wvl'
+        self.data[datakey].dim_red(col, method, [], params, load_fit=load_fit)
 
     def make_dimred_widget(self, alg, params=None):
         self.hideAll()
@@ -85,8 +99,7 @@ class DimensionalityReduction(Ui_Form, Basics):
             self.alg[-1].setHidden(True)
 
     def getMethodParams(self, index):
-            return self.alg[index - 1].function()
-
+        return self.alg[index - 1].function()
 
 
 if __name__ == "__main__":
