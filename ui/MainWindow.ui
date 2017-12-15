@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>511</width>
+    <width>515</width>
     <height>596</height>
    </rect>
   </property>
@@ -40,8 +40,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>476</width>
-         <height>350</height>
+         <width>472</width>
+         <height>329</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -135,8 +135,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>511</width>
-     <height>21</height>
+     <width>515</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -182,7 +182,7 @@
     <addaction name="actionCross_Validation"/>
     <addaction name="actionTrain"/>
     <addaction name="actionPredict"/>
-    <addaction name="actionSubmodel_Predict"/>
+    <addaction name="actionSubmodel_Blend"/>
    </widget>
    <widget class="QMenu" name="menuVisualization">
     <property name="title">
@@ -336,9 +336,9 @@
     <string>Regression Train</string>
    </property>
   </action>
-  <action name="actionSubmodel_Predict">
+  <action name="actionSubmodel_Blend">
    <property name="text">
-    <string>Submodel Predict</string>
+    <string>Blend Submodel Predictions</string>
    </property>
   </action>
   <action name="actionPredict">
