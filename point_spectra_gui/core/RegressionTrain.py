@@ -38,10 +38,9 @@ class RegressionTrain(Ui_Form, Basics):
                                'BRR',
                                'ARD',
                                'LARS',
-                               'LASSO LARS',
+                               #'LASSO LARS', - This is having issues. Hide until we can debug
                                'SVR',
-                               'KRR',
-                               'More to come...']
+                               'KRR']
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
         self.setComboBox(self.chooseAlgorithmComboBox, self.algorithm_list)
         self.yMaxDoubleSpinBox.setMaximum(999999)
