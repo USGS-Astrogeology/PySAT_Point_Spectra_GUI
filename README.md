@@ -48,6 +48,15 @@ call activate point_spectra_gui
 point_spectra_gui
 ```
 
+### 6. Update an existing installation
+
+If you already have an earlier version of the PySAT Point Spectra GUI installed as described above and you want to wipe it and update to the latest version, just do:
+
+```bash
+conda env remove -n point_spectra_gui
+```
+And then follow the instructions above to install a fresh version.
+
 # Bugs
 
 ## Run into bugs or features that are missing? Let us know by reporting an issue!
