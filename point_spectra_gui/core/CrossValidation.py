@@ -36,7 +36,7 @@ class CrossValidation(Ui_Form, Basics):
                                # 'KRR',  This needs more work since it requires parameters for the kernel passed as an object
                                'LARS',
                                'LASSO',
-                               'LASSO LARS',
+                              # 'LASSO LARS', - this also need to be debugged
                                'OLS',
                                'OMP',
                                'PLS',

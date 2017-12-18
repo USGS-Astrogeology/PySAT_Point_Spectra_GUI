@@ -75,6 +75,17 @@ class Ui_Form(object):
         item = QtWidgets.QListWidgetItem()
         self.normalize_list.addItem(item)
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.normalize_list)
+        self.force_positive_list = QtWidgets.QListWidget(self.formGroupBox)
+        self.force_positive_list.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
+        self.force_positive_list.setObjectName("force_positive_list")
+        item = QtWidgets.QListWidgetItem()
+        self.force_positive_list.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.force_positive_list.addItem(item)
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.force_positive_list)
+        self.force_positive_label = QtWidgets.QLabel(self.formGroupBox)
+        self.force_positive_label.setObjectName("force_positive_label")
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.force_positive_label)
         self.verticalLayout.addWidget(self.formGroupBox)
 
         self.retranslateUi(Form)
@@ -104,6 +115,14 @@ class Ui_Form(object):
         item = self.normalize_list.item(1)
         item.setText(("False"))
         self.normalize_list.setSortingEnabled(__sortingEnabled)
+        __sortingEnabled = self.force_positive_list.isSortingEnabled()
+        self.force_positive_list.setSortingEnabled(False)
+        item = self.force_positive_list.item(0)
+        item.setText(("True"))
+        item = self.force_positive_list.item(1)
+        item.setText(("False"))
+        self.force_positive_list.setSortingEnabled(__sortingEnabled)
+        self.force_positive_label.setText(("Force Positive"))
 
 
 if __name__ == "__main__":
