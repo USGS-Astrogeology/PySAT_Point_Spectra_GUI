@@ -30,8 +30,8 @@ class Ui_Form(Ui_Form, Lasso, Basics):
                   'max_iter': int(self.maxNumOfIterationsSpinBox.value()),
                   'tol': self.toleranceDoubleSpinBox.value(),
                   'positive': self.forcePositiveCoefficientsCheckBox.isChecked(),
-                  'selection': 'random',
-                  'CV': self.optimizeWCrossValidaitonCheckBox.isChecked()}
+                  'selection': 'random'}
+#                  'CV': self.optimizeWCrossValidaitonCheckBox.isChecked()}
         return params, self.getChangedValues(params, Lasso())
 
 
