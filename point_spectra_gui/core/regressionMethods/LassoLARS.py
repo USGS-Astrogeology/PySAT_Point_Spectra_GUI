@@ -20,7 +20,7 @@ class Ui_Form(Ui_Form, Basics):
     def connectWidgets(self):
         # LassoLARS
         ll = LassoLars()
-        self.alpha_text.setValue(ll.alpha)
+        self.alpha_text.setText(str(ll.alpha))
         self.fit_interceptCheckBox.setChecked(ll.fit_intercept)
         self.verboseCheckBox.setChecked(ll.verbose)
         self.normalizeCheckBox.setChecked(ll.normalize)

@@ -30,11 +30,7 @@ class subWidgets:
         self.maxSpinBox.setHidden(bool)
 
     def getValues(self):
-        return [self.predictionComboBox.currentText(), [int(self.minSpinBox.value()), int(self.maxSpinBox.value())]]
-
-    def setMaximum(self, int_):
-        self.minSpinBox.setMaximum(int_)
-        self.maxSpinBox.setMaximum(int_)
+        return [self.predictionComboBox.currentText(), [float(self.minSpinBox.value()), float(self.maxSpinBox.value())]]
 
     def setValue(self, int_):
         self.minSpinBox.setValue(int_)
