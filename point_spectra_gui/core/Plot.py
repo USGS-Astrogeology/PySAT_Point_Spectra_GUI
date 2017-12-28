@@ -1,6 +1,6 @@
 import numpy as np
 from PyQt5 import QtWidgets
-from libpysat.plotting.plots import make_plot
+from point_spectra_gui.util.plots import make_plot
 
 from point_spectra_gui.ui.Plot import Ui_Form
 from point_spectra_gui.util.BasicFunctionality import Basics
