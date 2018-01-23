@@ -23,8 +23,8 @@ class Ui_Form(Ui_Form, Modules):
         self.numOfRangesSpinBox.setValue(br.num_ranges_)
 
     def run(self):
-        methodParameters = {'num_iters': self.windowSizeSpinBox.value(),
-                            'num_ranges': self.numOfRangesSpinBox.value()}
+        methodParameters = {'num_iters_': self.windowSizeSpinBox.value(),
+                            'num_ranges_': self.numOfRangesSpinBox.value()}
         return methodParameters, self.getChangedValues(methodParameters, Rubberband())
 
 

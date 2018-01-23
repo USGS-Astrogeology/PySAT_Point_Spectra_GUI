@@ -19,7 +19,6 @@ class BaselineRemoval(Ui_Form, Modules):
 
     def make_regression_widget(self, alg, params=None):
         self.hideAll()
-        print(alg)
         for i in range(len(self.chooseAlgorithmList)):
             if alg == self.chooseAlgorithmList[i] and i > 0:
                 self.alg[i - 1].setHidden(False)
@@ -70,7 +69,7 @@ class BaselineRemoval(Ui_Form, Modules):
         datakey_baseline = datakey + '-Baseline-' + method + str(_changed)
         self.datakeys.append(datakey_new)
         self.datakeys.append(datakey_baseline)
-        self.data[datakey_new] = spectral_data(self.data[datakey].df.copy(deep=True))
+        self.data[datakey_new] = spectral_data(self.data[datakey]._data.copy(deep=True))
         self.data[datakey_new].remove_baseline(method, segment=True, params=methodParameters)
         self.data[datakey_baseline] = spectral_data(self.data[datakey_new].df_baseline)
 
@@ -79,7 +78,7 @@ class BaselineRemoval(Ui_Form, Modules):
             a.setHidden(True)
 
     def getMethodParams(self, index):
-        return self.alg[index - 1].run()
+        return self.alg[index].run()
 
     def baselineMethods(self):
         self.alg = []
