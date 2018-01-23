@@ -7,6 +7,14 @@ from PyQt5 import QtCore, QtWidgets
 from point_spectra_gui.util import PandasModel as pm
 from point_spectra_gui.core.BaselineRemoval import BaselineRemoval as BR
 
+import sys
+
+def trace(frame, event, arg):
+    print "%s, %s:%d" % (event, frame.f_code.co_filename, frame.f_lineno)
+    return trace
+
+sys.settrace(trace)
+
 @pytest.fixture
 def repeat_pandas_model(n):
     data =  np.repeat(np.arange(1, n + 1), (n)).reshape(n, -1)
