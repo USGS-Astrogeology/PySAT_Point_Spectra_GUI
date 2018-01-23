@@ -10,7 +10,7 @@ from point_spectra_gui.core.BaselineRemoval import BaselineRemoval as BR
 import sys
 
 def trace(frame, event, arg):
-    print "%s, %s:%d" % (event, frame.f_code.co_filename, frame.f_lineno)
+    print("{}, {}:{}".format(event, frame.f_code.co_filename, frame.f_lineno))
     return trace
 
 sys.settrace(trace)
