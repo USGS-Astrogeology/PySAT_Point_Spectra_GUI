@@ -33,14 +33,21 @@ install:
   # Install dependencies
   - conda config --add channels usgs-astrogeology
   - conda config --add channels conda-forge
-  - conda install -c conda-forge numpy scipy pandas gdal scikit-learn matplotlib pyqt
+  - conda install qt==5.6 pyqt==5.6
+  - conda install -c conda-forge numpy scipy pandas gdal scikit-learn matplotlib
   - conda install -c usgs-astrogeology plio
 
   # Development installation
   - conda install pytest pytest-cov pytest-qt
   - pip install coveralls
 
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
 script:
+  - python setup.py build_ui
   - python setup.py develop
   - pytest
 
