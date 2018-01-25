@@ -23,7 +23,4 @@ def test_combine_datasets(qtbot):
 
     guiCD.run()
 
-    print(guiCD.dataSet1ComboBox.currentText(),guiCD.dataSet2ComboBox.currentText() )
-    print(guiCD.data)
-
     assert guiCD.data['data'] == 'test1test2'

@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Automatically generated - don't edit.
-# Use `python setup.py build_ui` to update it.
-
 from PyQt5 import QtWidgets
 
 from point_spectra_gui.ui.DataTable import Ui_Form
@@ -29,7 +24,7 @@ class DataTable(QtWidgets.QWidget, Ui_Form, Modules):
 
     def on_refreshTable(self):
         try:
-            pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()].df)
+            pandasModel = PandasModel(self.data[self.chooseDataComboBox.currentText()]._data)
             self.tableView.setModel(pandasModel)
         except:
             print('KeyError: \'\': Cannot read from an empty string')
