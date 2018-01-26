@@ -6,6 +6,10 @@ exclude_lines =
     def connectWidgets
     def getGuiParams
     def setGuiParams
+    def refresh
+    def setDataBox
+    def make_regression_widget
+    def hideAll
 
 omit =
   point_spectra_gui/ui/*

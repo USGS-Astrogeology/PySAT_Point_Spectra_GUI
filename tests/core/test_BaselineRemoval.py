@@ -4,8 +4,9 @@ import pandas as pd
 
 from PyQt5 import QtCore, QtWidgets
 
-from point_spectra_gui.util import PandasModel as pm
+from point_spectra_gui.util.PandasModel import PandasModel
 from point_spectra_gui.core import BaselineRemoval as BR
+from point_spectra_gui.core import baselineRemovalMethods as brm
 
 @pytest.fixture
 def repeat_pandas_model(n):
@@ -15,55 +16,76 @@ def repeat_pandas_model(n):
     tuples = list(zip(*[idx2, idx1]))
     index = pd.MultiIndex.from_tuples(tuples, names=['first', 'second'])
     df = pd.DataFrame(data, columns = index)
-    return pm.PandasModel(df)
+    return PandasModel(df)
 
-@pytest.mark.parametrize( 'func, index, expected', [('AirPLS', 0, type(pd.DataFrame())), #<-- Failing
-                                                    ('ALS', 1, type(pd.DataFrame())),
-                                                    ('FABC', 3, type(pd.DataFrame())),
-                                                    ('KK', 4, type(pd.DataFrame())),
-                                                    ('Median', 5, type(pd.DataFrame())),
-                                                    ('Rubberband', 7, type(pd.DataFrame())), #<-- Failing
-                                                    ('CCAM', 8, type(pd.DataFrame())),
-                                                    ('Mario', 9, type(pd.DataFrame()))])
+@pytest.mark.parametrize( 'model, method', [(brm.AirPLS, 'AirPLS'), # <-- Failing in libpysat
+                                    (brm.ALS, 'ALS'),               # <-- Failing in libpysat
+                                    (brm.FABC, 'FABC'),
+                                    (brm.KK, 'KK'),
+                                    (brm.Median, 'Median'),
+                                    (brm.Rubberband, 'Rubberband'), # <-- Failing in libpysat
+                                    (brm.Polyfit, 'Polyfit'),
+                                    (brm.Mario, 'Mario'),
+                                    (brm.Dietrich, 'Dietrich')])    # <-- Failing in libpysat
 
-def test_baseline_spectral(func, index, expected, qtbot):
-    Form = QtWidgets.QWidget()
+def test_baseline_spectral(model, method, qtbot, repeat_df_len10):
+    form = QtWidgets.QWidget()
     gui = BR()
-    gui.setupUi(Form)
-    gui.datakeys = {0: 'datakey'}
-    gui.data = {'data_key' + '-Baseline Removed-' + func + '{}': repeat_pandas_model(5),
-                  'data_key': repeat_pandas_model(5)}
+    gui.setupUi(form)
 
-    gui.chooseDataComboBox.addItem('data_key')
-    gui.chooseDataComboBox.setItemText(0, 'data_key')
+    datakey = 'test'
+    modelkey = method
 
-    gui.chooseAlgorithmComboBox.setItemText(index, func)
-    gui.chooseAlgorithmComboBox.setCurrentIndex(index)
+    gui.datakeys = {0: datakey}
+
+    gui.chooseDataComboBox.addItem(datakey)
+    gui.chooseDataComboBox.setItemText(0, datakey)
+
+    gui.chooseAlgorithmComboBox.addItem(modelkey)
+    gui.chooseAlgorithmComboBox.setItemText(0, modelkey)
+
+    gui.model_xvars[modelkey] = ['test1', 'test2']
+
+    gui.data[datakey] = repeat_pandas_model(10)
+    gui.data[datakey]._data[modelkey] = np.arange(10)
+    gui.data[datakey]._data['test1'] = np.arange(10)
+    gui.data[datakey]._data['test2'] = np.arange(10)
+
+    gui.models[modelkey] = model.Ui_Form()
+    gui.models[modelkey].setupUi(form)
+    gui.models[modelkey].run()
     try:
         gui.run()
-        assert type(gui.data['data_key-Baseline Removed-' + func + '{}'].df) == expected
-    except:
+    except ValueError:
+        pass
+    except TypeError:
         pass
 
-@pytest.mark.parametrize( 'func, index, expected', [('Dietrich', 2, type(pd.DataFrame())), #<-- Failing
-                                                    ('Polyfit', 6, type(pd.DataFrame()))])
 
+@pytest.mark.parametrize( 'interpolation', [('Linear'),
+                                            ('Quadratic'),
+                                            ('Spline')])
 
-def test_baseline_pandas(func, index, expected, qtbot):
-    Form = QtWidgets.QWidget()
+def test_baseline_ccam(interpolation, qtbot):
+    form = QtWidgets.QWidget()
     gui = BR()
-    gui.setupUi(Form)
-    gui.datakeys = {0: 'datakey'}
-    gui.data = {'data_key' + '-Baseline Removed-' + func + '{}': repeat_pandas_model(5),
-                  'data_key': repeat_pandas_model(5)}
+    gui.setupUi(form)
 
-    gui.chooseDataComboBox.addItem('data_key')
-    gui.chooseDataComboBox.setItemText(0, 'data_key')
+    datakey = 'test'
+    modelkey = 'CCAM'
 
-    gui.chooseAlgorithmComboBox.setItemText(index, func)
-    gui.chooseAlgorithmComboBox.setCurrentIndex(index)
-    try:
-        gui.run()
-        assert type(gui.data['data_key-Baseline Removed-' + func + '{}']._data) == expected
-    except:
-        pass
+    gui.datakeys = {0: datakey}
+
+    gui.chooseDataComboBox.addItem(datakey)
+    gui.chooseDataComboBox.setItemText(0, datakey)
+
+    gui.chooseAlgorithmComboBox.addItem(modelkey)
+    gui.chooseAlgorithmComboBox.setItemText(0, modelkey)
+
+    gui.models[interpolation] = brm.CCAM.Ui_Form()
+    gui.models[interpolation].setupUi(form)
+    gui.models[interpolation].interpolationMethodComboBox.addItem(interpolation)
+    gui.models[interpolation].interpolationMethodComboBox.setItemText(0, interpolation)
+
+    gui.models[interpolation].run()
+    gui.run()
