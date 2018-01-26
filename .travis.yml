@@ -49,9 +49,9 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script:
-  - python ../PySAT/setup.py develop
   - python setup.py build_ui
   - python setup.py develop
+  - python ../PySAT/setup.py develop
   - pytest
 
 after_success:
