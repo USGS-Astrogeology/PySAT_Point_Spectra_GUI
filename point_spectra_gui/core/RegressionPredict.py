@@ -21,11 +21,12 @@ class RegressionPredict(Ui_Form, Modules):
         modelkey = self.chooseModelComboBox.currentText()
         predictname = ('predict', modelkey + ' - ' + datakey + ' - Predict')
 
-        data_tmp = self.data[datakey].df[self.model_xvars[modelkey]]
+        data_tmp = self.data[datakey]._data[self.model_xvars[modelkey]]
         data_tmp.fillna(value=0,inplace=True)
         try:
+            print(data_tmp)
             prediction = self.models[modelkey].predict(data_tmp)
-            self.data[datakey].df[predictname] = prediction
+            self.data[datakey]._data[predictname] = prediction
             pass
         except Exception as e:
             print(e)
