@@ -11,7 +11,6 @@ class Ui_Form(Ui_Form, ARDRegression, Modules):
         self.checkMinAndMax()
         self.connectWidgets()
 
-
     def get_widget(self):
         return self.formGroupBox
 

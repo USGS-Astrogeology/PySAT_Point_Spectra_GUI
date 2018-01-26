@@ -39,7 +39,7 @@ class Modules:
     @property
     def current_data(self):
         return self._current_data[0]
-    
+
     @current_data.setter
     def current_data(self, value):
         self._current_data[0] = value
@@ -47,7 +47,7 @@ class Modules:
     @property
     def current_model(self):
         return self._current_data[1]
-    
+
     @current_model.setter
     def current_model(self, value):
         self._current_data[1] = value
@@ -203,7 +203,7 @@ class Modules:
         """
         dic = {}
         for key in input_dictionary:
-            if input_dictionary[key] != getattr(algorithm, key):  # key gives us a string
+            if input_dictionary[key] != getattr(algorithm, key, None):  # key gives us a string
                 dic.update({key: input_dictionary[key]})
 
         return dic

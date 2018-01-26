@@ -6,6 +6,7 @@ exclude_lines =
     def connectWidgets
     def getGuiParams
     def setGuiParams
+    def setupUi
 
 omit =
   point_spectra_gui/ui/*
