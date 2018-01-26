@@ -27,3 +27,15 @@ def test_data_table(qtbot):
     guiDT.on_refreshTable()
 
     assert type(guiDT.data['data_key']._data) == type(pd.DataFrame())
+
+def test_data_table_bad_key(qtbot):
+    with pytest.raises(KeyError):
+        form = QtWidgets.QWidget()
+        guiDT = DataTable()
+        guiDT.setupUi(form)
+
+        guiDT.chooseDataComboBox.addItem('data_key')
+        guiDT.chooseDataComboBox.setItemText(0, 'data_key')
+
+        guiDT.on_refreshTable()
+        guiDT.data['data_key'] == KeyError
