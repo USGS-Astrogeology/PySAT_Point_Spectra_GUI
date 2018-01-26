@@ -38,7 +38,7 @@ install:
   - conda install -c usgs-astrogeology plio
   #@TODO Needs to be removed once pysat is updated in anaconda
   - git clone https://github.com/USGS-Astrogeology/PySAT.git
-  - python libpysat/setup.py develop
+  - python PySAT/libpysat/setup.py develop
 
   # Development installation
   - conda install pytest pytest-cov pytest-qt
