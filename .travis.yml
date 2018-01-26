@@ -51,7 +51,7 @@ before_script:
 script:
   - python setup.py build_ui
   - python setup.py develop
-  - python ../PySAT/setup.py develop
+  - python ../PySAT/setup.py install
   - pytest
 
 after_success:
