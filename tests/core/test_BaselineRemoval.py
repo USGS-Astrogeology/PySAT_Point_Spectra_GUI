@@ -5,7 +5,7 @@ import pandas as pd
 from PyQt5 import QtCore, QtWidgets
 
 from point_spectra_gui.util import PandasModel as pm
-from point_spectra_gui.core.BaselineRemoval import BaselineRemoval as BR
+from point_spectra_gui.core import BaselineRemoval as BR
 
 @pytest.fixture
 def repeat_pandas_model(n):
