@@ -16,26 +16,28 @@ def repeat_df(n):
 
 def test_data_table(qtbot):
     form = QtWidgets.QWidget()
-    guiDT = DataTable()
-    guiDT.setupUi(form)
+    gui = DataTable()
+    gui.setupUi(form)
 
-    guiDT.data = {'data_key': repeat_df(5)}
+    datakey = 'test'
 
-    guiDT.chooseDataComboBox.addItem('data_key')
-    guiDT.chooseDataComboBox.setItemText(0, 'data_key')
+    gui.data = {datakey: repeat_df(5)}
 
-    guiDT.on_refreshTable()
+    gui.chooseDataComboBox.addItem(datakey)
+    gui.chooseDataComboBox.setItemText(0, datakey)
 
-    assert type(guiDT.data['data_key']._data) == type(pd.DataFrame())
+    gui.on_refreshTable()
 
 def test_data_table_bad_key(qtbot):
     with pytest.raises(KeyError):
         form = QtWidgets.QWidget()
-        guiDT = DataTable()
-        guiDT.setupUi(form)
+        gui = DataTable()
+        gui.setupUi(form)
 
-        guiDT.chooseDataComboBox.addItem('data_key')
-        guiDT.chooseDataComboBox.setItemText(0, 'data_key')
+        datakey = 'test'
 
-        guiDT.on_refreshTable()
-        guiDT.data['data_key'] == KeyError
+        gui.chooseDataComboBox.addItem(datakey)
+        gui.chooseDataComboBox.setItemText(0, datakey)
+
+        gui.on_refreshTable()
+        gui.data['data_key'] == KeyError
