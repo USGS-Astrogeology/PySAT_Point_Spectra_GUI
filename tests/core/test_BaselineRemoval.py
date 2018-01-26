@@ -18,15 +18,15 @@ def repeat_pandas_model(n):
     df = pd.DataFrame(data, columns = index)
     return PandasModel(df)
 
-@pytest.mark.parametrize( 'model, method', [(brm.AirPLS, 'AirPLS'), # <-- Failing in libpysat
-                                    (brm.ALS, 'ALS'),               # <-- Failing in libpysat
-                                    (brm.FABC, 'FABC'),
-                                    (brm.KK, 'KK'),
-                                    (brm.Median, 'Median'),
-                                    (brm.Rubberband, 'Rubberband'), # <-- Failing in libpysat
-                                    (brm.Polyfit, 'Polyfit'),
-                                    (brm.Mario, 'Mario'),
-                                    (brm.Dietrich, 'Dietrich')])    # <-- Failing in libpysat
+@pytest.mark.parametrize( 'model, method', [(brm.AirPLS, 'AirPLS'),         # <-- Failing in libpysat
+                                            (brm.ALS, 'ALS'),               # <-- Failing in libpysat
+                                            (brm.FABC, 'FABC'),
+                                            (brm.KK, 'KK'),
+                                            (brm.Median, 'Median'),
+                                            (brm.Rubberband, 'Rubberband'), # <-- Failing in libpysat
+                                            (brm.Polyfit, 'Polyfit'),
+                                            (brm.Mario, 'Mario'),
+                                            (brm.Dietrich, 'Dietrich')])    # <-- Failing in libpysat
 
 def test_baseline_spectral(model, method, qtbot, repeat_df_len10):
     form = QtWidgets.QWidget()
@@ -43,8 +43,6 @@ def test_baseline_spectral(model, method, qtbot, repeat_df_len10):
 
     gui.chooseAlgorithmComboBox.addItem(modelkey)
     gui.chooseAlgorithmComboBox.setItemText(0, modelkey)
-
-    gui.model_xvars[modelkey] = ['test1', 'test2']
 
     gui.data[datakey] = repeat_pandas_model(10)
     gui.data[datakey]._data[modelkey] = np.arange(10)
