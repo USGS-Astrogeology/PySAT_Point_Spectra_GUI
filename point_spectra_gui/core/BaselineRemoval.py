@@ -40,6 +40,21 @@ class BaselineRemoval(Ui_Form, Modules):
         self.setComboBox(self.chooseAlgorithmComboBox, self.chooseAlgorithmList)
         self.chooseAlgorithmComboBox.currentIndexChanged.connect(
             lambda: self.make_regression_widget(self.chooseAlgorithmComboBox.currentText()))
+        self.chooseDataComboBox.currentIndexChanged.connect(self.setCurrentData)
+
+
+    def refresh(self):
+        self.setComboBox(self.chooseDataComboBox, self.datakeys)
+        self.setDataBox(self.current_data)
+
+       
+    def setDataBox(self, datakey):
+        try:
+            self.chooseDataComboBox.setCurrentIndex(self.chooseDataComboBox.findText(self.current_data))
+        except:
+            self.chooseDataComboBox.setCurrentIndex(-1)
+ 
+
 
     def getGuiParams(self):
         """
@@ -60,6 +75,7 @@ class BaselineRemoval(Ui_Form, Modules):
             self.alg[i - 1].setGuiParams(dict[i])
 
     def run(self):
+        # return method parameters and parameters that changed
         method = self.chooseAlgorithmComboBox.currentText()
         datakey = self.chooseDataComboBox.currentText()
         # return method parameters and parameters that changed
@@ -72,7 +88,9 @@ class BaselineRemoval(Ui_Form, Modules):
         self.data[datakey_new] = spectral_data(self.data[datakey]._data.copy(deep=True))
         self.data[datakey_new].remove_baseline(method, segment=True, params=methodParameters)
         self.data[datakey_baseline] = spectral_data(self.data[datakey_new].df_baseline)
-
+        #@@TODO make sure that this is the data that we want to propagate.
+        self.setCurrentData(datakey_new)
+        
     def hideAll(self):
         for a in self.alg:
             a.setHidden(True)

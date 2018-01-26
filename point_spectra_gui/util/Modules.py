@@ -1,6 +1,6 @@
 import inspect
 
-from PyQt5.QtCore import QSettings
+from PyQt5.QtCore import QSettings, pyqtSignal
 from PyQt5.QtWidgets import *
 
 from Qtickle import Qtickle
@@ -33,10 +33,31 @@ class Modules:
     model_xvars = {}
     model_yvars = {}
 
+    # Hacky way of making a static string.
+    _current_data = ['', '']
+
+    @property
+    def current_data(self):
+        return self._current_data[0]
+    
+    @current_data.setter
+    def current_data(self, value):
+        self._current_data[0] = value
+
+    @property
+    def current_model(self):
+        return self._current_data[1]
+    
+    @current_model.setter
+    def current_model(self, value):
+        self._current_data[1] = value
+
     def __init__(self):
         self.qt = Qtickle.Qtickle(self)
         self.settings = QSettings('USGS', 'PPSG')
         self.flag = False
+
+
 
     def setupUi(self, Form):
         self.Form = Form
@@ -52,6 +73,10 @@ class Modules:
         """
         # TODO Add mouse Event
 
+    # @@TODO Remove all references to guiChanged
+    def guiChanged(self):
+        pass
+
     def get_widget(self):
         """
         This function specifies the variable that holds the
@@ -60,6 +85,16 @@ class Modules:
         """
         raise NotImplementedError(
             'The method "get_widget()" was not found in the module {}'.format(type(self).__name__))
+
+    def refresh(self):
+        """
+        This function is used to enable propagation, and is responsible for resetting widget properties
+        based on the static variables found in this class.
+        :return:
+        """
+        raise NotImplementedError(
+            'The method "refresh()" was not found in the module {}'.format(type(self).__name__))
+
 
     def connectWidgets(self):
         """
@@ -143,6 +178,16 @@ class Modules:
 
             if isinstance(obj, QDoubleSpinBox):
                 obj.setDecimals(7)
+
+    def setCurrentData(self, c):
+        if isinstance(c, int):
+            self.current_data = self.datakeys[c]
+        elif isinstance(c, str):
+            self.current_data = c
+        else:
+            raise TypeError("Current data must be assigned by a string value or integer index")
+
+
 
     @staticmethod
     def getChangedValues(input_dictionary, algorithm):

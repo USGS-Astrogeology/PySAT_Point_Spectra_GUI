@@ -18,7 +18,6 @@ def repeat_pandas_model(n):
     df = pd.DataFrame(data, columns = columns)
     return pm.PandasModel(df)
 
-
 @pytest.mark.parametrize( 'model, expected', [
     (repeat_pandas_model(5), 5),
     (repeat_pandas_model(6), 6),

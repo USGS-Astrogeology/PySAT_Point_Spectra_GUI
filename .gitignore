@@ -1,3 +1,8 @@
+# PSG things
+
+point_spectra_gui/ui/*
+
+
 #iPython
 /.ipynb*
 
