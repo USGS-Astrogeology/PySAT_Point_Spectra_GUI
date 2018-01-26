@@ -28,17 +28,20 @@ def repeat_pandas_model(n):
 
 def test_baseline_spectral(func, index, expected, qtbot):
     Form = QtWidgets.QWidget()
-    guiBR = BR()
-    guiBR.setupUi(Form)
-    guiBR.chooseDataComboBox.addItem('data_key')
-    guiBR.chooseDataComboBox.setItemText(0, 'data_key')
-    guiBR.chooseAlgorithmComboBox.setItemText(index, func)
-    guiBR.chooseAlgorithmComboBox.setCurrentIndex(index)
-    guiBR.data = {'data_key' + '-Baseline Removed-' + func + '{}': repeat_pandas_model(5),
+    gui = BR()
+    gui.setupUi(Form)
+    gui.datakeys = {0: 'datakey'}
+    gui.data = {'data_key' + '-Baseline Removed-' + func + '{}': repeat_pandas_model(5),
                   'data_key': repeat_pandas_model(5)}
+
+    gui.chooseDataComboBox.addItem('data_key')
+    gui.chooseDataComboBox.setItemText(0, 'data_key')
+
+    gui.chooseAlgorithmComboBox.setItemText(index, func)
+    gui.chooseAlgorithmComboBox.setCurrentIndex(index)
     try:
-        guiBR.run()
-        assert type(guiBR.data['data_key-Baseline Removed-' + func + '{}'].df) == expected
+        gui.run()
+        assert type(gui.data['data_key-Baseline Removed-' + func + '{}'].df) == expected
     except:
         pass
 
@@ -48,16 +51,19 @@ def test_baseline_spectral(func, index, expected, qtbot):
 
 def test_baseline_pandas(func, index, expected, qtbot):
     Form = QtWidgets.QWidget()
-    guiBR = BR()
-    guiBR.setupUi(Form)
-    guiBR.chooseDataComboBox.addItem('data_key')
-    guiBR.chooseDataComboBox.setItemText(0, 'data_key')
-    guiBR.chooseAlgorithmComboBox.setItemText(index, func)
-    guiBR.chooseAlgorithmComboBox.setCurrentIndex(index)
-    guiBR.data = {'data_key' + '-Baseline Removed-' + func + '{}': repeat_pandas_model(5),
+    gui = BR()
+    gui.setupUi(Form)
+    gui.datakeys = {0: 'datakey'}
+    gui.data = {'data_key' + '-Baseline Removed-' + func + '{}': repeat_pandas_model(5),
                   'data_key': repeat_pandas_model(5)}
+
+    gui.chooseDataComboBox.addItem('data_key')
+    gui.chooseDataComboBox.setItemText(0, 'data_key')
+
+    gui.chooseAlgorithmComboBox.setItemText(index, func)
+    gui.chooseAlgorithmComboBox.setCurrentIndex(index)
     try:
-        guiBR.run()
-        assert type(guiBR.data['data_key-Baseline Removed-' + func + '{}']._data) == expected
+        gui.run()
+        assert type(gui.data['data_key-Baseline Removed-' + func + '{}']._data) == expected
     except:
         pass
