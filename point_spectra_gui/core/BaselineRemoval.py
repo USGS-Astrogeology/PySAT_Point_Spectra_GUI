@@ -83,8 +83,8 @@ class BaselineRemoval(Ui_Form, Modules):
 
         datakey_new = datakey + '-Baseline Removed-' + method + str(_changed)
         datakey_baseline = datakey + '-Baseline-' + method + str(_changed)
-        # self.datakeys.append(datakey_new)
-        # self.datakeys.append(datakey_baseline)
+        self.datakeys.append(datakey_new)
+        self.datakeys.append(datakey_baseline)
         self.data[datakey_new] = spectral_data(self.data[datakey]._data.copy(deep=True))
         self.data[datakey_new].remove_baseline(method, segment=True, params=methodParameters)
         self.data[datakey_baseline] = spectral_data(self.data[datakey_new].df_baseline)

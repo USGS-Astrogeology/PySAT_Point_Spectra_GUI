@@ -36,7 +36,7 @@ def test_baseline_spectral(model, method, qtbot, repeat_df_len10):
     datakey = 'test'
     modelkey = method
 
-    gui.datakeys = {0: datakey}
+    gui.datakeys = [datakey]
 
     gui.chooseDataComboBox.addItem(datakey)
     gui.chooseDataComboBox.setItemText(0, datakey)
@@ -72,7 +72,7 @@ def test_baseline_ccam(interpolation, qtbot):
     datakey = 'test'
     modelkey = 'CCAM'
 
-    gui.datakeys = {0: datakey}
+    gui.datakeys = [datakey]
 
     gui.chooseDataComboBox.addItem(datakey)
     gui.chooseDataComboBox.setItemText(0, datakey)
