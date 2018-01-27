@@ -36,7 +36,6 @@ install:
   - conda install qt==5.6 pyqt==5.6
   - conda install -c conda-forge numpy scipy pandas gdal scikit-learn matplotlib
   - conda install -c usgs-astrogeology plio
-  #@TODO Needs to be removed once pysat is updated in anaconda
   - git clone https://github.com/USGS-Astrogeology/PySAT.git ../PySAT/
 
   # Development installation
@@ -49,9 +48,11 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script:
+  #@TODO Needs to be removed once pysat is updated in anaconda
   - cd ../PySAT
   - python setup.py install
   - cd -
+  # ------------------------
   - python setup.py build_ui
   - python setup.py develop
   - pytest
