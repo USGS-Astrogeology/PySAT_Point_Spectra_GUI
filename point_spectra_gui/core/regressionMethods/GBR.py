@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 from point_spectra_gui.ui.GBR import Ui_Form
 from point_spectra_gui.util.Modules import Modules
-from sklearn.ensemble.gradient_boosting import GradientBoostingRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 
 
 class Ui_Form(Ui_Form, GradientBoostingRegressor, Modules):

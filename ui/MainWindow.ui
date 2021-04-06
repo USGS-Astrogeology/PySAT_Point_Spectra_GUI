@@ -235,6 +235,7 @@
     <addaction name="actionOutlier_Identify"/>
     <addaction name="actionSplit_Data"/>
     <addaction name="actionStratified_Folds"/>
+    <addaction name="actionIdentify_Endmembers"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuData"/>
@@ -517,6 +518,11 @@
   <action name="actionStandardize_Data">
    <property name="text">
     <string>Standardize</string>
+   </property>
+  </action>
+  <action name="actionIdentify_Endmembers">
+   <property name="text">
+    <string>Identify Endmembers</string>
    </property>
   </action>
  </widget>

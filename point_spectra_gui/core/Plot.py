@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QCompleter
 import numpy as np
 from PyQt5 import QtWidgets
 import matplotlib.pyplot as plt
+from pandas.api.types import is_numeric_dtype
 
 from point_spectra_gui.ui.Plot import Ui_Form
 from point_spectra_gui.util.Modules import Modules
@@ -290,19 +291,14 @@ class Plot(Ui_Form, Modules):
         except:
             pass
 
-        #keep only columns that are numerical (I'm sure there is a more elegant way to do this)
+        #keep only columns that are numerical
         for i in list(range(len(vars_level0))):
-            if self.data[self.chooseDataComboBox.currentText()].df[vars_level0[i], vars_level1[i]].dtype == 'float32':
-                self.vars_level0.append(vars_level0[i])
-                self.vars_level1.append(vars_level1[i])
-            elif self.data[self.chooseDataComboBox.currentText()].df[vars_level0[i], vars_level1[i]].dtype == 'float64':
-                self.vars_level0.append(vars_level0[i])
-                self.vars_level1.append(vars_level1[i])
-            elif self.data[self.chooseDataComboBox.currentText()].df[vars_level0[i], vars_level1[i]].dtype == 'int':
+            if is_numeric_dtype(self.data[self.chooseDataComboBox.currentText()].df[vars_level0[i], vars_level1[i]]):
                 self.vars_level0.append(vars_level0[i])
                 self.vars_level1.append(vars_level1[i])
             else:
-                print(vars_level0[i]+','+vars_level1[i]+' is non-numeric. Excluding.')
+                print(vars_level0[i] + ',' + vars_level1[i] + ' is non-numeric. Excluding.')
+
 
     def get_choices(self):
         try:

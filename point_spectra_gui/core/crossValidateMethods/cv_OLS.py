@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
-from sklearn.linear_model.base import LinearRegression
+from sklearn.linear_model import LinearRegression
 
 from point_spectra_gui.ui.cv_OLS import Ui_Form
 from point_spectra_gui.util.Modules import Modules

@@ -104,7 +104,7 @@ class Ui_Form(object):
         self.yVariableList.setSortingEnabled(__sortingEnabled)
         self.xVariableLabel.setText(("X Variable"))
         self.chooseAlgorithmLabel.setText(("Choose Algorithm"))
-        self.chooseAlgorithmComboBox.setItemText(0, ("LASSO"))
+        self.chooseAlgorithmComboBox.setItemText(0, ("Elastic Net"))
         self.forcepositive.setText(("Force Positive"))
         self.choosedata_train_label.setText(("Choose training data"))
         self.fit_intercept.setText(("Fit Intercept"))

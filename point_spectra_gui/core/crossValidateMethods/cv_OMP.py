@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
-from sklearn.linear_model.omp import OrthogonalMatchingPursuit
-from sklearn.linear_model.omp import OrthogonalMatchingPursuitCV
+from sklearn.linear_model import OrthogonalMatchingPursuit
+from sklearn.linear_model import OrthogonalMatchingPursuitCV
 
 from point_spectra_gui.ui.cv_OMP import Ui_Form
 from point_spectra_gui.util.Modules import Modules

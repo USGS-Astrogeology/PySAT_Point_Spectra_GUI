@@ -191,6 +191,8 @@ class Ui_MainWindow(object):
         self.actionRestore_Regression_Model.setObjectName("actionRestore_Regression_Model")
         self.actionStandardize_Data = QtWidgets.QAction(MainWindow)
         self.actionStandardize_Data.setObjectName("actionStandardize_Data")
+        self.actionIdentify_Endmembers = QtWidgets.QAction(MainWindow)
+        self.actionIdentify_Endmembers.setObjectName("actionIdentify_Endmembers")
         self.menuFile.addAction(self.actionRestore_Workflow)
         self.menuFile.addAction(self.actionSave_Current_Workflow)
         self.menuFile.addAction(self.actionCreate_New_Workflow)
@@ -229,6 +231,7 @@ class Ui_MainWindow(object):
         self.menuData.addAction(self.actionOutlier_Identify)
         self.menuData.addAction(self.actionSplit_Data)
         self.menuData.addAction(self.actionStratified_Folds)
+        self.menuData.addAction(self.actionIdentify_Endmembers)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuData.menuAction())
         self.menubar.addAction(self.menuPreprocessing.menuAction())
@@ -320,6 +323,7 @@ class Ui_MainWindow(object):
         self.actionSave_Regression_Model.setText(("Save Regression Model"))
         self.actionRestore_Regression_Model.setText(("Restore Regression Model"))
         self.actionStandardize_Data.setText(("Standardize"))
+        self.actionIdentify_Endmembers.setText(("Identify Endmembers"))
 
 
 if __name__ == "__main__":

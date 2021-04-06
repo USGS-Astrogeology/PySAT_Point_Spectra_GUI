@@ -258,6 +258,8 @@ class MainWindow(Ui_MainWindow, QtCore.QThread, Modules):
                 lambda: self.addWidget(core.SplitDataset.SplitDataset))
             self.actionOutlier_Identify.triggered.connect(
                 lambda: self.addWidget(core.OutlierIdentify.OutlierIdentify))
+            self.actionIdentify_Endmembers.triggered.connect(
+                lambda: self.addWidget(core.EndmemberIdentify.EndmemberIdentify))
             self.actionStratified_Folds.triggered.connect(
                 lambda: self.addWidget(core.StratifiedFolds.StratifiedFolds))
             self.actionSubmodel_Blend.triggered.connect(

@@ -26,7 +26,8 @@ class DimensionalityReduction(Ui_Form, Modules):
                                't-SNE',
                                'LLE',
                                'NMF',
-                               'LDA']
+                               'LDA',
+                               'MNF']
 
         self.setComboBox(self.chooseDataComboBox, self.datakeys)
         self.setComboBox(self.chooseMethodComboBox, self.algorithm_list)
@@ -128,7 +129,8 @@ class DimensionalityReduction(Ui_Form, Modules):
                       dimred_tSNE,
                       dimred_LLE,
                       dimred_NMF,
-                      dimred_LDA]
+                      dimred_LDA,
+                      dimred_MNF]
         for items in list_forms:
             self.alg.append(items.Ui_Form())
             self.alg[-1].setupUi(self.Form)

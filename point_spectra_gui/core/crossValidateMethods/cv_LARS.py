@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
-from sklearn.linear_model.least_angle import Lars
-from sklearn.linear_model.least_angle import LarsCV
+from sklearn.linear_model import Lars
+from sklearn.linear_model import LarsCV
 
 from point_spectra_gui.ui.cv_LARS import Ui_Form
 from point_spectra_gui.util.Modules import Modules

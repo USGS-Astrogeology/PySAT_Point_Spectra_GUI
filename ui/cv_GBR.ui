@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>525</width>
+    <height>414</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="formGroupBox">
+     <property name="title">
+      <string>Gradient Boosting Regression</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lossLabel">
+        <property name="text">
+         <string>Loss Function</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="alphaLabel">
+        <property name="text">
+         <string>Alpha</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="numEstLabel">
+        <property name="text">
+         <string># of estimators</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="learningLabel">
+        <property name="text">
+         <string>Learning Rate</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="subsampleLabel">
+        <property name="text">
+         <string>Subsample</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="min_n_splitLabel">
+        <property name="text">
+         <string>Minimum # of samples to split</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="min_n_leafLabel">
+        <property name="text">
+         <string>Minimum # of samples in leaf</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="min_fractionLabel">
+        <property name="text">
+         <string>Minimum weighted fraction</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="max_depthLabel">
+        <property name="text">
+         <string>Max Depth</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="min_imp_decLabel">
+        <property name="text">
+         <string>Minimum impurity decrease</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="AlphalineEdit">
+        <property name="text">
+         <string>0.9</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="numEstlineEdit">
+        <property name="text">
+         <string>100</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="learninglineEdit">
+        <property name="text">
+         <string>0.1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="subsamplelineEdit">
+        <property name="text">
+         <string>1.0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="min_n_splitlineEdit">
+        <property name="text">
+         <string>2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="min_n_leaflineEdit">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QLineEdit" name="min_fractionlineEdit">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QLineEdit" name="maxdepthlineEdit">
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="QLineEdit" name="min_impuritylineEdit">
+        <property name="text">
+         <string>0.0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QListWidget" name="lossfunclistWidget">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Least Squares</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Quantile</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Least Absolute Deviation</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Huber</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

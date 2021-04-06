@@ -1,10 +1,10 @@
 from PyQt5 import QtWidgets
-from sklearn.decomposition import PCA
-from point_spectra_gui.ui.cluster_KMeans import Ui_Form
+from pysptools.noise import MNF
+from point_spectra_gui.ui.dimred_MNF import Ui_Form
 from point_spectra_gui.util.Modules import Modules
 
 
-class Ui_Form(Ui_Form, PCA, Modules):
+class Ui_Form(Ui_Form, MNF, Modules):
     def setupUi(self, Form):
         super().setupUi(Form)
         self.checkMinAndMax()
@@ -17,21 +17,13 @@ class Ui_Form(Ui_Form, PCA, Modules):
         self.get_widget().setHidden(bool)
 
     def connectWidgets(self):
-        self.n_clust_spin.setValue(8)
-        self.n_runs_spin.setValue(10)
-        self.n_iter_spin.setValue(300)
-        self.tol_dspin.setValue(0.0001)
+        self.nc_spin.setValue(8)
 
     def run(self):
         params = {
-            'n_clusters': self.n_clust_spin.value(),
-            'n_init': self.n_runs_spin.value(),
-            'max_iter': self.n_iter_spin.value(),
-            'tol': self.tol_dspin.value(),
-            'n_jobs': -2} #use all but one cpu in parallel
+            'n_components': self.nc_spin.value()}
         params_key = str(params)
         return params, params_key
-
 
 if __name__ == "__main__":
     import sys

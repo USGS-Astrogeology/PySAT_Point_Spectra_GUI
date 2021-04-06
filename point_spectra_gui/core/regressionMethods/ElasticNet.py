@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets
 from sklearn.linear_model import ElasticNet
-from sklearn.linear_model.coordinate_descent import ElasticNetCV
 
 from point_spectra_gui.ui.ElasticNet import Ui_Form
 from point_spectra_gui.util.Modules import Modules

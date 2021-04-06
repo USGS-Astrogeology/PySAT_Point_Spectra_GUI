@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from sklearn.cross_decomposition.pls_ import PLSRegression
+from sklearn.cross_decomposition import PLSRegression
 
 from point_spectra_gui.ui.cv_PLS import Ui_Form
 from point_spectra_gui.util.Modules import Modules

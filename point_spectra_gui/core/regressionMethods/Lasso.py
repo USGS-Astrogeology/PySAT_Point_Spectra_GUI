@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from sklearn.linear_model.coordinate_descent import Lasso
+from sklearn.linear_model import Lasso
 
 from point_spectra_gui.ui.Lasso import Ui_Form
 from point_spectra_gui.util.Modules import Modules

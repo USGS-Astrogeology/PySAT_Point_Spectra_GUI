@@ -1,6 +1,6 @@
 import numpy as np
 from PyQt5 import QtWidgets, QtCore
-from sklearn.linear_model.coordinate_descent import Lasso
+from sklearn.linear_model import Lasso
 
 from point_spectra_gui.ui.cv_Lasso import Ui_Form
 from point_spectra_gui.util.Modules import Modules

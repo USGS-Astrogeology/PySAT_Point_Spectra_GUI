@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from sklearn.linear_model.least_angle import LassoLars, LassoLarsCV, LassoLarsIC
+from sklearn.linear_model import LassoLars
 
 from point_spectra_gui.ui.LassoLARS import Ui_Form
 from point_spectra_gui.util.Modules import Modules

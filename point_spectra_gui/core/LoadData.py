@@ -45,7 +45,25 @@ class LoadData(Ui_loadData, Modules):
             keyname = keyname + ' - ' + str(number)
 
         print('Loading data file: ' + str(filename))
-        self.data[keyname] = spectral_data(pd.read_csv(filename, header=[0, 1], verbose=False))
+        data = pd.read_csv(filename, header=[0, 1], verbose=False)
+
+        #remove duplicate wvl values
+        data_wvl = data['wvl']
+        data_no_wvl = data.drop(columns='wvl')
+
+        good_wvls = []
+        for i in data_wvl.columns:
+            try:
+                i = float(i)
+                good_wvls.append(True)
+            except:
+                print("Removing column "+str(i))
+                good_wvls.append(False)
+
+        data_wvl = data_wvl.iloc[:,good_wvls]
+        data_wvl.columns = pd.MultiIndex.from_tuples([('wvl',float(i)) for i in data_wvl.columns])
+        data = pd.merge(data_no_wvl,data_wvl,left_index=True,right_index=True)
+        self.data[keyname] = spectral_data(data)
         self.list_amend(self.datakeys, self.count, keyname)
         self.datafiles[keyname] = os.path.basename(filename)
 

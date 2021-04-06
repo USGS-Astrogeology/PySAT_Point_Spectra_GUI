@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
-from sklearn.linear_model.ridge import Ridge
-from sklearn.linear_model.ridge import RidgeCV
+from sklearn.linear_model import Ridge
+from sklearn.linear_model import RidgeCV
 
 from point_spectra_gui.ui.cv_Ridge import Ui_Form
 from point_spectra_gui.util.Modules import Modules

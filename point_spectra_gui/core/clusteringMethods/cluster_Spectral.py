@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from sklearn.decomposition.pca import PCA
+from sklearn.decomposition import PCA
 from point_spectra_gui.ui.cluster_Spectral import Ui_Form
 from point_spectra_gui.util.Modules import Modules
 

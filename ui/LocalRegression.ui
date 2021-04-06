@@ -93,7 +93,7 @@
          <widget class="QComboBox" name="chooseAlgorithmComboBox">
           <item>
            <property name="text">
-            <string>LASSO</string>
+            <string>Elastic Net</string>
            </property>
           </item>
          </widget>

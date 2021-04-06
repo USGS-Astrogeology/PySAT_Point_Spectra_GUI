@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from sklearn.svm.classes import SVR
+from sklearn.svm import SVR
 
 from point_spectra_gui.ui.SVR import Ui_Form
 from point_spectra_gui.util.Modules import Modules

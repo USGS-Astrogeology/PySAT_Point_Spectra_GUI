@@ -67,7 +67,8 @@ class LocalRegression(Ui_Form, Modules):
         params = {'fit_intercept': self.fit_intercept.isChecked(),
                   'max_iter': 10000,
                   'positive': self.forcepositive.isChecked(),
-                  'selection': 'random'}
+                  'selection': 'random',
+                  'l1_ratio': [.1, .5, .7, .9, .95, .99, 1]}
         localmodel = local_regression.LocalRegression(params, n_neighbors = self.n_neighbors_spin.value())
         traindata = self.data[self.choosedata_train.currentText()]
         predictdata = self.data[self.choosedata_predict.currentText()]

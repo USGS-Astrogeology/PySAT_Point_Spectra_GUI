@@ -2,7 +2,6 @@ import numpy as np
 from PyQt5 import QtWidgets, QtCore
 from point_spectra_gui.ui.cv_Local import Ui_Form
 from point_spectra_gui.util.Modules import Modules
-from sklearn.linear_model.coordinate_descent import Lasso
 
 class Ui_Form(Ui_Form, Modules):
     def setupUi(self, Form):
@@ -30,11 +29,13 @@ class Ui_Form(Ui_Form, Modules):
         n_neighbors = [int(i) for i in self.n_neighbors_lineEdit.text().split(',')]
 
 
-        if method=='LASSO':
-            params = {'n_neighbors': n_neighbors,
-                  'fit_intercept': fit_intercept_items,
-                  'positive': positive_items,
-                  }
+        if method== 'Elastic Net':
+            params = {'n_neighbors':n_neighbors,
+                      'fit_intercept': fit_intercept_items,
+                      'max_iter': 10000,
+                      'positive': positive_items,
+                      'selection': 'random',
+                      'l1_ratio': [.1, .5, .7, .9, .95, .99, 1]}
         else:
             params = {}
 

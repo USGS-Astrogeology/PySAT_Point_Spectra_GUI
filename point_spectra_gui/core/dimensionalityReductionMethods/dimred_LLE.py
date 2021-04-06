@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from sklearn.manifold.locally_linear import LocallyLinearEmbedding
+from sklearn.manifold import LocallyLinearEmbedding
 
 from point_spectra_gui.ui.dimred_LLE import Ui_Form
 from point_spectra_gui.util.Modules import Modules

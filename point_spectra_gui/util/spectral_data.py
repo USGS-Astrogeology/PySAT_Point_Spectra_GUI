@@ -17,6 +17,7 @@ import libpyhat.transform.deriv as deriv
 import libpyhat.transform.dim_red as dim_red
 import libpyhat.clustering.cluster as cluster
 import libpyhat.utils.outlier_removal as outlier_removal
+import libpyhat.emi.emi as endmember_identify
 from libpyhat.utils.utils import enumerate_duplicates
 
 class spectral_data(object):
@@ -80,6 +81,9 @@ class spectral_data(object):
 
     def outlier_removal(self, col, method, params):
         self.df = outlier_removal.outlier_removal(self.df, col = col, method = method, params = params)
+
+    def endmember_identify(self, col, method, n_endmembers):
+        self.df, indices = endmember_identify.emi(self.df, col = col, emi_method = method, n_endmembers = n_endmembers)
 
     def peak_area(self, peaks_mins_file):
         self.df, self.peaks, self.mins = peak_area.peak_area(self.df,peaks_mins_file = peaks_mins_file)

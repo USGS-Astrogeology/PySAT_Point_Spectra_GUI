@@ -139,6 +139,16 @@
         <item>
          <layout class="QVBoxLayout" name="Locallayout"/>
         </item>
+        <item>
+         <widget class="QCheckBox" name="GBRcheckBox">
+          <property name="text">
+           <string>Gradient Boosting Regression</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="GBRlayout"/>
+        </item>
        </layout>
       </item>
       <item row="1" column="0">
